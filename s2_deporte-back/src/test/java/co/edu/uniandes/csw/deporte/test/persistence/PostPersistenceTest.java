@@ -38,6 +38,7 @@ public class PostPersistenceTest {
     @Test
     public void createTest()
     {
-      
-    }
+        PodamFactory factory = new PodamFactoryImpl();
+        PostEntity newEntity = factory.manufacturePojo(PostEntity.class);
+            }
 }
