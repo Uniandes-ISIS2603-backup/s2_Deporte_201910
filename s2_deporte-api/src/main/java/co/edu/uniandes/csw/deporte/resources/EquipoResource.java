@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.deporte.resources;
 
-import co.edu.uniandes.csw.deporte.dtos.PartidoDTO;
+import co.edu.uniandes.csw.deporte.dtos.EquipoDTO;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -17,16 +17,16 @@ import javax.ws.rs.Produces;
  *
  * @author estudiante
  */
-@Path("partidos")
+@Path("equipos")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-public class PartidoResource 
+public class EquipoResource 
 {
-    private static final Logger LOGGER = Logger.getLogger(PartidoResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(EquipoResource.class.getName());
     @POST
-    public PartidoDTO createPropietario(PartidoDTO partido){
+    public EquipoDTO createPropietario(EquipoDTO equipo){
         
-        return partido;
+        return equipo;
     }
 }
