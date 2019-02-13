@@ -5,12 +5,18 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author estudiante
  */
-public class EntrenamientoDTO {
-       /**
+public class EntrenamientoDTO implements Serializable {
+    /**
+     * atributo que identifica de manera unica al entrenamiento
+     */
+    private Long id;
+    /**
      * atributo que modela la relacion con equipo
      */
     private EquipoDTO equipo;

@@ -5,11 +5,17 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Nicolas De la Hoz
  */
-public class AmistosoDTO {
+public class AmistosoDTO implements Serializable{
+    /**
+     * atributo que identifica unicamente el amistoso
+     */
+    private Long id;
     /**
      * atributo que modela la relacion con partido
      */
@@ -23,6 +29,14 @@ public class AmistosoDTO {
         
     }
     /**
+     * metodo get para id
+     * @return id
+     */
+    public Long getId(){
+        return id;
+    }
+    
+     /**
      * metodo get para partido
      * @return partido
      */
@@ -36,11 +50,25 @@ public class AmistosoDTO {
      public ReservaDTO getReserva(){
         return reserva;
     }
+     /**
+      * metodo set para id
+      * @param id id del amistoso
+      */
+     public void setId(Long id){
+         this.id=id;
+     }
+     /**
+      * metodo set para partido
+      * @param partido partido asociado al amistoso
+      */
      public void setPartido(PartidoDTO partido){
          this.partido=partido;
  
      }
-     
+     /**
+      * Metodo set para reserva
+      * @param reserva reserva asociada al amistoso
+      */
      public void setReserva(ReservaDTO reserva){
          this.reserva=reserva;
      }

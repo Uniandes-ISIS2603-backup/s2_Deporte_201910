@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 
 /**
  *
@@ -21,7 +22,21 @@ public class EntrenamientoResource {
     private static final Logger LOGGER = Logger.getLogger(EntrenamientoResource.class.getName());
     
     @POST
-    public EntrenamientoDTO createFranja(EntrenamientoDTO entrenamiento){
+    public EntrenamientoDTO createEntrenamiento(EntrenamientoDTO entrenamiento){
+        return entrenamiento;
+    }
+    @PUT
+    public EntrenamientoDTO modifyEntrenamiento(EntrenamientoDTO entrenamiento){
+        return entrenamiento;
+    }
+    
+    @DELETE
+    public EntrenamientoDTO deleteEntrenamiento(EntrenamientoDTO entrenamiento){
+        return entrenamiento;
+    }
+    
+    @GET
+    public EntrenamientoDTO getEntrenamiento(EntrenamientoDTO entrenamiento){
         return entrenamiento;
     }
     
