@@ -15,19 +15,5 @@ import javax.persistence.Id;
  */
 @Entity
 public class PostEntity extends BaseEntity implements Serializable {
-    private String id;
-
-    /**
-     * @return the id
-     */
-    public String getIdd() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setIdd(String id) {
-        this.id = id;
-    }
-}
+    
+   }
