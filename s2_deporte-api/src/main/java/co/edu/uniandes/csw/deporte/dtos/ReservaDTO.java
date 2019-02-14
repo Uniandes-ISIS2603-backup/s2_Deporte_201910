@@ -23,8 +23,8 @@ public class ReservaDTO implements Serializable{
     private int idCancha;
     private FranjaDTO franja;
     //private CampeonatoDTO campeonato;
-    //private AmistosoDTO amistoso;
-    //private EntrenamientoDTO entrenamiento;
+    private AmistosoDTO amistoso;
+    private EntrenamientoDTO entrenamiento;
     
     public ReservaDTO () {
         
@@ -185,32 +185,32 @@ public class ReservaDTO implements Serializable{
      * Retorna el amistoso al cual hace parte esta frnaja. null si no tiene amistoso
      * @return amistoso
      */
-    //public AmistosoDTO getAmistoso(){
-    //    return amistoso;
-    //}
+    public AmistosoDTO getAmistoso(){
+        return amistoso;
+    }
     
     /**
      * Establece el amistoso al cual hace parte esta franja
      * @param amis
      */
-    //public void setAmistoso(AmistosoDTO amis){
-    //    amistoso = amis;
-    //}
+    public void setAmistoso(AmistosoDTO amis){
+        amistoso = amis;
+    }
     
     /**
      * Retorna el entrenamiento al cual hace parte esta frnaja. null si no tiene entrenamiento
      * @return entrenamiento
      */
-    //public EntrenamientoDTO getEntrenamiento(){
-    //    return entrenamiento;
-    //}
+    public EntrenamientoDTO getEntrenamiento(){
+        return entrenamiento;
+    }
     
     /**
      * Establece el entrenamiento al cual hace parte esta franja
      * @param entre
      */
-    //public void setEntrenamiento(EntrenamientoDTO entre){
-    //    entrenamiento = entre;
-    //}
+    public void setEntrenamiento(EntrenamientoDTO entre){
+        entrenamiento = entre;
+    }
     
 }
