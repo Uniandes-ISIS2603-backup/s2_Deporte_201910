@@ -5,8 +5,8 @@
  */
 package co.edu.uniandes.csw.deporte.persistence;
 
+import co.edu.uniandes.csw.deporte.entities.CampeonatoEntity;
 import co.edu.uniandes.csw.deporte.entities.PostEntity;
-import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -18,19 +18,12 @@ import javax.persistence.PersistenceContext;
  * @author estudiante
  */
 @Stateless
-public class PostPersistence{
-     private static final Logger LOGGER = Logger.getLogger(PostPersistence.class.getName());
+public class CampeonatoPersistence {
+     private static final Logger LOGGER = Logger.getLogger(CampeonatoPersistence.class.getName());
 
     @PersistenceContext(unitName = "deportePU")
     protected EntityManager em;
-    
-   /**
-     * Método para persisitir la entidad en la base de datos.
-     *
-     * @param editorialEntity objeto editorial que se creará en la base de datos
-     * @return devuelve la entidad creada con un id dado por la base de datos.
-     */
-    public PostEntity create(PostEntity editorialEntity) {
+    public CampeonatoEntity create(CampeonatoEntity editorialEntity) {
         LOGGER.log(Level.INFO, "Creando un post nuevo");
         /* Note que hacemos uso de un método propio de EntityManager para persistir la editorial en la base de datos.
         Es similar a "INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);" en SQL.

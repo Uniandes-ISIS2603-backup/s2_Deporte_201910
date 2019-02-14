@@ -5,7 +5,11 @@
  */
 package co.edu.uniandes.csw.deporte.test.persistence;
 
+import co.edu.uniandes.csw.deporte.entities.BlogEntity;
+import co.edu.uniandes.csw.deporte.entities.CampeonatoEntity;
 import co.edu.uniandes.csw.deporte.entities.PostEntity;
+import co.edu.uniandes.csw.deporte.persistence.BlogPersistence;
+import co.edu.uniandes.csw.deporte.persistence.CampeonatoPersistence;
 import co.edu.uniandes.csw.deporte.persistence.PostPersistence;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -25,17 +29,18 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author estudiante
  */
 @RunWith(Arquillian.class)
-public class PostPersistenceTest {
+
+public class CampeonatoPersistenceTest {
     @Inject
-    PostPersistence ep;
+    CampeonatoPersistence ep;
     @PersistenceContext
     private EntityManager em;
     @Deployment
     public static JavaArchive createDeployment()
     {
        return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(PostEntity.class.getPackage())
-                .addPackage(PostEntity.class.getPackage())
+                .addPackage(CampeonatoEntity.class.getPackage())
+                .addPackage(CampeonatoEntity.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");    
     }
@@ -43,13 +48,13 @@ public class PostPersistenceTest {
     public void createPostTest()
     {
         PodamFactory factory = new PodamFactoryImpl();
-        PostEntity newEntity;
-        newEntity = factory.manufacturePojo(PostEntity.class);
-        PostEntity result = ep.create(newEntity);
+        CampeonatoEntity newEntity;
+        newEntity = factory.manufacturePojo(CampeonatoEntity.class);
+        CampeonatoEntity result = ep.create(newEntity);
         
         Assert.assertNotNull(result);
         
-        PostEntity entity = em.find(PostEntity.class, result.getId());
+        CampeonatoEntity entity = em.find(CampeonatoEntity.class, result.getPuntos());
        
             }
 }

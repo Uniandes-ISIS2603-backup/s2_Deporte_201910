@@ -7,27 +7,26 @@ package co.edu.uniandes.csw.deporte.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 /**
  *
  * @author estudiante
  */
 @Entity
-public class PostEntity extends BaseEntity implements Serializable {
-    private String id;
+public class CampeonatoEntity extends BaseEntity implements Serializable{
+    private int puntos;
 
     /**
-     * @return the id
+     * @return the puntos
      */
-    public String getIdd() {
-        return id;
+    public int getPuntos() {
+        return puntos;
     }
 
     /**
-     * @param id the id to set
+     * @param puntos the puntos to set
      */
-    public void setIdd(String id) {
-        this.id = id;
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
     }
 }

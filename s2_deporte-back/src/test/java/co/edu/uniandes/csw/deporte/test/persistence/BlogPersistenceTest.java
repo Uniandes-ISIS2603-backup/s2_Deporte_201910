@@ -5,8 +5,9 @@
  */
 package co.edu.uniandes.csw.deporte.test.persistence;
 
+import co.edu.uniandes.csw.deporte.entities.BlogEntity;
 import co.edu.uniandes.csw.deporte.entities.PostEntity;
-import co.edu.uniandes.csw.deporte.persistence.PostPersistence;
+import co.edu.uniandes.csw.deporte.persistence.BlogPersistence;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,17 +26,18 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author estudiante
  */
 @RunWith(Arquillian.class)
-public class PostPersistenceTest {
+
+public class BlogPersistenceTest {
     @Inject
-    PostPersistence ep;
+ BlogPersistence ep;
     @PersistenceContext
     private EntityManager em;
     @Deployment
     public static JavaArchive createDeployment()
     {
        return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(PostEntity.class.getPackage())
-                .addPackage(PostEntity.class.getPackage())
+                .addPackage(BlogEntity.class.getPackage())
+                .addPackage(BlogEntity.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");    
     }
@@ -43,9 +45,9 @@ public class PostPersistenceTest {
     public void createPostTest()
     {
         PodamFactory factory = new PodamFactoryImpl();
-        PostEntity newEntity;
-        newEntity = factory.manufacturePojo(PostEntity.class);
-        PostEntity result = ep.create(newEntity);
+        BlogEntity newEntity;
+        newEntity = factory.manufacturePojo(BlogEntity.class);
+        BlogEntity result = ep.create(newEntity);
         
         Assert.assertNotNull(result);
         
