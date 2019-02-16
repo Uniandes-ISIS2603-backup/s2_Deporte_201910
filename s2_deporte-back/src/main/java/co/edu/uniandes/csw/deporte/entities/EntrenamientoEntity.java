@@ -14,28 +14,26 @@ import javax.persistence.OneToOne;
  * @author Nicolas De la Hoz
  */
 @Entity
-public class AmistosoEntity extends BaseEntity implements Serializable {
-    @OneToOne(
-            mappedBy= "amistoso"
-    )
-    ReservaEntity reserva;
-
-   
+public class EntrenamientoEntity extends BaseEntity implements Serializable {
     /** @OneToOne(
-            mappedBy= "amistoso"
+        mappedBy= "equipo"
     )
-    PartidoEntity partido;
+    EquipoEntity equipo;
     
-     public PartidoEntity getPartido() {
-        return partido;
+     public EquipoEntity getEquipo() {
+        return equipo;
     }
 
-    public void setPartido(PartidoEntity partido) {
-        this.partido = partido;
+    public void setEquipo(EquipoEntity equipo) {
+        this.equipo = equipo;
     }
     */
+    @OneToOne(
+            mappedBy= "entrenamiento"
+    )
+    ReservaEntity reserva;
     
-    public ReservaEntity getReserva() {
+     public ReservaEntity getReserva() {
         return reserva;
     }
 
