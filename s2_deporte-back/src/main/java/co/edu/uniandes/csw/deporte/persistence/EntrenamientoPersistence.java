@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.deporte.persistence;
 
 import co.edu.uniandes.csw.deporte.entities.AmistosoEntity;
+import co.edu.uniandes.csw.deporte.entities.EntrenamientoEntity;
 import java.util.Collection;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -13,34 +14,33 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-
 /**
  *
  * @author Nicolas De la Hoz
  */
 @Stateless
-public class AmistosoPersistence {
-    private static final Logger LOGGER=Logger.getLogger(AmistosoPersistence.class.getName());
+public class EntrenamientoPersistence {
+    private static final Logger LOGGER=Logger.getLogger(EntrenamientoPersistence.class.getName());
     
     @PersistenceContext (unitName="deportePU")
     protected EntityManager em;
     
     
-    public AmistosoEntity create(AmistosoEntity entidad){
+    public EntrenamientoEntity create(EntrenamientoEntity entidad){
         em.persist(entidad);
         return entidad;
     }
-     public AmistosoEntity find(Long id){
-        AmistosoEntity amistoso=em.find(AmistosoEntity.class, id);
-        return amistoso;
+     public EntrenamientoEntity find(Long id){
+        EntrenamientoEntity entrenamiento=em.find(EntrenamientoEntity.class, id);
+        return entrenamiento;
     }
      
-     public Collection<AmistosoEntity> findAll(){
-        Query query = em.createQuery("SELECT * FROM AMISTOSOENTITY");
-        return (Collection<AmistosoEntity>) query.getResultList();
+     public Collection<EntrenamientoEntity> findAll(){
+        Query query = em.createQuery("SELECT * FROM ENTRENAMIENTOENTITY");
+        return (Collection<EntrenamientoEntity>) query.getResultList();
     }
      
-     public AmistosoEntity update(AmistosoEntity entidad){
+     public EntrenamientoEntity update(EntrenamientoEntity entidad){
          return em.merge(entidad);
     }
      
