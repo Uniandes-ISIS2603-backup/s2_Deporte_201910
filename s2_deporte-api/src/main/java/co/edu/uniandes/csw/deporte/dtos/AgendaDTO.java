@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.deporte.dtos;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
@@ -15,8 +14,10 @@ import java.util.List;
 public class AgendaDTO implements Serializable{
     
     private int anio;
+    
     private int mes;
-    //private List<FranjaDTO> franjas;
+    
+    private CanchaDTO cancha;
     
     public AgendaDTO () {
         
@@ -49,4 +50,19 @@ public class AgendaDTO implements Serializable{
     public void setMes(int mes) {
         this.mes = mes;
     }
+
+    /**
+     * @return the cancha
+     */
+    public CanchaDTO getCancha() {
+        return cancha;
+    }
+
+    /**
+     * @param cancha the cancha to set
+     */
+    public void setCancha(CanchaDTO cancha) {
+        this.cancha = cancha;
+    }
+    
 }

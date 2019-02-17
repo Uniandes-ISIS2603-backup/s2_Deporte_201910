@@ -9,7 +9,9 @@ import co.edu.uniandes.csw.deporte.dtos.CanchaDTO;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
@@ -28,7 +30,16 @@ public class CanchaResourse {
     
     @POST
     public CanchaDTO createCancha(CanchaDTO cancha){
-        
+        return cancha;
+    }
+    
+    @PUT
+    public CanchaDTO modifyCancha(CanchaDTO cancha){
+        return cancha;
+    }
+    
+    @DELETE
+    public CanchaDTO deleteCancha(CanchaDTO cancha){
         return cancha;
     }
 }
