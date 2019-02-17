@@ -9,6 +9,7 @@ package co.edu.uniandes.csw.deporte.persistence;
  *
  * @author estudiante
  */
-public class PartidoPersistence {
+public class PartidoPersistence 
+{
     
 }
