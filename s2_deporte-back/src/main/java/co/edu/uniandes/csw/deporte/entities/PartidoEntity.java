@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.deporte.entities;
 
 import co.edu.uniandes.csw.deporte.podam.DateStrategy;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
