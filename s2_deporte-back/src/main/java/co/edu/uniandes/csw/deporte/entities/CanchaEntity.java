@@ -3,53 +3,49 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.deporte.dtos;
+package co.edu.uniandes.csw.deporte.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author estudiante
  */
-public class CanchaDTO implements Serializable{
-    
-    private String id;
+@Entity
+public class CanchaEntity extends BaseEntity implements Serializable{
     
     private String zona;
     
-    private String direccion;
-    
     private String ciudad;
     
-    private ArrayList<Integer> contacto;
+    private String direccion;
     
     private String caracterizticas;
     
+    private List<Integer> contacto;
+    
     private boolean reservada;
     
-    private String tipoCancha;
+    private String tipo;
     
-    private PropietarioDTO propietario;
+    @ManyToOne
+    private PropietarioEntity propietario;
     
-    public CanchaDTO(){
+    @ManyToMany
+    private List<AgendaEntity> agendas;
+    
+    @OneToMany
+    private List<ReservaEntity> reservas;
+    
+    public CanchaEntity (){
         
     }
-
-    /**
-     * @return the id
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    
     /**
      * @return the zona
      */
@@ -62,20 +58,6 @@ public class CanchaDTO implements Serializable{
      */
     public void setZona(String zona) {
         this.zona = zona;
-    }
-
-    /**
-     * @return the direccion
-     */
-    public String getDireccion() {
-        return direccion;
-    }
-
-    /**
-     * @param direccion the direccion to set
-     */
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     /**
@@ -93,17 +75,17 @@ public class CanchaDTO implements Serializable{
     }
 
     /**
-     * @return the contacto
+     * @return the direccion
      */
-    public ArrayList<Integer> getContacto() {
-        return contacto;
+    public String getDireccion() {
+        return direccion;
     }
 
     /**
-     * @param contacto the contacto to set
+     * @param direccion the direccion to set
      */
-    public void setContacto(ArrayList<Integer> contacto) {
-        this.contacto = contacto;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     /**
@@ -121,6 +103,20 @@ public class CanchaDTO implements Serializable{
     }
 
     /**
+     * @return the contacto
+     */
+    public List<Integer> getContacto() {
+        return contacto;
+    }
+
+    /**
+     * @param contacto the contacto to set
+     */
+    public void setContacto(List<Integer> contacto) {
+        this.contacto = contacto;
+    }
+
+    /**
      * @return the reservada
      */
     public boolean isReservada() {
@@ -135,32 +131,31 @@ public class CanchaDTO implements Serializable{
     }
 
     /**
-     * @return the tipoCancha
+     * @return the tipo
      */
-    public String getTipoCancha() {
-        return tipoCancha;
+    public String getTipo() {
+        return tipo;
     }
 
     /**
-     * @param tipoCancha the tipoCancha to set
+     * @param tipo the tipo to set
      */
-    public void setTipoCancha(String tipoCancha) {
-        this.tipoCancha = tipoCancha;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     /**
      * @return the propietario
      */
-    public PropietarioDTO getPropietario() {
+    public PropietarioEntity getPropietario() {
         return propietario;
     }
 
     /**
      * @param propietario the propietario to set
      */
-    public void setPropietario(PropietarioDTO propietario) {
+    public void setPropietario(PropietarioEntity propietario) {
         this.propietario = propietario;
     }
-    
     
 }

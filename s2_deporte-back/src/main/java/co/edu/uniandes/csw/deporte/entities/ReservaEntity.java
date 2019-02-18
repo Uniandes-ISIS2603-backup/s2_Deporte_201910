@@ -27,16 +27,8 @@ public class ReservaEntity extends BaseEntity implements Serializable {
 
     private Date fechaFin;
     
-    @OneToOne(
-            mappedBy = "reserva",
-            orphanRemoval=true
-    )
     AmistosoEntity amistoso;
     
-    @OneToOne(
-            mappedBy = "reserva",
-            orphanRemoval=true
-    )
     EntrenamientoEntity entrenamiento;
 
     public AmistosoEntity getAmistoso() {

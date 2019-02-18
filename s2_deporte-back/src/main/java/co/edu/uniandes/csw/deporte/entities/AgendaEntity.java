@@ -6,35 +6,24 @@
 package co.edu.uniandes.csw.deporte.entities;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import java.util.List;
-
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 /**
  *
- * @author Santiago Barbosa
+ * @author estudiante
  */
-@Entity 
+@Entity
 public class AgendaEntity extends BaseEntity implements Serializable{
+    
     private Integer anio;
     private Integer mes;
+    @ManyToMany(mappedBy = "agendas")
+    private List<CanchaEntity> canchas;
+    //private List<FranjaEntity> franjas;
     
-    @OneToMany(
-            mappedBy = "agenda",
-            orphanRemoval=true
-    )
-    private List<FranjaEntity> franjas;
-    /*
-    @OneToOne(
-            mappedBy = "agenda"
-    )
-    CanchaEntity cancha;
-    */
-    
-    public AgendaEntity(){
+    public AgendaEntity (){
         
     }
 
@@ -67,37 +56,16 @@ public class AgendaEntity extends BaseEntity implements Serializable{
     }
 
     /**
-     * @return the franjas
+     * @return the canchas
      */
-    public List<FranjaEntity> getFranjas() {
-        return franjas;
+    public List<CanchaEntity> getCanchas() {
+        return canchas;
     }
 
     /**
-     * @param franjas the franjas to set
+     * @param canchas the canchas to set
      */
-    public void setFranjas(List<FranjaEntity> franjas) {
-        this.franjas = franjas;
+    public void setCanchas(List<CanchaEntity> canchas) {
+        this.canchas = canchas;
     }
-    
-    
-    /**
-     * @return the cancha
-     */
-    /*
-    public CanchaEntity getCancha() {
-        return cancha;
-    }
-
-    /**
-     * @param cancha the cancha to set
-     */
-    /*
-    public void setCancha(CanchaEntity cancha) {
-        this.cancha = cancha;
-    }
-    */
-
-
-    
 }

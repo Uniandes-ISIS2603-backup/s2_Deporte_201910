@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.deporte.dtos;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
@@ -15,8 +14,8 @@ import java.util.List;
 public class PropietarioDTO implements Serializable{
     
     private String id;
+    
     private int numCanchas;
-    private List<CanchaDetailDTO> canchas;
     
     public PropietarioDTO () {
         
@@ -48,19 +47,5 @@ public class PropietarioDTO implements Serializable{
      */
     public void setNumCanchas(int numCanchas) {
         this.numCanchas = numCanchas;
-    }
-
-    /**
-     * @return the canchas
-     */
-    public List<CanchaDetailDTO> getCanchas() {
-        return canchas;
-    }
-
-    /**
-     * @param canchas the canchas to set
-     */
-    public void setCanchas(List<CanchaDetailDTO> canchas) {
-        this.canchas = canchas;
     }
 }

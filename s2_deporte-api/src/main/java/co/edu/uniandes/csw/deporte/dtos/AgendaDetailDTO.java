@@ -12,13 +12,11 @@ import java.util.List;
  *
  * @author estudiante
  */
-public class CanchaDetailDTO extends CanchaDTO implements Serializable{
+public class AgendaDetailDTO extends AgendaDTO implements Serializable {
     
-    private List<AgendaDTO> agendas;
+    private List<FranjaDTO> franjas;
     
-    private List<ReservaDTO> reservas;
-    
-    public CanchaDetailDTO () {
+    public AgendaDetailDTO (){
         
     }
 }

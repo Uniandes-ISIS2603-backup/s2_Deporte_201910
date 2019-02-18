@@ -14,25 +14,27 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author Santiago Barbosa
+ * @author estudiante
  */
 @Stateless
 public class AgendaPersistence {
-
-    @PersistenceContext(unitName = "deportesPU")
+    
+    @PersistenceContext(unitName = "deportePU")
     protected EntityManager em;
+    
+    public AgendaEntity create(AgendaEntity propietarioEntity) {
 
-    public AgendaEntity create(AgendaEntity agendaEntity) {
-        em.persist(agendaEntity);
-        return agendaEntity;
+        em.persist(propietarioEntity);
+        return propietarioEntity;
     }
-
-    public AgendaEntity find(Long agendasId) {
-        return em.find(AgendaEntity.class, agendasId);
+    
+    public AgendaEntity find(Long propietarioId) {
+        return em.find(AgendaEntity.class, propietarioId);
     }
     
     public List<AgendaEntity> findAll(){
-        TypedQuery<AgendaEntity> query = em.createQuery("select u from AgendaEntity u", AgendaEntity.class);
+        
+        TypedQuery<AgendaEntity> query = em.createQuery("select u from PropietarioEntity u", AgendaEntity.class);
         return query.getResultList();
     }
 }
