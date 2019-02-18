@@ -17,6 +17,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  *
  * @author estudiante
  */
+@Entity
 public class EquipoEntity extends BaseEntity implements Serializable
 {
     @PodamExclude

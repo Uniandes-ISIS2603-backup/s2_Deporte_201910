@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,15 +21,16 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
  *
  * @author estudiante
  */
+@Entity
 public class PartidoEntity extends BaseEntity implements Serializable
 {
     @PodamExclude
     @OneToMany(mappedBy="partido")
-    private List<EquipoEntity> jugadores = new ArrayList<EquipoEntity>();
+    private List<EquipoEntity> equipos = new ArrayList<EquipoEntity>();
     
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
     
-    
+    private List<Integer> puntaje = new ArrayList<Integer>();
 }
