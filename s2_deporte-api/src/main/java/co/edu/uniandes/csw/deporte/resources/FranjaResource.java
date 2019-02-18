@@ -19,7 +19,7 @@ import java.util.Date;
 
 /**
  *
- * @author estudiante
+ * @author Santiago Barbosa
  */
 
 @Path ("franjas")

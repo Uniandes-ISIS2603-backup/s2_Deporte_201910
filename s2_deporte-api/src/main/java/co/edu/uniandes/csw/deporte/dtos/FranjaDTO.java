@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 /**
  *
- * @author estudiante
+ * @author Santiago Barbosa
  */
 public class FranjaDTO implements Serializable{
     

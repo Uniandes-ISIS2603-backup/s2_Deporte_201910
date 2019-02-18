@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author estudiante
+ * @author Santiago Barbosa
  */
 public class ReservaDTO implements Serializable{
     
@@ -22,7 +22,7 @@ public class ReservaDTO implements Serializable{
     private int idReserva;
     private int idCancha;
     private FranjaDTO franja;
-    //private CampeonatoDTO campeonato;
+    private CampeonatoDTO campeonato;
     private AmistosoDTO amistoso;
     private EntrenamientoDTO entrenamiento;
     
@@ -169,17 +169,17 @@ public class ReservaDTO implements Serializable{
      * Retorna el campeonato al cual hace parte esta frnaja. null si no tiene campeonato
      * @return campeonato
      */
-    //public CampeonatoDTO getCampeonato(){
-    //    return campeonato;
-    //}
+    public CampeonatoDTO getCampeonato(){
+        return campeonato;
+    }
     
     /**
      * Establece el campeonato al cual hace parte esta franja
      * @param camp
      */
-    //public void setCampeonato(CampeonatoDTO camp){
-    //    campeonato = camp;
-    //}
+    public void setCampeonato(CampeonatoDTO camp){
+        campeonato = camp;
+    }
     
     /**
      * Retorna el amistoso al cual hace parte esta frnaja. null si no tiene amistoso
