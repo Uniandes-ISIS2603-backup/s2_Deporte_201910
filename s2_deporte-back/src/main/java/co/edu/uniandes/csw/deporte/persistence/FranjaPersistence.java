@@ -20,7 +20,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class FranjaPersistence {
     
-    @PersistenceContext(unitName = "deportesPU")
+    @PersistenceContext(unitName = "deportePU")
     protected EntityManager em;
     
     public FranjaEntity create (FranjaEntity franjaEntity){
