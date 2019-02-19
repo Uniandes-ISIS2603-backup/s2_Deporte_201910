@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -20,8 +21,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class ClienteEntity extends BaseEntity implements Serializable
 {
+        
     @PodamExclude
-    @OneToMany(mappedBy = "cliente")
+    @ManyToMany(mappedBy="jugadores")
     private List<EquipoEntity> equipos = new ArrayList<EquipoEntity>();
     
     //@PodamExclude

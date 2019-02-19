@@ -26,9 +26,9 @@ public class PartidoPersistence
     protected EntityManager em;
     
     /**
-     * Crea un equipo en la base de datos
+     * Crea un partido en la base de datos
      *
-     * @param equipoEntity objeto equipo que se creará en la base de datos
+     * @param partidoEntity objeto partido que se creará en la base de datos
      * @return devuelve la entidad creada con un id dado por la base de datos.
      */
     public PartidoEntity create(PartidoEntity partidoEntity) {
@@ -39,7 +39,7 @@ public class PartidoPersistence
     }
 
     /**
-     * Devuelve todos los equipos de la base de datos.
+     * Devuelve todos los partidos de la base de datos.
      *
      * @return una lista con todos los equipos que encuentre en la base de datos
      */
@@ -52,7 +52,7 @@ public class PartidoPersistence
     /**
      * Busca si hay algun equipo con el id que se envía de argumento
      *
-     * @param equiposId: id correspondiente al equipo buscado.
+     * @param partidoId: id correspondiente al equipo buscado.
      * @return un equipo.
      */
     public PartidoEntity find(Long partidosId) 
@@ -62,10 +62,10 @@ public class PartidoPersistence
     }
 
     /**
-     * Actualiza un equipo.
+     * Actualiza un partido.
      *
-     * @param equipoEntity: el equipo que viene con los nuevos cambios. 
-     * @return un equipo con los cambios aplicados.
+     * @param partidoEntity: el partido que viene con los nuevos cambios. 
+     * @return un partido con los cambios aplicados.
      */
     public PartidoEntity update(PartidoEntity partidoEntity) {
         LOGGER.log(Level.INFO, "Actualizando el partido con id={0}", partidoEntity.getId());
@@ -73,8 +73,8 @@ public class PartidoPersistence
     }
 
     /**
-     * Borra un equipo de la base de datos recibiendo como argumento el id del equipo
-     * @param equiposId: id correspondiente al equipo a borrar.
+     * Borra un partido de la base de datos recibiendo como argumento el id del partido
+     * @param partidosId: id correspondiente al equipo a borrar.
      */
     public void delete(Long partidosId) {
 
