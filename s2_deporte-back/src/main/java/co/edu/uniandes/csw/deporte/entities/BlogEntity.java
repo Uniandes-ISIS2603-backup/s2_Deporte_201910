@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.deporte.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -22,7 +23,7 @@ public class BlogEntity extends BaseEntity implements Serializable{
     
     private String nombre;
 @PodamExclude
-    @OneToMany(mappedBy = "blog")
+    @OneToMany(mappedBy = "blog",cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<PostEntity> posts;
     
     @OneToOne
