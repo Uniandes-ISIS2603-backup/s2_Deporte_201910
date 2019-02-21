@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.deporte.persistence;
 
 import co.edu.uniandes.csw.deporte.entities.BlogEntity;
-import co.edu.uniandes.csw.deporte.entities.PostEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,17 +29,17 @@ public class BlogPersistence {
    /**
      * Método para persisitir la entidad en la base de datos.
      *
-     * @param editorialEntity objeto editorial que se creará en la base de datos
+     * @param blogEntity objeto editorial que se creará en la base de datos
      * @return devuelve la entidad creada con un id dado por la base de datos.
      */
-    public BlogEntity create(BlogEntity editorialEntity) {
+    public BlogEntity create(BlogEntity blogEntity) {
         LOGGER.log(Level.INFO, "Creando un blog nuevo");
         /* Note que hacemos uso de un método propio de EntityManager para persistir la editorial en la base de datos.
         Es similar a "INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);" en SQL.
          */
-        em.persist(editorialEntity);
+        em.persist(blogEntity);
         LOGGER.log(Level.INFO, "Saliendo de crear un blog nuevo");
-        return editorialEntity;
+        return blogEntity;
     }
     
     public BlogEntity find(Long blogId)
@@ -71,5 +70,30 @@ public class BlogPersistence {
         em.remove(blogEntity);
     }
     
+    public BlogEntity findByName(String pNombre)
+    {
+        LOGGER.log(Level.INFO, "Consultando blogs por nombre ", pNombre);
+        TypedQuery query = em.createQuery("Select e From BlogEntity e where e.nombre = :nombre", BlogEntity.class);
+        
+        query = query.setParameter("nombre", pNombre);
+        
+        List<BlogEntity> sameNombre = query.getResultList();
+        BlogEntity result;
+        if(sameNombre == null)
+        {
+            result = null;
+        }
+        else if(sameNombre.isEmpty())
+        {
+            result = null;
+        }
+        else
+        {
+            result = sameNombre.get(0);
+        }
+        LOGGER.log(Level.INFO, "Saliendo de consultar blogs por nombre ", pNombre);
+        return result;
+    }
     
+        
 }

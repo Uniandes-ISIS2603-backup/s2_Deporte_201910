@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.deporte.resources;
 
-import co.edu.uniandes.csw.deporte.dtos.PostDTO;
+import co.edu.uniandes.csw.deporte.dtos.BlogDTO;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -19,29 +19,30 @@ import javax.ws.rs.Produces;
  *
  * @author estudiante
  */
-@Path("post")
+@Path("blog")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
+public class BlogResource {
+    private static final Logger LOGGER = Logger.getLogger(PostResource.class.getName());
 
-public class PostResource {
-        private static final Logger LOGGER = Logger.getLogger(PostResource.class.getName());
-
-        @POST
-        public PostDTO createPost(PostDTO pPost)
+    @POST
+        public BlogDTO createPost(BlogDTO pBlog)
         {
-            return pPost;
+            return pBlog;
         }
         
         @PUT
-        public PostDTO modifyPost(PostDTO pPost)
+        public BlogDTO modifyPost(BlogDTO pBlog)
         {
-            return pPost;
+            return pBlog;
         }
         
         @DELETE
-        public PostDTO deletePost(PostDTO pPost)
+        public BlogDTO deletePost(BlogDTO pBlog)
         {
-            return pPost;
+            return pBlog;
         }
+
+    
 }

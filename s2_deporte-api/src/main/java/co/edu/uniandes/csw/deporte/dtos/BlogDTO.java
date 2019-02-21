@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.entities.BlogEntity;
 import java.io.Serializable;
 
 /**
@@ -14,9 +15,31 @@ import java.io.Serializable;
 public class BlogDTO implements Serializable{
     
       private CampeonatoDTO campeonatoDTO;
+      
+      private String nombre;
+      
+      private long id;
+      
+      
     public BlogDTO()
     {
         
+    }
+    
+    public BlogDTO(BlogEntity blogEntity)
+    {
+        if (blogEntity != null) {
+            this.id = blogEntity.getId();
+            this.nombre = blogEntity.getNombre();
+            if(blogEntity.getCampeonato() != null)
+            {
+                this.campeonatoDTO = new CampeonatoDTO(blogEntity.getCampeonato());
+            }
+            else
+            {
+                this.campeonatoDTO = null;
+            }
+        }
     }
 
     /**
@@ -32,5 +55,46 @@ public class BlogDTO implements Serializable{
     public void setCampeonatoDTO(CampeonatoDTO campeonatoDTO) {
         this.campeonatoDTO = campeonatoDTO;
     }
-    
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the id
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
+    /**
+     * Convertir DTO a Entity
+     *
+     * @return Un Entity con los valores del DTO
+     */
+    public BlogEntity toEntity() {
+        BlogEntity bloglEntity = new BlogEntity();
+        bloglEntity.setId(this.id);
+        bloglEntity.setNombre(this.nombre);
+        if (this.campeonatoDTO != null) {
+            bloglEntity.setCampeonato(this.campeonatoDTO.toEntity());
+        }
+        return bloglEntity;
+    }
 }

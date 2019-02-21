@@ -9,17 +9,20 @@ import co.edu.uniandes.csw.deporte.dtos.CampeonatoDTO;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author estudiante
  */
-@Path("canchas")
-@Produces("application/json")
-@Consumes("application/json")
+@Path("campeonato")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 @RequestScoped
 
 public class CampeonatoResource {
@@ -27,6 +30,18 @@ public class CampeonatoResource {
     
     @POST
     public CampeonatoDTO createCampeonato(CampeonatoDTO pCampeonato)
+    {
+        return pCampeonato;
+    }
+    
+    @PUT
+    public CampeonatoDTO modifyCampeonato(CampeonatoDTO pCampeonato)
+    {
+        return pCampeonato;
+    }
+    
+    @DELETE
+    public CampeonatoDTO deleteCampeonato(CampeonatoDTO pCampeonato)
     {
         return pCampeonato;
     }

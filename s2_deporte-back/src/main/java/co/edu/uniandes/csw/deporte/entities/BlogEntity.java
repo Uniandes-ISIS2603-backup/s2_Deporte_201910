@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -18,17 +19,15 @@ import javax.persistence.OneToOne;
 @Entity
 public class BlogEntity extends BaseEntity implements Serializable{
     private int identificador;
-
-    @OneToMany
+    
+    private String nombre;
+@PodamExclude
+    @OneToMany(mappedBy = "blog")
     private List<PostEntity> posts;
     
     @OneToOne
     private CampeonatoEntity campeonato;  
     
-    public BlogEntity()
-    {
-        
-    }
     /**
      * @return the id
      */
@@ -69,5 +68,19 @@ public class BlogEntity extends BaseEntity implements Serializable{
      */
     public void setCampeonato(CampeonatoEntity campeonato) {
         this.campeonato = campeonato;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }

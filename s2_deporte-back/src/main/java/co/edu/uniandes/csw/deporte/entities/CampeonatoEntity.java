@@ -19,17 +19,15 @@ import javax.persistence.OneToOne;
 public class CampeonatoEntity extends BaseEntity implements Serializable{
     private List<Integer> puntos;
 
+    private String nombre;
     @OneToOne
     private BlogEntity blog;
     
-    @OneToMany
+    @OneToMany(mappedBy = "campeonato")
     private List<PostEntity> posts;
     
 
-    public CampeonatoEntity()
-    {
-        
-    }
+   
 
     /**
      * @param puntos the puntos to set
@@ -71,5 +69,19 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
      */
     public List<Integer> getPuntos() {
         return puntos;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
