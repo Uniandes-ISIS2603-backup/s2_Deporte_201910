@@ -20,8 +20,8 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
     private List<Integer> puntos;
 
     private String nombre;
-    @OneToOne
-    private BlogEntity blog;
+   // @OneToOne
+    //private BlogEntity blog;
     
    
     
@@ -38,16 +38,16 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
     /**
      * @return the blog
      */
-    public BlogEntity getBlog() {
-        return blog;
-    }
+    //public BlogEntity getBlog() {
+      //  return blog;
+    //}
 
     /**
      * @param blog the blog to set
      */
-    public void setBlog(BlogEntity blog) {
-        this.blog = blog;
-    }
+   // public void setBlog(BlogEntity blog) {
+     //   this.blog = blog;
+    //}
 
     /**
      * @return the puntos

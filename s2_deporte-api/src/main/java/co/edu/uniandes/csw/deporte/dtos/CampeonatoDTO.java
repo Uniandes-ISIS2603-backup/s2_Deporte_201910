@@ -39,14 +39,14 @@ public class CampeonatoDTO implements Serializable{
         if (campeonatoEntity != null) {
             this.id = campeonatoEntity.getId();
             this.nombre = campeonatoEntity.getNombre();
-            if(campeonatoEntity.getBlog() != null)
-            {
-                this.blogDTO = new BlogDTO(campeonatoEntity.getBlog());
-            }
-            else
-            {
-                this.blogDTO = null;
-            }
+           // if(campeonatoEntity.getBlog() != null)
+            //{
+              //  this.blogDTO = new BlogDTO(campeonatoEntity.getBlog());
+            //}
+            //else
+            //{
+              //  this.blogDTO = null;
+            //}
         }
     }
     /**
@@ -116,10 +116,10 @@ public class CampeonatoDTO implements Serializable{
         CampeonatoEntity campeonatoEntity = new CampeonatoEntity();
         campeonatoEntity.setId(this.id);
         campeonatoEntity.setNombre(this.nombre);
-        if(this.blogDTO != null)
-        {
-            campeonatoEntity.setBlog(this.blogDTO.toEntity());
-        }
+       // if(this.blogDTO != null)
+        //{
+          //  campeonatoEntity.setBlog(this.blogDTO.toEntity());
+        //}
         return campeonatoEntity;
     }
 }
