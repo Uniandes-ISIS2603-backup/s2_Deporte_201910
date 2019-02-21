@@ -23,8 +23,7 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
     @OneToOne
     private BlogEntity blog;
     
-    @OneToMany(mappedBy = "campeonato")
-    private List<PostEntity> posts;
+   
     
 
    
@@ -48,20 +47,6 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
      */
     public void setBlog(BlogEntity blog) {
         this.blog = blog;
-    }
-
-    /**
-     * @return the posts
-     */
-    public List<PostEntity> getPosts() {
-        return posts;
-    }
-
-    /**
-     * @param posts the posts to set
-     */
-    public void setPosts(List<PostEntity> posts) {
-        this.posts = posts;
     }
 
     /**

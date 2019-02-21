@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.deporte.persistence;
 
-import co.edu.uniandes.csw.deporte.entities.BlogEntity;
 import co.edu.uniandes.csw.deporte.entities.CampeonatoEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,12 +25,12 @@ public class CampeonatoPersistence {
     @PersistenceContext(unitName = "deportePU")
     protected EntityManager em;
     public CampeonatoEntity create(CampeonatoEntity campeonatoEntity) {
-        LOGGER.log(Level.INFO, "Creando un post nuevo");
+        LOGGER.log(Level.INFO, "Creando un campeonato nuevo");
         /* Note que hacemos uso de un método propio de EntityManager para persistir la editorial en la base de datos.
         Es similar a "INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);" en SQL.
          */
         em.persist(campeonatoEntity);
-        LOGGER.log(Level.INFO, "Saliendo de crear un post nuevo");
+        LOGGER.log(Level.INFO, "Saliendo de crear un campeonato nuevo");
         return campeonatoEntity;
     }
     
@@ -43,13 +42,13 @@ public class CampeonatoPersistence {
         return query.getResultList();
     }
     
-    public CampeonatoEntity find(Long blogId) {
-        LOGGER.log(Level.INFO, "Consultando campeonato con id={0}", blogId);
+    public CampeonatoEntity find(Long campeonatoId) {
+        LOGGER.log(Level.INFO, "Consultando campeonato con id={0}", campeonatoId);
         /* Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
         el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
         Suponga que es algo similar a "select * from EditorialEntity where id=id;" - "SELECT * FROM table_name WHERE condition;" en SQL.
          */
-        return em.find(CampeonatoEntity.class, blogId);
+        return em.find(CampeonatoEntity.class, campeonatoId);
     }
    
      public CampeonatoEntity update(CampeonatoEntity campeonatoEntity) {
