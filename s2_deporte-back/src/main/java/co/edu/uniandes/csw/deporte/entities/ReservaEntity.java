@@ -21,9 +21,6 @@ import javax.persistence.Temporal;
 @Entity
 public class ReservaEntity extends BaseEntity implements Serializable {
 
-    @Id
-    private Long id;
-    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaInicio;
 
@@ -61,14 +58,5 @@ public class ReservaEntity extends BaseEntity implements Serializable {
 
     public Date getFechaFin() {
         return fechaFin;
-    }
-    
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }
