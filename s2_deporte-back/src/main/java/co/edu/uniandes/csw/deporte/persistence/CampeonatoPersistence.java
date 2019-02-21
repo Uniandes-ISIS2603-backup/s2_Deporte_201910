@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.deporte.persistence;
 
+import co.edu.uniandes.csw.deporte.entities.BlogEntity;
 import co.edu.uniandes.csw.deporte.entities.CampeonatoEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -71,4 +72,30 @@ public class CampeonatoPersistence {
         em.remove(entity);
         LOGGER.log(Level.INFO, "Saliendo de borrar la editorial con id = {0}", campeonatoId);
     }
+      
+      public CampeonatoEntity findByName(String pNombre)
+    {
+        LOGGER.log(Level.INFO, "Consultando campeonatos por nombre ", pNombre);
+        TypedQuery query = em.createQuery("Select e From CampeonatoEntity e where e.nombre = :nombre", CampeonatoEntity.class);
+        
+        query = query.setParameter("nombre", pNombre);
+        
+        List<CampeonatoEntity> sameNombre = query.getResultList();
+        CampeonatoEntity result;
+        if(sameNombre == null)
+        {
+            result = null;
+        }
+        else if(sameNombre.isEmpty())
+        {
+            result = null;
+        }
+        else
+        {
+            result = sameNombre.get(0);
+        }
+        LOGGER.log(Level.INFO, "Saliendo de consultar campeonatos por nombre ", pNombre);
+        return result;
+    }
+
 }
