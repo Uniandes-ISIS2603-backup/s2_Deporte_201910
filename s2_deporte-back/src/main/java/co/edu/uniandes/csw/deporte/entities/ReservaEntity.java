@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 
 
@@ -23,14 +24,21 @@ public class ReservaEntity extends BaseEntity implements Serializable {
     @Id
     private Long id;
     
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaInicio;
 
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaFin;
     
+    @OneToOne
     AmistosoEntity amistoso;
     
+    @OneToOne
     EntrenamientoEntity entrenamiento;
 
+    @OneToOne
+    FranjaEntity franja;
+    
     public AmistosoEntity getAmistoso() {
         return amistoso;
     }
