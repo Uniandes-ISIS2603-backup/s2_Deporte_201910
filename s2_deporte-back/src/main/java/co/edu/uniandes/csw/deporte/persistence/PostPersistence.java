@@ -37,6 +37,7 @@ public class PostPersistence{
         /* Note que hacemos uso de un método propio de EntityManager para persistir la editorial en la base de datos.
         Es similar a "INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);" en SQL.
          */
+        if(postEntity != null)
         em.persist(postEntity);
         LOGGER.log(Level.INFO, "Saliendo de crear un post nuevo");
         return postEntity;
