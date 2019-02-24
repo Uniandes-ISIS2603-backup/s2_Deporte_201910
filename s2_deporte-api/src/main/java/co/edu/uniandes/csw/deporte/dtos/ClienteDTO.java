@@ -5,11 +5,12 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.entities.ClienteEntity;
 import java.io.Serializable;
 
 /**
  *
- * @author estudiante
+ * @cliente estudiante
  */
 public class ClienteDTO implements Serializable
 {
@@ -17,20 +18,51 @@ public class ClienteDTO implements Serializable
     /**
      * identificador del cliente
      */
-    private String id;
+    private Long id;
+    /**
+     * el nombre del cliente
+     */
+    private String nombre;
     //Constructor---------------------------------------------------------------
     public ClienteDTO()
     {
         
     }
+    public ClienteDTO(ClienteEntity entity) {
+        if (entity != null) {
+            this.id = entity.getId();
+            this.nombre = entity.getNombre();            
+        }
+    }
+
+    /**
+     * Convierte un objeto ClienteDTO a ClienteEntity.
+     *
+     * @return Nueva objeto ClienteEntity.
+     * 
+     */
+    public ClienteEntity toEntity() {
+        ClienteEntity entity = new ClienteEntity();
+        entity.setId(this.getId());
+        entity.setNombre(this.getNombre());
+         return entity;
+    }
     //Métodos-------------------------------------------------------------------
-    private void setId(String pId)
+    private void setId(Long pId)
     {
         id=pId;
     }
     
-    String getId()
+    public Long getId()
     {
         return id;
     }
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
 }

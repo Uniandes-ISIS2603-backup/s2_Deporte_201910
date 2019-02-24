@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.entities.EquipoEntity;
 import java.io.Serializable;
 
 /**
@@ -21,19 +22,41 @@ public class EquipoDTO implements Serializable
     /**
      * el identificador del equipo
      */
-    private String id;
+    private Long id;
+
+    
+    private String nombre;
     //Constructor---------------------------------------------------------------
     public EquipoDTO()
     {
         
     }
+    public EquipoDTO(EquipoEntity entity) {
+        if (entity != null) {
+            this.id = entity.getId();
+            this.nombre = entity.getNombre();            
+        }
+    }
+
+    /**
+     * Convierte un objeto ClienteDTO a ClienteEntity.
+     *
+     * @return Nueva objeto ClienteEntity.
+     * 
+     */
+    public EquipoEntity toEntity() {
+        EquipoEntity entity = new EquipoEntity();
+        entity.setId(this.getId());
+        entity.setNombre(this.getNombre());
+         return entity;
+    }
     //Métodos-------------------------------------------------------------------
     
-    private void setId(String pId)
+    public void setId(Long pId)
     {
         id=pId;
     }
-    String getId()
+    public Long getId()
     {
         return id;
     }
@@ -49,4 +72,12 @@ public class EquipoDTO implements Serializable
     {
         representante=null;
     }
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
 }

@@ -31,13 +31,14 @@ public class BlogDTO implements Serializable{
         if (blogEntity != null) {
             this.id = blogEntity.getId();
             this.nombre = blogEntity.getNombre();
-           // if(blogEntity.getCampeonato() != null)
+           
+            // if(blogEntity.getCampeonato() != null)
             //{
-              //  this.campeonatoDTO = new CampeonatoDTO(blogEntity.getCampeonato());
+            //  this.campeonatoDTO = new CampeonatoDTO(blogEntity.getCampeonato());
             //}
             //else
             //{
-              //  this.campeonatoDTO = null;
+            //  this.campeonatoDTO = null;
             //}
         }
     }

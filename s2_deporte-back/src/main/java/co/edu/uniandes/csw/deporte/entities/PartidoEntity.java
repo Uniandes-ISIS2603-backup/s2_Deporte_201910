@@ -25,9 +25,9 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class PartidoEntity extends BaseEntity implements Serializable
 {
-    @PodamExclude
-    @ManyToMany
-    private List<EquipoEntity> equipos = new ArrayList<EquipoEntity>();
+    //@PodamExclude
+    //@ManyToMany
+    //private List<EquipoEntity> equipos = new ArrayList<EquipoEntity>();
     
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
@@ -54,18 +54,18 @@ public class PartidoEntity extends BaseEntity implements Serializable
      * le asigna equipos al partido
      * @param pEquipos los equipos que se asignan
      */
-    public void setEquipos(List<EquipoEntity> pEquipos)
-    {
-        equipos=pEquipos;
-    }
+    //public void setEquipos(List<EquipoEntity> pEquipos)
+    //{
+      //  equipos=pEquipos;
+    //}
     /**
      * devuelve los equipos que van a participar
      * @return equipos
      */
-    public List<EquipoEntity> getEquipos()
-    {
-        return equipos;
-    }
+    //public List<EquipoEntity> getEquipos()
+    //{
+      //  return equipos;
+    //}
     /**
      * modifica el puntaje de un partido
      * @param pPuntaje el puntaje nuevo
