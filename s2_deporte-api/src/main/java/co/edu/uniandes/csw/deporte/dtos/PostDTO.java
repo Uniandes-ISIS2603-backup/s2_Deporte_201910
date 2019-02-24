@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 public class PostDTO implements Serializable{
     

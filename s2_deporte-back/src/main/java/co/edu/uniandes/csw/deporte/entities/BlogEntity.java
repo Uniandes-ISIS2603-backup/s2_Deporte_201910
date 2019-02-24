@@ -15,13 +15,15 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 @Entity
 public class BlogEntity extends BaseEntity implements Serializable{
     private int identificador;
     
     private String nombre;
+    
+    private String descripcion;
 //@PodamExclude
   //  @OneToMany(mappedBy = "blog",cascade = CascadeType.PERSIST, orphanRemoval = true)
     //private List<PostEntity> posts;
@@ -83,5 +85,19 @@ public class BlogEntity extends BaseEntity implements Serializable{
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

@@ -10,13 +10,15 @@ import java.io.Serializable;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 public class BlogDTO implements Serializable{
     
       private CampeonatoDTO campeonatoDTO;
       
       private String nombre;
+      
+      private String descripcion;
       
       private long id;
       
@@ -91,11 +93,25 @@ public class BlogDTO implements Serializable{
      */
     public BlogEntity toEntity() {
         BlogEntity bloglEntity = new BlogEntity();
-        bloglEntity.setId(this.id);
-        bloglEntity.setNombre(this.nombre);
+        bloglEntity.setId(this.getId());
+        bloglEntity.setNombre(this.getNombre());
        // if (this.campeonatoDTO != null) {
          //   bloglEntity.setCampeonato(this.campeonatoDTO.toEntity());
         //}
         return bloglEntity;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

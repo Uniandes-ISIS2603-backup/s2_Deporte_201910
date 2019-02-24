@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 public class CampeonatoDTO implements Serializable{
     
@@ -21,6 +21,8 @@ public class CampeonatoDTO implements Serializable{
     private Long id;
     
     private String nombre;
+    
+    private String descripcion;
     
     private BlogDTO blogDTO;
     
@@ -60,7 +62,7 @@ public class CampeonatoDTO implements Serializable{
      * @param puntos the puntos to set
      */
     public void setPuntos(ArrayList<Integer> puntos) {
-        this.puntos = puntos;
+        this.setPuntos(puntos);
     }
 
     /**
@@ -114,12 +116,33 @@ public class CampeonatoDTO implements Serializable{
      */
     public CampeonatoEntity toEntity() {
         CampeonatoEntity campeonatoEntity = new CampeonatoEntity();
-        campeonatoEntity.setId(this.id);
-        campeonatoEntity.setNombre(this.nombre);
+        campeonatoEntity.setId(this.getId());
+        campeonatoEntity.setNombre(this.getNombre());
        // if(this.blogDTO != null)
         //{
           //  campeonatoEntity.setBlog(this.blogDTO.toEntity());
         //}
         return campeonatoEntity;
+    }
+
+    /**
+     * @param puntos the puntos to set
+     */
+    public void setPuntos(List<Integer> puntos) {
+        this.puntos = puntos;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

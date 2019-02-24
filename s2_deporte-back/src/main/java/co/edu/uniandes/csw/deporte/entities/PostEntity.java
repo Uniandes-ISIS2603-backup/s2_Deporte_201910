@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 @Entity
 public class PostEntity extends BaseEntity implements Serializable {

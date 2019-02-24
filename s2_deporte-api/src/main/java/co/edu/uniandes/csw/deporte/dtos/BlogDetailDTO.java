@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 public class BlogDetailDTO extends BlogDTO implements Serializable{
     

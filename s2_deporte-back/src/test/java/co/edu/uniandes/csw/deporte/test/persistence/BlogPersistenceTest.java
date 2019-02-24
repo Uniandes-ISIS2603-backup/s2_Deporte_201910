@@ -33,10 +33,13 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class BlogPersistenceTest {
     @Inject
      private BlogPersistence blogPersistance;
+    
     @PersistenceContext
     private EntityManager em;
+    
     @Inject
     UserTransaction utx;
+    
     
     private List<BlogEntity> data = new ArrayList<>();
     
