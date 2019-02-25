@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Santiago Barbosa
+ * @author estudiante
  */
 public class AgendaDTO implements Serializable{
     
@@ -23,14 +23,21 @@ public class AgendaDTO implements Serializable{
     public AgendaDTO () {
         
     }
-
-    public AgendaEntity toEntity(){
-        AgendaEntity entity = new AgendaEntity();
-        entity.setAnio(this.getAnio());
-        entity.setMes(this.getMes());
-        return entity;
-        
+    
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param agendaEntity: Es la entidad que se va a convertir a DTO
+     */
+    public AgendaDTO(AgendaEntity agendaEntity) {
+        if (agendaEntity != null) {
+            this.anio = agendaEntity.getAnio();
+            this.mes = agendaEntity.getMes();
+            this.cancha = (new CanchaDTO(agendaEntity.getCancha()));
+        }
     }
+    
     /**
      * @return the anio
      */
@@ -73,4 +80,15 @@ public class AgendaDTO implements Serializable{
         this.cancha = cancha;
     }
     
+        /**
+     * Convertir DTO a Entity
+     *
+     * @return Un Entity con los valores del DTO
+     */
+    public AgendaEntity toEntity() {
+        AgendaEntity agendaEntity = new AgendaEntity();
+        agendaEntity.setAnio(this.anio);
+        agendaEntity.setMes(this.mes);
+        return agendaEntity;
+    }
 }

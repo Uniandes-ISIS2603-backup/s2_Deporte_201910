@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -22,12 +24,11 @@ public class AgendaEntity extends BaseEntity implements Serializable{
     
     private Integer anio;
     private Integer mes;
+    
     @PodamExclude
     @ManyToOne
     private CanchaEntity cancha;
     
-    
-    @PodamExclude
     @OneToMany
     private List<FranjaEntity> franjas;
     
@@ -65,14 +66,14 @@ public class AgendaEntity extends BaseEntity implements Serializable{
     }
 
     /**
-     * @return the canchas
+     * @return the cancha
      */
     public CanchaEntity getCancha() {
         return cancha;
     }
 
     /**
-     * @param canchas the canchas to set
+     * @param cancha the cancha to set
      */
     public void setCancha(CanchaEntity cancha) {
         this.cancha = cancha;
@@ -91,4 +92,7 @@ public class AgendaEntity extends BaseEntity implements Serializable{
     public void setFranjas(List<FranjaEntity> franjas) {
         this.franjas = franjas;
     }
+
+    
+    
 }

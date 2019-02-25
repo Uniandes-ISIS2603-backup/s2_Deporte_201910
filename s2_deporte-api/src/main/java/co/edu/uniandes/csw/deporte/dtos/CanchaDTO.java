@@ -5,8 +5,10 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.entities.CanchaEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,7 +16,7 @@ import java.util.ArrayList;
  */
 public class CanchaDTO implements Serializable{
     
-    private String id;
+    private Long id;
     
     private String zona;
     
@@ -22,11 +24,11 @@ public class CanchaDTO implements Serializable{
     
     private String ciudad;
     
-    private ArrayList<Integer> contacto;
+    private List<Integer> contacto;
     
     private String caracterizticas;
     
-    private boolean reservada;
+    private Boolean reservada;
     
     private String tipoCancha;
     
@@ -35,18 +37,38 @@ public class CanchaDTO implements Serializable{
     public CanchaDTO(){
         
     }
-
+    
+        /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param canchaDTO: Es la entidad que se va a convertir a DTO
+     */
+    public CanchaDTO(CanchaEntity canchaEntity) {
+        if (canchaEntity != null) {
+            this.id = canchaEntity.getId();
+            this.caracterizticas = canchaEntity.getCaracterizticas();
+            this.ciudad = canchaEntity.getCiudad();
+            this.direccion = canchaEntity.getDireccion();
+            this.tipoCancha = canchaEntity.getTipo();
+            this.zona = canchaEntity.getZona();
+            this.contacto = canchaEntity.getContacto();
+            this.reservada = canchaEntity.isReservada();
+        //    this.propietario = canchaEntity.getPropietario();
+        }
+    }
+    
     /**
      * @return the id
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -95,14 +117,14 @@ public class CanchaDTO implements Serializable{
     /**
      * @return the contacto
      */
-    public ArrayList<Integer> getContacto() {
+    public List<Integer> getContacto() {
         return contacto;
     }
 
     /**
      * @param contacto the contacto to set
      */
-    public void setContacto(ArrayList<Integer> contacto) {
+    public void setContacto(List<Integer> contacto) {
         this.contacto = contacto;
     }
 
@@ -123,14 +145,14 @@ public class CanchaDTO implements Serializable{
     /**
      * @return the reservada
      */
-    public boolean isReservada() {
+    public Boolean getReservada() {
         return reservada;
     }
 
     /**
      * @param reservada the reservada to set
      */
-    public void setReservada(boolean reservada) {
+    public void setReservada(Boolean reservada) {
         this.reservada = reservada;
     }
 
@@ -162,5 +184,22 @@ public class CanchaDTO implements Serializable{
         this.propietario = propietario;
     }
     
-    
+            /**
+     * Convertir DTO a Entity
+     *
+     * @return Un Entity con los valores del DTO
+     */
+    public CanchaEntity toEntity() {
+        CanchaEntity canchaEntity = new CanchaEntity();
+        canchaEntity.setCaracterizticas(this.caracterizticas);
+        canchaEntity.setCiudad(this.ciudad);
+        canchaEntity.setContacto(this.contacto);
+        canchaEntity.setDireccion(this.direccion);
+    //    canchaEntity.setPropietario(this.propietario);
+        canchaEntity.setTipo(this.tipoCancha);
+        canchaEntity.setZona(this.zona);
+        canchaEntity.setReservada(this.reservada);
+        canchaEntity.setId(this.id);
+        return canchaEntity;
+    }
 }
