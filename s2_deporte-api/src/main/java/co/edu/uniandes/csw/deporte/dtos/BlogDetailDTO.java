@@ -20,7 +20,6 @@ public class BlogDetailDTO extends BlogDTO implements Serializable{
     
     private List<PostDTO> postDTO;
     
-    private List<CampeonatoDTO> campeonato;
    
     public BlogDetailDTO()
     {
@@ -63,7 +62,7 @@ public class BlogDetailDTO extends BlogDTO implements Serializable{
     @Override
     public BlogEntity toEntity() {
         BlogEntity bloglEntity = super.toEntity();
-        if (postDTO != null) {
+        if (getPostDTO() != null) {
            // List<PostEntity> booksEntity = new ArrayList<>();
             //for (PostDTO dtoBook : postDTO) {
               //  booksEntity.add(dtoBook.toEntity());
@@ -85,5 +84,5 @@ public class BlogDetailDTO extends BlogDTO implements Serializable{
     public void setPostDTO(List<PostDTO> postDTO) {
         this.postDTO = postDTO;
     }
-    
-}
+
+    }

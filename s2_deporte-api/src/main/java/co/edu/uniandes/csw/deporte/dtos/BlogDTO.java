@@ -20,7 +20,7 @@ public class BlogDTO implements Serializable{
       
       private String descripcion;
       
-      private long id;
+      private Long id;
       
       
     public BlogDTO()
@@ -95,6 +95,7 @@ public class BlogDTO implements Serializable{
         BlogEntity bloglEntity = new BlogEntity();
         bloglEntity.setId(this.getId());
         bloglEntity.setNombre(this.getNombre());
+        bloglEntity.setDescripcion(this.descripcion);
        // if (this.campeonatoDTO != null) {
          //   bloglEntity.setCampeonato(this.campeonatoDTO.toEntity());
         //}

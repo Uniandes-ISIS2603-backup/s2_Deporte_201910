@@ -24,7 +24,7 @@ import javax.ws.rs.Produces;
  *
  * @author estudiante
  */
-@Path("clientes")
+@Path("cliente")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped

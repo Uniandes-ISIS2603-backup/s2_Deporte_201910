@@ -41,6 +41,7 @@ public class CampeonatoDTO implements Serializable{
         if (campeonatoEntity != null) {
             this.id = campeonatoEntity.getId();
             this.nombre = campeonatoEntity.getNombre();
+            this.descripcion = campeonatoEntity.getDescripcion();
            // if(campeonatoEntity.getBlog() != null)
             //{
               //  this.blogDTO = new BlogDTO(campeonatoEntity.getBlog());
