@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.deporte.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -15,19 +16,19 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class EntrenamientoEntity extends BaseEntity implements Serializable {
-    /** @OneToOne(
-        mappedBy= "equipo"
-    )
+    @PodamExclude
+    @OneToOne
     EquipoEntity equipo;
     
-     public EquipoEntity getEquipo() {
+    public EquipoEntity getEquipo() {
         return equipo;
     }
 
     public void setEquipo(EquipoEntity equipo) {
         this.equipo = equipo;
     }
-    */
+    
+    @PodamExclude
     @OneToOne(
             mappedBy= "entrenamiento"
     )

@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.deporte.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -15,13 +16,13 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class AmistosoEntity extends BaseEntity implements Serializable {
-    
+    @PodamExclude
     @OneToOne(
             mappedBy= "amistoso"
     )
     ReservaEntity reserva;
 
-   
+    @PodamExclude
     @OneToOne
     PartidoEntity partido;
     

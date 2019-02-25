@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
 
 
 
@@ -27,12 +28,15 @@ public class ReservaEntity extends BaseEntity implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaFin;
     
+    @PodamExclude
     @OneToOne
     AmistosoEntity amistoso;
     
+    @PodamExclude
     @OneToOne
     EntrenamientoEntity entrenamiento;
-
+    
+    @PodamExclude
     @OneToOne
     FranjaEntity franja;
     
