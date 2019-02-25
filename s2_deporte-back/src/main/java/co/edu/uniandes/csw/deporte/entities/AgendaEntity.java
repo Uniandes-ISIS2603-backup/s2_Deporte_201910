@@ -21,7 +21,7 @@ public class AgendaEntity extends BaseEntity implements Serializable{
     private Integer mes;
     @ManyToMany(mappedBy = "agendas")
     private List<CanchaEntity> canchas;
-    //private List<FranjaEntity> franjas;
+    private List<FranjaEntity> franjas;
     
     public AgendaEntity (){
         

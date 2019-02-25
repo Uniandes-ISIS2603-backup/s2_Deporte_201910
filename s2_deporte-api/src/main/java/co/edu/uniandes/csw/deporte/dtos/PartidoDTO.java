@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.entities.PartidoEntity;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -22,18 +23,36 @@ public class PartidoDTO implements Serializable
     /** 
      * el identificador del partido
      */
-    private String id;
+    private Long id;
     //Constructor---------------------------------------------------------------
     public PartidoDTO()
     {
         
     }
+    public PartidoDTO(PartidoEntity entity) {
+        if (entity != null) {
+            this.id = entity.getId();
+            this.fecha=entity.getFecha();
+        }
+    }
+
+    /**
+     * Convierte un objeto ClienteDTO a ClienteEntity.
+     *
+     * @return Nueva objeto ClienteEntity.
+     * 
+     */
+    public PartidoEntity toEntity() {
+        PartidoEntity entity = new PartidoEntity();
+        entity.setId(this.getId());
+        return entity;
+    }
     //Métodos-------------------------------------------------------------------
-    private void setId(String pId)
+    private void setId(Long pId)
     {
         id=pId;
     }
-    private String getId()
+    private Long getId()
     {
         return id;
     }

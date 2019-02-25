@@ -15,19 +15,21 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 @Entity
 public class BlogEntity extends BaseEntity implements Serializable{
     private int identificador;
     
     private String nombre;
-@PodamExclude
-    @OneToMany(mappedBy = "blog",cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<PostEntity> posts;
     
-    @OneToOne
-    private CampeonatoEntity campeonato;  
+    private String descripcion;
+//@PodamExclude
+  //  @OneToMany(mappedBy = "blog",cascade = CascadeType.PERSIST, orphanRemoval = true)
+    //private List<PostEntity> posts;
+    
+    //@OneToOne
+    //private CampeonatoEntity campeonato;  
     
     /**
      * @return the id
@@ -46,30 +48,30 @@ public class BlogEntity extends BaseEntity implements Serializable{
     /**
      * @return the posts
      */
-    public List<PostEntity> getPosts() {
-        return posts;
-    }
+  //  public List<PostEntity> getPosts() {
+    //    return posts;
+    //}
 
     /**
      * @param posts the posts to set
      */
-    public void setPosts(List<PostEntity> posts) {
-        this.posts = posts;
-    }
+    //public void setPosts(List<PostEntity> posts) {
+      //  this.posts = posts;
+    //}
 
     /**
      * @return the campeonato
      */
-    public CampeonatoEntity getCampeonato() {
-        return campeonato;
-    }
+    //public CampeonatoEntity getCampeonato() {
+      //  return campeonato;
+    //}
 
     /**
      * @param campeonato the campeonato to set
      */
-    public void setCampeonato(CampeonatoEntity campeonato) {
-        this.campeonato = campeonato;
-    }
+   // public void setCampeonato(CampeonatoEntity campeonato) {
+     //   this.campeonato = campeonato;
+    //}
 
     /**
      * @return the nombre
@@ -83,5 +85,19 @@ public class BlogEntity extends BaseEntity implements Serializable{
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

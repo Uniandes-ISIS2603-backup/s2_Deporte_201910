@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.deporte.ejb;
 
-import co.edu.uniandes.csw.deporte.entities.CampeonatoEntity;
 import co.edu.uniandes.csw.deporte.entities.PostEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.deporte.persistence.PostPersistence;
@@ -17,7 +16,7 @@ import javax.inject.Inject;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 @Stateless
 public class PostLogic {
@@ -27,11 +26,11 @@ public class PostLogic {
     private PostPersistence persistence;
     
      /**
-     * Guardar un nuevo libro
+     * Guardar un nuevo post
      *
-     * @param campeonatoEntity La entidad de tipo libro del nuevo libro a persistir.
+     * @param postEntity La entidad de tipo post del nuevo post a persistir.
      * @return La entidad luego de persistirla
-     * @throws BusinessLogicException Si el ISBN es inválido o ya existe en la
+     * @throws BusinessLogicException Si el nombre es inválido o ya existe en la
      * persistencia.
      */
     public PostEntity createPost(PostEntity postEntity) throws BusinessLogicException {
@@ -43,9 +42,9 @@ public class PostLogic {
     }
     
      /**
-     * Devuelve todos los libros que hay en la base de datos.
+     * Devuelve todos los posts que hay en la base de datos.
      *
-     * @return Lista de entidades de tipo libro.
+     * @return Lista de entidades de tipo post.
      */
     public List<PostEntity> getPosts() {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los posts");
@@ -55,10 +54,10 @@ public class PostLogic {
     }
     
     /**
-     * Busca un libro por ID
+     * Busca un post por ID
      *
-     * @param postsId El id del libro a buscar
-     * @return El libro encontrado, null si no lo encuentra.
+     * @param postsId El id del post a buscar
+     * @return El post encontrado, null si no lo encuentra.
      */
     public PostEntity getPost(Long postsId) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar el post con id = {0}", postsId);
@@ -66,16 +65,16 @@ public class PostLogic {
         if (postEntity == null) {
             LOGGER.log(Level.SEVERE, "El post con el id = {0} no existe", postsId);
         }
-        LOGGER.log(Level.INFO, "Termina proceso de consultar el campeonato con post = {0}", postsId);
+        LOGGER.log(Level.INFO, "Termina proceso de consultar el post con id = {0}", postsId);
         return postEntity;
     }
     
     /**
-     * Actualizar un libro por ID
+     * Actualizar un post por ID
      *
-     * @param postsId El ID del libro a actualizar
-     * @param postEntity La entidad del libro con los cambios deseados
-     * @return La entidad del libro luego de actualizarla
+     * @param postsId El ID del post a actualizar
+     * @param postEntity La entidad del post con los cambios deseados
+     * @return La entidad del post luego de actualizarla
      * @throws BusinessLogicException Si el IBN de la actualización es inválido
      */
     public PostEntity updatePost (Long postsId, PostEntity postEntity) throws BusinessLogicException {
@@ -89,12 +88,12 @@ public class PostLogic {
     
      
      /**
-     * Eliminar un libro por ID
+     * Eliminar un post por ID
      *
-     * @param postsId El ID del libro a eliminar
-     * @throws BusinessLogicException si el libro tiene autores asociados
+     * @param postsId El ID del post a eliminar
+     * @throws BusinessLogicException si el post tiene autores asociados
      */
-    public void deleteCampeonato(Long postsId) throws BusinessLogicException {
+    public void deletePost(Long postsId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar el post con id = {0}", postsId);
         
         persistence.delete(postsId);

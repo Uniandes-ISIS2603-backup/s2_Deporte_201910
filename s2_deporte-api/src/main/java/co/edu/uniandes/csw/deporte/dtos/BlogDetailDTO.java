@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 public class BlogDetailDTO extends BlogDTO implements Serializable{
     
@@ -35,13 +35,13 @@ public class BlogDetailDTO extends BlogDTO implements Serializable{
     public BlogDetailDTO(BlogEntity bloglEntity) {
         super(bloglEntity);
         if (bloglEntity != null) {
-            if (bloglEntity.getPosts() != null) 
-            {
-                postDTO = new ArrayList<>();
-                for(PostEntity entityPost : bloglEntity.getPosts()){
-                   postDTO.add(new PostDTO(entityPost));
-                }
-            }
+            //if (bloglEntity.getPosts() != null) 
+            //{
+                //postDTO = new ArrayList<>();
+                //for(PostEntity entityPost : bloglEntity.getPosts()){
+               //    postDTO.add(new PostDTO(entityPost));
+             //   }
+           // }
            // if(bloglEntity.getCampeonato() != null)
             //{
               //  campeonato = new ArrayList<>();
@@ -64,11 +64,11 @@ public class BlogDetailDTO extends BlogDTO implements Serializable{
     public BlogEntity toEntity() {
         BlogEntity bloglEntity = super.toEntity();
         if (postDTO != null) {
-            List<PostEntity> booksEntity = new ArrayList<>();
-            for (PostDTO dtoBook : postDTO) {
-                booksEntity.add(dtoBook.toEntity());
-            }
-            bloglEntity.setPosts(booksEntity);
+           // List<PostEntity> booksEntity = new ArrayList<>();
+            //for (PostDTO dtoBook : postDTO) {
+              //  booksEntity.add(dtoBook.toEntity());
+            //}
+            //bloglEntity.setPosts(booksEntity);
         }
         return bloglEntity;
     }

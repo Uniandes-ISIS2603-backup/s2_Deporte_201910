@@ -17,7 +17,7 @@ import javax.ws.rs.Produces;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 @Path("post")
 @Produces("application/json")

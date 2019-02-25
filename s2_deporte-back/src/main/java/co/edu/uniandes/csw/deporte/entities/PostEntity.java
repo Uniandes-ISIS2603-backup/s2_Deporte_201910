@@ -11,15 +11,15 @@ import javax.persistence.ManyToOne;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 @Entity
 public class PostEntity extends BaseEntity implements Serializable {
     
     private String identificador;
     
-    @ManyToOne
-    private BlogEntity blog;
+   // @ManyToOne
+    //private BlogEntity blog;
     
     public PostEntity()
     {
@@ -43,15 +43,15 @@ public class PostEntity extends BaseEntity implements Serializable {
     /**
      * @return the blog
      */
-    public BlogEntity getBlog() {
-        return blog;
-    }
+   // public BlogEntity getBlog() {
+     //   return blog;
+    //}
 
     /**
      * @param blog the blog to set
      */
-    public void setBlog(BlogEntity blog) {
-        this.blog = blog;
-    }
+   // public void setBlog(BlogEntity blog) {
+     //   this.blog = blog;
+    //}
    }
 

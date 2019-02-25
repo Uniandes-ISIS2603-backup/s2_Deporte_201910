@@ -4,12 +4,15 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.deporte.dtos;
+import co.edu.uniandes.csw.deporte.entities.ClienteEntity;
+import co.edu.uniandes.csw.deporte.entities.EquipoEntity;
+import java.io.Serializable;
 import java.util.*;
 /**
  *
- * @author estudiante
+ * @cliente estudiante
  */
-public class ClienteDetailDTO extends ClienteDTO
+public class ClienteDetailDTO extends ClienteDTO implements Serializable
 {
     //Atributos-----------------------------------------------------------------
     /**
@@ -19,7 +22,31 @@ public class ClienteDetailDTO extends ClienteDTO
     //Constructor---------------------------------------------------------------
     public ClienteDetailDTO()
     {
-        
+        super();
+    }
+    public ClienteDetailDTO(ClienteEntity entity) {
+        super(entity);
+        if (entity != null) {
+            equipos = new ArrayList<>();
+            //for (EquipoEntity entityEquipos : entity.getEquipos()) {
+            //    equipos.add(new EquipoDTO(entityEquipos));
+            //}
+
+        }
+
+    }
+    @Override
+    public ClienteEntity toEntity() {
+        ClienteEntity entity = super.toEntity();
+        if (equipos != null) {
+            List<EquipoEntity> equiposEntity = new ArrayList<>();
+            for (EquipoDTO dtoEquipo : equipos) {
+                equiposEntity.add(dtoEquipo.toEntity());
+            }
+            //entity.setEquipos(equiposEntity);
+        }
+
+        return entity;
     }
     //Método--------------------------------------------------------------------
     /**
@@ -43,30 +70,7 @@ public class ClienteDetailDTO extends ClienteDTO
             }
         }
     }
-    /**
-     * devuelve la lista de equipos
-     * @return equipos
-     */
-    private ArrayList<EquipoDTO> getEquipos()
-    {
-        return equipos;
-    }
-    /**
-     * devuelve un id con identificador dado
-     * @param id el identificador del equipo que se busca
-     * @return el equipo que se busca o null
-     */
-    private EquipoDTO getEquipo(String id)
-    {
-        for(EquipoDTO e: equipos)
-        {
-            if(e.getId().equals(id))
-            {
-                return e;
-            }
-        }
-        return null;
-    }
+    
     /**
      * borra todos los equipos de la lista 
      */
@@ -88,5 +92,11 @@ public class ClienteDetailDTO extends ClienteDTO
                 return;
             }            
         }
+    }
+    public ArrayList<EquipoDTO> getEquipos() {
+        return equipos;
+    }
+     public void setEquipos(ArrayList<EquipoDTO> equipos) {
+        this.equipos = equipos;
     }
 }

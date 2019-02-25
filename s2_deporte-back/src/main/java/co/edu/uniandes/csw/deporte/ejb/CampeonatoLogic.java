@@ -16,7 +16,7 @@ import javax.inject.Inject;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 @Stateless
 public class CampeonatoLogic {
@@ -26,16 +26,18 @@ public class CampeonatoLogic {
     private CampeonatoPersistence persistence;
     
     /**
-     * Guardar un nuevo libro
+     * Guardar un nuevn campeonato
+     * 
      *
-     * @param campeonatoEntity La entidad de tipo libro del nuevo libro a persistir.
+     * @param campeonatoEntity La entidad de tipo campeonato del nuevo campeonato
+     * a persistir.
      * @return La entidad luego de persistirla
-     * @throws BusinessLogicException Si el ISBN es inválido o ya existe en la
+     * @throws BusinessLogicException Si el nombre es inválido o ya existe en la
      * persistencia.
      */
     public CampeonatoEntity createCampeonato(CampeonatoEntity campeonatoEntity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de creación del Campeonato");
-        if( campeonatoEntity.getNombre() == null)
+        if( campeonatoEntity.getNombre() == null || campeonatoEntity.getNombre().equals(""))
         {
             throw new BusinessLogicException("Debe tener un nombre");
         }
@@ -50,9 +52,11 @@ public class CampeonatoLogic {
     }
     
      /**
-     * Devuelve todos los libros que hay en la base de datos.
+     * Devuelve todos lon campeonato
+     * s que hay en la base de datos.
      *
-     * @return Lista de entidades de tipo libro.
+     * @return Lista de entidades de tipn campeonato
+     * .
      */
     public List<CampeonatoEntity> getCampeonatos() {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los campeonatos");
@@ -62,10 +66,13 @@ public class CampeonatoLogic {
     }
     
     /**
-     * Busca un libro por ID
+     * Busca un campeonato
+     * por ID
      *
-     * @param campeonatosId El id del libro a buscar
-     * @return El libro encontrado, null si no lo encuentra.
+     * @param campeonatosId El id den campeonato
+     * a buscar
+     * @return En campeonato
+     * encontrado, null si no lo encuentra.
      */
     public CampeonatoEntity getCampeonato(Long campeonatosId) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar el campeonato con id = {0}", campeonatosId);
@@ -78,11 +85,15 @@ public class CampeonatoLogic {
     }
     
     /**
-     * Actualizar un libro por ID
+     * Actualizar un campeonato
+     * por ID
      *
-     * @param campeonatosId El ID del libro a actualizar
-     * @param campeonatoEntity La entidad del libro con los cambios deseados
-     * @return La entidad del libro luego de actualizarla
+     * @param campeonatosId El ID den campeonato
+     * a actualizar
+     * @param campeonatoEntity La entidad del campeonato
+     * con los cambios deseados
+     * @return La entidad del campeonato
+     * luego de actualizarla
      * @throws BusinessLogicException Si el IBN de la actualización es inválido
      */
     public CampeonatoEntity updateCampeonato(Long campeonatosId, CampeonatoEntity campeonatoEntity) throws BusinessLogicException {
@@ -100,10 +111,13 @@ public class CampeonatoLogic {
     }
      
      /**
-     * Eliminar un libro por ID
+     * Eliminar un campeonato
+     * por ID
      *
-     * @param campeonatosId El ID del libro a eliminar
-     * @throws BusinessLogicException si el libro tiene autores asociados
+     * @param campeonatosId El ID den campeonato
+     * a eliminar
+     * @throws BusinessLogicException si en campeonato
+     * tiene autores asociados
      */
     public void deleteCampeonato(Long campeonatosId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar el campeonato con id = {0}", campeonatosId);

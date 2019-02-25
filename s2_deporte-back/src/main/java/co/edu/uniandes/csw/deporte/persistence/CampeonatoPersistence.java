@@ -16,7 +16,7 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 @Stateless
 public class CampeonatoPersistence {

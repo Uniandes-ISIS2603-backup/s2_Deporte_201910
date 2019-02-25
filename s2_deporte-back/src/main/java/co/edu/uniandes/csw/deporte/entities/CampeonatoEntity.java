@@ -13,15 +13,17 @@ import javax.persistence.OneToOne;
 
 /**
  *
- * @author estudiante
+ * @author Juan Camilo Garcia
  */
 @Entity
 public class CampeonatoEntity extends BaseEntity implements Serializable{
     private List<Integer> puntos;
 
     private String nombre;
-    @OneToOne
-    private BlogEntity blog;
+    
+    private String descripcion;
+    //@OneToOne
+    //private BlogEntity blog;
     
    
     
@@ -37,18 +39,19 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
 
     /**
      * @return the blog
-     */
+     *
     public BlogEntity getBlog() {
         return blog;
     }
+    /* 
 
     /**
      * @param blog the blog to set
-     */
+     *
     public void setBlog(BlogEntity blog) {
         this.blog = blog;
     }
-
+/*
     /**
      * @return the puntos
      */
@@ -68,5 +71,19 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }
