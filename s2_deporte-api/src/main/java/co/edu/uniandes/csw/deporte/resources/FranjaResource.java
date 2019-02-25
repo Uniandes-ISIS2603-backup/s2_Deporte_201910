@@ -35,8 +35,8 @@ public class FranjaResource {
     }
     
     @GET
-    public Date getFranja(FranjaDTO franja){
-        return franja.getFechaInicio();
+    public FranjaDTO getFranja(){
+        return null;
     }
     @DELETE
     public FranjaDTO deleteFranja(FranjaDTO franja){

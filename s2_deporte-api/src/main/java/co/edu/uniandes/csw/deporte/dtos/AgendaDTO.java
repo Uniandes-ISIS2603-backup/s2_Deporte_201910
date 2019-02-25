@@ -5,17 +5,18 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.entities.AgendaEntity;
 import java.io.Serializable;
 
 /**
  *
- * @author estudiante
+ * @author Santiago Barbosa
  */
 public class AgendaDTO implements Serializable{
     
-    private int anio;
+    private Integer anio;
     
-    private int mes;
+    private Integer mes;
     
     private CanchaDTO cancha;
     
@@ -23,31 +24,38 @@ public class AgendaDTO implements Serializable{
         
     }
 
+    public AgendaEntity toEntity(){
+        AgendaEntity entity = new AgendaEntity();
+        entity.setAnio(this.getAnio());
+        entity.setMes(this.getMes());
+        return entity;
+        
+    }
     /**
      * @return the anio
      */
-    public int getAnio() {
+    public Integer getAnio() {
         return anio;
     }
 
     /**
      * @param anio the anio to set
      */
-    public void setAnio(int anio) {
+    public void setAnio(Integer anio) {
         this.anio = anio;
     }
 
     /**
      * @return the mes
      */
-    public int getMes() {
+    public Integer getMes() {
         return mes;
     }
 
     /**
      * @param mes the mes to set
      */
-    public void setMes(int mes) {
+    public void setMes(Integer mes) {
         this.mes = mes;
     }
 

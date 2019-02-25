@@ -10,9 +10,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import java.util.Date;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -31,16 +33,14 @@ public class FranjaEntity extends BaseEntity implements Serializable{
     
     private Boolean ocupada;
     
-    private Integer idReserva;
+    private Long idReserva;
     
-    @ManyToOne(
-    )
+    @PodamExclude
+    @ManyToOne
     private AgendaEntity agenda;
     
-    
-    @OneToOne(
-        mappedBy = "franja"
-    )
+    @PodamExclude
+    @OneToOne
     private ReservaEntity reserva;
     
     
@@ -107,14 +107,14 @@ public class FranjaEntity extends BaseEntity implements Serializable{
     /**
      * @return the idReserva
      */
-    public Integer getIdReserva() {
+    public Long getIdReserva() {
         return idReserva;
     }
 
     /**
      * @param idReserva the idReserva to set
      */
-    public void setIdReserva(Integer idReserva) {
+    public void setIdReserva(Long idReserva) {
         this.idReserva = idReserva;
     }
 

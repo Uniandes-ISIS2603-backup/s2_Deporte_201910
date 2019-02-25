@@ -36,7 +36,7 @@ public class CanchaEntity extends BaseEntity implements Serializable{
     @ManyToOne
     private PropietarioEntity propietario;
     
-    @ManyToMany
+    @OneToMany
     private List<AgendaEntity> agendas;
     
     @OneToMany

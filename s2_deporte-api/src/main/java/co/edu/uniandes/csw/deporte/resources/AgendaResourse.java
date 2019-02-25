@@ -17,7 +17,7 @@ import javax.ws.rs.Produces;
 
 /**
  *
- * @author estudiante
+ * @author Santiago Barbosa
  */
 
 @Path("agendas")

@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.entities.FranjaEntity;
 import java.io.Serializable;
 import java.util.Date;
 /**
@@ -15,9 +16,9 @@ public class FranjaDTO implements Serializable{
     
     private Date fechaInicio;
     private Date fechaFin;
-    private int duracionTotalHoras;
-    private boolean ocupada;
-    private int idReserva;
+    private Integer duracionTotalHoras;
+    private Boolean ocupada;
+    private Long idReserva;
     private AgendaDTO agenda;
     
     
@@ -25,6 +26,15 @@ public class FranjaDTO implements Serializable{
         
     }
     
+    public FranjaEntity toEntity(){
+        FranjaEntity entity = new FranjaEntity();
+        entity.setDuracionHoras(this.getDuracionTotalHoras());
+        entity.setFechaFin(this.getFechaFin());
+        entity.setFechaInicio(this.getFechaInicio());
+        entity.setIdReserva(this.getIdReserva());
+        entity.setOcupada(this.getOcupada());
+        return entity;
+    }
     
     /**
      * Retorna la fecha de inicio de la franja
@@ -62,7 +72,7 @@ public class FranjaDTO implements Serializable{
      * Retorna la duracion de horas de la franja
      * @return int: duracion en horas de la franja
      */
-    public int getDuracionTotalHoras(){
+    public Integer getDuracionTotalHoras(){
         return duracionTotalHoras;
     }
     
@@ -70,7 +80,7 @@ public class FranjaDTO implements Serializable{
      * Establece la duercion en horas de la franja
      * @param horas
      */
-    public void setDuracionTotalHoras(int horas){
+    public void setDuracionTotalHoras(Integer horas){
         duracionTotalHoras = horas;
     }
     
@@ -78,7 +88,7 @@ public class FranjaDTO implements Serializable{
      * Verifica si la franja esta ocupada (reservada)
      * @return boolean: Verdadero si la franja esta reservada. Falso si no.
      */
-    public boolean getOcupada(){
+    public Boolean getOcupada(){
         return ocupada;
     }
     
@@ -86,7 +96,7 @@ public class FranjaDTO implements Serializable{
      * Establece si la franje esta ocupada o no
      * @param estaOcupada verdadero si esta ocupada. Falso si no
      */
-    public void setOcupada(boolean estaOcupada){
+    public void setOcupada(Boolean estaOcupada){
         ocupada = estaOcupada;
     }
     
@@ -94,22 +104,15 @@ public class FranjaDTO implements Serializable{
      * Retorna el id de la reserva en caso de estar ocupada. -1 si no lo está
      * @return int: id de la reserva si está ocupada. -1 si no lo está.
      */
-    public int getIdReserva(){
-        if(getOcupada())
-        {
-            return idReserva;
-        }
-        else
-        {
-            return -1;
-        }
+    public Long getIdReserva(){
+        return idReserva;
     }
     
     /**
      * Establece el id de la reseva que ocupa esta franja
      * @param id de la reserva que ocupa esta franja
      */
-    public void setIdReserva(int id){
+    public void setIdReserva(Long id){
         idReserva = id;
     }
     
