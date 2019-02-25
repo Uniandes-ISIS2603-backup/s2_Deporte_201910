@@ -5,7 +5,10 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.entities.AgendaEntity;
+import co.edu.uniandes.csw.deporte.entities.FranjaEntity;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,10 +16,34 @@ import java.util.List;
  * @author estudiante
  */
 public class AgendaDetailDTO extends AgendaDTO implements Serializable {
-    
+
     private List<FranjaDTO> franjas;
-    
-    public AgendaDetailDTO (){
-        
+
+    public AgendaDetailDTO() {
+        super();
     }
+
+    public AgendaDetailDTO(AgendaEntity agenda) {
+        super(agenda);
+        franjas = new ArrayList<>();
+        for (FranjaEntity entityFranja : agenda.getFranjas()) {
+    //        franjas.add(new FranjaDTO(entityFranja));
+        }
+    }
+
+    /**
+     * @return the franjas
+     */
+    public List<FranjaDTO> getFranjas() {
+        return franjas;
+    }
+
+    /**
+     * @param franjas the franjas to set
+     */
+    public void setFranjas(List<FranjaDTO> franjas) {
+        this.franjas = franjas;
+    }
+    
+    
 }

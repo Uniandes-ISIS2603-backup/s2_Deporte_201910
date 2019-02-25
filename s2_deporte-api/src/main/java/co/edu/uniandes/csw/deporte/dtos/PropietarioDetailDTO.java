@@ -5,18 +5,47 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.entities.CanchaEntity;
+import co.edu.uniandes.csw.deporte.entities.PropietarioEntity;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author estudiante
  */
-public class PropietarioDetailDTO extends PropietarioDTO implements Serializable{
-    
+public class PropietarioDetailDTO extends PropietarioDTO implements Serializable {
+
     private List<CanchaDTO> canchas;
-    
-    public PropietarioDetailDTO (){
-        
+
+    public PropietarioDetailDTO() {
+        super();
     }
+
+    public PropietarioDetailDTO(PropietarioEntity propietario) {
+        super(propietario);
+        if (propietario != null) {
+            canchas = new ArrayList<>();
+            for (CanchaEntity entityCancha : propietario.getCanchas()) {
+                canchas.add(new CanchaDTO(entityCancha));
+            }
+        }
+    }
+    
+    /**
+     * @return the canchas
+     */
+    public List<CanchaDTO> getCanchas() {
+        return canchas;
+    }
+    
+    /**
+     * @param canchas the canchas to set
+     */
+    public void setCanchas(List<CanchaDTO> canchas) {
+        this.canchas = canchas;
+    }
+    
+    
 }

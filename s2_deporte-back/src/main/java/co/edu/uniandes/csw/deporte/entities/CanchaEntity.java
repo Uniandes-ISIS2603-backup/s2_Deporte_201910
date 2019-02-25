@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -36,7 +37,7 @@ public class CanchaEntity extends BaseEntity implements Serializable{
     @ManyToOne
     private PropietarioEntity propietario;
     
-    @ManyToMany
+    @OneToMany
     private List<AgendaEntity> agendas;
     
     @OneToMany
@@ -156,6 +157,34 @@ public class CanchaEntity extends BaseEntity implements Serializable{
      */
     public void setPropietario(PropietarioEntity propietario) {
         this.propietario = propietario;
+    }
+
+    /**
+     * @return the agendas
+     */
+    public List<AgendaEntity> getAgendas() {
+        return agendas;
+    }
+
+    /**
+     * @param agendas the agendas to set
+     */
+    public void setAgendas(List<AgendaEntity> agendas) {
+        this.agendas = agendas;
+    }
+
+    /**
+     * @return the reservas
+     */
+    public List<ReservaEntity> getReservas() {
+        return reservas;
+    }
+
+    /**
+     * @param reservas the reservas to set
+     */
+    public void setReservas(List<ReservaEntity> reservas) {
+        this.reservas = reservas;
     }
     
 }

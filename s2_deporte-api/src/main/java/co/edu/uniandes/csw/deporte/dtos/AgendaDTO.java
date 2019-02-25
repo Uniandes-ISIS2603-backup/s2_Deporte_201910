@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.entities.AgendaEntity;
 import java.io.Serializable;
 
 /**
@@ -13,41 +14,55 @@ import java.io.Serializable;
  */
 public class AgendaDTO implements Serializable{
     
-    private int anio;
+    private Integer anio;
     
-    private int mes;
+    private Integer mes;
     
     private CanchaDTO cancha;
     
     public AgendaDTO () {
         
     }
-
+    
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param agendaEntity: Es la entidad que se va a convertir a DTO
+     */
+    public AgendaDTO(AgendaEntity agendaEntity) {
+        if (agendaEntity != null) {
+            this.anio = agendaEntity.getAnio();
+            this.mes = agendaEntity.getMes();
+            this.cancha = (new CanchaDTO(agendaEntity.getCancha()));
+        }
+    }
+    
     /**
      * @return the anio
      */
-    public int getAnio() {
+    public Integer getAnio() {
         return anio;
     }
 
     /**
      * @param anio the anio to set
      */
-    public void setAnio(int anio) {
+    public void setAnio(Integer anio) {
         this.anio = anio;
     }
 
     /**
      * @return the mes
      */
-    public int getMes() {
+    public Integer getMes() {
         return mes;
     }
 
     /**
      * @param mes the mes to set
      */
-    public void setMes(int mes) {
+    public void setMes(Integer mes) {
         this.mes = mes;
     }
 
@@ -65,4 +80,15 @@ public class AgendaDTO implements Serializable{
         this.cancha = cancha;
     }
     
+        /**
+     * Convertir DTO a Entity
+     *
+     * @return Un Entity con los valores del DTO
+     */
+    public AgendaEntity toEntity() {
+        AgendaEntity agendaEntity = new AgendaEntity();
+        agendaEntity.setAnio(this.anio);
+        agendaEntity.setMes(this.mes);
+        return agendaEntity;
+    }
 }

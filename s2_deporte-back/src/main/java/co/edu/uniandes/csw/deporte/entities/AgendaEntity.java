@@ -8,7 +8,8 @@ package co.edu.uniandes.csw.deporte.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -19,8 +20,9 @@ public class AgendaEntity extends BaseEntity implements Serializable{
     
     private Integer anio;
     private Integer mes;
-    @ManyToMany(mappedBy = "agendas")
-    private List<CanchaEntity> canchas;
+    @OneToOne
+    private CanchaEntity cancha;
+    @OneToMany
     private List<FranjaEntity> franjas;
     
     public AgendaEntity (){
@@ -56,16 +58,31 @@ public class AgendaEntity extends BaseEntity implements Serializable{
     }
 
     /**
-     * @return the canchas
+     * @return the franjas
      */
-    public List<CanchaEntity> getCanchas() {
-        return canchas;
+    public List<FranjaEntity> getFranjas() {
+        return franjas;
     }
 
     /**
-     * @param canchas the canchas to set
+     * @param franjas the franjas to set
      */
-    public void setCanchas(List<CanchaEntity> canchas) {
-        this.canchas = canchas;
+    public void setFranjas(List<FranjaEntity> franjas) {
+        this.franjas = franjas;
     }
+
+    /**
+     * @return the cancha
+     */
+    public CanchaEntity getCancha() {
+        return cancha;
+    }
+
+    /**
+     * @param cancha the cancha to set
+     */
+    public void setCancha(CanchaEntity cancha) {
+        this.cancha = cancha;
+    }
+    
 }
