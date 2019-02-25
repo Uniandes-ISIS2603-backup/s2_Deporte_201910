@@ -26,6 +26,18 @@ public class FranjaDTO implements Serializable{
         
     }
     
+    public FranjaDTO(FranjaEntity entity){
+        if(entity != null)
+        {
+            this.duracionTotalHoras = entity.getDuracionHoras();
+            this.fechaFin = entity.getFechaFin();
+            this.fechaInicio = entity.getFechaInicio();
+            this.idReserva = entity.getIdReserva();
+            this.ocupada = entity.getOcupada();
+            this.agenda = new AgendaDTO(entity.getAgenda());
+        }
+    }
+    
     public FranjaEntity toEntity(){
         FranjaEntity entity = new FranjaEntity();
         entity.setDuracionHoras(this.getDuracionTotalHoras());
