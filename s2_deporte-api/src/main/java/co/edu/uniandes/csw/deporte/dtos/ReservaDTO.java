@@ -16,11 +16,13 @@ public class ReservaDTO implements Serializable{
     
     private Date fechaInicio;
     private Date fechaFin;
+    private Integer duracionHoras;
+     
     private String nombreUsuario;
-    private int idUsuario;
-    private int duracionHoras;
-    private int idReserva;
-    private int idCancha;
+    private Long idUsuario;
+    private Long idReserva;
+    private Long idCancha;
+    
     private FranjaDTO franja;
     private CampeonatoDTO campeonato;
     private AmistosoDTO amistoso;
@@ -37,7 +39,6 @@ public class ReservaDTO implements Serializable{
     public Date getFechaInicio(){
         return fechaInicio;
     }
-    
     /**
      * Establece la fecha de inicio de la reserva
      * @param fechaInicioSet Date de inicio de la reserva
@@ -78,30 +79,12 @@ public class ReservaDTO implements Serializable{
     public void setNombreUsuario(String nombre){
         nombreUsuario = nombre;
     }
-    
-    
-    /**
-     * Returns id del usuario dueño de la reserva
-     * @return int id del usuario dueño de la reserva
-     */
-    public int getIdUsuario(){
-        return idUsuario;
-    }
-    
-    /**
-     * Establece el id del usuario dueño de la reserva
-     * @param id del usuario
-     */
-    public void setIdUsuario(int id){
-        idUsuario = id;
-    }
-    
-    
+      
     /**
      * Returns duracion en horas de la reserva
-     * @return int duracion en horas de la reserva
+     * @return Integer duracion en horas de la reserva
      */
-    public int getDuracionHoras(){
+    public Integer getDuracionHoras(){
         return duracionHoras;
     }
     
@@ -109,44 +92,10 @@ public class ReservaDTO implements Serializable{
      * Establece la duracion en horas de la reserva
      * @param horas numero de horas que dura la reserva
      */
-    public void setDuracionHoras(int horas){
+    public void setDuracionHoras(Integer horas){
         duracionHoras = horas;
     }
-    
-    
-    /**
-     * Returns id de la reserva
-     * @return int id de la reserva
-     */
-    public int getIdReserva(){
-        return idReserva;
-    }
-    
-    /**
-     * Establece el id de la reserva
-     * @param id de la reserva
-     */
-    public void setIdReserva(int id){
-        idReserva = id;
-    }
-    
-    
-    /**
-     * Returns id de la cancha reservada
-     * @return int id de la cancha reservada
-     */
-    public int getIdCancha(){
-        return idCancha;
-    }
-    
-    /**
-     * Establece el id de la cancha reservada
-     * @param id de la cancha reservada
-     */
-    public void setIdCancha(int id){
-        idCancha = id;
-    }
-    
+
     /**
      * Retorna la franja que ocupa la reserva
      * @return FranjaDTO una lista de las franjas que ocupa la reserva
@@ -211,6 +160,31 @@ public class ReservaDTO implements Serializable{
      */
     public void setEntrenamiento(EntrenamientoDTO entre){
         entrenamiento = entre;
+    }
+    
+    
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Long getIdReserva() {
+        return idReserva;
+    }
+
+    public void setIdReserva(Long idReserva) {
+        this.idReserva = idReserva;
+    }
+
+    public Long getIdCancha() {
+        return idCancha;
+    }
+
+    public void setIdCancha(Long idCancha) {
+        this.idCancha = idCancha;
     }
     
 }

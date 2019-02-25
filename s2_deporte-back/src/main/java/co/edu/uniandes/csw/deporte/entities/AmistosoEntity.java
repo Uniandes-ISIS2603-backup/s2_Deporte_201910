@@ -15,15 +15,14 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class AmistosoEntity extends BaseEntity implements Serializable {
+    
     @OneToOne(
             mappedBy= "amistoso"
     )
     ReservaEntity reserva;
 
    
-    /** @OneToOne(
-            mappedBy= "amistoso"
-    )
+    @OneToOne
     PartidoEntity partido;
     
      public PartidoEntity getPartido() {
@@ -33,7 +32,7 @@ public class AmistosoEntity extends BaseEntity implements Serializable {
     public void setPartido(PartidoEntity partido) {
         this.partido = partido;
     }
-    */
+   
     
     public ReservaEntity getReserva() {
         return reserva;

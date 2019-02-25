@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.deporte.dtos;
 
 import java.io.Serializable;
+import javax.ws.rs.Path;
 
 /**
  *
@@ -16,6 +17,8 @@ public class EntrenamientoDTO implements Serializable {
      * atributo que identifica de manera unica al entrenamiento
      */
     private Long id;
+
+    
     /**
      * atributo que modela la relacion con equipo
      */
@@ -25,9 +28,15 @@ public class EntrenamientoDTO implements Serializable {
      */
     private ReservaDTO reserva;
     
+   
     public EntrenamientoDTO(){
         
     }
+    
+     public Long getId() {
+        return id;
+    }
+  
     /**
      * metodo get para partido
      * @return partido
@@ -42,6 +51,11 @@ public class EntrenamientoDTO implements Serializable {
      public ReservaDTO getReserva(){
         return reserva;
     }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
      /**
       * metodo set para equipo
       * @param equipo equipo asociado al entremianto

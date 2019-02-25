@@ -11,6 +11,7 @@ import java.io.Serializable;
  *
  * @author Nicolas De la Hoz
  */
+
 public class AmistosoDTO implements Serializable{
     /**
      * atributo que identifica unicamente el amistoso
