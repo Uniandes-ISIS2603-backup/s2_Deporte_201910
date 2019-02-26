@@ -47,5 +47,15 @@ public class PropietarioDetailDTO extends PropietarioDTO implements Serializable
         this.canchas = canchas;
     }
     
-    
+    public PropietarioEntity toEntity(){
+        PropietarioEntity entityPropietario = super.toEntity();
+        if(canchas!=null){
+            List<CanchaEntity> canchasEntitys = new ArrayList();
+            for(CanchaDTO cancha:canchas){
+                canchasEntitys.add(cancha.toEntity());
+            }
+            entityPropietario.setCanchas(canchasEntitys);
+        }
+        return entityPropietario;
+    }
 }

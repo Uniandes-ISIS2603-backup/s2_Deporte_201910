@@ -21,6 +21,8 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class CanchaPersistence {
 
+    private static final Logger LOGGER = Logger.getLogger(CanchaPersistence.class.getName());
+
     @PersistenceContext(unitName = "deportePU")
     protected EntityManager em;
 
@@ -40,38 +42,38 @@ public class CanchaPersistence {
         return query.getResultList();
     }
 
-    /*  public CanchaEntity findByDireccion(String direccion){
-        
+    public CanchaEntity findByDireccion(String direccion) {
+
         TypedQuery<CanchaEntity> query = em.createQuery("select e from CanchaEntity e where e.direccion = :direccion", CanchaEntity.class);
-        
+
         query = query.setParameter("direccion", direccion);
         CanchaEntity resul;
         List<CanchaEntity> sameDireccion = query.getResultList();
-        if(sameDireccion==null){
-            resul=null;
-        } else if(sameDireccion.isEmpty()){
+        if (sameDireccion == null) {
             resul = null;
-        } else{
+        } else if (sameDireccion.isEmpty()) {
+            resul = null;
+        } else {
             resul = sameDireccion.get(0);
         }
         return resul;
     }
-    
+
     /**
      *
-     * Borra una cancha de la base de datos recibiendo como argumento el id
-     * de la cancha
+     * Borra una cancha de la base de datos recibiendo como argumento el id de
+     * la cancha
      *
      * @param canchasId: id correspondiente a la editorial a borrar.
      */
- /*  public void delete(Long canchasId) {
+    public void delete(Long canchasId) {
         LOGGER.log(Level.INFO, "Borrando cancha con id = {0}", canchasId);
         // Se hace uso de mismo método que esta explicado en public EditorialEntity find(Long id) para obtener la editorial a borrar.
         CanchaEntity entity = em.find(CanchaEntity.class, canchasId);
         /* Note que una vez obtenido el objeto desde la base de datos llamado "entity", volvemos hacer uso de un método propio del
          EntityManager para eliminar de la base de datos el objeto que encontramos y queremos borrar.
          Es similar a "delete from EditorialEntity where id=id;" - "DELETE FROM table_name WHERE condition;" en SQL.*/
-    //    em.remove(entity);
-    //    LOGGER.log(Level.INFO, "Saliendo de borrar la cancha con id = {0}", canchasId);
-    // }
+        em.remove(entity);
+        LOGGER.log(Level.INFO, "Saliendo de borrar la cancha con id = {0}", canchasId);
+    }
 }
