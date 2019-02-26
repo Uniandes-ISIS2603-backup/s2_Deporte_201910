@@ -6,10 +6,13 @@
 package co.edu.uniandes.csw.deporte.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -22,8 +25,13 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
     private String nombre;
     
     private String descripcion;
-    //@OneToOne
-    //private BlogEntity blog;
+    @OneToOne
+    private BlogEntity blog;
+    
+    @PodamExclude
+    @ManyToMany(mappedBy="campeonatos")
+    private List<ClienteEntity> cliente = new ArrayList<>();
+    
     
    
     

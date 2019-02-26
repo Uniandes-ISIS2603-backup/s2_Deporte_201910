@@ -21,7 +21,13 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class ClienteEntity extends BaseEntity implements Serializable
 {
-        
+    @PodamExclude
+    @OneToMany(mappedBy= "cliente")
+    private List<PostEntity> posts = new ArrayList<>();
+    
+    @PodamExclude
+    @ManyToMany
+    private List<CampeonatoEntity> campeonatos = new ArrayList<>();
     //@PodamExclude
     //@ManyToMany(mappedBy="jugadores")
     //private List<EquipoEntity> equipos = new ArrayList<EquipoEntity>();

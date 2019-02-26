@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.deporte.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -24,12 +25,12 @@ public class BlogEntity extends BaseEntity implements Serializable{
     private String nombre;
     
     private String descripcion;
-//@PodamExclude
-  //  @OneToMany(mappedBy = "blog",cascade = CascadeType.PERSIST, orphanRemoval = true)
-    //private List<PostEntity> posts;
+    @PodamExclude
+    @OneToMany(mappedBy = "blog")
+    private List<PostEntity> posts = new ArrayList<>();
     
-    //@OneToOne
-    //private CampeonatoEntity campeonato;  
+    @OneToOne
+    private CampeonatoEntity campeonato;  
     
     /**
      * @return the id

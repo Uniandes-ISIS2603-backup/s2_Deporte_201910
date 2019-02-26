@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.deporte.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -18,8 +19,13 @@ public class PostEntity extends BaseEntity implements Serializable {
     
     private String identificador;
     
-   // @ManyToOne
-    //private BlogEntity blog;
+    @PodamExclude
+   @ManyToOne
+    private BlogEntity blog;
+    
+    @PodamExclude
+    @ManyToOne
+    private ClienteEntity cliente;
     
     public PostEntity()
     {
