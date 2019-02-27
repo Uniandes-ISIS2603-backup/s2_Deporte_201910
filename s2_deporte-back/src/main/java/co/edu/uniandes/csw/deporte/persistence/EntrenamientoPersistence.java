@@ -5,9 +5,7 @@
  */
 package co.edu.uniandes.csw.deporte.persistence;
 
-import co.edu.uniandes.csw.deporte.entities.AmistosoEntity;
 import co.edu.uniandes.csw.deporte.entities.EntrenamientoEntity;
-import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -37,7 +35,7 @@ public class EntrenamientoPersistence {
     }
      
      public List<EntrenamientoEntity> findAll(){
-        Query query = em.createQuery("SELECT * FROM ENTRENAMIENTOENTITY");
+        Query query = em.createQuery("SELECT u FROM EntrenamientoEntity u");
         return query.getResultList();
     }
      
@@ -46,6 +44,6 @@ public class EntrenamientoPersistence {
     }
      
     public void delete(Long id){
-        em.remove(em.find(AmistosoEntity.class, id));
+        em.remove(em.find(EntrenamientoEntity.class, id));
     }
 }

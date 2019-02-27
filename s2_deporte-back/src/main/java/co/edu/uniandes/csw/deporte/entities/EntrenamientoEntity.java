@@ -16,10 +16,11 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class EntrenamientoEntity extends BaseEntity implements Serializable {
+   
     @PodamExclude
     @OneToOne
     EquipoEntity equipo;
-    
+
     public EquipoEntity getEquipo() {
         return equipo;
     }

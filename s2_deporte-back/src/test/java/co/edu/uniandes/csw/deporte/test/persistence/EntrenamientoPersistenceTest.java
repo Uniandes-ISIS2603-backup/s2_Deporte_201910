@@ -5,8 +5,10 @@
  */
 package co.edu.uniandes.csw.deporte.test.persistence;
 
-import co.edu.uniandes.csw.deporte.entities.AmistosoEntity;
-import co.edu.uniandes.csw.deporte.persistence.AmistosoPersistence;
+import co.edu.uniandes.csw.deporte.entities.EntrenamientoEntity;
+
+import co.edu.uniandes.csw.deporte.entities.EntrenamientoEntity;
+import co.edu.uniandes.csw.deporte.persistence.EntrenamientoPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -29,23 +31,23 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author Nicolas De la Hoz
  */
 @RunWith(Arquillian.class)
-public class AmistosoPersistenceTest {
-    
+public class EntrenamientoPersistenceTest {
+        
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(AmistosoEntity.class.getPackage())
-                .addPackage(AmistosoPersistence.class.getPackage())
+                .addPackage(EntrenamientoEntity.class.getPackage())
+                .addPackage(EntrenamientoPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
    }
    
     /**
-     * Inyección de la dependencia a la clase AmistosoPersistence cuyos métodos
+     * Inyección de la dependencia a la clase EntrenamientoPersistence cuyos métodos
      * se van a probar.
      */
     @Inject
-    private AmistosoPersistence persistence;
+    private EntrenamientoPersistence persistence;
 
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -64,7 +66,7 @@ public class AmistosoPersistenceTest {
      /**
      * Lista de datos que se usaran en las pruebas
      */
-    private List<AmistosoEntity> data = new ArrayList<AmistosoEntity>();
+    private List<EntrenamientoEntity> data = new ArrayList<>();
     
     @Before
     public void setUp() {
@@ -85,14 +87,14 @@ public class AmistosoPersistenceTest {
     }
     
     private void clearData() {
-        em.createQuery("DELETE  FROM AmistosoEntity").executeUpdate();
+        em.createQuery("DELETE  FROM EntrenamientoEntity").executeUpdate();
     }
 
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
-            AmistosoEntity entity = factory.manufacturePojo(AmistosoEntity.class);
+            EntrenamientoEntity entity = factory.manufacturePojo(EntrenamientoEntity.class);
 
             em.persist(entity);
             data.add(entity);
@@ -100,31 +102,31 @@ public class AmistosoPersistenceTest {
     }
     
     /**
-     * Prueba para crear un Amistoso.
+     * Prueba para crear un Entrenamiento.
      */
     @Test
-    public void createAmistosoTest() {
+    public void createEntrenamientoTest() {
         PodamFactory factory = new PodamFactoryImpl();
-        AmistosoEntity newEntity = factory.manufacturePojo(AmistosoEntity.class);
-        AmistosoEntity result = persistence.create(newEntity);
+        EntrenamientoEntity newEntity = factory.manufacturePojo(EntrenamientoEntity.class);
+        EntrenamientoEntity result = persistence.create(newEntity);
 
         Assert.assertNotNull(result);
 
-        AmistosoEntity entity = em.find(AmistosoEntity.class, result.getId());
+        EntrenamientoEntity entity = em.find(EntrenamientoEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getId(), entity.getId());
     }
     
     /**
-     * Prueba para consultar la lista de amistosos.
+     * Prueba para consultar la lista de entrenamientos.
      */
     @Test
-    public void getAmistososTest() {
-        List<AmistosoEntity> list = persistence.findAll();
+    public void getEntrenamientosTest() {
+        List<EntrenamientoEntity> list = persistence.findAll();
         Assert.assertEquals(data.size(), list.size());
-        for (AmistosoEntity ent : list) {
+        for (EntrenamientoEntity ent : list) {
             boolean found = false;
-            for (AmistosoEntity entity : data)
+            for (EntrenamientoEntity entity : data)
             {
                 if (ent.getId().equals(entity.getId())) {
                     found = true;
@@ -135,42 +137,42 @@ public class AmistosoPersistenceTest {
     }
 
     /**
-     * Prueba para consultar un amistoso.
+     * Prueba para consultar un Entrenamiento.
      */
     @Test
-    public void getAmistosoTest() {
-        AmistosoEntity entity = data.get(0);
-        AmistosoEntity newEntity = persistence.find(entity.getId());
+    public void getEntrenamientoTest() {
+        EntrenamientoEntity entity = data.get(0);
+        EntrenamientoEntity newEntity = persistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());        
     }
 
     /**
-     * Prueba para actualizar un amistoso.
+     * Prueba para actualizar un Entrenamiento.
      */
     @Test
-    public void updateAmistosoTest() {
-        AmistosoEntity entity = data.get(0);
+    public void updateEntrenamientoTest() {
+        EntrenamientoEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        AmistosoEntity newEntity = factory.manufacturePojo(AmistosoEntity.class);
+        EntrenamientoEntity newEntity = factory.manufacturePojo(EntrenamientoEntity.class);
 
         newEntity.setId(entity.getId());
 
         persistence.update(newEntity);
 
-        AmistosoEntity resp = em.find(AmistosoEntity.class, entity.getId());
+        EntrenamientoEntity resp = em.find(EntrenamientoEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getId(), resp.getId());
     }
 
     /**
-     * Prueba para eliminar un amistoso.
+     * Prueba para eliminar un Entrenamiento.
      */
     @Test
-    public void deleteAmistosoTest() {
-        AmistosoEntity entity = data.get(0);
+    public void deleteEntrenamientoTest() {
+        EntrenamientoEntity entity = data.get(0);
         persistence.delete(entity.getId());
-        AmistosoEntity deleted = em.find(AmistosoEntity.class, entity.getId());
+        EntrenamientoEntity deleted = em.find(EntrenamientoEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 }
