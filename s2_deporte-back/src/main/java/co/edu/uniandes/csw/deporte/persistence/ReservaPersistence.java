@@ -38,11 +38,14 @@ public class ReservaPersistence {
     }
      
      public List<ReservaEntity> findAll(){
-        Query query = em.createQuery("SELECT * FROM RESERVAENTITY");
+        Query query = em.createQuery("SELECT u FROM ReservaEntity u");
         return query.getResultList();
     }
      
      public ReservaEntity update(ReservaEntity entidad){
          return em.merge(entidad);
+    }
+    public void delete(Long id){
+        em.remove(em.find(ReservaEntity.class, id));
     }
 }
