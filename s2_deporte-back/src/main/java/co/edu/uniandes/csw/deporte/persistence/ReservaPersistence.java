@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.deporte.persistence;
 
 import co.edu.uniandes.csw.deporte.entities.ReservaEntity;
 import java.util.Collection;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -36,9 +37,9 @@ public class ReservaPersistence {
         return reserva;
     }
      
-     public Collection<ReservaEntity> findAll(){
+     public List<ReservaEntity> findAll(){
         Query query = em.createQuery("SELECT * FROM RESERVAENTITY");
-        return (Collection<ReservaEntity>) query.getResultList();
+        return query.getResultList();
     }
      
      public ReservaEntity update(ReservaEntity entidad){

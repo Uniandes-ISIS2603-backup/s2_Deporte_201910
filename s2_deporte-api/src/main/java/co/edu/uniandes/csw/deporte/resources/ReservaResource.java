@@ -18,7 +18,7 @@ import javax.ws.rs.Produces;
 
 /**
  *
- * @author Santiago Barbosa
+ * @author Nicolas De la Hoz
  */
 
 @Path ("reservas")

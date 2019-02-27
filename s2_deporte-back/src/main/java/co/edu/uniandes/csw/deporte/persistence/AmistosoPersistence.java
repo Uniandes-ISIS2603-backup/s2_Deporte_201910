@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.deporte.persistence;
 
 import co.edu.uniandes.csw.deporte.entities.AmistosoEntity;
-import java.util.Collection;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,14 +30,15 @@ public class AmistosoPersistence {
         em.persist(entidad);
         return entidad;
     }
-     public AmistosoEntity find(Long id){
+    
+    public AmistosoEntity find(Long id){
         AmistosoEntity amistoso=em.find(AmistosoEntity.class, id);
         return amistoso;
     }
      
-     public Collection<AmistosoEntity> findAll(){
-        Query query = em.createQuery("SELECT * FROM AMISTOSOENTITY");
-        return (Collection<AmistosoEntity>) query.getResultList();
+    public List<AmistosoEntity> findAll(){
+        Query query = em.createQuery("SELECT u FROM AmistosoEntity u");
+        return  query.getResultList();
     }
      
      public AmistosoEntity update(AmistosoEntity entidad){

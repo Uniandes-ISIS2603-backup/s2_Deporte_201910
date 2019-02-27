@@ -36,7 +36,7 @@ public class AmistosoPersistenceTest {
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(AmistosoEntity.class.getPackage())
-                .addPackage(AmistosoPersistenceTest.class.getPackage())
+                .addPackage(AmistosoPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
    }
@@ -86,11 +86,11 @@ public class AmistosoPersistenceTest {
     }
     
     private void clearData() {
-        em.createQuery("delete FROM AMISTOSOENTITY").executeUpdate();
+        em.createQuery("DELETE  FROM AmistosoEntity").executeUpdate();
     }
 
 
- private void insertData() {
+    private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             AmistosoEntity entity = factory.manufacturePojo(AmistosoEntity.class);
@@ -100,42 +100,78 @@ public class AmistosoPersistenceTest {
         }
     }
     
-      /**
-     * Test of find method, of class AmistosoPersistence.
-     */
-    @Test
-    public void testFind() throws Exception {
-        fail("testFind");
-    }
     /**
-     * Test of findAll method, of class AmistosoPersistence.
+     * Prueba para crear un Amistoso.
      */
     @Test
-    public void testFindAll() throws Exception {
-        fail("testFindAll");
+    public void createAmistosoTest() {
+        PodamFactory factory = new PodamFactoryImpl();
+        AmistosoEntity newEntity = factory.manufacturePojo(AmistosoEntity.class);
+        AmistosoEntity result = persistence.create(newEntity);
+
+        Assert.assertNotNull(result);
+
+        AmistosoEntity entity = em.find(AmistosoEntity.class, result.getId());
+
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+    }
+    
+    /**
+     * Prueba para consultar la lista de amistosos.
+     */
+    @Test
+    public void getAmistososTest() {
+        List<AmistosoEntity> list = persistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (AmistosoEntity ent : list) {
+            boolean found = false;
+            for (AmistosoEntity entity : data)
+            {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
     }
 
     /**
-     * Test of create method, of class AmistosoPersistence.
+     * Prueba para consultar un amistoso.
      */
     @Test
-    public void testCreate() throws Exception {
-         fail("testCreate");
+    public void getAmistosoTest() {
+        AmistosoEntity entity = data.get(0);
+        AmistosoEntity newEntity = persistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());        
     }
 
     /**
-     * Test of update method, of class AmistosoPersistence.
+     * Prueba para actualizar un amistoso.
      */
     @Test
-    public void testUpdate() throws Exception {
-        fail("testUpdate");
+    public void updateAmistosoTest() {
+        AmistosoEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        AmistosoEntity newEntity = factory.manufacturePojo(AmistosoEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        persistence.update(newEntity);
+
+        AmistosoEntity resp = em.find(AmistosoEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getId(), resp.getId());
     }
 
     /**
-     * Test of delete method, of class AmistosoPersistence.
+     * Prueba para eliminar un amistoso.
      */
     @Test
-    public void testDelete() throws Exception {
-         fail("testDelete");
+    public void deleteClienteTest() {
+        AmistosoEntity entity = data.get(0);
+        persistence.delete(entity.getId());
+        AmistosoEntity deleted = em.find(AmistosoEntity.class, entity.getId());
+        Assert.assertNull(deleted);
     }
 }

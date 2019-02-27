@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.deporte.persistence;
 import co.edu.uniandes.csw.deporte.entities.AmistosoEntity;
 import co.edu.uniandes.csw.deporte.entities.EntrenamientoEntity;
 import java.util.Collection;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -35,9 +36,9 @@ public class EntrenamientoPersistence {
         return entrenamiento;
     }
      
-     public Collection<EntrenamientoEntity> findAll(){
+     public List<EntrenamientoEntity> findAll(){
         Query query = em.createQuery("SELECT * FROM ENTRENAMIENTOENTITY");
-        return (Collection<EntrenamientoEntity>) query.getResultList();
+        return query.getResultList();
     }
      
      public EntrenamientoEntity update(EntrenamientoEntity entidad){
