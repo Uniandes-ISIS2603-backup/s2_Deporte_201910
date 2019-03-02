@@ -29,7 +29,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 public class CanchaPersistenceTest {
     @Inject
-    private CanchaPersistence cp;
+    private CanchaPersistence canchaPersistence;
     
     @PersistenceContext
     private EntityManager em;
@@ -37,7 +37,7 @@ public class CanchaPersistenceTest {
     @Inject
     UserTransaction utx;
     
-    private List<CanchaEntity> data = new ArrayList<CanchaEntity>();
+    private List<CanchaEntity> data = new ArrayList<>();
     
     @Deployment
     public static JavaArchive createDeployment(){
@@ -48,7 +48,7 @@ public class CanchaPersistenceTest {
                 .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
     
-        /**
+     /**
      * Configuración inicial de la prueba.
      */
     @Before
@@ -95,24 +95,24 @@ public class CanchaPersistenceTest {
             data.add(entity);
         }
     }
-    
-        /**
+    /**
      * Prueba para crear una Cancha.
-     *
-     *
      */
     @Test
-    public void createCanchaTest() {
+    public void createCanchaTest()
+    {
         PodamFactory factory = new PodamFactoryImpl();
-        CanchaEntity newCanchaEntity = factory.manufacturePojo(CanchaEntity.class);
-        CanchaEntity ce = cp.create(newCanchaEntity);
+        CanchaEntity newEntity;
+        newEntity = factory.manufacturePojo(CanchaEntity.class);
+        CanchaEntity result = canchaPersistence.create(newEntity);
         
-        Assert.assertNotNull(ce);
+        Assert.assertNotNull(result);
         
-        CanchaEntity entity = em.find(CanchaEntity.class,ce.getId());
+        CanchaEntity entity = em.find(CanchaEntity.class, result.getId());
         
-        Assert.assertEquals(newCanchaEntity.getDireccion(), entity.getDireccion());
-    }
+        Assert.assertEquals(newEntity.getDireccion(), entity.getDireccion());
+        
+            }
     
         /**
      * Prueba para eliminar una Cancha.

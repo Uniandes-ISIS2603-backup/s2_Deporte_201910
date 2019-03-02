@@ -38,23 +38,23 @@ public class ClienteResource
         return cliente;
     }
     @GET
-    @Path("{id : + \\d+")
+    @Path("{id : \\d+}")
     public ClienteDetailDTO getCliente(@PathParam("id") Long id) {
         return null;
     }
     @GET
-    @Path("{id : + \\d+")
+    @Path("{id : \\d+}")
     public List<ClienteDetailDTO> getClientes() {
         return null;
     }
     @PUT
-    @Path("{id : + \\d+")
+    @Path("{id : \\d+}")
     public ClienteDetailDTO updateCliente(@PathParam("id") Long id)
     {
         return null;
     }
     @DELETE
-    @Path("{id : + \\d+")
+    @Path("{id : \\d+}")
     public void deleteCliente(@PathParam("id") Long id)
     {
         
