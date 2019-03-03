@@ -94,7 +94,7 @@ public class ClientePersistenceTest
      * Prueba para crear un Author.
      */
     @Test
-    public void createAuthorTest() {
+    public void createClienteTest() {
         PodamFactory factory = new PodamFactoryImpl();
         ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
         ClienteEntity result = clientePersistence.create(newEntity);

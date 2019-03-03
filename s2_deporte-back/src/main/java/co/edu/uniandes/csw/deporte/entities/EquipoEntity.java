@@ -23,64 +23,72 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class EquipoEntity extends BaseEntity implements Serializable
 {
         
-    //@PodamExclude
-    //@ManyToMany(mappedBy="equipos")
-    //private List<PartidoEntity> partidos = new ArrayList<PartidoEntity>();
+    @PodamExclude
+    @ManyToMany
+    private List<PartidoEntity> partidos;
     
-    //@PodamExclude
-    //@ManyToMany
-    //private List<ClienteEntity> jugadores = new ArrayList<ClienteEntity>();
-    //private ClienteEntity representante = new ClienteEntity();
+    @PodamExclude
+    @ManyToMany
+    private List<ClienteEntity> jugadores;
+   
+    @PodamExclude
+    @OneToOne
+    private ClienteEntity representante = new ClienteEntity();
    
     private String nombre;
+
+    public EquipoEntity() {
+        this.jugadores = new ArrayList<>();
+        this.partidos = new ArrayList<>();
+    }
     /**
      * devuelve la lista de jugadores en el equipo
      * @return jugadores
      */
-    //public List<ClienteEntity> getJugadores()
-    //{
-      //  return jugadores;
-    //}
+    public List<ClienteEntity> getJugadores()
+    {
+        return jugadores;
+    }
     /**
      * modifica la lista de jugadores
      * @param pJugadores los nuevos jugadores
      */
-    //public void setJugadores(List<ClienteEntity> pJugadores)
-    //{
-      //  jugadores=pJugadores;
-    //}
+    public void setJugadores(List<ClienteEntity> pJugadores)
+    {
+        jugadores=pJugadores;
+    }
     /**
      * Asigna un representante para un equipo
      * @param pR el ClienteEntity que va a representar al equipo
      */
-    //public void setRepresentante(ClienteEntity pR)
-    //{
-      //  representante=pR;
-    //}
+    public void setRepresentante(ClienteEntity pR)
+    {
+        representante=pR;
+    }
     /**
      * devuelve el representante del equipo
      * @return representante
      */
-    //public ClienteEntity getRepresentante()
-    //{
-      //  return representante;
-    //}
+    public ClienteEntity getRepresentante()
+    {
+        return representante;
+    }
     /**
      * devuelve los partidos del equipo
      * @return partidos
      */
-    //public List<PartidoEntity> getPartidos()
-    //{
-      //  return partidos;
-    //}
+    public List<PartidoEntity> getPartidos()
+    {
+        return partidos;
+    }
     /**
      * modifica los partidos de un equipo
      * @param pPartidos los partidos que se insertan
      */
-    //public void setPartidos(List<PartidoEntity> pPartidos)
-    //{
-      //  partidos=pPartidos;
-    //}
+    public void setPartidos(List<PartidoEntity> pPartidos)
+    {
+        partidos=pPartidos;
+    }
      public String getNombre() {
         return nombre;
     }

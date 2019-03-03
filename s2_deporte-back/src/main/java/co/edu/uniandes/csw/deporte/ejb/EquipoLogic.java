@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.deporte.ejb;
 
+import co.edu.uniandes.csw.deporte.entities.ClienteEntity;
 import co.edu.uniandes.csw.deporte.entities.EquipoEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.deporte.persistence.EquipoPersistence;
@@ -25,8 +26,25 @@ public class EquipoLogic
     @Inject
     private EquipoPersistence equipoPersistence;
     
-    public EquipoEntity createEquipo(EquipoEntity equipoEntity) {
+    public EquipoEntity createEquipo(EquipoEntity equipoEntity)throws BusinessLogicException
+    {
         LOGGER.log(Level.INFO, "Inicia proceso de creación del equipo");
+        if(equipoEntity.getNombre()==null)
+        {
+            throw new BusinessLogicException("El nombre del equipo es null");
+        }
+        if(verificacionDeJugadores(equipoEntity.getJugadores()))
+        {
+            throw new BusinessLogicException("El equipo tiene jugadores repetidos");
+        }
+        if(equipoEntity.getRepresentante()==null)
+        {
+            throw new BusinessLogicException("El equipo no tiene representante");
+        }
+        if(getEquipo(equipoEntity.getId())!=null)
+        {
+            throw new BusinessLogicException("El equipo ya existe");
+        }
         EquipoEntity newEquipoEntity = equipoPersistence.create(equipoEntity);
         LOGGER.log(Level.INFO, "Termina proceso de creación del equipo");
         return newEquipoEntity;
@@ -39,7 +57,7 @@ public class EquipoLogic
         return lista;
     }
     
-    public EquipoEntity getequipo(Long equiposId) {
+    public EquipoEntity getEquipo(Long equiposId) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar el equipo con id = {0}", equiposId);
         EquipoEntity equipoEntity = equipoPersistence.find(equiposId);
         if (equipoEntity == null) {
@@ -49,17 +67,45 @@ public class EquipoLogic
         return equipoEntity;
     }
     
-    public EquipoEntity updateequipo(Long equiposId, EquipoEntity equipoEntity) {
+    public EquipoEntity updateEquipo(Long equiposId, EquipoEntity equipoEntity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar el equipo con id = {0}", equiposId);
+        if(equipoEntity.getNombre()==null)
+        {
+            throw new BusinessLogicException("El nombre del equipo es null");
+        }
+        if(verificacionDeJugadores(equipoEntity.getJugadores()))
+        {
+            throw new BusinessLogicException("El equipo tiene jugadores repetidos");
+        }
+        if(equipoEntity.getRepresentante()==null)
+        {
+            throw new BusinessLogicException("El equipo no tiene representante");
+        }
         EquipoEntity newequipoEntity = equipoPersistence.update(equipoEntity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar el equipo con id = {0}", equiposId);
         return newequipoEntity;
     }
     
-    public void deleteequipo(Long equiposId) throws BusinessLogicException {
+    public void deleteEquipo(Long equiposId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar el equipo con id = {0}", equiposId);
         //hacer lo que se involucra con equipos
         equipoPersistence.delete(equiposId);
         LOGGER.log(Level.INFO, "Termina proceso de borrar el equipo con id = {0}", equiposId);
+    }
+    
+    private boolean verificacionDeJugadores(List<ClienteEntity> jugadores)
+    {
+        for(int i=0; i<jugadores.size()-1;i++)
+        {
+            ClienteEntity e = jugadores.get(i);
+            for(int x =i+1;x<jugadores.size();x++)
+            {
+                if(e.getId()==jugadores.get(x).getId())
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

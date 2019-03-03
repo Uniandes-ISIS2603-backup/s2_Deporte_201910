@@ -28,9 +28,9 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable
         super(entity);
         if (entity != null) {
             equipos = new ArrayList<>();
-            //for (EquipoEntity entityEquipos : entity.getEquipos()) {
-            //    equipos.add(new EquipoDTO(entityEquipos));
-            //}
+            for (EquipoEntity entityEquipos : entity.getEquipos()) {
+                equipos.add(new EquipoDTO(entityEquipos));
+            }
 
         }
 
@@ -43,7 +43,7 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable
             for (EquipoDTO dtoEquipo : equipos) {
                 equiposEntity.add(dtoEquipo.toEntity());
             }
-            //entity.setEquipos(equiposEntity);
+            entity.setEquipos(equiposEntity);
         }
 
         return entity;

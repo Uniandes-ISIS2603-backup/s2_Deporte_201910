@@ -34,7 +34,8 @@ public class EquipoDTO implements Serializable
     public EquipoDTO(EquipoEntity entity) {
         if (entity != null) {
             this.id = entity.getId();
-            this.nombre = entity.getNombre();            
+            this.nombre = entity.getNombre();   
+            this.representante=new ClienteDTO(entity.getRepresentante());
         }
     }
 
@@ -48,7 +49,8 @@ public class EquipoDTO implements Serializable
         EquipoEntity entity = new EquipoEntity();
         entity.setId(this.getId());
         entity.setNombre(this.getNombre());
-         return entity;
+        entity.setRepresentante(representante.toEntity());
+        return entity;
     }
     //Métodos-------------------------------------------------------------------
     

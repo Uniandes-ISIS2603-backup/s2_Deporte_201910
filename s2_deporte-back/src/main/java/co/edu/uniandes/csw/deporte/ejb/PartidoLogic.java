@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.deporte.ejb;
 import co.edu.uniandes.csw.deporte.entities.PartidoEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.deporte.persistence.PartidoPersistence;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,8 +27,29 @@ public class PartidoLogic
     @Inject
     private PartidoPersistence partidoPersistence;
     
-    public PartidoEntity createPartido(PartidoEntity partidoEntity) {
+    public PartidoEntity createPartido(PartidoEntity partidoEntity)throws BusinessLogicException
+    {
         LOGGER.log(Level.INFO, "Inicia proceso de creación del partido");
+        if(partidoEntity.getFecha().before(new Date()))
+        {
+            throw new BusinessLogicException("La fecha del partido ya pasó");
+        }
+        if(partidoEntity.getEquipos().size()>2)
+        {
+            throw new BusinessLogicException("No es la cantidad correcta de equipos");
+        }
+        if(partidoEntity.getEquipos().size()==2&&(partidoEntity.getEquipos().get(0).getId()==partidoEntity.getEquipos().get(1).getId()))
+        {
+            throw new BusinessLogicException("Los equipos están repetidos");
+        }
+        if(partidoEntity.getPuntaje().size()==2 && (partidoEntity.getPuntaje().get(0)<0||partidoEntity.getPuntaje().get(1)<0))
+        {
+            throw new BusinessLogicException("El partido tiene puntaje negativo");
+        }
+        if(getPartido(partidoEntity.getId())!=null)
+        {
+            throw new BusinessLogicException("El partido ya existe");
+        }
         PartidoEntity newPartidoEntity = partidoPersistence.create(partidoEntity);
         LOGGER.log(Level.INFO, "Termina proceso de creación del partido");
         return newPartidoEntity;
@@ -40,7 +62,7 @@ public class PartidoLogic
         return lista;
     }
     
-    public PartidoEntity getpartido(Long partidosId) {
+    public PartidoEntity getPartido(Long partidosId) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar el partido con id = {0}", partidosId);
         PartidoEntity partidoEntity = partidoPersistence.find(partidosId);
         if (partidoEntity == null) {
@@ -50,14 +72,30 @@ public class PartidoLogic
         return partidoEntity;
     }
     
-    public PartidoEntity updatepartido(Long partidosId, PartidoEntity partidoEntity) {
+    public PartidoEntity updatePartido(Long partidosId, PartidoEntity partidoEntity)throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar el partido con id = {0}", partidosId);
+        if(partidoEntity.getFecha().before(new Date()))
+        {
+            throw new BusinessLogicException("La fecha del partido ya pasó");
+        }
+        if(partidoEntity.getEquipos().size()>2)
+        {
+            throw new BusinessLogicException("No es la cantidad correcta de equipos");
+        }
+        if(partidoEntity.getEquipos().size()==2&&partidoEntity.getEquipos().get(0).getId()==partidoEntity.getEquipos().get(1).getId())
+        {
+            throw new BusinessLogicException("Los equipos están repetidos");
+        }
+        if(partidoEntity.getPuntaje().size()==2 && (partidoEntity.getPuntaje().get(0)<0||partidoEntity.getPuntaje().get(1)<0))
+        {
+            throw new BusinessLogicException("El partido tiene puntaje negativo");
+        }
         PartidoEntity newpartidoEntity = partidoPersistence.update(partidoEntity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar el partido con id = {0}", partidosId);
         return newpartidoEntity;
     }
     
-    public void deletepartido(Long partidosId) throws BusinessLogicException {
+    public void deletePartido(Long partidosId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar el partido con id = {0}", partidosId);
         //hacer lo que se involucra con equipos
         partidoPersistence.delete(partidosId);

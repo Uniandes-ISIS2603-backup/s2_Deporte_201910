@@ -25,15 +25,20 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class PartidoEntity extends BaseEntity implements Serializable
 {
-    //@PodamExclude
-    //@ManyToMany
-    //private List<EquipoEntity> equipos = new ArrayList<EquipoEntity>();
+    @PodamExclude
+    @ManyToMany(mappedBy = "partidos")
+    private List<EquipoEntity> participantes;
     
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
     
-    private List<Integer> puntaje = new ArrayList<Integer>();
+    private List<Integer> puntaje;
+
+    public PartidoEntity() {
+        this.puntaje = new ArrayList<>();
+        this.participantes = new ArrayList<>();
+    }
     /**
      * le asigna una fecha al partido
      * @param pFecha la fecha que se le asigna a un partido
@@ -51,21 +56,21 @@ public class PartidoEntity extends BaseEntity implements Serializable
         return fecha;
     }
     /**
-     * le asigna equipos al partido
-     * @param pEquipos los equipos que se asignan
+     * le asigna participantes al partido
+     * @param pEquipos los participantes que se asignan
      */
-    //public void setEquipos(List<EquipoEntity> pEquipos)
-    //{
-      //  equipos=pEquipos;
-    //}
+    public void setEquipos(List<EquipoEntity> pEquipos)
+    {
+        participantes=pEquipos;
+    }
     /**
-     * devuelve los equipos que van a participar
-     * @return equipos
+     * devuelve los participantes que van a participar
+     * @return participantes
      */
-    //public List<EquipoEntity> getEquipos()
-    //{
-      //  return equipos;
-    //}
+    public List<EquipoEntity> getEquipos()
+    {
+        return participantes;
+    }
     /**
      * modifica el puntaje de un partido
      * @param pPuntaje el puntaje nuevo

@@ -6,8 +6,10 @@
 package co.edu.uniandes.csw.deporte.ejb;
 
 import co.edu.uniandes.csw.deporte.entities.ClienteEntity;
+import co.edu.uniandes.csw.deporte.entities.EquipoEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.deporte.persistence.ClientePersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,6 +44,10 @@ public class ClienteLogic
         if(getCliente(clienteEntity.getId())!=null)
         {
             throw new BusinessLogicException("El cliente que se va a crear ya existe");
+        }
+        if(this.verificacionDeEquipos(clienteEntity.getEquipos()))
+        {
+            throw new BusinessLogicException("El cliente tiene equipos repetidos");
         }
         clientePersistence.create(clienteEntity);
         LOGGER.log(Level.INFO, "Se termino de crear el cliente");
@@ -88,7 +94,12 @@ public class ClienteLogic
         {
             throw new BusinessLogicException("El nombre del cliente es null");
         }
+        if(this.verificacionDeEquipos(clienteEntity.getEquipos()))
+        {
+            throw new BusinessLogicException("El cliente tiene equipos repetidos");
+        }
         ClienteEntity res = clientePersistence.update(clienteEntity);
+        LOGGER.log(Level.INFO, "Se modificó del cliente con id={0}", clienteId);
         return res;
     }
     /**
@@ -99,5 +110,21 @@ public class ClienteLogic
     {
         LOGGER.log(Level.INFO, "Se empieza el proceso para eliminar el cliente con id={0}", clienteId);
         clientePersistence.delete(clienteId);        
+    }
+    
+    private boolean verificacionDeEquipos(List<EquipoEntity> equipos)
+    {
+        for(int i=0; i<equipos.size()-1;i++)
+        {
+            EquipoEntity e = equipos.get(i);
+            for(int x =i+1;x<equipos.size();x++)
+            {
+                if(e.getId()==equipos.get(x).getId())
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

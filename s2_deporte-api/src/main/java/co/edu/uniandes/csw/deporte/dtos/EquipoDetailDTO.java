@@ -31,9 +31,9 @@ public class EquipoDetailDTO extends EquipoDTO implements Serializable
         super(entity);
         if (entity != null) {
             jugadores = new ArrayList<>();
-            //for (ClienteEntity entityClientes : entity.getJugadores()) {
-              //  jugadores.add(new ClienteDTO(entityClientes));
-            //}
+            for (ClienteEntity entityClientes : entity.getJugadores()) {
+                jugadores.add(new ClienteDTO(entityClientes));
+            }
         }
     }
     @Override
@@ -44,13 +44,13 @@ public class EquipoDetailDTO extends EquipoDTO implements Serializable
             for (ClienteDTO dtoCliente : jugadores) {
                 clientesEntity.add(dtoCliente.toEntity());
             }
-            //entity.setJugadores(clientesEntity);
+            entity.setJugadores(clientesEntity);
             
             List<PartidoEntity> partidosEntity = new ArrayList<>();
             for (PartidoDTO dtoPartido : partidos) {
                 partidosEntity.add(dtoPartido.toEntity());
             }
-            //entity.setJugadores(clientesEntity);
+            entity.setJugadores(clientesEntity);
         }
 
         return entity;

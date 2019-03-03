@@ -11,11 +11,11 @@ import java.util.logging.Level;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.Query;
 
 /**
  *
- * @author estudiante
+ * @equipo estudiante
  */
 @Stateless
 public class EquipoPersistence 
@@ -25,61 +25,66 @@ public class EquipoPersistence
     @PersistenceContext(unitName = "deportePU")
     protected EntityManager em;
     
+    
     /**
-     * Crea un equipo en la base de datos
+     * Método para persisitir la entidad en la base de datos.
      *
-     * @param equipoEntity objeto equipo que se creará en la base de datos
+     * @param EquipoEntity objeto equipo que se creará en la base de datos
      * @return devuelve la entidad creada con un id dado por la base de datos.
      */
-    public EquipoEntity create(EquipoEntity equipoEntity) {
+    public EquipoEntity create(EquipoEntity EquipoEntity) {
         LOGGER.log(Level.INFO, "Creando un equipo nuevo");
-        em.persist(equipoEntity);
-        LOGGER.log(Level.INFO, "Equipo creado");
-        return equipoEntity;
+        em.persist(EquipoEntity);
+        LOGGER.log(Level.INFO, "Libro creado");
+        return EquipoEntity;
     }
 
     /**
-     * Devuelve todos los equipos de la base de datos.
+     * Devuelve todos losequipos de la base de datos.
      *
-     * @return una lista con todos los equipos que encuentre en la base de datos
+     * @return una lista con todos los equipos que encuentre en la base de datos,
+     * "select u from EquipoEntity u" es como un "select * from EquipoEntity;" -
+     * "SELECT * FROM table_name" en SQL.
      */
     public List<EquipoEntity> findAll() {
         LOGGER.log(Level.INFO, "Consultando todos los equipos");
-        TypedQuery query = em.createQuery("select u from EquipoEntity u", EquipoEntity.class);
-        return query.getResultList();
+        Query q = em.createQuery("select u from EquipoEntity u");
+        return q.getResultList();
     }
 
     /**
-     * Busca si hay algun equipo con el id que se envía de argumento
+     * Busca si hay algun lubro con el id que se envía de argumento
      *
-     * @param equiposId: id correspondiente al equipo buscado.
+     * @param EquiposId: id correspondiente al equipo buscado.
      * @return un equipo.
      */
-    public EquipoEntity find(Long equiposId) 
-    {
-        LOGGER.log(Level.INFO, "Consultando el equipo con id={0}", equiposId);
-        return em.find(EquipoEntity.class, equiposId);
+    public EquipoEntity find(Long EquiposId) {
+        LOGGER.log(Level.INFO, "Consultando el equipo con id={0}", EquiposId);
+        return em.find(EquipoEntity.class, EquiposId);
     }
 
     /**
      * Actualiza un equipo.
      *
-     * @param equipoEntity: el equipo que viene con los nuevos cambios. 
+     * @param EquipoEntity: el equipo que viene con los nuevos cambios. Por ejemplo
+     * el nombre pudo cambiar. En ese caso, se haria uso del método update.
      * @return un equipo con los cambios aplicados.
      */
-    public EquipoEntity update(EquipoEntity equipoEntity) {
-        LOGGER.log(Level.INFO, "Actualizando el cliente con id={0}", equipoEntity.getId());
-        return em.merge(equipoEntity);
+    public EquipoEntity update(EquipoEntity EquipoEntity) {
+        LOGGER.log(Level.INFO, "Actualizando el equipo con id={0}", EquipoEntity.getId());
+        return em.merge(EquipoEntity);
     }
 
     /**
-     * Borra un equipo de la base de datos recibiendo como argumento el id del equipo
-     * @param equiposId: id correspondiente al equipo a borrar.
+     *
+     * Borra un equipo de la base de datos recibiendo como argumento el id del
+     * equipo
+     *
+     * @param EquiposId: id correspondiente al equipo a borrar.
      */
-    public void delete(Long equiposId) {
-
-        LOGGER.log(Level.INFO, "Borrando el equipo con id={0}", equiposId);
-        EquipoEntity equipoEntity = em.find(EquipoEntity.class, equiposId);
-        em.remove(equipoEntity);
+    public void delete(Long EquiposId) {
+        LOGGER.log(Level.INFO, "Borrando el equipo con id={0}", EquiposId);
+        EquipoEntity EquipoEntity = em.find(EquipoEntity.class, EquiposId);
+        em.remove(EquipoEntity);
     }
 }
