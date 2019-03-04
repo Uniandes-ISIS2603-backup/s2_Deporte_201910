@@ -3,11 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.deporte.test.persistence;
+package co.edu.uniandes.csw.deporte.test.logic;
 
+import co.edu.uniandes.csw.deporte.ejb.ReservaLogic;
 import co.edu.uniandes.csw.deporte.entities.ReservaEntity;
+import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.deporte.persistence.ReservaPersistence;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -29,13 +33,13 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author Nicolas De la Hoz
  */
 @RunWith(Arquillian.class)
-public class ReservaPersistenceTest {
-    
+public class ReservaLogicTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(ReservaEntity.class.getPackage())
                 .addPackage(ReservaPersistence.class.getPackage())
+                .addPackage(ReservaLogic.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
    }
@@ -45,7 +49,7 @@ public class ReservaPersistenceTest {
      * se van a probar.
      */
     @Inject
-    private ReservaPersistence persistence;
+    private ReservaLogic reservaLogic;
 
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -103,16 +107,34 @@ public class ReservaPersistenceTest {
      * Prueba para crear un Reserva.
      */
     @Test
-    public void createReservaTest() {
+    public void createReservaTest() throws BusinessLogicException {
         PodamFactory factory = new PodamFactoryImpl();
         ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
-        ReservaEntity result = persistence.create(newEntity);
+        ReservaEntity result;
+        newEntity.setFechaInicio(new Date(10000));
+        newEntity.setFechaFin(new Date(2000000));
+        result = reservaLogic.createReserva(newEntity);
 
         Assert.assertNotNull(result);
-
+        
         ReservaEntity entity = em.find(ReservaEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getId(), entity.getId());
+        
+    }
+    
+    /**
+     * Prueba para crear un Reserva.
+     */
+    @Test (expected = BusinessLogicException.class)
+    public void createReservaFailTest() throws BusinessLogicException {
+        PodamFactory factory = new PodamFactoryImpl();
+        ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
+        ReservaEntity result;
+        newEntity.setFechaInicio(new Date(20000000));
+        newEntity.setFechaFin(new Date(1000));
+        result = reservaLogic.createReserva(newEntity);
+        
     }
     
     /**
@@ -120,7 +142,7 @@ public class ReservaPersistenceTest {
      */
     @Test
     public void getReservasTest() {
-        List<ReservaEntity> list = persistence.findAll();
+        List<ReservaEntity> list = reservaLogic.findAll();
         Assert.assertEquals(data.size(), list.size());
         for (ReservaEntity ent : list) {
             boolean found = false;
@@ -138,9 +160,9 @@ public class ReservaPersistenceTest {
      * Prueba para consultar un Reserva.
      */
     @Test
-    public void getReservaTest() {
+    public void getReservaTest() throws BusinessLogicException {
         ReservaEntity entity = data.get(0);
-        ReservaEntity newEntity = persistence.find(entity.getId());
+        ReservaEntity newEntity = reservaLogic.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());        
     }
@@ -149,18 +171,37 @@ public class ReservaPersistenceTest {
      * Prueba para actualizar un Reserva.
      */
     @Test
-    public void updateReservaTest() {
+    public void updateReservaTest() throws BusinessLogicException {
         ReservaEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
 
         newEntity.setId(entity.getId());
-
-        persistence.update(newEntity);
+        newEntity.setFechaInicio(new Date(10000));
+        newEntity.setFechaFin(new Date(2000000));
+        
+        reservaLogic.update(newEntity);
 
         ReservaEntity resp = em.find(ReservaEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getId(), resp.getId());
+    }
+    
+    /**
+     * Prueba para actualizar un Reserva.
+     */
+    @Test(expected = BusinessLogicException.class)
+    public void updateReservaFailTest() throws BusinessLogicException {
+        ReservaEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
+
+        newEntity.setId(entity.getId());
+        newEntity.setFechaInicio(new Date(20000000));
+        newEntity.setFechaFin(new Date(1000));
+        
+        reservaLogic.update(newEntity);
+
     }
 
     /**
@@ -169,8 +210,10 @@ public class ReservaPersistenceTest {
     @Test
     public void deleteReservaTest() {
         ReservaEntity entity = data.get(0);
-        persistence.delete(entity.getId());
+        reservaLogic.delete(entity.getId());
         ReservaEntity deleted = em.find(ReservaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
+    
+   
 }
