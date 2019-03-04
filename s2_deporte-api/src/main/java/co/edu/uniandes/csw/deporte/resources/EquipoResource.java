@@ -36,23 +36,23 @@ public class EquipoResource
         return equipo;
     }
     @GET
-    @Path("{id : \\d+}")
+    @Path("{id : + \\d+")
     public EquipoDetailDTO getEquipo(@PathParam("id") Long id) {
         return null;
     }
     @GET
-    @Path("{id : \\d+}")
+    @Path("{id : + \\d+")
     public List<EquipoDetailDTO> getEquipos() {
         return null;
     }
     @PUT
-    @Path("{id : \\d+}")
+    @Path("{id : + \\d+")
     public EquipoDetailDTO updateEquipo(@PathParam("id") Long id)
     {
         return null;
     }
     @DELETE
-    @Path("{id : \\d+}")
+    @Path("{id : + \\d+")
     public void deleteEquipo(@PathParam("id") Long id)
     {
         

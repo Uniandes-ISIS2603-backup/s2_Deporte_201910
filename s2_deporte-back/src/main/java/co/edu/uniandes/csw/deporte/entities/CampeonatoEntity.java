@@ -29,8 +29,8 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
     private BlogEntity blog;
     
     @PodamExclude
-    @ManyToMany(mappedBy="campeonatos")
-    private List<ClienteEntity> cliente = new ArrayList<>();
+    @ManyToMany
+    private List<ClienteEntity> clientes= new ArrayList<>();
     
     
    

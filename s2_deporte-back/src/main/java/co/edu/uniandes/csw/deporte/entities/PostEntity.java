@@ -20,7 +20,7 @@ public class PostEntity extends BaseEntity implements Serializable {
     private String identificador;
     
     @PodamExclude
-   @ManyToOne
+    @ManyToOne
     private BlogEntity blog;
     
     @PodamExclude

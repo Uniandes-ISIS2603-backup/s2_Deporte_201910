@@ -1,19 +1,23 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package co.edu.uniandes.csw.deporte.test.persistence;
 
-import co.edu.uniandes.csw.deporte.entities.ClienteEntity;
-import co.edu.uniandes.csw.deporte.persistence.ClientePersistence;
+import co.edu.uniandes.csw.deporte.entities.PropietarioEntity;
+import co.edu.uniandes.csw.deporte.persistence.PropietarioPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
-import org.junit.Assert;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,9 +29,10 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author estudiante
  */
 @RunWith(Arquillian.class)
-public class ClientePersistenceTest 
-{    @Inject
-    private ClientePersistence clientePersistence;
+public class PropietarioPersistenceTest {
+
+    @Inject
+    private PropietarioPersistence propietarioPersistence;
 
     @PersistenceContext
     private EntityManager em;
@@ -35,7 +40,8 @@ public class ClientePersistenceTest
     @Inject
     UserTransaction utx;
 
-    private List<ClienteEntity> data = new ArrayList<>();
+    private List<PropietarioEntity> data = new ArrayList();
+
     /**
      * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
      * El jar contiene las clases, el descriptor de la base de datos y el
@@ -44,11 +50,12 @@ public class ClientePersistenceTest
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(ClienteEntity.class.getPackage())
-                .addPackage(ClientePersistence.class.getPackage())
+                .addPackage(PropietarioEntity.class.getPackage())
+                .addPackage(PropietarioPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
+
     /**
      * Configuración inicial de la prueba.
      */
@@ -69,11 +76,12 @@ public class ClientePersistenceTest
             }
         }
     }
+
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
-        em.createQuery("delete from ClienteEntity").executeUpdate();
+        em.createQuery("delete from PropietarioEntity").executeUpdate();
     }
 
     /**
@@ -83,7 +91,7 @@ public class ClientePersistenceTest
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
-            ClienteEntity entity = factory.manufacturePojo(ClienteEntity.class);
+            PropietarioEntity entity = factory.manufacturePojo(PropietarioEntity.class);
 
             em.persist(entity);
             data.add(entity);
@@ -91,32 +99,31 @@ public class ClientePersistenceTest
     }
 
     /**
-     * Prueba para crear un Author.
+     * Prueba para crear un Propietario.
      */
     @Test
-    public void createClienteTest() {
+    public void createPropietarioTest() {
         PodamFactory factory = new PodamFactoryImpl();
-        ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
-        ClienteEntity result = clientePersistence.create(newEntity);
+        PropietarioEntity newEntity = factory.manufacturePojo(PropietarioEntity.class);
+        PropietarioEntity result = propietarioPersistence.create(newEntity);
 
         Assert.assertNotNull(result);
 
-        ClienteEntity entity = em.find(ClienteEntity.class, result.getId());
+        PropietarioEntity entity = em.find(PropietarioEntity.class, result.getId());
 
-        Assert.assertEquals(newEntity.getId(), entity.getId());
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
     }
 
     /**
-     * Prueba para consultar la lista de cliente.
+     * Prueba para consultar la lista de Propietarios.
      */
     @Test
-    public void getClientesTest() {
-        List<ClienteEntity> list = clientePersistence.findAll();
+    public void getPropietariosTest() {
+        List<PropietarioEntity> list = propietarioPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
-        for (ClienteEntity ent : list) {
+        for (PropietarioEntity ent : list) {
             boolean found = false;
-            for (ClienteEntity entity : data)
-            {
+            for (PropietarioEntity entity : data) {
                 if (ent.getId().equals(entity.getId())) {
                     found = true;
                 }
@@ -126,42 +133,43 @@ public class ClientePersistenceTest
     }
 
     /**
-     * Prueba para consultar un cliente.
+     * Prueba para consultar un Propietario.
      */
     @Test
-    public void getClienteTest() {
-        ClienteEntity entity = data.get(0);
-        ClienteEntity newEntity = clientePersistence.find(entity.getId());
+    public void getPropietarioTest() {
+        PropietarioEntity entity = data.get(0);
+        PropietarioEntity newEntity = propietarioPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getId(), newEntity.getId());        
+        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(entity.getNumCanchas(), newEntity.getNumCanchas());
     }
 
     /**
-     * Prueba para actualizar un cliente.
+     * Prueba para actualizar un propietario.
      */
     @Test
-    public void updateClienteTest() {
-        ClienteEntity entity = data.get(0);
+    public void updateAuthorTest() {
+        PropietarioEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
+        PropietarioEntity newEntity = factory.manufacturePojo(PropietarioEntity.class);
 
         newEntity.setId(entity.getId());
 
-        clientePersistence.update(newEntity);
+        propietarioPersistence.update(newEntity);
 
-        ClienteEntity resp = em.find(ClienteEntity.class, entity.getId());
+        PropietarioEntity resp = em.find(PropietarioEntity.class, entity.getId());
 
-        Assert.assertEquals(newEntity.getId(), resp.getId());
+        Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
     }
 
     /**
-     * Prueba para eliminar un cliente.
+     * Prueba para eliminar un Author.
      */
     @Test
-    public void deleteClienteTest() {
-        ClienteEntity entity = data.get(0);
-        clientePersistence.delete(entity.getId());
-        ClienteEntity deleted = em.find(ClienteEntity.class, entity.getId());
+    public void deleteAuthorTest() {
+        PropietarioEntity entity = data.get(0);
+        propietarioPersistence.delete(entity.getId());
+        PropietarioEntity deleted = em.find(PropietarioEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 }

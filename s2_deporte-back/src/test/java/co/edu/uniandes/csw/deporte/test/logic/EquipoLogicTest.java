@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.deporte.test.persistence;
+package co.edu.uniandes.csw.deporte.test.logic;
 
+import co.edu.uniandes.csw.deporte.ejb.EquipoLogic;
 import co.edu.uniandes.csw.deporte.entities.EquipoEntity;
+import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.deporte.persistence.EquipoPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,28 +31,25 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author estudiante
  */
 @RunWith(Arquillian.class)
-public class EquipoPersistenceTest 
+public class EquipoLogicTest
 {
-     @Inject
-    private EquipoPersistence equipoPersistence;
-
-    @PersistenceContext
+    private PodamFactory factory = new PodamFactoryImpl();
+    
+    @Inject
+    private EquipoLogic equipoLogic;
+    
+     @PersistenceContext
     private EntityManager em;
 
     @Inject
-    UserTransaction utx;
-
+    private UserTransaction utx;
+    
     private List<EquipoEntity> data = new ArrayList<EquipoEntity>();
-
-    /**
-     * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
-     * El jar contiene las clases, el descriptor de la base de datos y el
-     * archivo beans.xml para resolver la inyección de dependencias.
-     */
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(EquipoEntity.class.getPackage())
+                .addPackage(EquipoLogic.class.getPackage())
                 .addPackage(EquipoPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
@@ -63,7 +62,6 @@ public class EquipoPersistenceTest
     public void configTest() {
         try {
             utx.begin();
-            em.joinTransaction();
             clearData();
             insertData();
             utx.commit();
@@ -76,103 +74,71 @@ public class EquipoPersistenceTest
             }
         }
     }
-
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
+        em.createQuery("delete from ClienteEntity").executeUpdate();
         em.createQuery("delete from EquipoEntity").executeUpdate();
+        em.createQuery("delete from PartidoEntity").executeUpdate();
+        
     }
-
+    
     /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
     private void insertData() {
-        PodamFactory factory = new PodamFactoryImpl();
-        for (int i = 0; i < 3; i++) {
+       for (int i = 0; i < 3; i++) {
             EquipoEntity entity = factory.manufacturePojo(EquipoEntity.class);
 
             em.persist(entity);
             data.add(entity);
         }
     }
-
-    /**
-     * Prueba para crear un Equipo.
-     */
+    
     @Test
-    public void createEquipoTest() {
-        PodamFactory factory = new PodamFactoryImpl();
+    public void createEquipoTest() throws BusinessLogicException 
+    {
         EquipoEntity newEntity = factory.manufacturePojo(EquipoEntity.class);
-        EquipoEntity result = equipoPersistence.create(newEntity);
-
+        EquipoEntity result = equipoLogic.createEquipo(newEntity);
         Assert.assertNotNull(result);
-
         EquipoEntity entity = em.find(EquipoEntity.class, result.getId());
-
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
-        
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());        
     }
-
-    /**
-     * Prueba para consultar la lista de Equipos.
-     */
+    
+    @Test(expected = BusinessLogicException.class)
+    public void createEquipoTestConNombreNull() throws BusinessLogicException {
+        EquipoEntity newEntity = factory.manufacturePojo(EquipoEntity.class);
+        newEntity.setNombre(null);
+        equipoLogic.createEquipo(newEntity);        
+    }
+    
     @Test
     public void getEquiposTest() {
-        List<EquipoEntity> list = equipoPersistence.findAll();
+        List<EquipoEntity> list = equipoLogic.getEquipos();
         Assert.assertEquals(data.size(), list.size());
-        for (EquipoEntity ent : list) {
+        for (EquipoEntity entity : list) {
             boolean found = false;
-            for (EquipoEntity entity : data) {
-                if (ent.getId().equals(entity.getId())) {
+            for (EquipoEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
                     found = true;
                 }
             }
             Assert.assertTrue(found);
         }
     }
-
-    /**
-     * Prueba para consultar un Equipo.
-     */
+    
     @Test
     public void getEquipoTest() {
         EquipoEntity entity = data.get(0);
-        EquipoEntity newEntity = equipoPersistence.find(entity.getId());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
-        
+        EquipoEntity resultEntity = equipoLogic.getEquipo(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+        Assert.assertEquals(entity.getNombre(), resultEntity.getNombre());        
     }
-
-    /**
-     * Prueba para eliminar un Equipo.
-     */
-    @Test
-    public void deleteEquipoTest() {
-        EquipoEntity entity = data.get(0);
-        equipoPersistence.delete(entity.getId());
-        EquipoEntity deleted = em.find(EquipoEntity.class, entity.getId());
-        Assert.assertNull(deleted);
-    }
-
-    /**
-     * Prueba para actualizar un Equipo.
-     */
-    @Test
-    public void updateEquipoTest() {
-        EquipoEntity entity = data.get(0);
-        PodamFactory factory = new PodamFactoryImpl();
-        EquipoEntity newEntity = factory.manufacturePojo(EquipoEntity.class);
-
-        newEntity.setId(entity.getId());
-
-        equipoPersistence.update(newEntity);
-
-        EquipoEntity resp = em.find(EquipoEntity.class, entity.getId());
-
-        Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
-        
-        
-    }
+    
+    
+    
 }

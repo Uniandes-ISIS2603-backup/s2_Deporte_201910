@@ -27,8 +27,9 @@ public class CanchaPersistence {
     protected EntityManager em;
 
     public CanchaEntity create(CanchaEntity canchaEntity) {
-
+        LOGGER.log(Level.INFO, "Creando una nueva cancha");
         em.persist(canchaEntity);
+        LOGGER.log(Level.INFO, "Saliendo de crear una cancha nueva");
         return canchaEntity;
     }
 

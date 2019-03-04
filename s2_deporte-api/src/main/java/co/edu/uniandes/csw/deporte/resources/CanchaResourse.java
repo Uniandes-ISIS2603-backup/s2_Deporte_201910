@@ -45,7 +45,7 @@ public class CanchaResourse {
 
         CanchaEntity newCanchaEntity = canchaLogic.createCancha(canchaEntity);
 
-        CanchaDTO newCanchaDTO = new CanchaDTO(newCanchaEntity);
+        CanchaDetailDTO newCanchaDTO = new CanchaDetailDTO(newCanchaEntity);
         return newCanchaDTO;
     }
 
