@@ -30,15 +30,18 @@ public class FranjaResource {
     private static final Logger LOGGER = Logger.getLogger(FranjaResource.class.getName());
     
     @POST
+    @Path("(franjaId : \\d+)")
     public FranjaDTO createFranja(FranjaDTO franja){
         return franja;
     }
     
     @GET
+    @Path("(franjaId : \\d+)")
     public FranjaDTO getFranja(){
         return null;
     }
     @DELETE
+    @Path("(franjaId : \\d+)")
     public FranjaDTO deleteFranja(FranjaDTO franja){
         return franja;
     }

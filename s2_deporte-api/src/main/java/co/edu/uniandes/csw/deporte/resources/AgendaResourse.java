@@ -29,16 +29,19 @@ public class AgendaResourse {
     private static final Logger LOGGER = Logger.getLogger(AgendaResourse.class.getName());
     
     @POST
+    @Path("{agendaId : \\d+}")
     public AgendaDTO createPropietario(AgendaDTO agenda){
         return agenda;
     }
     
     @PUT
+    @Path("{agendaId : \\d+}")
     public AgendaDTO modifyCancha(AgendaDTO agenda){
         return agenda;
     }
     
     @DELETE
+    @Path("{agendaId : \\d+}")
     public AgendaDTO deleteCancha(AgendaDTO agenda){
         return agenda;
     }

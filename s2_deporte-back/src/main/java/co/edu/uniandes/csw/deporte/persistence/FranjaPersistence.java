@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.deporte.persistence;
 
 import co.edu.uniandes.csw.deporte.entities.FranjaEntity;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,6 +22,8 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class FranjaPersistence {
     
+    private final static java.util.logging.Logger LOGGER = Logger.getLogger(FranjaPersistence.class.getName());
+    
     @PersistenceContext (unitName="deportePU")
     protected EntityManager em;
     
@@ -28,13 +32,30 @@ public class FranjaPersistence {
         return franjaEntity;
     }
     
-    public FranjaEntity find(Long franjasEntity){
-        return em.find(FranjaEntity.class, franjasEntity);
+    public FranjaEntity find(Long franjaId){
+        
+        LOGGER.log(Level.INFO, "Consultando la franja con id = (0)", franjaId);
+        return em.find(FranjaEntity.class, franjaId);
     }
     
     public List<FranjaEntity> findAll(){
+        
+        LOGGER.log(Level.INFO, "Consultando todas las franjas");
         TypedQuery<FranjaEntity> query = em.createQuery("select u from FranjaEntity u", FranjaEntity.class);
         return query.getResultList();
+    }
+
+    public void delete(Long franjaId) {
+        LOGGER.log(Level.INFO, "Borrando la franja con id = (0)", franjaId);
+        
+        FranjaEntity franjaEntity = em.find(FranjaEntity.class, franjaId);
+        em.remove(franjaEntity);
+    }
+
+    public FranjaEntity update(FranjaEntity franjaEntity) {
+        LOGGER.log(Level.INFO, "Actualizando la frnja con id={0}", franjaEntity.getId());
+        
+        return em.merge(franjaEntity);
     }
     
 }
