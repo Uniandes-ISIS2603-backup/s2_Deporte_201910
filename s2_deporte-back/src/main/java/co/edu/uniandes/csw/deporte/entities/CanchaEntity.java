@@ -12,6 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -33,13 +34,13 @@ public class CanchaEntity extends BaseEntity implements Serializable{
     private boolean reservada;
     
     private String tipo;
-    
+    @PodamExclude
     @ManyToOne
     private PropietarioEntity propietario;
-    
+    @PodamExclude
     @OneToMany
     private List<AgendaEntity> agendas;
-    
+    @PodamExclude
     @OneToMany
     private List<ReservaEntity> reservas;
     

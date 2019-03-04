@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -21,6 +22,7 @@ public class PropietarioEntity extends BaseEntity implements Serializable{
     private String nombre;
     private int numCanchas;
     @OneToMany
+    @PodamExclude
     private List<CanchaEntity> canchas;
     
     public PropietarioEntity () {

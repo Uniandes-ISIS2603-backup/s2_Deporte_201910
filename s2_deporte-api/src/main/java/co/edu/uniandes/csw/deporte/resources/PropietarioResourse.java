@@ -6,8 +6,13 @@
 package co.edu.uniandes.csw.deporte.resources;
 
 import co.edu.uniandes.csw.deporte.dtos.PropietarioDTO;
+import co.edu.uniandes.csw.deporte.dtos.PropietarioDetailDTO;
+import co.edu.uniandes.csw.deporte.ejb.PropietarioLogic;
+import co.edu.uniandes.csw.deporte.entities.PropietarioEntity;
+import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
@@ -28,9 +33,19 @@ public class PropietarioResourse {
     
     private static final Logger LOGGER = Logger.getLogger(PropietarioResourse.class.getName());
     
+    @Inject
+    PropietarioLogic propietarioLogic;
+    
     @POST
-    public PropietarioDTO createPropietario(PropietarioDTO propietario){
-        return propietario;
+    public PropietarioDTO createPropietario(PropietarioDTO propietario)throws BusinessLogicException{
+        
+        PropietarioEntity propietarioEntity = propietario.toEntity();
+
+        PropietarioEntity newCanchaEntity = propietarioLogic.createPropietrio(propietarioEntity);
+
+        PropietarioDetailDTO newPropietarioDTO = new PropietarioDetailDTO(newCanchaEntity);
+
+        return newPropietarioDTO;
     }
       
     @PUT
