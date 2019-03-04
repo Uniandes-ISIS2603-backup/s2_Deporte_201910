@@ -40,11 +40,13 @@ public class EntrenamientoResource {
     }
     
     @DELETE
+    //@Path("{entrenamientoId: \\d+}")
     public EntrenamientoDTO deleteEntrenamiento(EntrenamientoDTO entrenamiento){
         return entrenamiento;
     }
     
     @GET
+    //@Path("{entrenamientoId: \\d+}")
     public EntrenamientoDTO getEntrenamiento(EntrenamientoDTO entrenamiento){
         return entrenamiento;
     }

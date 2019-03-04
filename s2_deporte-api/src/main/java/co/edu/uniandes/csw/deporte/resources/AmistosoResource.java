@@ -39,11 +39,13 @@ public class AmistosoResource {
     }
     
     @DELETE
+    //@Path("{amistosoId: \\d+}")
     public AmistosoDTO deleteEntrenamiento(AmistosoDTO amistoso){
         return amistoso;
     }
     
     @GET
+    //@Path("{amistosoId: \\d+}")
     public AmistosoDTO getEntrenamiento(AmistosoDTO amistoso){
         return amistoso;
     }

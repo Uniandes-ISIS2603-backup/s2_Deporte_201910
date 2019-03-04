@@ -34,11 +34,13 @@ public class ReservaResource {
     }
     
     @PUT
+    //@Path("{reservaId: \\d+}")
     public ReservaDTO modifyReseva(ReservaDTO reserva){
         return reserva;
     }
     
     @DELETE
+    //@Path("{reservaId: \\d+}")
     public ReservaDTO deleteReserva(ReservaDTO reserva){
         return reserva;
     }
