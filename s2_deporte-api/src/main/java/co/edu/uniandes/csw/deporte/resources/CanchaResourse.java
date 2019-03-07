@@ -33,7 +33,7 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class CanchaResourse {
 
-    private static final Logger LOGGER = Logger.getLogger(CanchaResourse.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(CanchaResourse.class.getName());
 
     @Inject
     CanchaLogic canchaLogic;

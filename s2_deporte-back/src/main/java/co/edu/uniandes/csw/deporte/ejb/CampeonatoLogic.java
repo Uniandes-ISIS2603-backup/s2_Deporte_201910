@@ -20,10 +20,10 @@ import javax.inject.Inject;
  */
 @Stateless
 public class CampeonatoLogic {
-    private static final Logger LOGGER = Logger.getLogger(CampeonatoLogic.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(CampeonatoLogic.class.getName());
 
     @Inject
-    private CampeonatoPersistence persistence;
+    public CampeonatoPersistence persistence;
     
     /**
      * Guardar un nuevn campeonato
@@ -106,7 +106,7 @@ public class CampeonatoLogic {
         return newEntity;
     }
     
-     private boolean validateNombre(String nombre) {
+     public boolean validateNombre(String nombre) {
         return !(nombre == null || nombre.isEmpty());
     }
      

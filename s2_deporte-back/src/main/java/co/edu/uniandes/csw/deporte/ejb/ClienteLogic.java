@@ -23,10 +23,10 @@ import javax.inject.Inject;
 @Stateless
 public class ClienteLogic 
 {
-    private static final Logger LOGGER = Logger.getLogger(ClienteLogic.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(ClienteLogic.class.getName());
 
     @Inject
-    private ClientePersistence clientePersistence;
+    public ClientePersistence clientePersistence;
     /**
      * crea al cliente y lo persiste
      * @param clienteEntity el cliente que se va a crear
@@ -112,7 +112,7 @@ public class ClienteLogic
         clientePersistence.delete(clienteId);        
     }
     
-    private boolean verificacionDeEquipos(List<EquipoEntity> equipos)
+    public boolean verificacionDeEquipos(List<EquipoEntity> equipos)
     {
         for(int i=0; i<equipos.size()-1;i++)
         {

@@ -38,12 +38,12 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  */
 public class DateAdapter extends XmlAdapter<String, Date> {
     
-      private static final Logger LOGGER = Logger.getLogger(DateAdapter.class.getName());
+      public static final Logger LOGGER = Logger.getLogger(DateAdapter.class.getName());
 
     /**
      * Thread safe {@link DateFormat}.
      */
-    private static final ThreadLocal<DateFormat> DATE_FORMAT_TL = new ThreadLocal<DateFormat>() {
+    public static final ThreadLocal<DateFormat> DATE_FORMAT_TL = new ThreadLocal<DateFormat>() {
 
         @Override
         protected DateFormat initialValue() {

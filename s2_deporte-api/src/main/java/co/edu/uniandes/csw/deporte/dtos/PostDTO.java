@@ -14,9 +14,9 @@ import java.io.Serializable;
  */
 public class PostDTO implements Serializable{
     
-    private BlogDTO blogDTO;
+    public BlogDTO blogDTO;
     
-    private Long id;
+    public Long id;
     public PostDTO()
     {
         

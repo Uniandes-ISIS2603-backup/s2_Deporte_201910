@@ -32,7 +32,7 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @RequestScoped
 public class ReservaResource {
-    private static final Logger LOGGER = Logger.getLogger(ReservaResource.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(ReservaResource.class.getName());
     
         
     @Inject
@@ -50,7 +50,7 @@ public class ReservaResource {
     }
     
     @DELETE
-    @Path("{reservaId: + \\d+")
+    @Path("{reservaId: \\d+}")
     void deleteEntrenamiento(@PathParam("reservaId")Long reservaId) throws BusinessLogicException {
         ReservaEntity entidad=logica.find(reservaId);
         if(entidad==null){
@@ -60,7 +60,7 @@ public class ReservaResource {
     }
     
     @GET
-    @Path("{reservaId: + \\d+")
+    @Path("{reservaId: \\d+}")
     public ReservaDTO getEntrenamiento(@PathParam("reservaId")Long reservaId) throws BusinessLogicException{
         ReservaEntity entidad=logica.find(reservaId);
         if(entidad==null){

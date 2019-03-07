@@ -19,11 +19,11 @@ public class PartidoDTO implements Serializable
     /**
      * la fecha que se realizar el partido
      */
-    private Date fecha;
+    public Date fecha;
     /** 
      * el identificador del partido
      */
-    private Long id;
+    public Long id;
     //Constructor---------------------------------------------------------------
     public PartidoDTO()
     {
@@ -48,19 +48,19 @@ public class PartidoDTO implements Serializable
         return entity;
     }
     //Métodos-------------------------------------------------------------------
-    private void setId(Long pId)
+    public void setId(Long pId)
     {
         id=pId;
     }
-    private Long getId()
+    public Long getId()
     {
         return id;
     }
-    private void setFecha(Date pFecha)
+    public void setFecha(Date pFecha)
     {
         fecha=pFecha;
     }
-    private Date getFecha()
+    public Date getFecha()
     {
         return fecha;
     }

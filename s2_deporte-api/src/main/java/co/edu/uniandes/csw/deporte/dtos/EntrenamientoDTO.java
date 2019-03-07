@@ -17,17 +17,17 @@ public class EntrenamientoDTO implements Serializable {
     /**
      * atributo que identifica de manera unica al entrenamiento
      */
-    private Long id;
+    public Long id;
 
     
     /**
      * atributo que modela la relacion con equipo
      */
-    private EquipoDTO equipo;
+    public EquipoDTO equipo;
     /**
      * atributo que modela la relacion con reserva
      */
-    private ReservaDTO reserva;
+    public ReservaDTO reserva;
     
    
     public EntrenamientoDTO(){

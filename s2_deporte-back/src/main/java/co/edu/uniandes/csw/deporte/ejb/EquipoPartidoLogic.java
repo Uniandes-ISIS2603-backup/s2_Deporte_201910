@@ -18,11 +18,11 @@ import javax.inject.Inject;
 @Stateless
 public class EquipoPartidoLogic 
 {
-    private static final Logger LOGGER = Logger.getLogger(EquipoPartidoLogic.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(EquipoPartidoLogic.class.getName());
     
     @Inject
-    private EquipoPersistence equipoPersistence;
+    public EquipoPersistence equipoPersistence;
     
     @Inject
-    private PartidoPersistence partidoPersistence;
+    public PartidoPersistence partidoPersistence;
 }

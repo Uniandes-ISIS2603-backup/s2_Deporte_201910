@@ -18,14 +18,14 @@ public class EquipoDTO implements Serializable
     /**
      * el representante del equipo
      */
-    private ClienteDTO representante;
+    public ClienteDTO representante;
     /**
      * el identificador del equipo
      */
-    private Long id;
+    public Long id;
 
     
-    private String nombre;
+    public String nombre;
     //Constructor---------------------------------------------------------------
     public EquipoDTO()
     {
@@ -62,15 +62,15 @@ public class EquipoDTO implements Serializable
     {
         return id;
     }
-    private void setRepresentante(ClienteDTO pRepresentante)
+    public void setRepresentante(ClienteDTO pRepresentante)
     {
         representante=pRepresentante;
     }
-    private ClienteDTO getRepresentante()
+    public ClienteDTO getRepresentante()
     {
         return representante;
     }
-    private void deleteRepresentante()
+    public void deleteRepresentante()
     {
         representante=null;
     }

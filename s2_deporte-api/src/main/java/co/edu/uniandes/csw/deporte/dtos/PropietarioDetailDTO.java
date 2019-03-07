@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class PropietarioDetailDTO extends PropietarioDTO implements Serializable {
 
-    private List<CanchaDTO> canchas;
+    public List<CanchaDTO> canchas;
 
     public PropietarioDetailDTO() {
         super();

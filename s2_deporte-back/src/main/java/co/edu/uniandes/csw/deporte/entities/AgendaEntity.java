@@ -22,15 +22,15 @@ import javax.persistence.OneToOne;
 public class AgendaEntity extends BaseEntity implements Serializable{
     
     
-    private Integer anio;
-    private Integer mes;
+    public Integer anio;
+    public Integer mes;
     
     @PodamExclude
     @ManyToOne
-    private CanchaEntity cancha;
+    public CanchaEntity cancha;
     
     @OneToMany
-    private List<FranjaEntity> franjas;
+    public List<FranjaEntity> franjas;
     
     public AgendaEntity (){
         

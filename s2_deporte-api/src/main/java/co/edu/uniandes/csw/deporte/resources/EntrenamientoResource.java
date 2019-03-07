@@ -35,7 +35,7 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 
 public class EntrenamientoResource {
-    private static final Logger LOGGER = Logger.getLogger(EntrenamientoResource.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(EntrenamientoResource.class.getName());
     
     @Inject
     EntrenamientoLogic logica;
@@ -52,8 +52,8 @@ public class EntrenamientoResource {
     }
     
     @DELETE
-    @Path("{entrenamientoId: + \\d+")
-    void deleteEntrenamiento(@PathParam("entrenamientoId")Long entrenamientoId) throws BusinessLogicException {
+    @Path("entrenamienoId: \\d+}")
+    public void deleteEntrenamiento(@PathParam("entrenamientoId")Long entrenamientoId) throws BusinessLogicException {
         EntrenamientoEntity entidad=logica.find(entrenamientoId);
         if(entidad==null){
             throw new WebApplicationException("Entrenamiento con id: " + entrenamientoId + " no existe", 404);
@@ -62,7 +62,7 @@ public class EntrenamientoResource {
     }
     
     @GET
-    @Path("{entrenamientoId: + \\d+")
+    @Path("{entrenamientoId: \\d+}")
     public EntrenamientoDTO getEntrenamiento(@PathParam("entrenamientoId")Long entrenamientoId) throws BusinessLogicException{
         EntrenamientoEntity entidad=logica.find(entrenamientoId);
         if(entidad==null){

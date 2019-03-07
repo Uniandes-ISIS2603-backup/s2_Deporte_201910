@@ -14,9 +14,9 @@ import java.io.Serializable;
  */
 public class PropietarioDTO implements Serializable{
     
-    private Long id;
+    public Long id;
     
-    private Integer numCanchas;
+    public Integer numCanchas;
     
     public PropietarioDTO () {
         

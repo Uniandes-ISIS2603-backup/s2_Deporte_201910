@@ -20,17 +20,17 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class CampeonatoEntity extends BaseEntity implements Serializable{
-    private List<Integer> puntos;
+    public List<Integer> puntos;
 
-    private String nombre;
+    public String nombre;
     
-    private String descripcion;
+    public String descripcion;
     @OneToOne
-    private BlogEntity blog;
+    public BlogEntity blog;
     
     @PodamExclude
     @ManyToMany
-    private List<ClienteEntity> clientes= new ArrayList<>();
+    public List<ClienteEntity> clientes= new ArrayList<>();
 
     /**
      * @param puntos the puntos to set

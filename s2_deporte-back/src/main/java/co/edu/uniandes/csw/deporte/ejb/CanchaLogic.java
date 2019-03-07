@@ -22,9 +22,9 @@ import javax.ws.rs.WebApplicationException;
 public class CanchaLogic {
 
     @Inject
-    private CanchaPersistence persistence;
+    public CanchaPersistence persistence;
 
-    private static final Logger LOGGER = Logger.getLogger(CanchaLogic.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(CanchaLogic.class.getName());
 
     public CanchaEntity createCancha(CanchaEntity cancha) throws BusinessLogicException {
 

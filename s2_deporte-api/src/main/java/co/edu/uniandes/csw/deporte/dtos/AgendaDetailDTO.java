@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class AgendaDetailDTO extends AgendaDTO implements Serializable {
 
-    private List<FranjaDTO> franjas;
+    public List<FranjaDTO> franjas;
 
     public AgendaDetailDTO() {
         super();

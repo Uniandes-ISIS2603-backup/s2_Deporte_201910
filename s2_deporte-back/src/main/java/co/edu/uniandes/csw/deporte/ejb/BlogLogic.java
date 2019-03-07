@@ -20,10 +20,10 @@ import javax.inject.Inject;
  */
 @Stateless
 public class BlogLogic {
-    private static final Logger LOGGER = Logger.getLogger(BlogLogic.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(BlogLogic.class.getName());
 
     @Inject
-    private BlogPersistence persistence;
+    public BlogPersistence persistence;
 
   /**
      * Guardar un nuevo blog
@@ -106,7 +106,7 @@ public class BlogLogic {
         return newEntity;
     }
     
-     private boolean validateNombre(String nombre) {
+     public boolean validateNombre(String nombre) {
         return !(nombre == null || nombre.isEmpty());
     }
      

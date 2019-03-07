@@ -33,10 +33,10 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("aplication/json")
 @RequestScoped
 public class AmistosoResource {
-    private static final Logger LOGGER = Logger.getLogger(AmistosoResource.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(AmistosoResource.class.getName());
    
     @Inject
-    private AmistosoLogic logica;
+    public AmistosoLogic logica;
     
     
     @POST
@@ -52,7 +52,7 @@ public class AmistosoResource {
     }
     
     @DELETE
-    @Path("{amistosoId: + \\d+")
+    @Path("{amistosoId: \\d+}")
     public void deleteAmistoso(@PathParam("amistosoId") Long amistosoId) throws WebApplicationException, BusinessLogicException{
         AmistosoEntity entidad=logica.find(amistosoId);
         if(entidad==null){
@@ -62,7 +62,7 @@ public class AmistosoResource {
     }
     
     @GET
-    @Path("{amistosoId: + \\d+")
+    @Path("{amistosoId: \\d+}")
     public AmistosoDTO getAmistosao(@PathParam("amistosoId") Long amistosoId) throws WebApplicationException, BusinessLogicException{
         AmistosoEntity entidad=logica.find(amistosoId);
         if(entidad==null){

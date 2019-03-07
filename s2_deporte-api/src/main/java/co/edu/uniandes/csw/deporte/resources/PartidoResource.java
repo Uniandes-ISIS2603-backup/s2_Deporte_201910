@@ -29,30 +29,26 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class PartidoResource 
 {
-    private static final Logger LOGGER = Logger.getLogger(PartidoResource.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(PartidoResource.class.getName());
     @POST
     public PartidoDTO createPropietario(PartidoDTO partido){
         
         return partido;
     }
     @GET
-    @Path("{id : + \\d+")
     public PartidoDetailDTO getPartido(@PathParam("id") Long id) {
         return null;
     }
     @GET
-    @Path("{id : + \\d+")
     public List<PartidoDetailDTO> getPartidos() {
         return null;
     }
     @PUT
-    @Path("{id : + \\d+")
     public PartidoDetailDTO updatePartido(@PathParam("id") Long id)
     {
         return null;
     }
     @DELETE
-    @Path("{id : + \\d+")
     public void deletePartido(@PathParam("id") Long id)
     {
         

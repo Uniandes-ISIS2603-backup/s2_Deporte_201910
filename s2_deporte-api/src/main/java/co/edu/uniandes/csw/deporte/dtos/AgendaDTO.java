@@ -14,11 +14,11 @@ import java.io.Serializable;
  */
 public class AgendaDTO implements Serializable{
     
-    private Integer anio;
+    public Integer anio;
     
-    private Integer mes;
+    public Integer mes;
     
-    private CanchaDTO cancha;
+    public CanchaDTO cancha;
     
     public AgendaDTO () {
         

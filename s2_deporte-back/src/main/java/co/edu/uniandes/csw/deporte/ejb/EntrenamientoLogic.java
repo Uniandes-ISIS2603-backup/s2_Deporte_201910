@@ -20,9 +20,9 @@ import javax.inject.Inject;
  */
 @Stateless
 public class EntrenamientoLogic {
-     private static final Logger LOGGER = Logger.getLogger(EntrenamientoLogic.class.getName());
+     public static final Logger LOGGER = Logger.getLogger(EntrenamientoLogic.class.getName());
     @Inject
-    private EntrenamientoPersistence persistence;
+    public EntrenamientoPersistence persistence;
     
     public EntrenamientoEntity createEntrenamiento(EntrenamientoEntity entrenamiento) throws BusinessLogicException{
         LOGGER.log(Level.INFO,"Empieza el proceso de crear un entrenamiento");

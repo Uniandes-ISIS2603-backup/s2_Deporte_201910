@@ -16,23 +16,23 @@ import java.util.List;
  */
 public class CanchaDTO implements Serializable{
     
-    private Long id;
+    public Long id;
     
-    private String zona;
+    public String zona;
     
-    private String direccion;
+    public String direccion;
     
-    private String ciudad;
+    public String ciudad;
     
-    private List<Integer> contacto;
+    public List<Integer> contacto;
     
-    private String caracterizticas;
+    public String caracterizticas;
     
-    private Boolean reservada;
+    public Boolean reservada;
     
-    private String tipoCancha;
+    public String tipoCancha;
     
-    private PropietarioDTO propietario;
+    public PropietarioDTO propietario;
     
     public CanchaDTO(){
         

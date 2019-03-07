@@ -26,7 +26,7 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class AgendaResourse {
     
-    private static final Logger LOGGER = Logger.getLogger(AgendaResourse.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(AgendaResourse.class.getName());
     
     @POST
     @Path("{agendaId : \\d+}")

@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class BlogDetailDTO extends BlogDTO implements Serializable{
     
-    private List<PostDTO> postDTO;
+    public List<PostDTO> postDTO;
     
    
     public BlogDetailDTO()

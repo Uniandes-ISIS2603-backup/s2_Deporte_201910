@@ -16,15 +16,15 @@ import java.util.List;
  */
 public class CampeonatoDTO implements Serializable{
     
-    private List<Integer> puntos;
+    public List<Integer> puntos;
     
-    private Long id;
+    public Long id;
     
-    private String nombre;
+    public String nombre;
     
-    private String descripcion;
+    public String descripcion;
     
-    private BlogDTO blogDTO;
+    public BlogDTO blogDTO;
     
     public CampeonatoDTO()
     {

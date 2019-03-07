@@ -19,9 +19,9 @@ public class EquipoDetailDTO extends EquipoDTO implements Serializable
     /**
      * los jugadores pertenecientes a un equipo
      */
-    private ArrayList<ClienteDTO> jugadores;
+    public ArrayList<ClienteDTO> jugadores;
     
-    private ArrayList<PartidoDTO> partidos;
+    public ArrayList<PartidoDTO> partidos;
     //Constructor---------------------------------------------------------------
     public EquipoDetailDTO()
     {
@@ -60,7 +60,7 @@ public class EquipoDetailDTO extends EquipoDTO implements Serializable
      * agrega un jugador a la lista de jugadores
      * @param pJugador el jugador a agregar, pJugador!=null && pJugador!cjugadores
      */
-    private void addJugador(ClienteDTO pJugador)
+    public void addJugador(ClienteDTO pJugador)
     {
         if(pJugador!=null)
         {
@@ -81,7 +81,7 @@ public class EquipoDetailDTO extends EquipoDTO implements Serializable
      * devuelve la lista de jugadores
      * @return jugadores
      */
-    private ArrayList<ClienteDTO> getJugadores()
+    public ArrayList<ClienteDTO> getJugadores()
     {
         return jugadores;
     }
@@ -90,7 +90,7 @@ public class EquipoDetailDTO extends EquipoDTO implements Serializable
      * @param id el identificador del jugador
      * @return jugador o null
      */
-    private ClienteDTO getJugador(String id)
+    public ClienteDTO getJugador(String id)
     {
         for(ClienteDTO c: jugadores)
         {
@@ -104,7 +104,7 @@ public class EquipoDetailDTO extends EquipoDTO implements Serializable
     /**
      * elimina a los jugadores
      */
-    private void deleteJugadores()
+    public void deleteJugadores()
     {
         jugadores.clear();
     }
@@ -112,7 +112,7 @@ public class EquipoDetailDTO extends EquipoDTO implements Serializable
      * elimina a un jugador con id dado
      * @param id el identificador del jugador a eliminar
      */
-    private void deleteJugador(String id)
+    public void deleteJugador(String id)
     {
         ClienteDTO temp =this.getJugador(id);
         if(temp!=null)

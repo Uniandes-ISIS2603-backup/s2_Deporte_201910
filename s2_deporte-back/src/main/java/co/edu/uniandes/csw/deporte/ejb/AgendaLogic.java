@@ -22,10 +22,10 @@ import javax.inject.Inject;
 @Stateless
 public class AgendaLogic {
     
-    private static final java.util.logging.Logger LOGGER = Logger.getLogger(AgendaLogic.class.getName());
+    public static final java.util.logging.Logger LOGGER = Logger.getLogger(AgendaLogic.class.getName());
     
     @Inject
-    private AgendaPersistence persistence;
+    public AgendaPersistence persistence;
     
     public AgendaEntity createAgenda(AgendaEntity agenda) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicio proceso de creacion de Agenda");

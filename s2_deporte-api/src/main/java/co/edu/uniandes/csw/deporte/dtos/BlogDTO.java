@@ -14,13 +14,13 @@ import java.io.Serializable;
  */
 public class BlogDTO implements Serializable{
     
-      private CampeonatoDTO campeonatoDTO;
+      public CampeonatoDTO campeonatoDTO;
       
-      private String nombre;
+      public String nombre;
       
-      private String descripcion;
+      public String descripcion;
       
-      private Long id;
+      public Long id;
       
       
     public BlogDTO()

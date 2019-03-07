@@ -22,9 +22,9 @@ import javax.inject.Inject;
 @Stateless
 public class EquipoLogic 
 {
-    private static final Logger LOGGER = Logger.getLogger(EquipoLogic.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(EquipoLogic.class.getName());
     @Inject
-    private EquipoPersistence equipoPersistence;
+    public EquipoPersistence equipoPersistence;
     
     public EquipoEntity createEquipo(EquipoEntity equipoEntity)throws BusinessLogicException
     {
@@ -93,7 +93,7 @@ public class EquipoLogic
         LOGGER.log(Level.INFO, "Termina proceso de borrar el equipo con id = {0}", equiposId);
     }
     
-    private boolean verificacionDeJugadores(List<ClienteEntity> jugadores)
+    public boolean verificacionDeJugadores(List<ClienteEntity> jugadores)
     {
         for(int i=0; i<jugadores.size()-1;i++)
         {

@@ -20,17 +20,17 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class BlogEntity extends BaseEntity implements Serializable{
-    private int identificador;
+    public int identificador;
     
-    private String nombre;
+    public String nombre;
     
-    private String descripcion;
+    public String descripcion;
     @PodamExclude
     @OneToMany(mappedBy = "blog")
-    private List<PostEntity> posts = new ArrayList<>();
+    public List<PostEntity> posts = new ArrayList<>();
     
     @OneToOne
-    private CampeonatoEntity campeonato;  
+    public CampeonatoEntity campeonato;  
     
     /**
      * @return the id

@@ -14,12 +14,12 @@ import java.util.Date;
  */
 public class FranjaDTO implements Serializable{
     
-    private Date fechaInicio;
-    private Date fechaFin;
-    private Integer duracionTotalHoras;
-    private Boolean ocupada;
-    private Long idReserva;
-    private AgendaDTO agenda;
+    public Date fechaInicio;
+    public Date fechaFin;
+    public Integer duracionTotalHoras;
+    public Boolean ocupada;
+    public Long idReserva;
+    public AgendaDTO agenda;
     
     
     public FranjaDTO(){

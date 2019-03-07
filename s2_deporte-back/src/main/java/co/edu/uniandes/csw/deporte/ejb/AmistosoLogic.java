@@ -21,9 +21,9 @@ import javax.inject.Inject;
 @Stateless
 public class AmistosoLogic {
     
-    private static final Logger LOGGER = Logger.getLogger(AmistosoLogic.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(AmistosoLogic.class.getName());
     @Inject
-    private AmistosoPersistence persistence;
+    public AmistosoPersistence persistence;
     
     public AmistosoEntity createAmistoso(AmistosoEntity amistoso) throws BusinessLogicException{
         LOGGER.log(Level.INFO,"Empieza el proceso de crear un amistoso");

@@ -18,11 +18,11 @@ public class ClienteDTO implements Serializable
     /**
      * identificador del cliente
      */
-    private Long id;
+    public Long id;
     /**
      * el nombre del cliente
      */
-    private String nombre;
+    public String nombre;
     //Constructor---------------------------------------------------------------
     public ClienteDTO()
     {
@@ -48,7 +48,7 @@ public class ClienteDTO implements Serializable
          return entity;
     }
     //Métodos-------------------------------------------------------------------
-    private void setId(Long pId)
+    public void setId(Long pId)
     {
         id=pId;
     }

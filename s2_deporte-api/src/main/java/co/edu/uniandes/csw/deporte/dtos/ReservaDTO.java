@@ -15,20 +15,20 @@ import java.util.Date;
  */
 public class ReservaDTO implements Serializable{
     
-    private Long id;
-    private Date fechaInicio;
-    private Date fechaFin;
-    private Integer duracionHoras;
+    public Long id;
+    public Date fechaInicio;
+    public Date fechaFin;
+    public Integer duracionHoras;
      
-    private String nombreUsuario;
-    private Long idUsuario;
-    private Long idReserva;
-    private Long idCancha;
+    public String nombreUsuario;
+    public Long idUsuario;
+    public Long idReserva;
+    public Long idCancha;
     
-    private FranjaDTO franja;
-    private CampeonatoDTO campeonato;
-    private AmistosoDTO amistoso;
-    private EntrenamientoDTO entrenamiento;
+    public FranjaDTO franja;
+    public CampeonatoDTO campeonato;
+    public AmistosoDTO amistoso;
+    public EntrenamientoDTO entrenamiento;
     
     public ReservaDTO () {
         

@@ -36,10 +36,10 @@ import javax.ws.rs.core.MediaType;
 @RequestScoped
 
 public class CampeonatoResource {
-    private static final Logger LOGGER = Logger.getLogger(CampeonatoResource.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(CampeonatoResource.class.getName());
     
     @Inject
-    private CampeonatoLogic campeonatoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    public CampeonatoLogic campeonatoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
 
     @POST
@@ -94,7 +94,7 @@ public class CampeonatoResource {
      campeonatoLogic.deleteCampeonato(campeonatoId);
     }
     
-     private List<CampeonatoDTO> listEntity2DetailDTO(List<CampeonatoEntity> entityList) {
+     public List<CampeonatoDTO> listEntity2DetailDTO(List<CampeonatoEntity> entityList) {
         List<CampeonatoDTO> list = new ArrayList<>();
         for (CampeonatoEntity entity : entityList) {
             list.add(new CampeonatoDTO(entity));

@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class PropietarioResourse {
     
-    private static final Logger LOGGER = Logger.getLogger(PropietarioResourse.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(PropietarioResourse.class.getName());
     
     @Inject
     PropietarioLogic propietarioLogic;

@@ -20,10 +20,10 @@ import javax.inject.Inject;
  */
 @Stateless
 public class PostLogic {
-     private static final Logger LOGGER = Logger.getLogger(PostLogic.class.getName());
+     public static final Logger LOGGER = Logger.getLogger(PostLogic.class.getName());
 
     @Inject
-    private PostPersistence persistence;
+    public PostPersistence persistence;
     
      /**
      * Guardar un nuevo post

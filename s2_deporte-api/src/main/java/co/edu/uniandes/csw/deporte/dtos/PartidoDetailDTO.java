@@ -15,7 +15,7 @@ import java.util.*;
 public class PartidoDetailDTO extends PartidoDTO implements Serializable
 {
     //Atributos-----------------------------------------------------------------
-    private ArrayList<EquipoDTO> equipos;
+    public ArrayList<EquipoDTO> equipos;
 
     public ArrayList<Integer> getPuntaje() {
         return puntaje;
@@ -24,7 +24,7 @@ public class PartidoDetailDTO extends PartidoDTO implements Serializable
     public void setPuntaje(ArrayList<Integer> puntaje) {
         this.puntaje = puntaje;
     }
-    private ArrayList<Integer> puntaje;
+    public ArrayList<Integer> puntaje;
     //Constructor---------------------------------------------------------------
     public PartidoDetailDTO()
     {
@@ -54,18 +54,18 @@ public class PartidoDetailDTO extends PartidoDTO implements Serializable
         return entity;
     }
     //Métodos-------------------------------------------------------------------
-    private ArrayList<EquipoDTO> getEquipos()
+    public ArrayList<EquipoDTO> getEquipos()
     {
         return equipos;
     }
-    private void addEquipo(EquipoDTO e)
+    public void addEquipo(EquipoDTO e)
     {
         if(equipos.size()<2)
         {
             equipos.add(e);
         }
     }
-    private void deleteEquipos()
+    public void deleteEquipos()
     {
         equipos.clear();
     }

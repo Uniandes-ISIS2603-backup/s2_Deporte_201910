@@ -34,10 +34,10 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @RequestScoped
 public class BlogResource {
-    private static final Logger LOGGER = Logger.getLogger(PostResource.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(PostResource.class.getName());
 
     @Inject
-    private BlogLogic blogLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    public BlogLogic blogLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
     
 
@@ -97,7 +97,7 @@ public class BlogResource {
           
         }
 
-         private List<BlogDetailDTO> listEntity2DetailDTO(List<BlogEntity> entityList) {
+         public List<BlogDetailDTO> listEntity2DetailDTO(List<BlogEntity> entityList) {
         List<BlogDetailDTO> list = new ArrayList<>();
         for (BlogEntity entity : entityList) {
             list.add(new BlogDetailDTO(entity));

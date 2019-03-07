@@ -18,11 +18,11 @@ import javax.inject.Inject;
 @Stateless
 public class ClienteEquipoLogic
 {
-    private static final Logger LOGGER = Logger.getLogger(ClienteEquipoLogic.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(ClienteEquipoLogic.class.getName());
 
     @Inject
-    private ClientePersistence clientePersistence;
+    public ClientePersistence clientePersistence;
     
     @Inject
-    private EquipoPersistence equipoPersistence;
+    public EquipoPersistence equipoPersistence;
 }

@@ -17,15 +17,15 @@ public class AmistosoDTO implements Serializable{
     /**
      * atributo que identifica unicamente el amistoso
      */
-    private Long id;
+    public Long id;
     /**
      * atributo que modela la relacion con partido
      */
-    private PartidoDTO partido;
+    public PartidoDTO partido;
     /**
      * atributo que modela la relacion con reserva
      */
-    private ReservaDTO reserva;
+    public ReservaDTO reserva;
     
     public AmistosoDTO(){
         

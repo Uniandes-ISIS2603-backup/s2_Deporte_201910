@@ -18,7 +18,7 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable
     /**
      * equipos a los que pertenece un cliente
      */
-    private ArrayList<EquipoDTO> equipos;
+    public ArrayList<EquipoDTO> equipos;
     //Constructor---------------------------------------------------------------
     public ClienteDetailDTO()
     {
@@ -53,7 +53,7 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable
      * Agrega un equipo a la lista de equipos a los cuales pertenece un cliente
      * @param pEquipo el equipo a insertar, pEquipo!=null && pEquipo!c equipos
      */
-    private void addEquipo(EquipoDTO pEquipo)
+    public void addEquipo(EquipoDTO pEquipo)
     {
         if(pEquipo!=null)
         {
@@ -74,7 +74,7 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable
     /**
      * borra todos los equipos de la lista 
      */
-    private void deleteEquipos()
+    public void deleteEquipos()
     {
         equipos.clear();
     }
@@ -82,7 +82,7 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable
      * borra un equipo con id dado
      * @param id el identificador del equipo a borrar
      */
-    private void deleteEquipo(String id)
+    public void deleteEquipo(String id)
     {
         for(EquipoDTO e: equipos)
         {

@@ -22,9 +22,9 @@ import javax.inject.Inject;
 @Stateless
 public class ReservaLogic {
     
-    private static final Logger LOGGER = Logger.getLogger(ReservaLogic.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(ReservaLogic.class.getName());
     @Inject
-    private ReservaPersistence persistence;
+    public ReservaPersistence persistence;
     
     public ReservaEntity createReserva(ReservaEntity reserva) throws BusinessLogicException{
         LOGGER.log(Level.INFO,"Empieza el proceso de crear un reserva");

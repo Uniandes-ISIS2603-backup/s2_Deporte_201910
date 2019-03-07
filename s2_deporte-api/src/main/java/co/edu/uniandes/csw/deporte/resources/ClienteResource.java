@@ -31,30 +31,26 @@ import javax.ws.rs.Produces;
 
 public class ClienteResource 
 {
-    private static final Logger LOGGER = Logger.getLogger(ClienteResource.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(ClienteResource.class.getName());
     @POST
     public ClienteDTO createPropietario(ClienteDTO cliente){
         
         return cliente;
     }
     @GET
-    @Path("{id : + \\d+")
     public ClienteDetailDTO getCliente(@PathParam("id") Long id) {
         return null;
     }
     @GET
-    @Path("{id : + \\d+")
     public List<ClienteDetailDTO> getClientes() {
         return null;
     }
     @PUT
-    @Path("{id : + \\d+")
     public ClienteDetailDTO updateCliente(@PathParam("id") Long id)
     {
         return null;
     }
     @DELETE
-    @Path("{id : + \\d+")
     public void deleteCliente(@PathParam("id") Long id)
     {
         

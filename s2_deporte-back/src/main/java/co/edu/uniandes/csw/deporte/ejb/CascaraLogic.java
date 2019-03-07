@@ -36,9 +36,9 @@ import javax.inject.Inject;
 @Stateless
 public class CascaraLogic {
 
-    private static final Logger LOGGER = Logger.getLogger(CascaraLogic.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(CascaraLogic.class.getName());
 
     @Inject
-    private CascaraPersistence cascaraPersistence;
+    public CascaraPersistence cascaraPersistence;
 
 }
