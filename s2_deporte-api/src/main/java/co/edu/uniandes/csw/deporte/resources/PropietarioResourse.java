@@ -10,51 +10,96 @@ import co.edu.uniandes.csw.deporte.dtos.PropietarioDetailDTO;
 import co.edu.uniandes.csw.deporte.ejb.PropietarioLogic;
 import co.edu.uniandes.csw.deporte.entities.PropietarioEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
  * @author estudiante
  */
-
 @Path("propietarios")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
 public class PropietarioResourse {
-    
+
     private static final Logger LOGGER = Logger.getLogger(PropietarioResourse.class.getName());
-    
+
     @Inject
     private PropietarioLogic propietarioLogic;
-    
+
+    /**
+     * Crea un nuevo propietario con la informacion que se recibe en el cuerpo de la
+     * petición y se regresa un objeto identico con un id auto-generado por la
+     * base de datos.
+     *
+     * @param propietario {@link PropietarioDTO} - EL propietario que se desea guardar.
+     * @return JSON {@link PropietarioDTO} - El propietario guardado con el atributo id
+     * autogenerado.
+     * @throws co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException
+     */
     @POST
-    public PropietarioDTO createPropietario(PropietarioDTO propietario)throws BusinessLogicException{
-        
-        PropietarioEntity propietarioEntity = propietario.toEntity();
-
-        PropietarioEntity newCanchaEntity = propietarioLogic.createPropietrio(propietarioEntity);
-
-        PropietarioDetailDTO newPropietarioDTO = new PropietarioDetailDTO(newCanchaEntity);
-
-        return newPropietarioDTO;
+    public PropietarioDTO createPropietario(PropietarioDTO propietario) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "AuthorResource createPropietario: input: {0}", propietario);
+        PropietarioDTO propietarioDTO = new PropietarioDTO(propietarioLogic.createPropietrio(propietario.toEntity()));
+        LOGGER.log(Level.INFO, "AuthorResource createPropietario: output: {0}", propietarioDTO);
+        return propietarioDTO;
     }
-      
+
+    @GET
+    @Path("{propietarioId: \\d+}")
+    public PropietarioDetailDTO getPropietario(@PathParam("propietarioId") Long propietarioId) {
+        LOGGER.log(Level.INFO, "PropietarioResource getAuthor: input: {0}", propietarioId);
+        PropietarioEntity propietarioEntity = propietarioLogic.getPropietario(propietarioId);
+        if (propietarioEntity == null) {
+            throw new WebApplicationException("El recurso /propietario/" + propietarioId + " no existe.", 404);
+        }
+        PropietarioDetailDTO detailDTO = new PropietarioDetailDTO(propietarioEntity);
+        LOGGER.log(Level.INFO, "PropietarioResource getPropietario: output: {0}", detailDTO);
+        return detailDTO;
+    }
+
     @PUT
-    public PropietarioDTO modifyCancha(PropietarioDTO propietario){
-        return propietario;
+    @Path("{propietarioId: \\d+}")
+    public PropietarioDetailDTO updatePropietario(@PathParam("propietarioId") Long propietarioId, PropietarioDetailDTO propietario) {
+        LOGGER.log(Level.INFO, "PropietarioResource updatePropietario: input: propietarioId: {0} , author: {1}", new Object[]{propietarioId, propietario});
+        propietario.setId(propietarioId);
+        if (propietarioLogic.getPropietario(propietarioId) == null) {
+            throw new WebApplicationException("El recurso /authors/" + propietarioId + " no existe.", 404);
+        }
+        PropietarioDetailDTO detailDTO = new PropietarioDetailDTO(propietarioLogic.updatePropietario(propietarioId, propietario.toEntity()));
+        LOGGER.log(Level.INFO, "AuthorResource updateAuthor: output: {0}", detailDTO);
+        return detailDTO;
     }
-    
+
+    /**
+     * Borra el propietario con el id asociado recibido en la URL.
+     *
+     * @param propietarioId Identificador del propietario que se desea borrar. Este debe
+     * ser una cadena de dígitos.
+     * @throws co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper}
+     * Error de lógica que se genera cuando no se encuentra el propietario a borrar.
+     */
     @DELETE
-    public PropietarioDTO deleteCancha(PropietarioDTO propietario){
-        return propietario;
+    @Path("{propietarioId: \\d+}")
+    public void deleteAuthor(@PathParam("propietarioId") Long propietarioId) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "AuthorResource deletePropietario: input: {0}", propietarioId);
+        if (propietarioLogic.getPropietario(propietarioId) == null) {
+            throw new WebApplicationException("El recurso /propietario/" + propietarioId + " no existe.", 404);
+        }
+        propietarioLogic.deletePropietario(propietarioId);
+        LOGGER.info("PropietarioResource deletePropietario: output: void");
     }
 }

@@ -61,6 +61,18 @@ public class CanchaPersistence {
     }
 
     /**
+     * Actualiza una cancha.
+     *
+     * @param canchaEntity: el cancha que viene con los nuevos cambios. Por ejemplo
+     * el nombre pudo cambiar. En ese caso, se haria uso del método update.
+     * @return una cancha con los cambios aplicados.
+     */
+    public CanchaEntity update(CanchaEntity canchaEntity) {
+        LOGGER.log(Level.INFO, "Actualizando el libro con id={0}", canchaEntity.getId());
+        return em.merge(canchaEntity);
+    }
+
+    /**
      *
      * Borra una cancha de la base de datos recibiendo como argumento el id de
      * la cancha

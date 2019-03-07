@@ -36,16 +36,31 @@ public class CanchaLogic {
         return cancha;
     }
 
-    public CanchaEntity getCancha(Long canchaId)throws WebApplicationException{
+    public CanchaEntity getCancha(Long canchaId) throws WebApplicationException {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar con id = {0}", canchaId);
-        
+
         CanchaEntity consulta = persistence.find(canchaId);
-        if(consulta==null){
-            throw new WebApplicationException("La cancha con el id: "+canchaId+" no existe");
+        if (consulta == null) {
+            throw new WebApplicationException("La cancha con el id: " + canchaId + " no existe");
         }
         return consulta;
     }
-    
+
+    /**
+     * Actualizar una cancha por ID
+     *
+     * @param canchaId El ID de la cancha a actualizar
+     * @param canchaEntity La entidad de la cancha con los cambios deseados
+     * @return La entidad de la cancha luego de actualizarla
+     * @throws BusinessLogicException
+     */
+    public CanchaEntity updateCancha(Long canchaId, CanchaEntity canchaEntity) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar el libro con id = {0}", canchaId);
+        CanchaEntity newEntity = persistence.update(canchaEntity);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar el libro con id = {0}", canchaEntity.getId());
+        return newEntity;
+    }
+
     /**
      * Borrar una cancha
      *

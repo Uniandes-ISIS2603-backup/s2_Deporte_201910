@@ -19,27 +19,54 @@ import javax.inject.Inject;
  */
 @Stateless
 public class PropietarioLogic {
-    
+
     @Inject
     private PropietarioPersistence persistence;
-    
+
     private static final Logger LOGGER = Logger.getLogger(PropietarioLogic.class.getName());
-    
-    public PropietarioEntity createPropietrio (PropietarioEntity propietario)throws BusinessLogicException{
-        
-        if(persistence.findByName(propietario.getNombre())!= null){
-            throw new BusinessLogicException("Ya existe el propietario con el nombre \""+propietario.getNombre());
+
+    public PropietarioEntity createPropietrio(PropietarioEntity propietario) throws BusinessLogicException {
+        if (persistence.findByName(propietario.getNombre()) != null) {
+            throw new BusinessLogicException("Ya existe el propietario con el nombre \"" + propietario.getNombre());
         }
-        
         propietario = persistence.create(propietario);
-        
         return propietario;
     }
-    
-        /**
+
+    /**
+     * Obtiene los datos de una instancia de Propietario a partir de su ID.
+     *
+     * @param propietarioId Identificador de la instancia a consultar
+     * @return Instancia de PropietarioEntity con los datos del Propietario consultado.
+     */
+    public PropietarioEntity getPropietario(Long propietarioId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar el propietario con id = {0}", propietarioId);
+        PropietarioEntity propietarioEntity = persistence.find(propietarioId);
+        if (propietarioEntity == null) {
+            LOGGER.log(Level.SEVERE, "La propietario con el id = {0} no existe", propietarioId);
+        }
+        LOGGER.log(Level.INFO, "Termina proceso de consultar el propietario con id = {0}", propietarioId);
+        return propietarioEntity;
+    }
+
+    /**
+     * Actualiza la información de una instancia de Propietario.
+     *
+     * @param propietarioId Identificador de la instancia a actualizar
+     * @param propietarioEntity Instancia de PropietarioEntity con los nuevos datos.
+     * @return Instancia de AuthorEntity con los datos actualizados.
+     */
+    public PropietarioEntity updatePropietario(Long propietarioId, PropietarioEntity propietarioEntity) {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar el propietario con id = {0}", propietarioId);
+        PropietarioEntity newPropietarioEntity = persistence.update(propietarioEntity);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar el propietario con id = {0}", propietarioId);
+        return newPropietarioEntity;
+    }
+
+    /**
      * Borrar un propietario
      *
-     * @param editorialsId: id de la editorial a borrar
+     * @param propietarioId: id del propietario a borrar
      */
     public void deletePropietario(Long propietarioId) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar la propietario con id = {0}", propietarioId);
