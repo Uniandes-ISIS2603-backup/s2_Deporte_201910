@@ -20,7 +20,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class BlogEntity extends BaseEntity implements Serializable{
-    public int identificador;
+    public Integer identificador;
     
     public String nombre;
     

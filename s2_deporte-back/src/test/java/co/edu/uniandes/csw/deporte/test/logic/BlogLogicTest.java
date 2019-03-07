@@ -33,20 +33,20 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class BlogLogicTest {
-    private PodamFactory factory = new PodamFactoryImpl();
+    public PodamFactory factory = new PodamFactoryImpl();
     
     @Inject
-    private BlogLogic blogLogic;
+    public BlogLogic blogLogic;
     
      @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
 
     @Inject
-    private UserTransaction utx;
+    public UserTransaction utx;
     
-    private List<BlogEntity> data = new ArrayList<BlogEntity>();
+    public List<BlogEntity> data = new ArrayList<BlogEntity>();
     
-    private List<CampeonatoEntity> blogData = new ArrayList<CampeonatoEntity>();
+    public List<CampeonatoEntity> blogData = new ArrayList<CampeonatoEntity>();
 
      /**
      * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
@@ -86,7 +86,7 @@ public class BlogLogicTest {
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from BlogEntity").executeUpdate();
         em.createQuery("delete from CampeonatoEntity").executeUpdate();
         
@@ -96,7 +96,7 @@ public class BlogLogicTest {
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    public void insertData() {
        for (int i = 0; i < 3; i++) {
             BlogEntity entity = factory.manufacturePojo(BlogEntity.class);
 

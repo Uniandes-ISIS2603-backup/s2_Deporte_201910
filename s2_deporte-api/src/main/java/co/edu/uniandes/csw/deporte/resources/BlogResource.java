@@ -34,10 +34,10 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @RequestScoped
 public class BlogResource {
-    public static final Logger LOGGER = Logger.getLogger(PostResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PostResource.class.getName());
 
     @Inject
-    public BlogLogic blogLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    private BlogLogic blogLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
     
 

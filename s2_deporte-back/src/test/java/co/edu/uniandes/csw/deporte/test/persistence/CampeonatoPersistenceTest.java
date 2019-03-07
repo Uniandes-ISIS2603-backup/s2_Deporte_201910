@@ -33,12 +33,12 @@ public class CampeonatoPersistenceTest {
     @Inject
     CampeonatoPersistence campeonatoPersistence;
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
     
     @Inject
     UserTransaction utx;
     
-    private List<CampeonatoEntity> data = new ArrayList<>();
+    public List<CampeonatoEntity> data = new ArrayList<>();
     @Deployment
     public static JavaArchive createDeployment()
     {
@@ -72,7 +72,7 @@ public class CampeonatoPersistenceTest {
  /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from CampeonatoEntity").executeUpdate();
     }
 
@@ -80,7 +80,7 @@ public class CampeonatoPersistenceTest {
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    public void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             CampeonatoEntity entity = factory.manufacturePojo(CampeonatoEntity.class);

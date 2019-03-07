@@ -20,7 +20,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class PartidoPersistence 
 {
-    private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(EquipoPersistence.class.getName());
+    public static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(EquipoPersistence.class.getName());
 
     @PersistenceContext(unitName = "deportePU")
     protected EntityManager em;

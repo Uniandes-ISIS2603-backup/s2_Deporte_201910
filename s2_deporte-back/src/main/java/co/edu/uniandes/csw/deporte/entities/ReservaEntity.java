@@ -23,10 +23,10 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class ReservaEntity extends BaseEntity implements Serializable {
 
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fechaInicio;
+    public Date fechaInicio;
 
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fechaFin;
+    public Date fechaFin;
     
     @PodamExclude
     @OneToOne

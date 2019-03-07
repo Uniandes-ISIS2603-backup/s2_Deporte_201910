@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 
 public class ClienteResource 
 {
-    public static final Logger LOGGER = Logger.getLogger(ClienteResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ClienteResource.class.getName());
     @POST
     public ClienteDTO createPropietario(ClienteDTO cliente){
         

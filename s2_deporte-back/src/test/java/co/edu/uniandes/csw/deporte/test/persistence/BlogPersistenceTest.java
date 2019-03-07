@@ -32,16 +32,16 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 public class BlogPersistenceTest {
     @Inject
-     private BlogPersistence blogPersistance;
+     public BlogPersistence blogPersistance;
     
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
     
     @Inject
     UserTransaction utx;
     
     
-    private List<BlogEntity> data = new ArrayList<>();
+    public List<BlogEntity> data = new ArrayList<>();
     
     @Deployment
     public static JavaArchive createDeployment()
@@ -77,7 +77,7 @@ public class BlogPersistenceTest {
      /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from BlogEntity").executeUpdate();
     }
 
@@ -85,7 +85,7 @@ public class BlogPersistenceTest {
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    public void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             BlogEntity entity = factory.manufacturePojo(BlogEntity.class);

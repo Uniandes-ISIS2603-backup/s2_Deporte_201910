@@ -22,7 +22,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class FranjaPersistence {
     
-    private final static java.util.logging.Logger LOGGER = Logger.getLogger(FranjaPersistence.class.getName());
+    public final static java.util.logging.Logger LOGGER = Logger.getLogger(FranjaPersistence.class.getName());
     
     @PersistenceContext (unitName="deportePU")
     protected EntityManager em;

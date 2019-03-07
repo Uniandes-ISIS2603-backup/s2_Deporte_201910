@@ -29,7 +29,7 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class PartidoResource 
 {
-    public static final Logger LOGGER = Logger.getLogger(PartidoResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PartidoResource.class.getName());
     @POST
     public PartidoDTO createPropietario(PartidoDTO partido){
         

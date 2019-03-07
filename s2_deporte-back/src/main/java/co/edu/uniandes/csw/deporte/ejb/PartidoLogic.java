@@ -22,10 +22,10 @@ import javax.inject.Inject;
 @Stateless
 public class PartidoLogic 
 {
-    public static final Logger LOGGER = Logger.getLogger(PartidoLogic.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PartidoLogic.class.getName());
     
     @Inject
-    public PartidoPersistence partidoPersistence;
+    private PartidoPersistence partidoPersistence;
     
     public PartidoEntity createPartido(PartidoEntity partidoEntity)throws BusinessLogicException
     {

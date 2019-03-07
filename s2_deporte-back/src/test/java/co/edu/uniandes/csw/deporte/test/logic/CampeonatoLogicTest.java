@@ -32,18 +32,18 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class CampeonatoLogicTest {
-    private PodamFactory factory = new PodamFactoryImpl();
+    public PodamFactory factory = new PodamFactoryImpl();
 
     @Inject
-    private CampeonatoLogic campeonatoLogic;
+    public CampeonatoLogic campeonatoLogic;
     
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
 
     @Inject
-    private UserTransaction utx;
+    public UserTransaction utx;
 
-    private List<CampeonatoEntity> data = new ArrayList<CampeonatoEntity>();
+    public List<CampeonatoEntity> data = new ArrayList<CampeonatoEntity>();
     
      /**
      * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
@@ -83,7 +83,7 @@ public class CampeonatoLogicTest {
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from BlogEntity").executeUpdate();
         em.createQuery("delete from CampeonatoEntity").executeUpdate();
         
@@ -93,7 +93,7 @@ public class CampeonatoLogicTest {
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    public void insertData() {
        for (int i = 0; i < 3; i++) {
             CampeonatoEntity entity = factory.manufacturePojo(CampeonatoEntity.class);
 

@@ -33,10 +33,10 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class CanchaResourse {
 
-    public static final Logger LOGGER = Logger.getLogger(CanchaResourse.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(CanchaResourse.class.getName());
 
     @Inject
-    CanchaLogic canchaLogic;
+    private CanchaLogic canchaLogic;
 
     @POST
     public CanchaDTO createCancha(CanchaDTO cancha) throws BusinessLogicException {

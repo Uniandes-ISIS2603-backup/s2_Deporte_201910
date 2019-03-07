@@ -32,18 +32,18 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class PostLogicTest {
-    private PodamFactory factory = new PodamFactoryImpl();
+    public PodamFactory factory = new PodamFactoryImpl();
 
     @Inject
-    private PostLogic postLogic;
+    public PostLogic postLogic;
     
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
 
     @Inject
-    private UserTransaction utx;
+    public UserTransaction utx;
 
-    private List<PostEntity> data = new ArrayList<PostEntity>();
+    public List<PostEntity> data = new ArrayList<PostEntity>();
     
       /**
      * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
@@ -83,7 +83,7 @@ public class PostLogicTest {
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from PostEntity").executeUpdate();
         
     }
@@ -92,7 +92,7 @@ public class PostLogicTest {
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    public void insertData() {
        for (int i = 0; i < 3; i++) {
             PostEntity entity = factory.manufacturePojo(PostEntity.class);
 

@@ -25,7 +25,7 @@ import javax.ws.rs.Produces;
 @RequestScoped
 
 public class PostResource {
-        public static final Logger LOGGER = Logger.getLogger(PostResource.class.getName());
+        private static final Logger LOGGER = Logger.getLogger(PostResource.class.getName());
 
         @POST
         public PostDTO createPost(PostDTO pPost)

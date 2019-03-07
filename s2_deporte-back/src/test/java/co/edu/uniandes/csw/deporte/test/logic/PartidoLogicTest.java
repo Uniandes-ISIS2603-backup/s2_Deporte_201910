@@ -36,18 +36,18 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class PartidoLogicTest 
 {
-    private PodamFactory factory = new PodamFactoryImpl();
+    public PodamFactory factory = new PodamFactoryImpl();
 
     @Inject
-    private PartidoLogic partidoLogic;
+    public PartidoLogic partidoLogic;
     
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
 
     @Inject
-    private UserTransaction utx;
+    public UserTransaction utx;
 
-    private List<PartidoEntity> data = new ArrayList<PartidoEntity>();
+    public List<PartidoEntity> data = new ArrayList<PartidoEntity>();
     
       /**
      * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
@@ -87,7 +87,7 @@ public class PartidoLogicTest
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from PartidoEntity").executeUpdate();
         
     }
@@ -96,7 +96,7 @@ public class PartidoLogicTest
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    public void insertData() {
        for (int i = 0; i < 3; i++) {
             PartidoEntity entity = factory.manufacturePojo(PartidoEntity.class);
 

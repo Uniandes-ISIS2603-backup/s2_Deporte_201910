@@ -20,7 +20,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class AmistosoPersistence {
-    private static final Logger LOGGER=Logger.getLogger(AmistosoPersistence.class.getName());
+    public static final Logger LOGGER=Logger.getLogger(AmistosoPersistence.class.getName());
     
     @PersistenceContext (unitName="deportePU")
     protected EntityManager em;

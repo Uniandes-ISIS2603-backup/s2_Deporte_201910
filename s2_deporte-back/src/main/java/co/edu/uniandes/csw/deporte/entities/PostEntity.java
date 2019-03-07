@@ -17,15 +17,15 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PostEntity extends BaseEntity implements Serializable {
     
-    private String identificador;
+    public String identificador;
     
     @PodamExclude
     @ManyToOne
-    private BlogEntity blog;
+    public BlogEntity blog;
     
     @PodamExclude
     @ManyToOne
-    private ClienteEntity cliente;
+    public ClienteEntity cliente;
     
     public PostEntity()
     {

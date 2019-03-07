@@ -31,10 +31,10 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class PropietarioResourse {
     
-    public static final Logger LOGGER = Logger.getLogger(PropietarioResourse.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PropietarioResourse.class.getName());
     
     @Inject
-    PropietarioLogic propietarioLogic;
+    private PropietarioLogic propietarioLogic;
     
     @POST
     public PropietarioDTO createPropietario(PropietarioDTO propietario)throws BusinessLogicException{

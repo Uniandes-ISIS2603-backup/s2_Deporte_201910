@@ -27,15 +27,15 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class ClientePersistenceTest 
 {    @Inject
-    private ClientePersistence clientePersistence;
+    public ClientePersistence clientePersistence;
 
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
 
     @Inject
     UserTransaction utx;
 
-    private List<ClienteEntity> data = new ArrayList<>();
+    public List<ClienteEntity> data = new ArrayList<>();
     /**
      * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
      * El jar contiene las clases, el descriptor de la base de datos y el
@@ -72,7 +72,7 @@ public class ClientePersistenceTest
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from ClienteEntity").executeUpdate();
     }
 
@@ -80,7 +80,7 @@ public class ClientePersistenceTest
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    public void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             ClienteEntity entity = factory.manufacturePojo(ClienteEntity.class);

@@ -30,15 +30,15 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class CanchaPersistenceTest {
 
     @Inject
-    private CanchaPersistence canchaPersistence;
+    public CanchaPersistence canchaPersistence;
 
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
 
     @Inject
     UserTransaction utx;
 
-    private List<CanchaEntity> data = new ArrayList<>();
+    public List<CanchaEntity> data = new ArrayList<>();
 
     @Deployment
     public static JavaArchive createDeployment() {
@@ -75,7 +75,7 @@ public class CanchaPersistenceTest {
      *
      *
      */
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from CanchaEntity").executeUpdate();
     }
 
@@ -83,7 +83,7 @@ public class CanchaPersistenceTest {
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    public void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             CanchaEntity entity = factory.manufacturePojo(CanchaEntity.class);

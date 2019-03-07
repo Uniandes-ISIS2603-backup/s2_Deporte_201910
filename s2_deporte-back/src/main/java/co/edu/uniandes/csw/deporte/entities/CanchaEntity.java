@@ -21,28 +21,28 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class CanchaEntity extends BaseEntity implements Serializable{
     
-    private String zona;
+    public String zona;
     
-    private String ciudad;
+    public String ciudad;
     
-    private String direccion;
+    public String direccion;
     
-    private String caracterizticas;
+    public String caracterizticas;
     
-    private List<Integer> contacto;
+    public List<Integer> contacto;
     
-    private boolean reservada;
+    public boolean reservada;
     
-    private String tipo;
+    public String tipo;
     @PodamExclude
     @ManyToOne
-    private PropietarioEntity propietario;
+    public PropietarioEntity propietario;
     @PodamExclude
     @OneToMany
-    private List<AgendaEntity> agendas;
+    public List<AgendaEntity> agendas;
     @PodamExclude
     @OneToMany
-    private List<ReservaEntity> reservas;
+    public List<ReservaEntity> reservas;
     
     public CanchaEntity (){
         

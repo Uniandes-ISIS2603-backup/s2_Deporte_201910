@@ -35,10 +35,10 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 
 public class EntrenamientoResource {
-    public static final Logger LOGGER = Logger.getLogger(EntrenamientoResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(EntrenamientoResource.class.getName());
     
     @Inject
-    EntrenamientoLogic logica;
+    private EntrenamientoLogic logica;
     
     @POST
     public EntrenamientoDTO createEntrenamiento(EntrenamientoDTO entrenamiento) throws BusinessLogicException{

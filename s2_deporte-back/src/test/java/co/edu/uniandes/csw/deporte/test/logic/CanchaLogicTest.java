@@ -33,29 +33,29 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class CanchaLogicTest {
     
-    private PodamFactory factory = new PodamFactoryImpl();
+    public PodamFactory factory = new PodamFactoryImpl();
     
     @Inject
-    private CanchaLogic canchaLogic;
+    public CanchaLogic canchaLogic;
     
      /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
      */
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
     
         /**
      * Variable para marcar las transacciones del em anterior cuando se
      * crean/borran datos para las pruebas.
      */
     @Inject
-    private UserTransaction utx;
+    public UserTransaction utx;
     
         /**
      * Lista que tiene los datos de prueba.
      */
-    private List<CanchaEntity> data = new ArrayList<CanchaEntity>();
+    public List<CanchaEntity> data = new ArrayList<CanchaEntity>();
     
     @Deployment
     public static JavaArchive createDeployment(){
@@ -90,7 +90,7 @@ public class CanchaLogicTest {
         /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from CanchaEntity").executeUpdate();
     }
     
@@ -98,7 +98,7 @@ public class CanchaLogicTest {
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    public void insertData() {
         for (int i = 0; i < 3; i++) {
             CanchaEntity entity = factory.manufacturePojo(CanchaEntity.class);
 

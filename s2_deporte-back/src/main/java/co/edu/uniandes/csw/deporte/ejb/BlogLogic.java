@@ -20,10 +20,10 @@ import javax.inject.Inject;
  */
 @Stateless
 public class BlogLogic {
-    public static final Logger LOGGER = Logger.getLogger(BlogLogic.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(BlogLogic.class.getName());
 
     @Inject
-    public BlogPersistence persistence;
+    private BlogPersistence persistence;
 
   /**
      * Guardar un nuevo blog

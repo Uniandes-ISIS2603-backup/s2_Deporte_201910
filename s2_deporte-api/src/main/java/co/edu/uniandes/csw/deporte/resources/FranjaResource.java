@@ -27,7 +27,7 @@ import java.util.Date;
 @Consumes("application/json")
 @RequestScoped
 public class FranjaResource {
-    public static final Logger LOGGER = Logger.getLogger(FranjaResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(FranjaResource.class.getName());
     
     @POST
     @Path("{franjaId : \\d+}")

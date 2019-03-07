@@ -27,21 +27,21 @@ public class ClienteEntity extends BaseEntity implements Serializable
         
     @PodamExclude
     @ManyToMany(mappedBy="jugadores")
-    private List<EquipoEntity> equipos = new ArrayList<>();
+    public List<EquipoEntity> equipos = new ArrayList<>();
     
     @PodamExclude
     @OneToOne(mappedBy="representante",fetch=FetchType.EAGER)
-    private EquipoEntity representa;
+    public EquipoEntity representa;
     
-    private String nombre;
+    public String nombre;
     
     @PodamExclude
     @OneToMany(mappedBy = "cliente")
-    private List<PostEntity> posts = new ArrayList<>();
+    public List<PostEntity> posts = new ArrayList<>();
     
     @PodamExclude
     @ManyToMany(mappedBy="clientes")
-    private List<CampeonatoEntity> campeonatos;
+    public List<CampeonatoEntity> campeonatos;
     
     public ClienteEntity()
     {

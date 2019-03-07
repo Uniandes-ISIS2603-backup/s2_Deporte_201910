@@ -33,10 +33,10 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("aplication/json")
 @RequestScoped
 public class AmistosoResource {
-    public static final Logger LOGGER = Logger.getLogger(AmistosoResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(AmistosoResource.class.getName());
    
     @Inject
-    public AmistosoLogic logica;
+    private AmistosoLogic logica;
     
     
     @POST

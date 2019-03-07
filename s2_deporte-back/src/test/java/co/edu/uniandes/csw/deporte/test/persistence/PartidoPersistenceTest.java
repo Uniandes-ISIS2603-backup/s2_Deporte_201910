@@ -32,15 +32,15 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class PartidoPersistenceTest
 {
 @Inject
-    private PartidoPersistence PartidoPersistence;
+    public PartidoPersistence PartidoPersistence;
 
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
 
     @Inject
     UserTransaction utx;
 
-    private List<PartidoEntity> data = new ArrayList<>();
+    public List<PartidoEntity> data = new ArrayList<>();
     /**
      * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
      * El jar contiene las clases, el descriptor de la base de datos y el
@@ -77,7 +77,7 @@ public class PartidoPersistenceTest
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from PartidoEntity").executeUpdate();
     }
 
@@ -85,7 +85,7 @@ public class PartidoPersistenceTest
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    public void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             PartidoEntity entity = factory.manufacturePojo(PartidoEntity.class);

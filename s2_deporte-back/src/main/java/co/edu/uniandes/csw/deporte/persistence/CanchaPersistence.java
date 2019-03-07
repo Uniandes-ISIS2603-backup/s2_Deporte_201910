@@ -21,7 +21,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class CanchaPersistence {
 
-    private static final Logger LOGGER = Logger.getLogger(CanchaPersistence.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(CanchaPersistence.class.getName());
 
     @PersistenceContext(unitName = "deportePU")
     protected EntityManager em;

@@ -36,10 +36,10 @@ import javax.ws.rs.core.MediaType;
 @RequestScoped
 
 public class CampeonatoResource {
-    public static final Logger LOGGER = Logger.getLogger(CampeonatoResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(CampeonatoResource.class.getName());
     
     @Inject
-    public CampeonatoLogic campeonatoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    private CampeonatoLogic campeonatoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
 
     @POST

@@ -32,7 +32,7 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @RequestScoped
 public class ReservaResource {
-    public static final Logger LOGGER = Logger.getLogger(ReservaResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ReservaResource.class.getName());
     
         
     @Inject
@@ -51,7 +51,7 @@ public class ReservaResource {
     
     @DELETE
     @Path("{reservaId: \\d+}")
-    void deleteEntrenamiento(@PathParam("reservaId")Long reservaId) throws BusinessLogicException {
+    public void deleteEntrenamiento(@PathParam("reservaId")Long reservaId) throws BusinessLogicException {
         ReservaEntity entidad=logica.find(reservaId);
         if(entidad==null){
             throw new WebApplicationException("Entrenamiento con id: " + reservaId + " no existe", 404);

@@ -24,24 +24,24 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class FranjaEntity extends BaseEntity implements Serializable{
     
     @Temporal(TemporalType.TIME)
-    private Date fechaInicio;
+    public Date fechaInicio;
     
     @Temporal(TemporalType.TIME)
-    private Date fechaFin;
+    public Date fechaFin;
     
-    private Integer duracionHoras;
+    public Integer duracionHoras;
     
-    private Boolean ocupada;
+    public Boolean ocupada;
     
-    private Long idReserva;
+    public Long idReserva;
     
     @PodamExclude
     @ManyToOne
-    private AgendaEntity agenda;
+    public AgendaEntity agenda;
     
     @PodamExclude
     @OneToOne
-    private ReservaEntity reserva;
+    public ReservaEntity reserva;
     
     
     public FranjaEntity(){

@@ -47,14 +47,14 @@ public class EntrenamientoPersistenceTest {
      * se van a probar.
      */
     @Inject
-    private EntrenamientoPersistence persistence;
+    public EntrenamientoPersistence persistence;
 
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
      */
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
 
     /**
      * Variable para martcar las transacciones del em anterior cuando se
@@ -66,7 +66,7 @@ public class EntrenamientoPersistenceTest {
      /**
      * Lista de datos que se usaran en las pruebas
      */
-    private List<EntrenamientoEntity> data = new ArrayList<>();
+    public List<EntrenamientoEntity> data = new ArrayList<>();
     
     @Before
     public void setUp() {
@@ -86,12 +86,12 @@ public class EntrenamientoPersistenceTest {
         }
     }
     
-    private void clearData() {
+    public void clearData() {
         em.createQuery("DELETE  FROM EntrenamientoEntity").executeUpdate();
     }
 
 
-    private void insertData() {
+    public void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             EntrenamientoEntity entity = factory.manufacturePojo(EntrenamientoEntity.class);

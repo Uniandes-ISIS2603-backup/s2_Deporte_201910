@@ -21,9 +21,9 @@ import javax.inject.Inject;
 public class PropietarioLogic {
     
     @Inject
-    public PropietarioPersistence persistence;
+    private PropietarioPersistence persistence;
     
-    public static final Logger LOGGER = Logger.getLogger(PropietarioLogic.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PropietarioLogic.class.getName());
     
     public PropietarioEntity createPropietrio (PropietarioEntity propietario)throws BusinessLogicException{
         

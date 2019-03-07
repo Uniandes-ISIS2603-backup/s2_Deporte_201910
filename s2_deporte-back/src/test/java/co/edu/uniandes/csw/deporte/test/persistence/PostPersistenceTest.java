@@ -33,9 +33,9 @@ public class PostPersistenceTest {
     @Inject
     PostPersistence postPersistence;
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
     
-        private List<PostEntity> data = new ArrayList<>();
+        public List<PostEntity> data = new ArrayList<>();
 
     @Inject
     UserTransaction utx;
@@ -72,7 +72,7 @@ public class PostPersistenceTest {
  /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from PostEntity").executeUpdate();
     }
 
@@ -80,7 +80,7 @@ public class PostPersistenceTest {
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    public void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             PostEntity entity = factory.manufacturePojo(PostEntity.class);

@@ -32,15 +32,15 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class EquipoPersistenceTest 
 {
      @Inject
-    private EquipoPersistence equipoPersistence;
+    public EquipoPersistence equipoPersistence;
 
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
 
     @Inject
     UserTransaction utx;
 
-    private List<EquipoEntity> data = new ArrayList<EquipoEntity>();
+    public List<EquipoEntity> data = new ArrayList<EquipoEntity>();
 
     /**
      * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
@@ -80,7 +80,7 @@ public class EquipoPersistenceTest
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from EquipoEntity").executeUpdate();
     }
 
@@ -88,7 +88,7 @@ public class EquipoPersistenceTest
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    public void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             EquipoEntity entity = factory.manufacturePojo(EquipoEntity.class);

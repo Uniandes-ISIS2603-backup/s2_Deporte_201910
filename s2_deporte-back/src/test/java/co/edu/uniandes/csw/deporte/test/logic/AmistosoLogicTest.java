@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -34,10 +35,10 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class AmistosoLogicTest {
     
     @Inject
-    private AmistosoLogic amistosoLogic;
+    public AmistosoLogic amistosoLogic;
     
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
     
     @Deployment
     public static JavaArchive createDeployment() {
@@ -59,7 +60,7 @@ public class AmistosoLogicTest {
      /**
      * Lista de datos que se usaran en las pruebas
      */
-    private List<AmistosoEntity> data = new ArrayList<AmistosoEntity>();
+    public List<AmistosoEntity> data = new ArrayList<AmistosoEntity>();
     
     @Before
     public void setUp() {
@@ -79,12 +80,12 @@ public class AmistosoLogicTest {
         }
     }
     
-    private void clearData() {
+    public void clearData() {
         em.createQuery("DELETE  FROM AmistosoEntity").executeUpdate();
     }
 
 
-    private void insertData() {
+    public void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             AmistosoEntity entity = factory.manufacturePojo(AmistosoEntity.class);

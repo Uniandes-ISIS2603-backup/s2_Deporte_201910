@@ -21,10 +21,10 @@ import javax.inject.Inject;
 @Stateless
 public class FranjaLogic {
     
-    public static final java.util.logging.Logger LOGGER = Logger.getLogger(FranjaLogic.class.getName());
+    private static final java.util.logging.Logger LOGGER = Logger.getLogger(FranjaLogic.class.getName());
     
     @Inject
-    public FranjaPersistence persistence;
+    private FranjaPersistence persistence;
     
     public FranjaEntity createFranja(FranjaEntity franja) throws BusinessLogicException{
         

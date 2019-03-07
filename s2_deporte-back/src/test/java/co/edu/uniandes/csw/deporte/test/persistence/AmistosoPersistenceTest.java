@@ -45,14 +45,14 @@ public class AmistosoPersistenceTest {
      * se van a probar.
      */
     @Inject
-    private AmistosoPersistence persistence;
+    public AmistosoPersistence persistence;
 
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
      */
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
 
     /**
      * Variable para martcar las transacciones del em anterior cuando se
@@ -64,7 +64,7 @@ public class AmistosoPersistenceTest {
      /**
      * Lista de datos que se usaran en las pruebas
      */
-    private List<AmistosoEntity> data = new ArrayList<AmistosoEntity>();
+    public List<AmistosoEntity> data = new ArrayList<AmistosoEntity>();
     
     @Before
     public void setUp() {
@@ -84,12 +84,12 @@ public class AmistosoPersistenceTest {
         }
     }
     
-    private void clearData() {
+    public void clearData() {
         em.createQuery("DELETE  FROM AmistosoEntity").executeUpdate();
     }
 
 
-    private void insertData() {
+    public void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             AmistosoEntity entity = factory.manufacturePojo(AmistosoEntity.class);

@@ -25,17 +25,17 @@ public class EquipoEntity extends BaseEntity implements Serializable
         
     @PodamExclude
     @ManyToMany
-    private List<PartidoEntity> partidos;
+    public List<PartidoEntity> partidos;
     
     @PodamExclude
     @ManyToMany
-    private List<ClienteEntity> jugadores;
+    public List<ClienteEntity> jugadores;
    
     @PodamExclude
     @OneToOne
-    private ClienteEntity representante = new ClienteEntity();
+    public ClienteEntity representante = new ClienteEntity();
    
-    private String nombre;
+    public String nombre;
 
     public EquipoEntity() {
         this.jugadores = new ArrayList<>();

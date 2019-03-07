@@ -21,7 +21,7 @@ import javax.persistence.Query;
 @Stateless
 public class ReservaPersistence {
     
-    private static final Logger LOGGER=Logger.getLogger(ReservaPersistence.class.getName());
+    public static final Logger LOGGER=Logger.getLogger(ReservaPersistence.class.getName());
     
     @PersistenceContext (unitName="deportePU")
     protected EntityManager em;

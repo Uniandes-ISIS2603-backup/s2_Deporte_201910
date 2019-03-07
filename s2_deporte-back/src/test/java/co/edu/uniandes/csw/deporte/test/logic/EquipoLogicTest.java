@@ -33,18 +33,18 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class EquipoLogicTest
 {
-    private PodamFactory factory = new PodamFactoryImpl();
+    public PodamFactory factory = new PodamFactoryImpl();
     
     @Inject
-    private EquipoLogic equipoLogic;
+    public EquipoLogic equipoLogic;
     
      @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
 
     @Inject
-    private UserTransaction utx;
+    public UserTransaction utx;
     
-    private List<EquipoEntity> data = new ArrayList<EquipoEntity>();
+    public List<EquipoEntity> data = new ArrayList<EquipoEntity>();
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -77,7 +77,7 @@ public class EquipoLogicTest
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from ClienteEntity").executeUpdate();
         em.createQuery("delete from EquipoEntity").executeUpdate();
         em.createQuery("delete from PartidoEntity").executeUpdate();
@@ -88,7 +88,7 @@ public class EquipoLogicTest
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
-    private void insertData() {
+    public void insertData() {
        for (int i = 0; i < 3; i++) {
             EquipoEntity entity = factory.manufacturePojo(EquipoEntity.class);
 

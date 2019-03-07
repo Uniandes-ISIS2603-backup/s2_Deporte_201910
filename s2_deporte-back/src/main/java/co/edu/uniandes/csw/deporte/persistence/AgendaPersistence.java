@@ -20,7 +20,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class AgendaPersistence {
     
-     private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(AgendaPersistence.class.getName());
+     public static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(AgendaPersistence.class.getName());
 
     
     @PersistenceContext(unitName = "deportePU")

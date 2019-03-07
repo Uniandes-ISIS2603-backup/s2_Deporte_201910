@@ -49,14 +49,14 @@ public class ReservaLogicTest {
      * se van a probar.
      */
     @Inject
-    private ReservaLogic reservaLogic;
+    public ReservaLogic reservaLogic;
 
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
      */
     @PersistenceContext
-    private EntityManager em;
+    public EntityManager em;
 
     /**
      * Variable para martcar las transacciones del em anterior cuando se
@@ -68,7 +68,7 @@ public class ReservaLogicTest {
      /**
      * Lista de datos que se usaran en las pruebas
      */
-    private List<ReservaEntity> data = new ArrayList<ReservaEntity>();
+    public List<ReservaEntity> data = new ArrayList<ReservaEntity>();
     
     @Before
     public void setUp() {
@@ -88,12 +88,12 @@ public class ReservaLogicTest {
         }
     }
     
-    private void clearData() {
+    public void clearData() {
         em.createQuery("DELETE  FROM ReservaEntity").executeUpdate();
     }
 
 
-    private void insertData() {
+    public void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             ReservaEntity entity = factory.manufacturePojo(ReservaEntity.class);
