@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.entities.AmistosoEntity;
 import java.io.Serializable;
 
 /**
@@ -28,6 +29,20 @@ public class AmistosoDTO implements Serializable{
     
     public AmistosoDTO(){
         
+    }
+    
+    public AmistosoDTO(AmistosoEntity entidad){
+        setId(entidad.getId());
+        setPartido(new PartidoDTO(entidad.getPartido()));
+        setReserva(new ReservaDTO(entidad.getReserva()))
+;    }
+    
+    public AmistosoEntity toEntity(){
+        AmistosoEntity entidad=new AmistosoEntity();
+        entidad.setId(this.getId());
+        entidad.setPartido(this.partido.toEntity());
+        entidad.setReserva(this.reserva.toEntity());
+        return entidad;
     }
     /**
      * metodo get para id

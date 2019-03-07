@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.entities.ReservaEntity;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,6 +15,7 @@ import java.util.Date;
  */
 public class ReservaDTO implements Serializable{
     
+    private Long id;
     private Date fechaInicio;
     private Date fechaFin;
     private Integer duracionHoras;
@@ -32,6 +34,27 @@ public class ReservaDTO implements Serializable{
         
     }
     
+    public ReservaDTO(ReservaEntity entidad){
+        setId(entidad.getId());
+        setFechaInicio(entidad.getFechaInicio());
+        setFechaFin(entidad.getFechaFin());
+        setAmistoso(new AmistosoDTO(entidad.getAmistoso()));
+        setEntrenamiento(new EntrenamientoDTO(entidad.getEntrenamiento()));
+        setFranja(new FranjaDTO(entidad.getFranja()));
+    }
+    
+    public ReservaEntity toEntity(){
+        ReservaEntity entidad=new ReservaEntity();
+        entidad.setId(this.id);
+        entidad.setFechaInicio(this.fechaInicio);
+        entidad.setFechaFin(this.fechaFin);
+        entidad.setAmistoso(this.amistoso.toEntity());
+        entidad.setEntrenamiento(this.entrenamiento.toEntity());
+        entidad.setFranja(this.franja.toEntity());
+                
+                
+        return entidad;
+    }
     /**
      * Returns fecha de inicio de la reserva
      * @return Date fecha de inicio d ela reserva
@@ -39,6 +62,16 @@ public class ReservaDTO implements Serializable{
     public Date getFechaInicio(){
         return fechaInicio;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    
     /**
      * Establece la fecha de inicio de la reserva
      * @param fechaInicioSet Date de inicio de la reserva

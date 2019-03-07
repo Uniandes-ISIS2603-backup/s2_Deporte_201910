@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.entities.EntrenamientoEntity;
 import java.io.Serializable;
 import javax.ws.rs.Path;
 
@@ -31,6 +32,20 @@ public class EntrenamientoDTO implements Serializable {
    
     public EntrenamientoDTO(){
         
+    }
+    
+    public EntrenamientoDTO(EntrenamientoEntity entidad){
+        this.id=entidad.getId();
+        this.equipo=new EquipoDTO(entidad.getEquipo());
+        this.reserva=new ReservaDTO(entidad.getReserva());
+    }
+    
+    public EntrenamientoEntity toEntity(){
+        EntrenamientoEntity entidad=new EntrenamientoEntity();
+        entidad.setId(this.id);
+        entidad.setEquipo(this.equipo.toEntity());
+        entidad.setReserva(this.reserva.toEntity());
+        return entidad;
     }
     
      public Long getId() {

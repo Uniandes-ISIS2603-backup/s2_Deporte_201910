@@ -7,8 +7,12 @@ package co.edu.uniandes.csw.deporte.resources;
 
 import co.edu.uniandes.csw.deporte.dtos.AmistosoDTO;
 import co.edu.uniandes.csw.deporte.dtos.EntrenamientoDTO;
+import co.edu.uniandes.csw.deporte.ejb.AmistosoLogic;
+import co.edu.uniandes.csw.deporte.entities.AmistosoEntity;
+import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -28,11 +32,18 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class AmistosoResource {
     private static final Logger LOGGER = Logger.getLogger(AmistosoResource.class.getName());
+   
+    @Inject
+    private AmistosoLogic logica;
+    
     
     @POST
-    public AmistosoDTO createAmistoso(AmistosoDTO amistoso){
-        return amistoso;
+    public AmistosoDTO createAmistoso(AmistosoDTO amistoso) throws BusinessLogicException{
+        AmistosoEntity amistosoEntity=amistoso.toEntity();
+        amistosoEntity= logica.createAmistoso(amistosoEntity);
+        return new AmistosoDTO(amistosoEntity);
     }
+    
     @PUT
     public AmistosoDTO modifyEntrenamiento(AmistosoDTO amistoso){
         return amistoso;

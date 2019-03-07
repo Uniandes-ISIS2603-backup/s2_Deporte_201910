@@ -35,6 +35,7 @@ public class ReservaEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToOne
     EntrenamientoEntity entrenamiento;
+
     
     @PodamExclude
     @OneToOne
@@ -62,5 +63,22 @@ public class ReservaEntity extends BaseEntity implements Serializable {
 
     public Date getFechaFin() {
         return fechaFin;
+    }
+    
+    
+    public EntrenamientoEntity getEntrenamiento() {
+        return entrenamiento;
+    }
+
+    public void setEntrenamiento(EntrenamientoEntity entrenamiento) {
+        this.entrenamiento = entrenamiento;
+    }
+
+    public FranjaEntity getFranja() {
+        return franja;
+    }
+
+    public void setFranja(FranjaEntity franja) {
+        this.franja = franja;
     }
 }
