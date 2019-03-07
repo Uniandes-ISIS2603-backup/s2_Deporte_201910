@@ -28,6 +28,7 @@ public class CampeonatoPersistence {
         LOGGER.log(Level.INFO, "Creando un campeonato nuevo");
 
         em.persist(campeonatoEntity);
+        
         LOGGER.log(Level.INFO, "Saliendo de crear un campeonato nuevo");
         return campeonatoEntity;
     }

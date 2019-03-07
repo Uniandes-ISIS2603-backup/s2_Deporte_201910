@@ -31,12 +31,6 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
     @PodamExclude
     @ManyToMany
     private List<ClienteEntity> clientes= new ArrayList<>();
-    
-    
-   
-    
-
-   
 
     /**
      * @param puntos the puntos to set
