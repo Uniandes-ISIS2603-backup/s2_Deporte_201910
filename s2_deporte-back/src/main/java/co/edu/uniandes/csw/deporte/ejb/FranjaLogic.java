@@ -26,25 +26,25 @@ public class FranjaLogic {
     @Inject
     private FranjaPersistence persistence;
     
-    public FranjaEntity createFranja(FranjaEntity franja) throws BusinessLogicException{
+    public FranjaEntity create(FranjaEntity franja) throws BusinessLogicException{
         
-        if(franja.getAgenda() == null)
-        {
-            throw new BusinessLogicException("La franja debe pertenecer a una agenda");
-        }
+//        if(franja.getAgenda() == null)
+//        {
+//            throw new BusinessLogicException("La franja debe pertenecer a una agenda");
+//        }
         
         franja = persistence.create(franja);
         return franja;
     }
     
-    public List<FranjaEntity> getFranjas() {
+    public List<FranjaEntity> findAll() {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las franjas");
         List<FranjaEntity> lista = persistence.findAll();
         LOGGER.log(Level.INFO, "Termina proceso de consultar todas las franjas");
         return lista;
     }
     
-    public FranjaEntity getFranja(Long franjaId) {
+    public FranjaEntity find(Long franjaId) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar la franja con id = {0}", franjaId);
         FranjaEntity franja = persistence.find(franjaId);
         
@@ -56,14 +56,14 @@ public class FranjaLogic {
         return franja;
     }
     
-    public FranjaEntity updateFranja(Long franjaId, FranjaEntity franjaEntity) {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar la franja con id = {0}", franjaId);
+    public FranjaEntity update( FranjaEntity franjaEntity) {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar la franja con id = {0}", franjaEntity.getId());
         FranjaEntity franja = persistence.update(franjaEntity);
-        LOGGER.log(Level.INFO, "Termina proceso de actualizar la agenda con id = {0}", franjaId);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar la agenda con id = {0}", franjaEntity.getId());
         return franja;
     }
     
-    public void deleteFranja(Long franjaId) {
+    public void delete(Long franjaId) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar la franja con id = {0}", franjaId);
         persistence.delete(franjaId);
         LOGGER.log(Level.INFO, "Termina proceso de borrarla franja con id = {0}", franjaId);

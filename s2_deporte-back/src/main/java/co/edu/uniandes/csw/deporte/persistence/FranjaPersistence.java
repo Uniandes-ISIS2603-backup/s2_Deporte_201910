@@ -41,7 +41,7 @@ public class FranjaPersistence {
     public List<FranjaEntity> findAll(){
         
         LOGGER.log(Level.INFO, "Consultando todas las franjas");
-        TypedQuery<FranjaEntity> query = em.createQuery("select u from FranjaEntity u", FranjaEntity.class);
+        TypedQuery<FranjaEntity> query = em.createQuery("SELECT u FROM FranjaEntity u", FranjaEntity.class);
         return query.getResultList();
     }
 

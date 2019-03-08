@@ -41,7 +41,7 @@ public class AgendaPersistence {
     public List<AgendaEntity> findAll(){
         
         LOGGER.log(Level.INFO, "Consultando todas las agendas");
-        TypedQuery<AgendaEntity> query = em.createQuery("select u from AgendaEntity u", AgendaEntity.class);
+        TypedQuery<AgendaEntity> query = em.createQuery("SELECT u FROM AgendaEntity u", AgendaEntity.class);
         return query.getResultList();
     }
 

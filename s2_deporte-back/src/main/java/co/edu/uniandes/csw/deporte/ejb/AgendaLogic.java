@@ -27,12 +27,12 @@ public class AgendaLogic {
     @Inject
     private AgendaPersistence persistence;
     
-    public AgendaEntity createAgenda(AgendaEntity agenda) throws BusinessLogicException{
+    public AgendaEntity create(AgendaEntity agenda) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicio proceso de creacion de Agenda");
-        if(agenda.getCancha() == null)
-        {
-            throw new BusinessLogicException("La agenda no esta asignada a ninguna cancha");
-        }
+//        if(agenda.getCancha() == null)
+//        {
+//            throw new BusinessLogicException("La agenda no esta asignada a ninguna cancha");
+//        }
         
         
         agenda = persistence.create(agenda);
@@ -40,14 +40,14 @@ public class AgendaLogic {
         return agenda;
     }
     
-    public List<AgendaEntity> getAgendas() {
+    public List<AgendaEntity> findAll() {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las agendas");
         List<AgendaEntity> lista = persistence.findAll();
         LOGGER.log(Level.INFO, "Termina proceso de consultar todas las agendas");
         return lista;
     }
     
-    public AgendaEntity getAgenda(Long agendaId) {
+    public AgendaEntity find(Long agendaId) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar la agenda con id = {0}", agendaId);
         AgendaEntity agenda = persistence.find(agendaId);
         
@@ -59,14 +59,14 @@ public class AgendaLogic {
         return agenda;
     }
     
-    public AgendaEntity updateAgenda(Long agendaId, AgendaEntity agendaEntity) {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar la agenda con id = {0}", agendaId);
+    public AgendaEntity update(AgendaEntity agendaEntity) {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar la agenda con id = {0}", agendaEntity.getId());
         AgendaEntity agenda = persistence.update(agendaEntity);
-        LOGGER.log(Level.INFO, "Termina proceso de actualizar la agenda con id = {0}", agendaId);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar la agenda con id = {0}", agendaEntity.getId());
         return agenda;
     }
     
-    public void deleteAgenda(Long agendaId) {
+    public void delete(Long agendaId) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar la agenda con id = {0}", agendaId);
         persistence.delete(agendaId);
         LOGGER.log(Level.INFO, "Termina proceso de borrarla agenda con id = {0}", agendaId);
