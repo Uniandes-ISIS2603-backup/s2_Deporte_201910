@@ -36,6 +36,7 @@ public class PartidoResource
         return partido;
     }
     @GET
+    @Path("{partidoId: \\d+}")
     public PartidoDetailDTO getPartido(@PathParam("id") Long id) {
         return null;
     }
@@ -44,11 +45,15 @@ public class PartidoResource
         return null;
     }
     @PUT
+    @Path("{partidoId: \\d+}")
     public PartidoDetailDTO updatePartido(@PathParam("id") Long id)
     {
         return null;
     }
+    
+    
     @DELETE
+    @Path("{partidoId: \\d+}")
     public void deletePartido(@PathParam("id") Long id)
     {
         

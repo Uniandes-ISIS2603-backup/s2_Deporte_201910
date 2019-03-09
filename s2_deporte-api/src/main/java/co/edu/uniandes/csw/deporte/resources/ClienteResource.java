@@ -38,6 +38,7 @@ public class ClienteResource
         return cliente;
     }
     @GET
+    @Path("{clienteId: \\d+}")
     public ClienteDetailDTO getCliente(@PathParam("id") Long id) {
         return null;
     }
@@ -46,11 +47,13 @@ public class ClienteResource
         return null;
     }
     @PUT
+    @Path("{clienteId: \\d+}")
     public ClienteDetailDTO updateCliente(@PathParam("id") Long id)
     {
         return null;
     }
     @DELETE
+    @Path("{clienteId: \\d+}")
     public void deleteCliente(@PathParam("id") Long id)
     {
         
