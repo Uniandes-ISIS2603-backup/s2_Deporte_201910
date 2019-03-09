@@ -56,6 +56,23 @@ public class ClienteEntity extends BaseEntity implements Serializable
     public void setPosts(List<PostEntity> posts) {
         this.posts = posts;
     }
+
+    public EquipoEntity getRepresenta() {
+        return representa;
+    }
+
+    public void setRepresenta(EquipoEntity representa) {
+        this.representa = representa;
+    }
+
+    public List<CampeonatoEntity> getCampeonatos() {
+        return campeonatos;
+    }
+
+    public void setCampeonatos(List<CampeonatoEntity> campeonatos) {
+        this.campeonatos = campeonatos;
+    }
+    
     /**
      * devuelve la la lista de equipos
      * @return equipos

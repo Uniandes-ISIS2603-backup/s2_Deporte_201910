@@ -49,6 +49,7 @@ public class EquipoEntity extends BaseEntity implements Serializable
     {
         return jugadores;
     }
+    
     /**
      * modifica la lista de jugadores
      * @param pJugadores los nuevos jugadores

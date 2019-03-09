@@ -22,9 +22,9 @@ import javax.inject.Inject;
 @Stateless
 public class EquipoLogic 
 {
-    private static final Logger LOGGER = Logger.getLogger(EquipoLogic.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(EquipoLogic.class.getName());
     @Inject
-    private EquipoPersistence equipoPersistence;
+    public EquipoPersistence equipoPersistence;
     
     public EquipoEntity createEquipo(EquipoEntity equipoEntity)throws BusinessLogicException
     {

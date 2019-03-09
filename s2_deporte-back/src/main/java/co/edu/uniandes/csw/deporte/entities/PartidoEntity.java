@@ -55,6 +55,15 @@ public class PartidoEntity extends BaseEntity implements Serializable
     {
         return fecha;
     }
+
+    public List<EquipoEntity> getParticipantes() {
+        return participantes;
+    }
+
+    public void setParticipantes(List<EquipoEntity> participantes) {
+        this.participantes = participantes;
+    }
+    
     /**
      * le asigna participantes al partido
      * @param pEquipos los participantes que se asignan

@@ -23,6 +23,8 @@ public class ClienteDTO implements Serializable
      * el nombre del cliente
      */
     public String nombre;
+    
+    public EquipoDTO representa;
     //Constructor---------------------------------------------------------------
     public ClienteDTO()
     {
@@ -31,7 +33,8 @@ public class ClienteDTO implements Serializable
     public ClienteDTO(ClienteEntity entity) {
         if (entity != null) {
             this.id = entity.getId();
-            this.nombre = entity.getNombre();            
+            this.nombre = entity.getNombre(); 
+            this.representa = new EquipoDTO(entity.getRepresenta());
         }
     }
 
@@ -45,6 +48,7 @@ public class ClienteDTO implements Serializable
         ClienteEntity entity = new ClienteEntity();
         entity.setId(this.getId());
         entity.setNombre(this.getNombre());
+        entity.setRepresenta(representa.toEntity());
          return entity;
     }
     //Métodos-------------------------------------------------------------------

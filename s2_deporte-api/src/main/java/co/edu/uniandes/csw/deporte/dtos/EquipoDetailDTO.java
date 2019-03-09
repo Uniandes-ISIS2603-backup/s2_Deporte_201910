@@ -108,6 +108,39 @@ public class EquipoDetailDTO extends EquipoDTO implements Serializable
     {
         jugadores.clear();
     }
+
+    public ArrayList<PartidoDTO> getPartidos() {
+        return partidos;
+    }
+
+    public void setPartidos(ArrayList<PartidoDTO> partidos) {
+        this.partidos = partidos;
+    }
+
+    public ClienteDTO getRepresentante() {
+        return representante;
+    }
+
+    public void setRepresentante(ClienteDTO representante) {
+        this.representante = representante;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
     /**
      * elimina a un jugador con id dado
      * @param id el identificador del jugador a eliminar
