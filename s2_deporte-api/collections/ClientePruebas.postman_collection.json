@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "b199d1b2-e837-4a50-b385-72cffa2370d8",
+		"name": "ClientePruebas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_deporte-api/clientes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f12c63c9-6adc-4596-885b-04dca2eeeeb1",
+						"exec": [
+							"tests[\"va a dar null \"]=responseCode.code === 202;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_deporte-api/cliente/1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_deporte-api",
+						"cliente",
+						"1"
+					]
+				},
+				"description": "prueba get clientes ( va a dar null por el momento)"
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_deporte-api/cliente/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f12c63c9-6adc-4596-885b-04dca2eeeeb1",
+						"exec": [
+							"tests[\"va a dar null \"]=responseCode.code === 202;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_deporte-api/cliente/1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_deporte-api",
+						"cliente",
+						"1"
+					]
+				},
+				"description": "get el cliente 1"
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_deporte-api/clientes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f12c63c9-6adc-4596-885b-04dca2eeeeb1",
+						"exec": [
+							"tests[\"va a dar null \"]=responseCode.code === 202;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":\"0\",\n\t\"noombre\":\"prueba\"\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_deporte-api/",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_deporte-api",
+						""
+					]
+				},
+				"description": "Crear el cliente"
+			},
+			"response": []
+		}
+	]
+}
