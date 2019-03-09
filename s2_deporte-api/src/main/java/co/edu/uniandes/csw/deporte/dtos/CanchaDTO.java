@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.deporte.dtos;
 
 import co.edu.uniandes.csw.deporte.entities.CanchaEntity;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
