@@ -26,16 +26,36 @@ public class PropietarioPersistence {
     @PersistenceContext(unitName = "deportePU")
     protected EntityManager em;
 
+    /**
+     * Crea un propietario en la base de datos
+     *
+     * @param propietarioEntity objeto propietario que se creará en la base de
+     * datos
+     * @return devuelve la entidad creada con un id dado por la base de datos.
+     */
     public PropietarioEntity create(PropietarioEntity propietarioEntity) {
 
         em.persist(propietarioEntity);
         return propietarioEntity;
     }
 
+    /**
+     * Busca si hay alguna propietario con el id que se envía de argumento
+     *
+     * @param propietarioId: id correspondiente a el propietario buscado.
+     * @return un propietario.
+     */
     public PropietarioEntity find(Long propietarioId) {
         return em.find(PropietarioEntity.class, propietarioId);
     }
 
+    /**
+     * Devuelve todos los propietario de la base de datos.
+     *
+     * @return una lista con todas los propietarios que encuentre en la base de
+     * datos, "select u from PropietarioEntity u" es como un "select * from
+     * PropietarioEntity;" - "SELECT * FROM table_name" en SQL.
+     */
     public List<PropietarioEntity> findAll() {
 
         TypedQuery<PropietarioEntity> query = em.createQuery("select u from PropietarioEntity u", PropietarioEntity.class);
@@ -62,9 +82,9 @@ public class PropietarioPersistence {
     /**
      * Actualiza un propietario.
      *
-     * @param propietarioEntity: el propietario que viene con los nuevos cambios. Por
-     * ejemplo el nombre pudo cambiar. En ese caso, se haria uso del método
-     * update.
+     * @param propietarioEntity: el propietario que viene con los nuevos
+     * cambios. Por ejemplo el nombre pudo cambiar. En ese caso, se haria uso
+     * del método update.
      * @return un propietario con los cambios aplicados.
      */
     public PropietarioEntity update(PropietarioEntity propietarioEntity) {

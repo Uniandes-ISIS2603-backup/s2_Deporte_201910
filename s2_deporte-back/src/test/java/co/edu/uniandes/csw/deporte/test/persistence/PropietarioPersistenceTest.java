@@ -114,6 +114,8 @@ public class PropietarioPersistenceTest {
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
     }
 
+    
+    
     /**
      * Prueba para consultar la lista de Propietarios.
      */
@@ -148,7 +150,7 @@ public class PropietarioPersistenceTest {
      * Prueba para actualizar un propietario.
      */
     @Test
-    public void updateAuthorTest() {
+    public void updatePropietarioTest() {
         PropietarioEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         PropietarioEntity newEntity = factory.manufacturePojo(PropietarioEntity.class);
@@ -163,10 +165,10 @@ public class PropietarioPersistenceTest {
     }
 
     /**
-     * Prueba para eliminar un Author.
+     * Prueba para eliminar un Propietario.
      */
     @Test
-    public void deleteAuthorTest() {
+    public void deletePropietarioTest() {
         PropietarioEntity entity = data.get(0);
         propietarioPersistence.delete(entity.getId());
         PropietarioEntity deleted = em.find(PropietarioEntity.class, entity.getId());

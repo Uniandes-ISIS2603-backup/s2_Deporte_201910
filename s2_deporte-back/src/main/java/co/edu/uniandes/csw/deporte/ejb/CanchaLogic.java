@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.deporte.ejb;
 import co.edu.uniandes.csw.deporte.entities.CanchaEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.deporte.persistence.CanchaPersistence;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -44,6 +45,18 @@ public class CanchaLogic {
             throw new WebApplicationException("La cancha con el id: " + canchaId + " no existe");
         }
         return consulta;
+    }
+
+    /**
+     * Devuelve todos los libros que hay en la base de datos.
+     *
+     * @return Lista de entidades de tipo libro.
+     */
+    public List<CanchaEntity> getCanchas() {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los libros");
+        List<CanchaEntity> books = persistence.findAll();
+        LOGGER.log(Level.INFO, "Termina proceso de consultar todos los libros");
+        return books;
     }
 
     /**

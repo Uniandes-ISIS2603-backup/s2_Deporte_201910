@@ -10,6 +10,8 @@ import co.edu.uniandes.csw.deporte.dtos.CanchaDetailDTO;
 import co.edu.uniandes.csw.deporte.ejb.CanchaLogic;
 import co.edu.uniandes.csw.deporte.entities.CanchaEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
@@ -93,11 +95,43 @@ public class CanchaResourse {
         return canchaDetailDTO;
     }
 
+        /**
+     * Busca y devuelve todos los libros que existen en la aplicacion.
+     *
+     * @return JSONArray {@link BookDetailDTO} - Los libros encontrados en la
+     * aplicación. Si no hay ninguno retorna una lista vacía.
+     */
+    @GET
+    public List<CanchaDetailDTO> getBooks() {
+        LOGGER.info("CanchaResource getCancha: input: void");
+        List<CanchaDetailDTO> listaCancha = listEntity2DetailDTO(canchaLogic.getCanchas());
+        LOGGER.log(Level.INFO, "CanchaResource getCancha: output: {0}", listaCancha);
+        return listaCancha;
+    }
+    
     @DELETE
     @Path("{canchaId: \\d+}")
     public void deleteCancha(@PathParam("canchaId") Long canchaId) {
 
         canchaLogic.deleteCancha(canchaId);
 
+    }
+    
+        /**
+     * Convierte una lista de entidades a DTO.
+     *
+     * Este método convierte una lista de objetos BookEntity a una lista de
+     * objetos BookDetailDTO (json)
+     *
+     * @param entityList corresponde a la lista de libros de tipo Entity que
+     * vamos a convertir a DTO.
+     * @return la lista de libros en forma DTO (json)
+     */
+    private List<CanchaDetailDTO> listEntity2DetailDTO(List<CanchaEntity> entityList) {
+        List<CanchaDetailDTO> list = new ArrayList<>();
+        for (CanchaEntity entity : entityList) {
+            list.add(new CanchaDetailDTO(entity));
+        }
+        return list;
     }
 }

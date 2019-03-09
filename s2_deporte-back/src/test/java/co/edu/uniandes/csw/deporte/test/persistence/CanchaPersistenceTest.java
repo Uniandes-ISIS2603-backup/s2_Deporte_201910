@@ -30,7 +30,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class CanchaPersistenceTest {
 
     @Inject
-    public CanchaPersistence canchaPersistence;
+    public CanchaPersistence propietarioPersistence;
 
     @PersistenceContext
     public EntityManager em;
@@ -38,8 +38,13 @@ public class CanchaPersistenceTest {
     @Inject
     UserTransaction utx;
 
-    public List<CanchaEntity> data = new ArrayList<>();
+    public List<CanchaEntity> data = new ArrayList();
 
+    /**
+     * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
+     * El jar contiene las clases, el descriptor de la base de datos y el
+     * archivo beans.xml para resolver la inyección de dependencias.
+     */
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -72,8 +77,6 @@ public class CanchaPersistenceTest {
 
     /**
      * Limpia las tablas que están implicadas en la prueba.
-     *
-     *
      */
     public void clearData() {
         em.createQuery("delete from CanchaEntity").executeUpdate();
@@ -94,31 +97,77 @@ public class CanchaPersistenceTest {
     }
 
     /**
-     * Prueba para crear una Cancha.
+     * Prueba para crear un Propietario.
      */
     @Test
-    public void createCanchaTest() {
+    public void createPropietarioTest() {
         PodamFactory factory = new PodamFactoryImpl();
-        CanchaEntity newEntity;
-        newEntity = factory.manufacturePojo(CanchaEntity.class);
-        CanchaEntity result = null;
-        //canchaPersistence.create(newEntity);
+        CanchaEntity newEntity = factory.manufacturePojo(CanchaEntity.class);
+        CanchaEntity result = propietarioPersistence.create(newEntity);
 
-        //    Assert.assertNotNull(result);
-        //    CanchaEntity entity = em.find(CanchaEntity.class, result.getId());
-        //    Assert.assertEquals(newEntity.getDireccion(), entity.getDireccion());
+        Assert.assertNotNull(result);
+
+        CanchaEntity entity = em.find(CanchaEntity.class, result.getId());
+
+        Assert.assertEquals(newEntity.getDireccion(), entity.getDireccion());
     }
 
     /**
-     * Prueba para eliminar una Cancha.
-     *
-     *
+     * Prueba para consultar la lista de Propietarios.
      */
-    /*  @Test
-    public void deleteCanchaTest() {
+    @Test
+    public void getPropietariosTest() {
+        List<CanchaEntity> list = propietarioPersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (CanchaEntity ent : list) {
+            boolean found = false;
+            for (CanchaEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+
+    /**
+     * Prueba para consultar un Propietario.
+     */
+    @Test
+    public void getPropietarioTest() {
         CanchaEntity entity = data.get(0);
-        cp.delete(entity.getId());
+        CanchaEntity newEntity = propietarioPersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getDireccion(), newEntity.getDireccion());
+        Assert.assertEquals(entity.getCiudad(), newEntity.getCiudad());
+    }
+
+    /**
+     * Prueba para actualizar un propietario.
+     */
+    @Test
+    public void updatePropietarioTest() {
+        CanchaEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        CanchaEntity newEntity = factory.manufacturePojo(CanchaEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        propietarioPersistence.update(newEntity);
+
+        CanchaEntity resp = em.find(CanchaEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getDireccion(), resp.getDireccion());
+    }
+
+    /**
+     * Prueba para eliminar un Propietario.
+     */
+    @Test
+    public void deletePropietarioTest() {
+        CanchaEntity entity = data.get(0);
+        propietarioPersistence.delete(entity.getId());
         CanchaEntity deleted = em.find(CanchaEntity.class, entity.getId());
         Assert.assertNull(deleted);
-    }*/
+    }
 }

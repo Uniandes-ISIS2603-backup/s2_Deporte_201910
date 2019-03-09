@@ -16,7 +16,9 @@ public class PropietarioDTO implements Serializable{
     
     public Long id;
     
-    public Integer numCanchas;
+    public String nombre;
+    
+    private Integer numCanchas;
     
     public PropietarioDTO () {
         
@@ -27,11 +29,12 @@ public class PropietarioDTO implements Serializable{
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
      * la entidad que viene de argumento.
      *
-     * @param propietarioDTO: Es la entidad que se va a convertir a DTO
+     * @param propietarioEntity: Es la entidad que se va a convertir a DTO
      */
     public PropietarioDTO(PropietarioEntity propietarioEntity) {
         if (propietarioEntity != null) {
             this.id = propietarioEntity.getId();
+            this.nombre=propietarioEntity.getNombre();
             this.numCanchas = propietarioEntity.getNumCanchas();
         }
     }
@@ -71,8 +74,9 @@ public class PropietarioDTO implements Serializable{
      */
     public PropietarioEntity toEntity() {
         PropietarioEntity propietarioEntity = new PropietarioEntity();
-        propietarioEntity.setNumCanchas(this.numCanchas);
+        propietarioEntity.setNumCanchas(this.getNumCanchas());
         propietarioEntity.setId(this.id);
+        propietarioEntity.setNombre(this.nombre);
         return propietarioEntity;
     }
 }
