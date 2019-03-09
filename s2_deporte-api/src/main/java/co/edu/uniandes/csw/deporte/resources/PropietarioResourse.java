@@ -26,7 +26,7 @@ import javax.ws.rs.WebApplicationException;
 
 /**
  *
- * @author estudiante
+ * @author Santiago Serrano
  */
 @Path("propietarios")
 @Produces("application/json")
@@ -40,13 +40,14 @@ public class PropietarioResourse {
     private PropietarioLogic propietarioLogic;
 
     /**
-     * Crea un nuevo propietario con la informacion que se recibe en el cuerpo de la
-     * petición y se regresa un objeto identico con un id auto-generado por la
-     * base de datos.
+     * Crea un nuevo propietario con la informacion que se recibe en el cuerpo
+     * de la petición y se regresa un objeto identico con un id auto-generado
+     * por la base de datos.
      *
-     * @param propietario {@link PropietarioDTO} - EL propietario que se desea guardar.
-     * @return JSON {@link PropietarioDTO} - El propietario guardado con el atributo id
-     * autogenerado.
+     * @param propietario {@link PropietarioDTO} - EL propietario que se desea
+     * guardar.
+     * @return JSON {@link PropietarioDTO} - El propietario guardado con el
+     * atributo id autogenerado.
      * @throws co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException
      */
     @POST
@@ -57,6 +58,15 @@ public class PropietarioResourse {
         return propietarioDTO;
     }
 
+    /**
+     * Busca el propietario con el id asociado recibido en la URL y lo devuelve.
+     *
+     * @param propietarioId Identificador del autor que se esta buscando. Este
+     * debe ser una cadena de dígitos.
+     * @return JSON {@link PropietarioDetailDTO} - El propietario buscado
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el propietario.
+     */
     @GET
     @Path("{propietarioId: \\d+}")
     public PropietarioDetailDTO getPropietario(@PathParam("propietarioId") Long propietarioId) {
@@ -70,6 +80,18 @@ public class PropietarioResourse {
         return detailDTO;
     }
 
+    /**
+     * Actualiza el propietario con el id recibido en la URL con la información que se
+     * recibe en el cuerpo de la petición.
+     *
+     * @param propietarioId Identificador del autor que se desea actualizar. Este
+     * debe ser una cadena de dígitos.
+     * @param propietario {@link PropietarioDetailDTO} El propietario que se desea guardar.
+     * @return JSON {@link PropietarioDetailDTO} - El propietario guardado.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el autor a
+     * actualizar.
+     */
     @PUT
     @Path("{propietarioId: \\d+}")
     public PropietarioDetailDTO updatePropietario(@PathParam("propietarioId") Long propietarioId, PropietarioDetailDTO propietario) {
@@ -86,11 +108,12 @@ public class PropietarioResourse {
     /**
      * Borra el propietario con el id asociado recibido en la URL.
      *
-     * @param propietarioId Identificador del propietario que se desea borrar. Este debe
-     * ser una cadena de dígitos.
+     * @param propietarioId Identificador del propietario que se desea borrar.
+     * Este debe ser una cadena de dígitos.
      * @throws co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException
      * @throws WebApplicationException {@link WebApplicationExceptionMapper}
-     * Error de lógica que se genera cuando no se encuentra el propietario a borrar.
+     * Error de lógica que se genera cuando no se encuentra el propietario a
+     * borrar.
      */
     @DELETE
     @Path("{propietarioId: \\d+}")
