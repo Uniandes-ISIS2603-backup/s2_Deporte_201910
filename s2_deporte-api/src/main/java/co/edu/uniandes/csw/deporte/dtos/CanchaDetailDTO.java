@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.deporte.dtos;
 
 import co.edu.uniandes.csw.deporte.entities.AgendaEntity;
 import co.edu.uniandes.csw.deporte.entities.CanchaEntity;
+import co.edu.uniandes.csw.deporte.entities.ReservaEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,32 @@ public class CanchaDetailDTO extends CanchaDTO implements Serializable {
         for (AgendaEntity entityBooks : cancha.getAgendas()) {
             agendas.add(new AgendaDTO(entityBooks));
         }
+    }
+
+    /**
+     * Transformar el DTO a una entidad
+     *
+     * @return La entidad que representa la cancha.
+     */
+    @Override
+    public CanchaEntity toEntity() {
+        CanchaEntity canchaEntity = super.toEntity();
+        if (agendas != null) {
+            List<AgendaEntity> agendasEntity = new ArrayList<>();
+            for (AgendaDTO dtoAgenda : getAgendas()) {
+                agendasEntity.add(dtoAgenda.toEntity());
+            }
+            canchaEntity.setAgendas(agendasEntity);
+        }
+
+        if (reservas != null) {
+            List<ReservaEntity> reservasEntity = new ArrayList<>();
+            for (ReservaDTO dtoReserva : reservas) {
+                reservasEntity.add(dtoReserva.toEntity());
+            }
+            canchaEntity.setReservas(reservasEntity);
+        }
+        return canchaEntity;
     }
 
     /**
