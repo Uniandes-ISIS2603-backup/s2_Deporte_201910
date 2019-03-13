@@ -116,8 +116,8 @@ public class CanchaPersistenceTest {
      * Prueba para consultar la lista de Propietarios.
      */
     @Test
-    public void getPropietariosTest() {
-        List<CanchaEntity> list = propietarioPersistence.findAll();/*
+    public void getPropietariosTest() {/*
+        List<CanchaEntity> list = propietarioPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
         for (CanchaEntity ent : list) {
             boolean found = false;

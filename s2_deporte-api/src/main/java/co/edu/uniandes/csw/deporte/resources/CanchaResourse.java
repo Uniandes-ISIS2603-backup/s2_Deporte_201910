@@ -28,7 +28,7 @@ import javax.ws.rs.WebApplicationException;
 
 /**
  *
- * @author estudiante
+ * @author Santiago Serrano
  */
 @Path("canchas")
 @Produces("application/json")
@@ -64,8 +64,8 @@ public class CanchaResourse {
      * Actualiza el libro con el id recibido en la URL con la información que se
      * recibe en el cuerpo de la petición.
      *
-     * @param canchaId Identificador del libro que se desea actualizar. Este debe
-     * ser una cadena de dígitos.
+     * @param canchaId Identificador del libro que se desea actualizar. Este
+     * debe ser una cadena de dígitos.
      * @param cancha {@link CanchaDTO} El cancha que se desea guardar.
      * @return JSON {@link CanchaDetailDTO} - El cancha guardada.
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
@@ -87,6 +87,15 @@ public class CanchaResourse {
         return detailDTO;
     }
 
+    /**
+     * Busca la cancha con el id asociado recibido en la URL y lo devuelve.
+     *
+     * @param canchaId Identificador de la cancha que se esta buscando. Este
+     * debe ser una cadena de dígitos.
+     * @return JSON {@link CanchaDetailDTO} - La cancha buscada
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra la cancha.
+     */
     @GET
     @Path("{canchaId: \\d+}")
     public CanchaDTO getCancha(@PathParam("canchaId") Long canchaId) throws WebApplicationException {
@@ -95,7 +104,7 @@ public class CanchaResourse {
         return canchaDetailDTO;
     }
 
-        /**
+    /**
      * Busca y devuelve todos los libros que existen en la aplicacion.
      *
      * @return JSONArray {@link BookDetailDTO} - Los libros encontrados en la
@@ -108,16 +117,30 @@ public class CanchaResourse {
         LOGGER.log(Level.INFO, "CanchaResource getCancha: output: {0}", listaCancha);
         return listaCancha;
     }
-    
+
+    /**
+     * Borra la cancha con el id asociado recibido en la URL.
+     *
+     * @param canchaId Identificador de la cancha que se desea borrar. Este debe ser
+     * una cadena de dígitos.
+     * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
+     * cuando el libro tiene autores asociados.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el libro.
+     */
     @DELETE
     @Path("{canchaId: \\d+}")
     public void deleteCancha(@PathParam("canchaId") Long canchaId) {
-
+        LOGGER.log(Level.INFO, "BookResource deleteCancha: input: {0}", canchaId);
+        CanchaEntity entity = canchaLogic.getCancha(canchaId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /cancha/" + canchaId + " no existe.", 404);
+        }
         canchaLogic.deleteCancha(canchaId);
-
+        LOGGER.info("BookResource deleteCancha: output: void");
     }
-    
-        /**
+
+    /**
      * Convierte una lista de entidades a DTO.
      *
      * Este método convierte una lista de objetos BookEntity a una lista de

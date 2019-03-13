@@ -21,7 +21,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @authorSantiago Serrano
+ * @author Santiago Serrano
  */
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
