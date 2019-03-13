@@ -27,7 +27,7 @@ public class AgendaDetailDTO extends AgendaDTO implements Serializable {
         super(agenda);
         franjas = new ArrayList<>();
         for (FranjaEntity entityFranja : agenda.getFranjas()) {
-    //        franjas.add(new FranjaDTO(entityFranja));
+            franjas.add(new FranjaDTO(entityFranja));
         }
     }
 
