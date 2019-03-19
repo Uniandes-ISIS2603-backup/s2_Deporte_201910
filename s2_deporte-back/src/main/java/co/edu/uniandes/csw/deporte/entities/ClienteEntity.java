@@ -8,9 +8,8 @@ package co.edu.uniandes.csw.deporte.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -26,12 +25,13 @@ public class ClienteEntity extends BaseEntity implements Serializable
 {
         
     @PodamExclude
-    @ManyToMany(mappedBy="jugadores")
+     @ManyToMany
     public List<EquipoEntity> equipos = new ArrayList<>();
     
-    @PodamExclude
-    @OneToOne(mappedBy="representante",fetch=FetchType.EAGER)
-    public EquipoEntity representa;
+//    @PodamExclude
+//    @OneToOne(mappedBy="representante")
+//    @JoinColumn(name = "representa", nullable = true, updatable = true)
+//    public EquipoEntity representa;
     
     public String nombre;
     
@@ -57,13 +57,13 @@ public class ClienteEntity extends BaseEntity implements Serializable
         this.posts = posts;
     }
 
-    public EquipoEntity getRepresenta() {
-        return representa;
-    }
-
-    public void setRepresenta(EquipoEntity representa) {
-        this.representa = representa;
-    }
+//    public EquipoEntity getRepresenta() {
+//        return representa;
+//    }
+//
+//    public void setRepresenta(EquipoEntity representa) {
+//        this.representa = representa;
+//    }
 
     public List<CampeonatoEntity> getCampeonatos() {
         return campeonatos;

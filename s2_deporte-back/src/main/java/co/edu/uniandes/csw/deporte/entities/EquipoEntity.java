@@ -9,9 +9,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -28,12 +27,13 @@ public class EquipoEntity extends BaseEntity implements Serializable
     public List<PartidoEntity> partidos;
     
     @PodamExclude
-    @ManyToMany
+    @ManyToMany(mappedBy ="equipos")
     public List<ClienteEntity> jugadores;
    
-    @PodamExclude
-    @OneToOne
-    public ClienteEntity representante = new ClienteEntity();
+//    @PodamExclude
+//    @OneToOne
+//    @JoinColumn(name = "representante", nullable = false, updatable = true)
+//    public ClienteEntity representante = new ClienteEntity();
    
     public String nombre;
 
@@ -58,22 +58,22 @@ public class EquipoEntity extends BaseEntity implements Serializable
     {
         jugadores=pJugadores;
     }
-    /**
-     * Asigna un representante para un equipo
-     * @param pR el ClienteEntity que va a representar al equipo
-     */
-    public void setRepresentante(ClienteEntity pR)
-    {
-        representante=pR;
-    }
-    /**
-     * devuelve el representante del equipo
-     * @return representante
-     */
-    public ClienteEntity getRepresentante()
-    {
-        return representante;
-    }
+//    /**
+//     * Asigna un representante para un equipo
+//     * @param pR el ClienteEntity que va a representar al equipo
+//     */
+//    public void setRepresentante(ClienteEntity pR)
+//    {
+//        representante=pR;
+//    }
+//    /**
+//     * devuelve el representante del equipo
+//     * @return representante
+//     */
+//    public ClienteEntity getRepresentante()
+//    {
+//        return representante;
+//    }
     /**
      * devuelve los partidos del equipo
      * @return partidos
@@ -90,9 +90,9 @@ public class EquipoEntity extends BaseEntity implements Serializable
     {
         partidos=pPartidos;
     }
-     public String getNombre() {
-        return nombre;
-    }
+      public String getNombre() {
+          return nombre;
+      }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

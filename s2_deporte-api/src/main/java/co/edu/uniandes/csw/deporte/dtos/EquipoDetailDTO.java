@@ -116,14 +116,14 @@ public class EquipoDetailDTO extends EquipoDTO implements Serializable
     public void setPartidos(ArrayList<PartidoDTO> partidos) {
         this.partidos = partidos;
     }
-
-    public ClienteDTO getRepresentante() {
-        return representante;
-    }
-
-    public void setRepresentante(ClienteDTO representante) {
-        this.representante = representante;
-    }
+//
+//    public ClienteDTO getRepresentante() {
+//        return representante;
+//    }
+//
+//    public void setRepresentante(ClienteDTO representante) {
+//        this.representante = representante;
+//    }
 
     public Long getId() {
         return id;

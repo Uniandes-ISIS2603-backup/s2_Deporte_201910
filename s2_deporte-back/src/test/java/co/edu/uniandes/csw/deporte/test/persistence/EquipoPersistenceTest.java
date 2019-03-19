@@ -31,7 +31,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class EquipoPersistenceTest 
 {
-     @Inject
+    @Inject
     public EquipoPersistence equipoPersistence;
 
     @PersistenceContext
@@ -92,7 +92,7 @@ public class EquipoPersistenceTest
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             EquipoEntity entity = factory.manufacturePojo(EquipoEntity.class);
-
+            System.out.println(entity!=null);
             em.persist(entity);
             data.add(entity);
         }
@@ -103,10 +103,11 @@ public class EquipoPersistenceTest
      */
     @Test
     public void createEquipoTest() {
+        System.out.println("create");
         PodamFactory factory = new PodamFactoryImpl();
         EquipoEntity newEntity = factory.manufacturePojo(EquipoEntity.class);
         EquipoEntity result = equipoPersistence.create(newEntity);
-
+        System.out.println(result!=null);
         Assert.assertNotNull(result);
 
         EquipoEntity entity = em.find(EquipoEntity.class, result.getId());
@@ -151,6 +152,7 @@ public class EquipoPersistenceTest
     @Test
     public void deleteEquipoTest() {
         EquipoEntity entity = data.get(0);
+        System.out.println(entity!=null);
         equipoPersistence.delete(entity.getId());
         EquipoEntity deleted = em.find(EquipoEntity.class, entity.getId());
         Assert.assertNull(deleted);

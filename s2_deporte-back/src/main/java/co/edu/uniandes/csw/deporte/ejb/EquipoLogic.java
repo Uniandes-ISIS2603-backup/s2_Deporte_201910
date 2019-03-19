@@ -37,10 +37,10 @@ public class EquipoLogic
         {
             throw new BusinessLogicException("El equipo tiene jugadores repetidos");
         }
-        if(equipoEntity.getRepresentante()==null)
-        {
-            throw new BusinessLogicException("El equipo no tiene representante");
-        }
+//        if(equipoEntity.getRepresentante()==null)
+//        {
+//            throw new BusinessLogicException("El equipo no tiene representante");
+//        }
         if(getEquipo(equipoEntity.getId())!=null)
         {
             throw new BusinessLogicException("El equipo ya existe");
@@ -77,10 +77,10 @@ public class EquipoLogic
         {
             throw new BusinessLogicException("El equipo tiene jugadores repetidos");
         }
-        if(equipoEntity.getRepresentante()==null)
-        {
-            throw new BusinessLogicException("El equipo no tiene representante");
-        }
+//        if(equipoEntity.getRepresentante()==null)
+//        {
+//            throw new BusinessLogicException("El equipo no tiene representante");
+//        }
         EquipoEntity newequipoEntity = equipoPersistence.update(equipoEntity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar el equipo con id = {0}", equiposId);
         return newequipoEntity;

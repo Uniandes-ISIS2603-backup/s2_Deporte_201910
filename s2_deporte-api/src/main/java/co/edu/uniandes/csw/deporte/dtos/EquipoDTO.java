@@ -18,7 +18,7 @@ public class EquipoDTO implements Serializable
     /**
      * el representante del equipo
      */
-    public ClienteDTO representante;
+    //public ClienteDTO representante;
     /**
      * el identificador del equipo
      */
@@ -35,7 +35,7 @@ public class EquipoDTO implements Serializable
         if (entity != null) {
             this.id = entity.getId();
             this.nombre = entity.getNombre();   
-            this.representante=new ClienteDTO(entity.getRepresentante());
+            //this.representante=new ClienteDTO(entity.getRepresentante());
         }
     }
 
@@ -49,7 +49,7 @@ public class EquipoDTO implements Serializable
         EquipoEntity entity = new EquipoEntity();
         entity.setId(this.getId());
         entity.setNombre(this.getNombre());
-        entity.setRepresentante(representante.toEntity());
+        //entity.setRepresentante(representante.toEntity());
         return entity;
     }
     //Métodos-------------------------------------------------------------------
@@ -62,18 +62,18 @@ public class EquipoDTO implements Serializable
     {
         return id;
     }
-    public void setRepresentante(ClienteDTO pRepresentante)
-    {
-        representante=pRepresentante;
-    }
-    public ClienteDTO getRepresentante()
-    {
-        return representante;
-    }
-    public void deleteRepresentante()
-    {
-        representante=null;
-    }
+//    public void setRepresentante(ClienteDTO pRepresentante)
+//    {
+//        representante=pRepresentante;
+//    }
+//    public ClienteDTO getRepresentante()
+//    {
+//        return representante;
+//    }
+//    public void deleteRepresentante()
+//    {
+//        representante=null;
+//    }
     public String getNombre() {
         return nombre;
     }
