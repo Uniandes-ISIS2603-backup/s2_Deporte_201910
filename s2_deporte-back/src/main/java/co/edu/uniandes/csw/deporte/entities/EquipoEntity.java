@@ -30,17 +30,25 @@ public class EquipoEntity extends BaseEntity implements Serializable
     @ManyToMany(mappedBy ="equipos")
     public List<ClienteEntity> jugadores;
    
-//    @PodamExclude
-//    @OneToOne
-//    @JoinColumn(name = "representante", nullable = false, updatable = true)
-//    public ClienteEntity representante = new ClienteEntity();
-   
+    @PodamExclude
+    @OneToOne(mappedBy = "representa")
+    public RepresentanteEntity representante;
+    
     public String nombre;
 
     public EquipoEntity() {
         this.jugadores = new ArrayList<>();
         this.partidos = new ArrayList<>();
     }
+
+    public RepresentanteEntity getRepresentante() {
+        return representante;
+    }
+
+    public void setRepresentante(RepresentanteEntity representante) {
+        this.representante = representante;
+    }   
+    
     /**
      * devuelve la lista de jugadores en el equipo
      * @return jugadores
@@ -58,22 +66,7 @@ public class EquipoEntity extends BaseEntity implements Serializable
     {
         jugadores=pJugadores;
     }
-//    /**
-//     * Asigna un representante para un equipo
-//     * @param pR el ClienteEntity que va a representar al equipo
-//     */
-//    public void setRepresentante(ClienteEntity pR)
-//    {
-//        representante=pR;
-//    }
-//    /**
-//     * devuelve el representante del equipo
-//     * @return representante
-//     */
-//    public ClienteEntity getRepresentante()
-//    {
-//        return representante;
-//    }
+
     /**
      * devuelve los partidos del equipo
      * @return partidos

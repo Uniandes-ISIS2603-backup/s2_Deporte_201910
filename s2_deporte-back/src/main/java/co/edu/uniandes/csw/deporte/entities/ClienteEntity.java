@@ -28,10 +28,9 @@ public class ClienteEntity extends BaseEntity implements Serializable
      @ManyToMany
     public List<EquipoEntity> equipos = new ArrayList<>();
     
-//    @PodamExclude
-//    @OneToOne(mappedBy="representante")
-//    @JoinColumn(name = "representa", nullable = true, updatable = true)
-//    public EquipoEntity representa;
+    @PodamExclude
+    @OneToOne(mappedBy= "representante")
+    public RepresentanteEntity representa;
     
     public String nombre;
     
@@ -48,7 +47,14 @@ public class ClienteEntity extends BaseEntity implements Serializable
         this.campeonatos = new ArrayList<>();
         
     }  
+    public RepresentanteEntity getRepresenta() {
+        return representa;
+    }
 
+    public void setRepresenta(RepresentanteEntity representa) {
+        this.representa = representa;
+    }
+    
     public List<PostEntity> getPosts() {
         return posts;
     }
@@ -56,14 +62,6 @@ public class ClienteEntity extends BaseEntity implements Serializable
     public void setPosts(List<PostEntity> posts) {
         this.posts = posts;
     }
-
-//    public EquipoEntity getRepresenta() {
-//        return representa;
-//    }
-//
-//    public void setRepresenta(EquipoEntity representa) {
-//        this.representa = representa;
-//    }
 
     public List<CampeonatoEntity> getCampeonatos() {
         return campeonatos;
