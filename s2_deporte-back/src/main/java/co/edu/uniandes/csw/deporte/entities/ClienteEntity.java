@@ -8,8 +8,8 @@ package co.edu.uniandes.csw.deporte.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -23,28 +23,28 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class ClienteEntity extends BaseEntity implements Serializable
 {
-        
+    public String nombre;    
+    
     @PodamExclude
-     @ManyToMany
+    @ManyToMany(mappedBy ="jugadores", cascade=CascadeType.PERSIST)
     public List<EquipoEntity> equipos = new ArrayList<>();
     
     @PodamExclude
-    @OneToOne(mappedBy= "representante")
+    @OneToOne(mappedBy= "representante",orphanRemoval = true, cascade = CascadeType.PERSIST)
     public RepresentanteEntity representa;
-    
-    public String nombre;
+        
     
     @PodamExclude
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade= CascadeType.PERSIST ,orphanRemoval=true)
     public List<PostEntity> posts = new ArrayList<>();
     
     @PodamExclude
-    @ManyToMany(mappedBy="clientes")
-    public List<CampeonatoEntity> campeonatos;
+    @ManyToMany(mappedBy="clientes", cascade=CascadeType.PERSIST)
+    public List<CampeonatoEntity> campeonatos= new ArrayList<>();
     
     public ClienteEntity()
     {
-        this.campeonatos = new ArrayList<>();
+        
         
     }  
     public RepresentanteEntity getRepresenta() {

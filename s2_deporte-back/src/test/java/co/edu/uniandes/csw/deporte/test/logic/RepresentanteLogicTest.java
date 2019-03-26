@@ -6,6 +6,8 @@
 package co.edu.uniandes.csw.deporte.test.logic;
 
 import co.edu.uniandes.csw.deporte.ejb.RepresentanteLogic;
+import co.edu.uniandes.csw.deporte.entities.ClienteEntity;
+import co.edu.uniandes.csw.deporte.entities.EquipoEntity;
 import co.edu.uniandes.csw.deporte.entities.RepresentanteEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.deporte.persistence.RepresentantePersistence;
@@ -38,13 +40,16 @@ public class RepresentanteLogicTest
     @Inject
     public RepresentanteLogic representanteLogic;
     
-     @PersistenceContext
+    @PersistenceContext
     public EntityManager em;
 
     @Inject
     public UserTransaction utx;
     
-    public List<RepresentanteEntity> data = new ArrayList<RepresentanteEntity>();
+    public List<RepresentanteEntity> dataR = new ArrayList<RepresentanteEntity>();
+    public List<EquipoEntity> dataE = new ArrayList<EquipoEntity>();
+    public List<ClienteEntity> dataC = new ArrayList<ClienteEntity>();
+    
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -89,10 +94,20 @@ public class RepresentanteLogicTest
      */
     public void insertData() {
        for (int i = 0; i < 3; i++) {
-            RepresentanteEntity entity = factory.manufacturePojo(RepresentanteEntity.class);
-
-            em.persist(entity);
-            data.add(entity);
+            RepresentanteEntity entityR = factory.manufacturePojo(RepresentanteEntity.class);
+            ClienteEntity entityC = factory.manufacturePojo(ClienteEntity.class);
+            EquipoEntity entityE = factory.manufacturePojo(EquipoEntity.class);
+            
+            entityR.setRepresenta(entityE);
+            entityR.setRepresentante(entityC);
+            
+            em.persist(entityR);
+            em.persist(entityC);
+            em.persist(entityE);
+            
+            dataR.add(entityR);
+            dataC.add(entityC);
+            dataE.add(entityE);
         }
     }
     
@@ -100,10 +115,15 @@ public class RepresentanteLogicTest
     public void createRepresentanteTest() throws BusinessLogicException
     {
         RepresentanteEntity newEntity = factory.manufacturePojo(RepresentanteEntity.class);
+        EquipoEntity equipo = factory.manufacturePojo(EquipoEntity.class);
+        ClienteEntity cliente = factory.manufacturePojo(ClienteEntity.class);
+        newEntity.setRepresenta(equipo);
+        newEntity.setRepresentante(cliente);
         System.out.println(newEntity.getRepresenta()+"---"+newEntity.representante);
         RepresentanteEntity res = representanteLogic.createRepresentante(newEntity);
         Assert.assertNotNull(res);
         RepresentanteEntity nuevo = em.find(RepresentanteEntity.class, res.getId());
+        System.out.println(nuevo);
         Assert.assertEquals(newEntity.getId(), nuevo.getId());
         Assert.assertEquals(newEntity.getRepresenta().getId(), nuevo.getRepresenta().getId());
         Assert.assertEquals(newEntity.getRepresentante().getId(), nuevo.getRepresentante().getId());
@@ -111,12 +131,38 @@ public class RepresentanteLogicTest
     @Test
     public void createRepresentateClienteNull()
     {
+        RepresentanteEntity newEntity = factory.manufacturePojo(RepresentanteEntity.class);
+        EquipoEntity equipo = factory.manufacturePojo(EquipoEntity.class);
+        newEntity.setRepresenta(equipo);
+        
+        try
+        {
+            RepresentanteEntity res = representanteLogic.createRepresentante(newEntity);
+            Assert.fail();
+        }
+        catch(Exception e)
+        {
+            
+        }
         
     }    
     @Test
     public void createRepresentanteEquipoNull()
     {
+        RepresentanteEntity newEntity = factory.manufacturePojo(RepresentanteEntity.class);
+        EquipoEntity equipo = factory.manufacturePojo(EquipoEntity.class);
+        ClienteEntity cliente = factory.manufacturePojo(ClienteEntity.class);
         
+        newEntity.setRepresentante(cliente);
+        try
+        {
+            RepresentanteEntity res = representanteLogic.createRepresentante(newEntity);
+            Assert.fail();
+        }
+        catch(Exception e)
+        {
+            
+        }
     }
     @Test
     public void createRepresentateYaCreado()

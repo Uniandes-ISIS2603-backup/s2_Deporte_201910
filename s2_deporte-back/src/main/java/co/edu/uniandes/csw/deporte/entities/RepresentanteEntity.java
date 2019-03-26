@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.deporte.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -18,11 +19,11 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class RepresentanteEntity extends BaseEntity implements Serializable
 {
     @PodamExclude
-    @OneToOne
+    @OneToOne(cascade=CascadeType.PERSIST)
     public EquipoEntity representa;
     
     @PodamExclude 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.PERSIST)
     public ClienteEntity representante;
     
     public RepresentanteEntity()

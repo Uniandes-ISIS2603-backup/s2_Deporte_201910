@@ -30,6 +30,7 @@ public class RepresentanteLogic
 
     public RepresentanteEntity createRepresentante(RepresentanteEntity representanteEntity)throws BusinessLogicException
     {
+        System.out.println("Se empieza");
         if(representanteEntity.representa==null)
         {
             throw new BusinessLogicException("El representante no tiene equipo");
@@ -50,6 +51,7 @@ public class RepresentanteLogic
         {
             throw new BusinessLogicException("El representante ya existe");
         }
+        representantePersistence.create(representanteEntity);
         return representanteEntity;
     }        
     
@@ -113,8 +115,10 @@ public class RepresentanteLogic
     
     private boolean verificacionNoRepresentaANadie(RepresentanteEntity r)
     {
+        System.out.println(representantePersistence.findAll().size());
         for(RepresentanteEntity rep : representantePersistence.findAll())
         {
+            System.out.println(rep.getId()+"-----"+r.getId());
             if(rep.getRepresentante().getId()==r.getRepresentante().getId())
             {
                 return false;

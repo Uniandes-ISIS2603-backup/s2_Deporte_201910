@@ -10,9 +10,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -26,8 +26,8 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 public class PartidoEntity extends BaseEntity implements Serializable
 {
     @PodamExclude
-    @ManyToMany(mappedBy = "partidos")
-    public List<EquipoEntity> participantes;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    public List<EquipoEntity> participantes= new ArrayList<>();
     
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
@@ -36,8 +36,7 @@ public class PartidoEntity extends BaseEntity implements Serializable
     public List<Integer> puntaje;
 
     public PartidoEntity() {
-        this.puntaje = new ArrayList<>();
-        this.participantes = new ArrayList<>();
+       
     }
     /**
      * le asigna una fecha al partido
