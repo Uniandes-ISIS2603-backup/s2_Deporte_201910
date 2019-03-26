@@ -30,22 +30,14 @@ public class EquipoEntity extends BaseEntity implements Serializable
     public List<ClienteEntity> jugadores= new ArrayList<>();
    
     @PodamExclude
-    @OneToOne(mappedBy = "representa",cascade=CascadeType.PERSIST, orphanRemoval = true)
-    public RepresentanteEntity representante;
+    @OneToOne(cascade=CascadeType.PERSIST)
+    public ClienteEntity representante;
     
     public String nombre;
 
     public EquipoEntity() {
         
-    }
-
-    public RepresentanteEntity getRepresentante() {
-        return representante;
-    }
-
-    public void setRepresentante(RepresentanteEntity representante) {
-        this.representante = representante;
-    }   
+    } 
     
     /**
      * devuelve la lista de jugadores en el equipo
@@ -54,6 +46,14 @@ public class EquipoEntity extends BaseEntity implements Serializable
     public List<ClienteEntity> getJugadores()
     {
         return jugadores;
+    }
+
+    public ClienteEntity getRepresentante() {
+        return representante;
+    }
+
+    public void setRepresentante(ClienteEntity representante) {
+        this.representante = representante;
     }
     
     /**

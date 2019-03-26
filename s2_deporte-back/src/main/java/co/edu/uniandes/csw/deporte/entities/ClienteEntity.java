@@ -31,7 +31,7 @@ public class ClienteEntity extends BaseEntity implements Serializable
     
     @PodamExclude
     @OneToOne(mappedBy= "representante",orphanRemoval = true, cascade = CascadeType.PERSIST)
-    public RepresentanteEntity representa;
+    public EquipoEntity representa;
         
     
     @PodamExclude
@@ -47,18 +47,19 @@ public class ClienteEntity extends BaseEntity implements Serializable
         
         
     }  
-    public RepresentanteEntity getRepresenta() {
-        return representa;
-    }
-
-    public void setRepresenta(RepresentanteEntity representa) {
-        this.representa = representa;
-    }
     
     public List<PostEntity> getPosts() {
         return posts;
     }
 
+    public EquipoEntity getRepresenta() {
+        return representa;
+    }
+
+    public void setRepresenta(EquipoEntity representa) {
+        this.representa = representa;
+    }
+    
     public void setPosts(List<PostEntity> posts) {
         this.posts = posts;
     }
