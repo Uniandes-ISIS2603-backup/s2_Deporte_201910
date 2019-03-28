@@ -119,6 +119,7 @@ public class CampeonatoDTO implements Serializable{
         CampeonatoEntity campeonatoEntity = new CampeonatoEntity();
         campeonatoEntity.setId(this.getId());
         campeonatoEntity.setNombre(this.getNombre());
+        campeonatoEntity.setDescripcion(this.getDescripcion());
         if(this.blogDTO != null)
        {
             campeonatoEntity.setBlog(this.blogDTO.toEntity());

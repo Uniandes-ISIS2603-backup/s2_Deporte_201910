@@ -30,7 +30,9 @@ public class PostDTO implements Serializable{
      */
     public PostDTO(PostEntity postEntity) {
         if (postEntity != null) {
+            {
             this.id = postEntity.getId();
+            }
             if(postEntity.getBlog() != null)
             {
                 this.blogDTO = new BlogDTO(postEntity.getBlog());
@@ -73,7 +75,7 @@ public class PostDTO implements Serializable{
     public PostEntity toEntity()
     {
         PostEntity postEntity = new PostEntity();
-        postEntity.setId(this.id);
+        postEntity.setId(this.getId());
         if(this.blogDTO != null)
         {
         postEntity.setBlog(this.blogDTO.toEntity());
