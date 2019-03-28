@@ -34,14 +34,14 @@ public class BlogDTO implements Serializable{
             this.id = blogEntity.getId();
             this.nombre = blogEntity.getNombre();
            
-            // if(blogEntity.getCampeonato() != null)
-            //{
-            //  this.campeonatoDTO = new CampeonatoDTO(blogEntity.getCampeonato());
-            //}
-            //else
-            //{
-            //  this.campeonatoDTO = null;
-            //}
+             if(blogEntity.getCampeonato() != null)
+            {
+              this.campeonatoDTO = new CampeonatoDTO(blogEntity.getCampeonato());
+            }
+            else
+            {
+              this.campeonatoDTO = null;
+            }
         }
     }
 
@@ -96,9 +96,9 @@ public class BlogDTO implements Serializable{
         bloglEntity.setId(this.getId());
         bloglEntity.setNombre(this.getNombre());
         bloglEntity.setDescripcion(this.descripcion);
-       // if (this.campeonatoDTO != null) {
-         //   bloglEntity.setCampeonato(this.campeonatoDTO.toEntity());
-        //}
+        if (this.campeonatoDTO != null) {
+            bloglEntity.setCampeonato(this.campeonatoDTO.toEntity());
+        }
         return bloglEntity;
     }
 

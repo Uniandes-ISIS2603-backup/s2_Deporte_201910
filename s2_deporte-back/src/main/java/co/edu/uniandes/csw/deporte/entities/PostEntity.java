@@ -49,15 +49,15 @@ public class PostEntity extends BaseEntity implements Serializable {
     /**
      * @return the blog
      */
-   // public BlogEntity getBlog() {
-     //   return blog;
-    //}
+    public BlogEntity getBlog() {
+        return blog;
+    }
 
     /**
      * @param blog the blog to set
      */
-   // public void setBlog(BlogEntity blog) {
-     //   this.blog = blog;
-    //}
+    public void setBlog(BlogEntity blog) {
+        this.blog = blog;
+    }
    }
 

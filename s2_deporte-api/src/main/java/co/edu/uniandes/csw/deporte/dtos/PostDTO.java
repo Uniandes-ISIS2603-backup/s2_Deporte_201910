@@ -31,14 +31,14 @@ public class PostDTO implements Serializable{
     public PostDTO(PostEntity postEntity) {
         if (postEntity != null) {
             this.id = postEntity.getId();
-           // if(postEntity.getBlog() != null)
-            //{
-              //  this.blogDTO = new BlogDTO(postEntity.getBlog());
-            //}
-            //else
-            //{
-              //  this.blogDTO = null;
-            //}
+            if(postEntity.getBlog() != null)
+            {
+                this.blogDTO = new BlogDTO(postEntity.getBlog());
+            }
+            else
+            {
+                this.blogDTO = null;
+            }
         }
     }
 
@@ -74,10 +74,10 @@ public class PostDTO implements Serializable{
     {
         PostEntity postEntity = new PostEntity();
         postEntity.setId(this.id);
-       // if(this.blogDTO != null)
-        //{
-        //postEntity.setBlog(this.blogDTO.toEntity());
-        //}
+        if(this.blogDTO != null)
+        {
+        postEntity.setBlog(this.blogDTO.toEntity());
+        }
         return postEntity;
     }
 }

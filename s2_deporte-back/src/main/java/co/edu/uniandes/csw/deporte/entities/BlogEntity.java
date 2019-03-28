@@ -26,10 +26,11 @@ public class BlogEntity extends BaseEntity implements Serializable{
     
     public String descripcion;
     @PodamExclude
-    @OneToMany(mappedBy = "blog")
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.PERSIST)
     public List<PostEntity> posts = new ArrayList<>();
     
-    @OneToOne
+    @PodamExclude
+    @OneToOne(mappedBy= "blog",orphanRemoval = true, cascade = CascadeType.PERSIST)
     public CampeonatoEntity campeonato;  
     
     /**
@@ -49,30 +50,30 @@ public class BlogEntity extends BaseEntity implements Serializable{
     /**
      * @return the posts
      */
-  //  public List<PostEntity> getPosts() {
-    //    return posts;
-    //}
+    public List<PostEntity> getPosts() {
+        return posts;
+    }
 
     /**
      * @param posts the posts to set
      */
-    //public void setPosts(List<PostEntity> posts) {
-      //  this.posts = posts;
-    //}
+    public void setPosts(List<PostEntity> posts) {
+        this.posts = posts;
+    }
 
     /**
      * @return the campeonato
      */
-    //public CampeonatoEntity getCampeonato() {
-      //  return campeonato;
-    //}
+    public CampeonatoEntity getCampeonato() {
+        return campeonato;
+    }
 
     /**
      * @param campeonato the campeonato to set
      */
-   // public void setCampeonato(CampeonatoEntity campeonato) {
-     //   this.campeonato = campeonato;
-    //}
+    public void setCampeonato(CampeonatoEntity campeonato) {
+        this.campeonato = campeonato;
+    }
 
     /**
      * @return the nombre

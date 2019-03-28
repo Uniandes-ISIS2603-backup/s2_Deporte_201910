@@ -8,9 +8,9 @@ package co.edu.uniandes.csw.deporte.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -25,7 +25,7 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
     public String nombre;
     
     public String descripcion;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     public BlogEntity blog;
     
     @PodamExclude
@@ -41,19 +41,17 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
 
     /**
      * @return the blog
-     *
+    */
     public BlogEntity getBlog() {
         return blog;
     }
-    /* 
 
     /**
      * @param blog the blog to set
-     *
+     */
     public void setBlog(BlogEntity blog) {
         this.blog = blog;
     }
-/*
     /**
      * @return the puntos
      */
