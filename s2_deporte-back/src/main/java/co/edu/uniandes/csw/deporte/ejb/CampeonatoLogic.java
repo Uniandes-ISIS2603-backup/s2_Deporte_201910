@@ -61,6 +61,7 @@ public class CampeonatoLogic {
     public List<CampeonatoEntity> getCampeonatos() {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los campeonatos");
         List<CampeonatoEntity> campeonatos = persistence.findAll();
+        
         LOGGER.log(Level.INFO, "Termina proceso de consultar todos los campeonatos");
         return campeonatos;
     }

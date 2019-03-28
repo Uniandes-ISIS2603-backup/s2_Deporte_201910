@@ -84,8 +84,9 @@ public class CampeonatoLogicTest {
      * Limpia las tablas que están implicadas en la prueba.
      */
     public void clearData() {
+         em.createQuery("delete from CampeonatoEntity").executeUpdate();
         em.createQuery("delete from BlogEntity").executeUpdate();
-        em.createQuery("delete from CampeonatoEntity").executeUpdate();
+       
         
     }
     
@@ -99,6 +100,7 @@ public class CampeonatoLogicTest {
 
             em.persist(entity);
             data.add(entity);
+            System.out.println(data.size());
         }
     }
     
@@ -156,6 +158,7 @@ public class CampeonatoLogicTest {
     @Test
     public void getCampeonatosTest() {
         List<CampeonatoEntity> list = campeonatoLogic.getCampeonatos();
+        System.out.println(data);
         Assert.assertEquals(data.size(), list.size());
         for (CampeonatoEntity entity : list) {
             boolean found = false;
