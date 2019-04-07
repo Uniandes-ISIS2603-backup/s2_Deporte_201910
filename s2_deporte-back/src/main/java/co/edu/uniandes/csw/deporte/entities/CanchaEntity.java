@@ -31,6 +31,8 @@ public class CanchaEntity extends BaseEntity implements Serializable{
     
     public boolean reservada;
     
+    private String imagen;
+    
     public String tipo;
     @PodamExclude
     @ManyToOne
@@ -181,6 +183,20 @@ public class CanchaEntity extends BaseEntity implements Serializable{
      */
     public void setReservas(List<ReservaEntity> reservas) {
         this.reservas = reservas;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
     
 }

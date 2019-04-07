@@ -33,6 +33,8 @@ public class CanchaDTO implements Serializable{
     
     public PropietarioDTO propietario;
     
+    public String imagen;
+    
     public CanchaDTO(){
         
     }
@@ -53,6 +55,7 @@ public class CanchaDTO implements Serializable{
             this.zona = canchaEntity.getZona();
             this.contacto = canchaEntity.getContacto();
             this.reservada = canchaEntity.isReservada();
+            this.imagen = canchaEntity.getImagen();
         //    this.propietario = canchaEntity.getPropietario();
         }
     }
@@ -199,6 +202,21 @@ public class CanchaDTO implements Serializable{
         canchaEntity.setZona(this.zona);
         canchaEntity.setReservada(this.reservada);
         canchaEntity.setId(this.id);
+        canchaEntity.setImagen(this.imagen);
         return canchaEntity;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }
