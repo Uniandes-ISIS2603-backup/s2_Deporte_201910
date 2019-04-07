@@ -41,10 +41,7 @@ public class CanchaEntity extends BaseEntity implements Serializable{
     @PodamExclude
     @OneToMany
     public List<ReservaEntity> reservas;
-    
-    public CanchaEntity (){
-        
-    }
+
     
     /**
      * @return the zona

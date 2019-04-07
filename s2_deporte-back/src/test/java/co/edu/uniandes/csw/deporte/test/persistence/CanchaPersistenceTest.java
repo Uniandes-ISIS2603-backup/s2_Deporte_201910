@@ -100,10 +100,14 @@ public class CanchaPersistenceTest {
      * Prueba para crear un Propietario.
      */
     @Test
-    public void createPropietarioTest() {
+    public void createCanchaTest() {
+        /*
         PodamFactory factory = new PodamFactoryImpl();
-        CanchaEntity newEntity = factory.manufacturePojo(CanchaEntity.class);/*
+        CanchaEntity newEntity = factory.manufacturePojo(CanchaEntity.class);
+        System.out.println("Hi, I am: " + newEntity.ciudad + " " + newEntity.tipo);
+        System.out.println("Creando... " + propietarioPersistence.create(newEntity).ciudad);
         CanchaEntity result = propietarioPersistence.create(newEntity);
+        if(result == null){System.out.println("it is null");}
 
         Assert.assertNotNull(result);
 
@@ -116,7 +120,8 @@ public class CanchaPersistenceTest {
      * Prueba para consultar la lista de Propietarios.
      */
     @Test
-    public void getPropietariosTest() {/*
+    public void getCanchasTest() {
+        /*
         List<CanchaEntity> list = propietarioPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
         for (CanchaEntity ent : list) {
@@ -127,6 +132,7 @@ public class CanchaPersistenceTest {
                 }
             }
             Assert.assertTrue(found);
+        
         }*/
     }
 
@@ -134,7 +140,8 @@ public class CanchaPersistenceTest {
      * Prueba para consultar un Propietario.
      */
     @Test
-    public void getPropietarioTest() {/*
+    public void getCanchaTest() {
+        /*
         CanchaEntity entity = data.get(0);
         CanchaEntity newEntity = propietarioPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
@@ -146,7 +153,8 @@ public class CanchaPersistenceTest {
      * Prueba para actualizar un propietario.
      */
     @Test
-    public void updatePropietarioTest() {/*
+    public void updateCanchaTest() {
+        /*
         CanchaEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         CanchaEntity newEntity = factory.manufacturePojo(CanchaEntity.class);
@@ -164,7 +172,8 @@ public class CanchaPersistenceTest {
      * Prueba para eliminar un Propietario.
      */
     @Test
-    public void deletePropietarioTest() {/*
+    public void deleteCanchaTest() {
+        /*
         CanchaEntity entity = data.get(0);
         propietarioPersistence.delete(entity.getId());
         CanchaEntity deleted = em.find(CanchaEntity.class, entity.getId());
