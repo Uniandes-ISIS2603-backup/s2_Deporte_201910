@@ -31,7 +31,9 @@ public class CanchaEntity extends BaseEntity implements Serializable{
     
     public boolean reservada;
     
-    private String imagen;
+    public String imagen;
+    
+    public String nombre;
     
     public String tipo;
     @PodamExclude
@@ -197,6 +199,20 @@ public class CanchaEntity extends BaseEntity implements Serializable{
      */
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
 }

@@ -21,6 +21,7 @@ public class PropietarioEntity extends BaseEntity implements Serializable{
     
     public String nombre;
     public int numCanchas;
+    public String imagen;
     @OneToMany
     @PodamExclude
     public List<CanchaEntity> canchas;
@@ -69,5 +70,19 @@ public class PropietarioEntity extends BaseEntity implements Serializable{
      */
     public void setCanchas(List<CanchaEntity> canchas) {
         this.canchas = canchas;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

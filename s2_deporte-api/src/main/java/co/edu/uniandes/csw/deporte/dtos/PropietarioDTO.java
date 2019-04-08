@@ -18,7 +18,9 @@ public class PropietarioDTO implements Serializable{
     
     public String nombre;
     
-    private Integer numCanchas;
+    public Integer numCanchas;
+    
+    public String imagen;
     
     public PropietarioDTO () {
         
@@ -36,6 +38,7 @@ public class PropietarioDTO implements Serializable{
             this.id = propietarioEntity.getId();
             this.nombre=propietarioEntity.getNombre();
             this.numCanchas = propietarioEntity.getNumCanchas();
+            this.imagen = propietarioEntity.getImagen();
         }
     }
 
@@ -77,6 +80,21 @@ public class PropietarioDTO implements Serializable{
         propietarioEntity.setNumCanchas(this.getNumCanchas());
         propietarioEntity.setId(this.id);
         propietarioEntity.setNombre(this.nombre);
+        propietarioEntity.setImagen(this.imagen);
         return propietarioEntity;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

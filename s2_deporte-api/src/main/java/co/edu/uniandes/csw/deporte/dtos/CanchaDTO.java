@@ -35,6 +35,8 @@ public class CanchaDTO implements Serializable{
     
     public String imagen;
     
+    public String nombre;
+    
     public CanchaDTO(){
         
     }
@@ -56,7 +58,7 @@ public class CanchaDTO implements Serializable{
             this.contacto = canchaEntity.getContacto();
             this.reservada = canchaEntity.isReservada();
             this.imagen = canchaEntity.getImagen();
-        //    this.propietario = canchaEntity.getPropietario();
+            this.nombre = canchaEntity.getNombre();
         }
     }
     
@@ -197,12 +199,12 @@ public class CanchaDTO implements Serializable{
         canchaEntity.setCiudad(this.ciudad);
         canchaEntity.setContacto(this.contacto);
         canchaEntity.setDireccion(this.direccion);
-    //    canchaEntity.setPropietario(this.propietario);
         canchaEntity.setTipo(this.tipoCancha);
         canchaEntity.setZona(this.zona);
         canchaEntity.setReservada(this.reservada);
         canchaEntity.setId(this.id);
         canchaEntity.setImagen(this.imagen);
+        canchaEntity.setNombre(this.nombre);
         return canchaEntity;
     }
 
@@ -218,5 +220,19 @@ public class CanchaDTO implements Serializable{
      */
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
