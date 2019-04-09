@@ -20,13 +20,13 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class CampeonatoEntity extends BaseEntity implements Serializable{
-    public List<Integer> puntos;
+//    public List<Integer> puntos;
 
     public String nombre;
     
     public String descripcion;
-    @OneToOne(cascade = CascadeType.PERSIST)
-    public BlogEntity blog;
+//    @OneToOne(cascade = CascadeType.PERSIST)
+//    public BlogEntity blog;
     
     @PodamExclude
     @ManyToMany
@@ -35,29 +35,29 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
     /**
      * @param puntos the puntos to set
      */
-    public void setPuntos(List<Integer> puntos) {
-        this.puntos = puntos;
-    }
+//    public void setPuntos(List<Integer> puntos) {
+//        this.puntos = puntos;
+//    }
 
     /**
      * @return the blog
     */
-    public BlogEntity getBlog() {
-        return blog;
-    }
+//    public BlogEntity getBlog() {
+//        return blog;
+//    }
 
     /**
      * @param blog the blog to set
      */
-    public void setBlog(BlogEntity blog) {
-        this.blog = blog;
-    }
+//    public void setBlog(BlogEntity blog) {
+//        this.blog = blog;
+//    }
     /**
      * @return the puntos
      */
-    public List<Integer> getPuntos() {
-        return puntos;
-    }
+//    public List<Integer> getPuntos() {
+//        return puntos;
+//    }
 
     /**
      * @return the nombre

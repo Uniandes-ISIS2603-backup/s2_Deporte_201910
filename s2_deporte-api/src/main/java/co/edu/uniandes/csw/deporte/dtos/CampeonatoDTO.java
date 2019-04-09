@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class CampeonatoDTO implements Serializable{
     
-    public List<Integer> puntos;
+//    public List<Integer> puntos;
     
     public Long id;
     
@@ -42,29 +42,29 @@ public class CampeonatoDTO implements Serializable{
             this.id = campeonatoEntity.getId();
             this.nombre = campeonatoEntity.getNombre();
             this.descripcion = campeonatoEntity.getDescripcion();
-            if(campeonatoEntity.getBlog() != null)
-            {
-                this.blogDTO = new BlogDTO(campeonatoEntity.getBlog());
-            }
-            else
-            {
-                this.blogDTO = null;
-            }
+//            if(campeonatoEntity.getBlog() != null)
+//            {
+//                this.blogDTO = new BlogDTO(campeonatoEntity.getBlog());
+//            }
+//            else
+//            {
+//                this.blogDTO = null;
+//            }
         }
     }
     /**
      * @return the puntos
      */
-    public List<Integer> getPuntos() {
-        return puntos;
-    }
+//    public List<Integer> getPuntos() {
+//        return puntos;
+//    }
 
     /**
      * @param puntos the puntos to set
      */
-    public void setPuntos(ArrayList<Integer> puntos) {
-        this.setPuntos(puntos);
-    }
+//    public void setPuntos(ArrayList<Integer> puntos) {
+//        this.setPuntos(puntos);
+//    }
 
     /**
      * @return the id
@@ -120,19 +120,19 @@ public class CampeonatoDTO implements Serializable{
         campeonatoEntity.setId(this.getId());
         campeonatoEntity.setNombre(this.getNombre());
         campeonatoEntity.setDescripcion(this.getDescripcion());
-        if(this.blogDTO != null)
-       {
-            campeonatoEntity.setBlog(this.blogDTO.toEntity());
-        }
+//        if(this.blogDTO != null)
+//       {
+//            campeonatoEntity.setBlog(this.blogDTO.toEntity());
+//        }
         return campeonatoEntity;
     }
 
     /**
      * @param puntos the puntos to set
      */
-    public void setPuntos(List<Integer> puntos) {
-        this.puntos = puntos;
-    }
+//    public void setPuntos(List<Integer> puntos) {
+//        this.puntos = puntos;
+//    }
 
     /**
      * @return the descripcion
