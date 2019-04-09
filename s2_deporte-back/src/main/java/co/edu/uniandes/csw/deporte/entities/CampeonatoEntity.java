@@ -25,8 +25,8 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
     public String nombre;
     
     public String descripcion;
-//    @OneToOne(cascade = CascadeType.PERSIST)
-//    public BlogEntity blog;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    public BlogEntity blog;
     
     @PodamExclude
     @ManyToMany
