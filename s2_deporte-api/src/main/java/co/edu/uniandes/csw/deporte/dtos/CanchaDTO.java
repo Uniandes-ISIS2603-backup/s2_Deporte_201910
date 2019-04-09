@@ -23,7 +23,7 @@ public class CanchaDTO implements Serializable{
     
     public String ciudad;
     
-    public List<Integer> contacto;
+    public String contacto;
     
     public String caracterizticas;
     
@@ -59,6 +59,7 @@ public class CanchaDTO implements Serializable{
             this.reservada = canchaEntity.isReservada();
             this.imagen = canchaEntity.getImagen();
             this.nombre = canchaEntity.getNombre();
+            this.propietario = new PropietarioDTO(canchaEntity.getPropietario());
         }
     }
     
@@ -121,14 +122,14 @@ public class CanchaDTO implements Serializable{
     /**
      * @return the contacto
      */
-    public List<Integer> getContacto() {
+    public String getContacto() {
         return contacto;
     }
 
     /**
      * @param contacto the contacto to set
      */
-    public void setContacto(List<Integer> contacto) {
+    public void setContacto(String contacto) {
         this.contacto = contacto;
     }
 

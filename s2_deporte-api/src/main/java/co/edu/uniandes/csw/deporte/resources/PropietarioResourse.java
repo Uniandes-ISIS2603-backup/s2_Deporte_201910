@@ -10,6 +10,8 @@ import co.edu.uniandes.csw.deporte.dtos.PropietarioDetailDTO;
 import co.edu.uniandes.csw.deporte.ejb.PropietarioLogic;
 import co.edu.uniandes.csw.deporte.entities.PropietarioEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
@@ -80,6 +82,14 @@ public class PropietarioResourse {
         return detailDTO;
     }
 
+    @GET
+    public List<PropietarioDetailDTO> getPropietarios() {
+        LOGGER.info("PropietarioResource getPropietario: input: void");
+        List<PropietarioDetailDTO> listaPropietario = listEntity2DetailDTO(propietarioLogic.getPropietarios());
+        LOGGER.log(Level.INFO, "CanchaResource getCancha: output: {0}", listaPropietario);
+        return listaPropietario;
+    }
+    
     /**
      * Actualiza el propietario con el id recibido en la URL con la información que se
      * recibe en el cuerpo de la petición.
@@ -124,5 +134,13 @@ public class PropietarioResourse {
         }
         propietarioLogic.deletePropietario(propietarioId);
         LOGGER.info("PropietarioResource deletePropietario: output: void");
+    }
+    
+        private List<PropietarioDetailDTO> listEntity2DetailDTO(List<PropietarioEntity> entityList) {
+        List<PropietarioDetailDTO> list = new ArrayList<>();
+        for (PropietarioEntity entity : entityList) {
+            list.add(new PropietarioDetailDTO(entity));
+        }
+        return list;
     }
 }

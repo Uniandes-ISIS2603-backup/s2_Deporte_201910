@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.deporte.ejb;
 import co.edu.uniandes.csw.deporte.entities.PropietarioEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.deporte.persistence.PropietarioPersistence;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -73,5 +74,12 @@ public class PropietarioLogic {
         // Note que, por medio de la inyección de dependencias se llama al método "delete(id)" que se encuentra en la persistencia.
         persistence.delete(propietarioId);
         LOGGER.log(Level.INFO, "Termina proceso de borrar la propietario con id = {0}", propietarioId);
+    }
+    
+    public List<PropietarioEntity> getPropietarios() {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los libros");
+        List<PropietarioEntity> books = persistence.findAll();
+        LOGGER.log(Level.INFO, "Termina proceso de consultar todos los libros");
+        return books;
     }
 }
