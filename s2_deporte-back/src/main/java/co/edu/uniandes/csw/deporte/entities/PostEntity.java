@@ -17,8 +17,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PostEntity extends BaseEntity implements Serializable {
     
-    public String identificador;
-    
+private String descripcion;    
     @PodamExclude
     @ManyToOne
     public BlogEntity blog;
@@ -36,14 +35,14 @@ public class PostEntity extends BaseEntity implements Serializable {
      * @return the identificador
      */
     public String getIdentificador() {
-        return identificador;
+        return descripcion;
     }
 
     /**
      * @param identificador the identificador to set
      */
     public void setIdentificador(String identificador) {
-        this.identificador = identificador;
+        this.descripcion = identificador;
     }
 
     /**

@@ -19,6 +19,8 @@ insert into ClienteEntity (id,nombre) values (2, 'Santiago Barbosa');
 insert into ClienteEntity (id,nombre) values (3, 'Nicolas de la Hoz');
 insert into ClienteEntity (id,nombre) values (4, 'Nicolas Poch');
 
+insert into PostEntity(id,
+
 insert into PropietarioEntity (id, nombre, numcanchas, imagen) values (1, 'Jorry', 1, 'http://dummyimage.com/125x130.bmp/ff4444/ffffff');
 insert into PropietarioEntity (id, nombre, numcanchas, imagen) values (2, 'Bonnie', 3, 'http://dummyimage.com/224x112.bmp/5fa2dd/ffffff');
 insert into PropietarioEntity (id, nombre, numcanchas, imagen) values (3, 'Caitlin', 5, 'http://dummyimage.com/221x160.bmp/cc0000/ffffff');

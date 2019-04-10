@@ -14,9 +14,14 @@ import java.io.Serializable;
  */
 public class PostDTO implements Serializable{
     
-    public BlogDTO blogDTO;
+    private BlogDTO blogDTO;
     
-    public Long id;
+    private Long id;
+    
+    private String descripcion;
+    
+    private ClienteDTO clienteDto;
+    
     public PostDTO()
     {
         
@@ -41,6 +46,7 @@ public class PostDTO implements Serializable{
             {
                 this.blogDTO = null;
             }
+            this.descripcion = postEntity.getIdentificador();
         }
     }
 
@@ -76,10 +82,39 @@ public class PostDTO implements Serializable{
     {
         PostEntity postEntity = new PostEntity();
         postEntity.setId(this.getId());
-        if(this.blogDTO != null)
+        postEntity.setIdentificador(descripcion);
+        if(this.getBlogDTO() != null)
         {
-        postEntity.setBlog(this.blogDTO.toEntity());
+        postEntity.setBlog(this.getBlogDTO().toEntity());
         }
         return postEntity;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the clienteDto
+     */
+    public ClienteDTO getClienteDto() {
+        return clienteDto;
+    }
+
+    /**
+     * @param clienteDto the clienteDto to set
+     */
+    public void setClienteDto(ClienteDTO clienteDto) {
+        this.clienteDto = clienteDto;
     }
 }
