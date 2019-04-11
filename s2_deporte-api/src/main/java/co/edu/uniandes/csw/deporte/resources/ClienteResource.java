@@ -32,7 +32,7 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author estudiante
  */
-@Path("cliente")
+@Path("clientes")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
