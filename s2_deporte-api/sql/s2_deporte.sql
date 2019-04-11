@@ -4,6 +4,7 @@ delete from PartidoEntity;
 delete from PostEntity;
 delete from CampeonatoEntity;
 delete from BlogEntity;
+delete from PostEntity;
 delete from AgendaEntity;
 delete from AmistosoEntity;
 delete from CanchaEntity;
@@ -471,6 +472,8 @@ insert into CampeonatoEntity (id, descripcion, nombre, blog_id) values (15, 'Pro
 insert into CampeonatoEntity (id, descripcion, nombre, blog_id) values (16, 'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.', 'Joceline', 16);
 insert into CampeonatoEntity (id, descripcion, nombre, blog_id) values (17, 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.', 'Elene', 17);
 insert into CampeonatoEntity (id, descripcion, nombre, blog_id) values (18, 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', 'Ellary', 18);
+
+insert into PostEntity(id, cliente_id, contenido, nombre) values (8,1,'hola', 'este es mi post');
 
 insert into AgendaEntity(id,anio,mes,cancha_id) values (0,2017,2,1);
 insert into CANCHAENTITY_AGENDAENTITY(canchaentity_id, agendas_id) values(1,0);

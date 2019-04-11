@@ -14,19 +14,7 @@ import java.io.Serializable;
  */
 public class PostDTO implements Serializable{
 
-    /**
-     * @return the contenido
-     */
-    public String getContenido() {
-        return contenido;
-    }
-
-    /**
-     * @param contenido the contenido to set
-     */
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
-    }
+   
     
     private BlogDTO blogDTO;
     
@@ -68,6 +56,19 @@ public class PostDTO implements Serializable{
         }
     }
 
+     /**
+     * @return the contenido
+     */
+    public String getContenido() {
+        return contenido;
+    }
+
+    /**
+     * @param contenido the contenido to set
+     */
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
     /**
      * @return the blogDTO
      */
