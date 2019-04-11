@@ -44,6 +44,15 @@ public class AgendaPersistence {
         TypedQuery<AgendaEntity> query = em.createQuery("SELECT u FROM AgendaEntity u", AgendaEntity.class);
         return query.getResultList();
     }
+    
+    public List<AgendaEntity> findAgendasPorCancha(Long id){
+        
+        LOGGER.log(Level.INFO, "Consultando todas las agendas de la cancha con id: " + id);
+        
+        TypedQuery<AgendaEntity> query = em.createQuery("select e from AgendaEntity e where e.cancha.id =:canchaid" , AgendaEntity.class);
+        query.setParameter("canchaid", id);
+        return query.getResultList();
+    }
 
     public void delete(Long agendaId) {
         LOGGER.log(Level.INFO, "Borrando la agenda con id = (0)", agendaId);

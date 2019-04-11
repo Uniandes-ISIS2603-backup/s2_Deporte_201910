@@ -45,6 +45,15 @@ public class FranjaPersistence {
         return query.getResultList();
     }
 
+    public List<FranjaEntity> findFranjasPorAgenda(Long id){
+        
+        LOGGER.log(Level.INFO, "Consultando todas las agendas de la cancha con id: " + id);
+        
+        TypedQuery<FranjaEntity> query = em.createQuery("select e from FranjaEntity e where e.agenda.id =:franjaid" , FranjaEntity.class);
+        query.setParameter("franjaid", id);
+        return query.getResultList();
+    }
+    
     public void delete(Long franjaId) {
         LOGGER.log(Level.INFO, "Borrando la franja con id = (0)", franjaId);
         

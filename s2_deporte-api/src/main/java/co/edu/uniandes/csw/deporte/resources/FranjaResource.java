@@ -9,6 +9,8 @@ import co.edu.uniandes.csw.deporte.dtos.FranjaDTO;
 import co.edu.uniandes.csw.deporte.ejb.FranjaLogic;
 import co.edu.uniandes.csw.deporte.entities.FranjaEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -52,6 +54,15 @@ public class FranjaResource {
         }
         return new FranjaDTO(entity);
     }
+  
+    
+    @GET
+    @Path("filtroAgenda/{agendaId : \\d+}")
+       public List<FranjaDTO> getAgendasPorCancha(@PathParam("agendaId") Long id){
+       List<FranjaDTO> listaFranjas = listEntity2DetailDTO(logica.findFranjasPorAgenda(id));
+        return listaFranjas;
+    }
+    
 
     @DELETE
     @Path("{franjaId : \\d+}")
@@ -61,5 +72,13 @@ public class FranjaResource {
             throw new WebApplicationException("Franja con id: " + id + " no existe", 404);
         }
         logica.delete(id);
+    }
+    
+    private List<FranjaDTO> listEntity2DetailDTO(List<FranjaEntity> entityList) {
+        List<FranjaDTO> list = new ArrayList<>();
+        for (FranjaEntity entity : entityList) {
+            list.add(new FranjaDTO(entity));
+        }
+        return list;
     }
 }

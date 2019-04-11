@@ -56,6 +56,13 @@ public class FranjaLogic {
         return franja;
     }
     
+    public List<FranjaEntity> findFranjasPorAgenda(Long id) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las franjas de la agenda con id: " + id);
+        List<FranjaEntity> lista = persistence.findFranjasPorAgenda(id);
+        LOGGER.log(Level.INFO, "Termina proceso de consultar todas las franjas de la agenda con id: " + id);
+        return lista;
+    }
+    
     public FranjaEntity update( FranjaEntity franjaEntity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar la franja con id = {0}", franjaEntity.getId());
         FranjaEntity franja = persistence.update(franjaEntity);
