@@ -16,7 +16,6 @@ import java.util.List;
  */
 public class CampeonatoDTO implements Serializable{
     
-//    public List<Integer> puntos;
     
     public Long id;
     
@@ -52,20 +51,7 @@ public class CampeonatoDTO implements Serializable{
 //            }
         }
     }
-    /**
-     * @return the puntos
-     */
-//    public List<Integer> getPuntos() {
-//        return puntos;
-//    }
-
-    /**
-     * @param puntos the puntos to set
-     */
-//    public void setPuntos(ArrayList<Integer> puntos) {
-//        this.setPuntos(puntos);
-//    }
-
+    
     /**
      * @return the id
      */
@@ -127,13 +113,7 @@ public class CampeonatoDTO implements Serializable{
         return campeonatoEntity;
     }
 
-    /**
-     * @param puntos the puntos to set
-     */
-//    public void setPuntos(List<Integer> puntos) {
-//        this.puntos = puntos;
-//    }
-
+   
     /**
      * @return the descripcion
      */

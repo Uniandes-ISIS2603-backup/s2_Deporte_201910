@@ -13,12 +13,28 @@ import java.io.Serializable;
  * @author Juan Camilo Garcia
  */
 public class PostDTO implements Serializable{
+
+    /**
+     * @return the contenido
+     */
+    public String getContenido() {
+        return contenido;
+    }
+
+    /**
+     * @param contenido the contenido to set
+     */
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
     
     private BlogDTO blogDTO;
     
     private Long id;
     
-    private String descripcion;
+    private String nombre;
+    
+    private String contenido;
     
     private ClienteDTO clienteDto;
     
@@ -36,6 +52,8 @@ public class PostDTO implements Serializable{
     public PostDTO(PostEntity postEntity) {
         if (postEntity != null) {
             {
+            this.nombre = postEntity.getNombre();
+            this.contenido = postEntity.getContenido();
             this.id = postEntity.getId();
             }
             if(postEntity.getBlog() != null)
@@ -46,7 +64,7 @@ public class PostDTO implements Serializable{
             {
                 this.blogDTO = null;
             }
-            this.descripcion = postEntity.getIdentificador();
+           
         }
     }
 
@@ -82,7 +100,8 @@ public class PostDTO implements Serializable{
     {
         PostEntity postEntity = new PostEntity();
         postEntity.setId(this.getId());
-        postEntity.setIdentificador(descripcion);
+        postEntity.setNombre(this.getNombre());
+        postEntity.setContenido(this.getContenido());
         if(this.getBlogDTO() != null)
         {
         postEntity.setBlog(this.getBlogDTO().toEntity());
@@ -93,15 +112,15 @@ public class PostDTO implements Serializable{
     /**
      * @return the descripcion
      */
-    public String getDescripcion() {
-        return descripcion;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
      * @param descripcion the descripcion to set
      */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setNombre(String descripcion) {
+        this.nombre = descripcion;
     }
 
     /**

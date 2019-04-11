@@ -39,6 +39,16 @@ public class PostResource {
         @Inject
         private PostLogic postLogic;
 
+        /**
+     * Crea un nuevo blog con la informacion que se recibe en el cuerpo de la
+     * petición y se regresa un objeto identico con un id auto-generado por la
+     * base de datos.
+     *
+     * @param blog {@link blogDTO} - EL blog que se desea guardar.
+     * @return JSON {@link blogDTO} - El blog guardado con el atributo id
+     * autogenerado.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} -
+     */
         @POST
         public PostDTO createPost(PostDTO pPost)throws BusinessLogicException
         {
@@ -46,7 +56,15 @@ public class PostResource {
             return nuevoPostDTO;
         }
        
-        
+        /**
+     * Busca el blog con el id asociado recibido en la URL y lo devuelve.
+     *
+     * @param blogId Identificador del blog que se esta buscando. Este debe
+     * ser una cadena de dígitos.
+     * @return JSON {@link blogDTO} - El blog buscado
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el libro.
+     */
         @GET
     @Path("{postId: \\d+}")
     public PostDTO getPost(@PathParam("postId") Long postId) {
@@ -59,12 +77,34 @@ public class PostResource {
         
         return postDTO;
     }
+    
+    /**
+     * Busca y devuelve todos los blogs que existen en la aplicacion.
+     *
+     * @return JSONArray {@link blogDTO} - Los libros encontrados en la
+     * aplicación. Si no hay ninguno retorna una lista vacía.
+     */
+
     @GET
     public List<PostDTO> getPosts() {
         List<PostDTO> listaBooks = listEntity2DetailDTO(postLogic.getPosts());
         return listaBooks;
     }
     
+    /**
+     * Actualiza el blog con el id recibido en la URL con la información que se
+     * recibe en el cuerpo de la petición.
+     *
+     * @param blogId Identificador del blog que se desea actualizar. Este debe
+     * ser una cadena de dígitos.
+     * @param blog {@link blogDTO} El blog que se desea guardar.
+     * @return JSON {@link blogDTO} - El libro guardada.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el blog a
+     * actualizar.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} -
+     * Error de lógica que se genera cuando no se puede actualizar el blog.
+     */
      @PUT
         @Path("{postId: \\d+}")
         public PostDTO updatePost(@PathParam("postId")Long postId, PostDTO pPost)throws BusinessLogicException
@@ -77,6 +117,15 @@ public class PostResource {
             PostDTO detailDTO = new PostDTO(postLogic.updatePost(postId, pPost.toEntity()));
             return detailDTO;
         }
+        
+         /**
+     * Borra el blog con el id asociado recibido en la URL.
+     *
+     * @param blogId Identificador del libro que se desea borrar. Este debe ser
+     * una cadena de dígitos.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el blog.
+     */
          @DELETE
         @Path("{postId: \\d+}")
         public void deletePost(@PathParam("postId") Long postId)throws BusinessLogicException
