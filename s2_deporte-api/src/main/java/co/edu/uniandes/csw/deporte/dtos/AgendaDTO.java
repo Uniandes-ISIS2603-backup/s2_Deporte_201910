@@ -20,6 +20,8 @@ public class AgendaDTO implements Serializable{
     
     public CanchaDTO cancha;
     
+    private Long id;
+    
     public AgendaDTO () {
         
     }
@@ -35,6 +37,7 @@ public class AgendaDTO implements Serializable{
             this.anio = agendaEntity.getAnio();
             this.mes = agendaEntity.getMes();
             this.cancha = (new CanchaDTO(agendaEntity.getCancha()));
+            this.id = agendaEntity.getId();
         }
     }
     
@@ -90,5 +93,19 @@ public class AgendaDTO implements Serializable{
         agendaEntity.setAnio(this.anio);
         agendaEntity.setMes(this.mes);
         return agendaEntity;
+    }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
     }
 }

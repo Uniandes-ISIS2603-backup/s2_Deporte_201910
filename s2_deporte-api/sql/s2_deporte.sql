@@ -11,7 +11,8 @@ delete from EntrenamientoEntity;
 delete from PropietarioEntity;
 delete from ReservaEntity;
 delete from FranjaEntity;
-
+delete from AgendaEntity;
+delete from CanchaEntity_AgendaEntity;
 
 insert into ClienteEntity (id,nombre) values (0, 'Santiago Serrano');
 insert into ClienteEntity (id,nombre) values (1, 'Juan Camilo Garcia');
@@ -263,3 +264,22 @@ insert into CampeonatoEntity (id, descripcion, nombre, blog_id) values (15, 'Pro
 insert into CampeonatoEntity (id, descripcion, nombre, blog_id) values (16, 'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.', 'Joceline', 16);
 insert into CampeonatoEntity (id, descripcion, nombre, blog_id) values (17, 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.', 'Elene', 17);
 insert into CampeonatoEntity (id, descripcion, nombre, blog_id) values (18, 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', 'Ellary', 18);
+
+insert into AgendaEntity(id,anio,mes,cancha_id) values (0,2017,2,1);
+insert into CANCHAENTITY_AGENDAENTITY(canchaentity_id, agendas_id) values(1,0);
+insert into AgendaEntity(id,anio,mes,cancha_id) values (1,2017,2,2);
+insert into CANCHAENTITY_AGENDAENTITY(canchaentity_id, agendas_id) values(2,1);
+insert into AgendaEntity(id,anio,mes,cancha_id) values (2,2017,2,3);
+insert into CANCHAENTITY_AGENDAENTITY(canchaentity_id, agendas_id) values(3,2);
+insert into AgendaEntity(id,anio,mes,cancha_id) values (3,2017,2,2);
+insert into CANCHAENTITY_AGENDAENTITY(canchaentity_id, agendas_id) values(2,3);
+
+insert into FranjaEntity(id,duracionHoras,agenda_id) values(1,2,1);
+insert into AgendaEntity_FranjaEntity(agendaentity_id,franjas_id) values(1,1);
+
+
+insert into FranjaEntity(id,duracionHoras,agenda_id) values(2,2,1);
+insert into AgendaEntity_FranjaEntity(agendaentity_id,franjas_id) values(1,2);
+
+insert into FranjaEntity(id,duracionHoras,agenda_id) values(3,2,1);
+insert into AgendaEntity_FranjaEntity(agendaentity_id,franjas_id) values(1,3);

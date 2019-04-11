@@ -47,6 +47,13 @@ public class AgendaLogic {
         return lista;
     }
     
+    public List<AgendaEntity> findAgendasPorCancha(Long id) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las agendasde la cancha con id: " + id);
+        List<AgendaEntity> lista = persistence.findAgendasPorCancha(id);
+        LOGGER.log(Level.INFO, "Termina proceso de consultar todas las agendas de la cancha con id: " + id);
+        return lista;
+    }
+    
     public AgendaEntity find(Long agendaId) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar la agenda con id = {0}", agendaId);
         AgendaEntity agenda = persistence.find(agendaId);
