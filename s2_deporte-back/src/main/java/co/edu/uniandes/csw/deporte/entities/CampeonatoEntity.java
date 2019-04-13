@@ -20,44 +20,49 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class CampeonatoEntity extends BaseEntity implements Serializable{
-    public List<Integer> puntos;
+//    public List<Integer> puntos;
 
-    public String nombre;
+    private String nombre;
     
-    public String descripcion;
+    private String descripcion;
+    
+    private String rutaImagen;
+    
+    private String deporte;
+    
     @OneToOne(cascade = CascadeType.PERSIST)
-    public BlogEntity blog;
+    private BlogEntity blog;
     
     @PodamExclude
     @ManyToMany
-    public List<ClienteEntity> clientes= new ArrayList<>();
+    private List<ClienteEntity> clientes= new ArrayList<>();
 
     /**
      * @param puntos the puntos to set
      */
-    public void setPuntos(List<Integer> puntos) {
-        this.puntos = puntos;
-    }
+//    public void setPuntos(List<Integer> puntos) {
+//        this.puntos = puntos;
+//    }
 
     /**
      * @return the blog
     */
-    public BlogEntity getBlog() {
-        return blog;
-    }
+//    public BlogEntity getBlog() {
+//        return blog;
+//    }
 
     /**
      * @param blog the blog to set
      */
-    public void setBlog(BlogEntity blog) {
-        this.blog = blog;
-    }
+//    public void setBlog(BlogEntity blog) {
+//        this.blog = blog;
+//    }
     /**
      * @return the puntos
      */
-    public List<Integer> getPuntos() {
-        return puntos;
-    }
+//    public List<Integer> getPuntos() {
+//        return puntos;
+//    }
 
     /**
      * @return the nombre
@@ -85,5 +90,61 @@ public class CampeonatoEntity extends BaseEntity implements Serializable{
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the rutaImagen
+     */
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    /**
+     * @param rutaImagen the rutaImagen to set
+     */
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
+
+    /**
+     * @return the blog
+     */
+    public BlogEntity getBlog() {
+        return blog;
+    }
+
+    /**
+     * @param blog the blog to set
+     */
+    public void setBlog(BlogEntity blog) {
+        this.blog = blog;
+    }
+
+    /**
+     * @return the clientes
+     */
+    public List<ClienteEntity> getClientes() {
+        return clientes;
+    }
+
+    /**
+     * @param clientes the clientes to set
+     */
+    public void setClientes(List<ClienteEntity> clientes) {
+        this.clientes = clientes;
+    }
+
+    /**
+     * @return the deporte
+     */
+    public String getDeporte() {
+        return deporte;
+    }
+
+    /**
+     * @param deporte the deporte to set
+     */
+    public void setDeporte(String deporte) {
+        this.deporte = deporte;
     }
 }

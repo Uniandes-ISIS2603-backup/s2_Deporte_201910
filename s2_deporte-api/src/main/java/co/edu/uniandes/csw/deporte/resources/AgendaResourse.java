@@ -6,9 +6,13 @@
 package co.edu.uniandes.csw.deporte.resources;
 
 import co.edu.uniandes.csw.deporte.dtos.AgendaDTO;
+import co.edu.uniandes.csw.deporte.dtos.AgendaDetailDTO;
 import co.edu.uniandes.csw.deporte.ejb.AgendaLogic;
 import co.edu.uniandes.csw.deporte.entities.AgendaEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -61,12 +65,35 @@ public class AgendaResourse {
     
     @GET
     @Path("{agendaId : \\d+}")
-    public AgendaDTO getAgenda(@PathParam("agendaId") Long id) throws WebApplicationException, BusinessLogicException{
+    public AgendaDetailDTO getAgenda(@PathParam("agendaId") Long id) throws WebApplicationException, BusinessLogicException{
         AgendaEntity entity = logica.find(id);
         if(entity == null){
             throw new WebApplicationException("Agenda con id: " + id + " no existe", 404);
         }
-        return new AgendaDTO(entity);
+        return new AgendaDetailDTO(entity);
         
+    }
+    
+    @GET
+    public List<AgendaDetailDTO> getAgendas() {
+        LOGGER.info("AgendaResource getAgenda: input: void");
+        List<AgendaDetailDTO> listaAgendas = listEntity2DetailDTO(logica.findAll());
+        LOGGER.log(Level.INFO, "AgendaResource getAgenda: output: {0}", listaAgendas);
+        return listaAgendas;
+    }
+    
+    @GET
+    @Path("filtroCancha/{canchaId : \\d+}")
+       public List<AgendaDetailDTO> getAgendasPorCancha(@PathParam("canchaId") Long id){
+       List<AgendaDetailDTO> listaAgendas = listEntity2DetailDTO(logica.findAgendasPorCancha(id));
+        return listaAgendas;
+    }
+    
+    private List<AgendaDetailDTO> listEntity2DetailDTO(List<AgendaEntity> entityList) {
+        List<AgendaDetailDTO> list = new ArrayList<>();
+        for (AgendaEntity entity : entityList) {
+            list.add(new AgendaDetailDTO(entity));
+        }
+        return list;
     }
 }

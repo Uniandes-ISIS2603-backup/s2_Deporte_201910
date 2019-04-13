@@ -41,13 +41,31 @@ public class CampeonatoResource {
     @Inject
     private CampeonatoLogic campeonatoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-
+/**
+     * Crea un nuevo campeonato con la informacion que se recibe en el cuerpo de la
+     * petición y se regresa un objeto identico con un id auto-generado por la
+     * base de datos.
+     *
+     * @param campeonato {@link CampeonatoDTO} - EL campeonato que se desea guardar.
+     * @return JSON {@link CampeonatoDTO} - El campeonato guardado con el atributo id
+     * autogenerado.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} -
+     */
     @POST
     public CampeonatoDTO createCampeonato(CampeonatoDTO pCampeonato)throws BusinessLogicException
     {
         CampeonatoDTO nuevoCampeonatoDTO = new CampeonatoDTO(campeonatoLogic.createCampeonato(pCampeonato.toEntity()));
         return nuevoCampeonatoDTO;
     }
+ /**
+     * Busca el campeonato con el id asociado recibido en la URL y lo devuelve.
+     *
+     * @param campeonatoId Identificador del campeonato que se esta buscando. Este debe
+     * ser una cadena de dígitos.
+     * @return JSON {@link CampeonatoDTO} - El campeonato buscado
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el libro.
+     */
 
     @GET
     @Path("{campeonatoId: \\d+}")
@@ -63,13 +81,32 @@ public class CampeonatoResource {
         return campeonatoDTO;
     }
     
+    /**
+     * Busca y devuelve todos los campeonatos que existen en la aplicacion.
+     *
+     * @return JSONArray {@link CampeonatoDTO} - Los libros encontrados en la
+     * aplicación. Si no hay ninguno retorna una lista vacía.
+     */
     @GET
     public List<CampeonatoDTO> getBlogs() {
         List<CampeonatoDTO> listaCampeonatos = listEntity2DetailDTO(campeonatoLogic.getCampeonatos());
         return listaCampeonatos;
     }
     
-    
+    /**
+     * Actualiza el campeonato con el id recibido en la URL con la información que se
+     * recibe en el cuerpo de la petición.
+     *
+     * @param campeonatoId Identificador del campeonato que se desea actualizar. Este debe
+     * ser una cadena de dígitos.
+     * @param campeonato {@link CampeonatoDTO} El campeonato que se desea guardar.
+     * @return JSON {@link CampeonatoDTO} - El libro guardada.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el campeonato a
+     * actualizar.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} -
+     * Error de lógica que se genera cuando no se puede actualizar el campeonato.
+     */
     @PUT
     @Path("{campeonatoId: \\d+}")
     public CampeonatoDTO updateCampeonato(@PathParam("campeonatoId")Long campeonatoId, CampeonatoDTO pCampeonato)throws BusinessLogicException
@@ -82,6 +119,15 @@ public class CampeonatoResource {
         CampeonatoDTO camp = new CampeonatoDTO(campeonatoLogic.updateCampeonato(campeonatoId, pCampeonato.toEntity()));
         return camp;
     }
+    
+    /**
+     * Borra el campeonato con el id asociado recibido en la URL.
+     *
+     * @param campeonatoId Identificador del libro que se desea borrar. Este debe ser
+     * una cadena de dígitos.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el campeonato.
+     */
     @DELETE
     @Path("{campeonatoId: \\d+}")
     public void deleteCampeonato(@PathParam("campeonatoId") Long campeonatoId) throws BusinessLogicException

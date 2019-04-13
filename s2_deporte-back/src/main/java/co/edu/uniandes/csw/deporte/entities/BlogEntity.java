@@ -20,18 +20,21 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class BlogEntity extends BaseEntity implements Serializable{
-    public Integer identificador;
+    private Integer identificador;
     
-    public String nombre;
+    private String nombre;
     
-    public String descripcion;
+    private String descripcion;
+    
+    private String rutaImagen;
+    
     @PodamExclude
     @OneToMany(mappedBy = "blog", cascade = CascadeType.PERSIST)
-    public List<PostEntity> posts = new ArrayList<>();
+    private List<PostEntity> posts = new ArrayList<>();
     
-    @PodamExclude
-    @OneToOne(mappedBy= "blog",orphanRemoval = true, cascade = CascadeType.PERSIST)
-    public CampeonatoEntity campeonato;  
+//    @PodamExclude
+//    @OneToOne(mappedBy= "blog",orphanRemoval = true, cascade = CascadeType.PERSIST)
+//    public CampeonatoEntity campeonato;  
     
     /**
      * @return the id
@@ -44,7 +47,7 @@ public class BlogEntity extends BaseEntity implements Serializable{
      * @param id the id to set
      */
     public void setIdentificador(int id) {
-        this.identificador = id;
+        this.setIdentificador((Integer) id);
     }
 
     /**
@@ -64,16 +67,16 @@ public class BlogEntity extends BaseEntity implements Serializable{
     /**
      * @return the campeonato
      */
-    public CampeonatoEntity getCampeonato() {
-        return campeonato;
-    }
+//    public CampeonatoEntity getCampeonato() {
+//        return campeonato;
+//    }
 
     /**
      * @param campeonato the campeonato to set
      */
-    public void setCampeonato(CampeonatoEntity campeonato) {
-        this.campeonato = campeonato;
-    }
+//    public void setCampeonato(CampeonatoEntity campeonato) {
+//        this.campeonato = campeonato;
+//    }
 
     /**
      * @return the nombre
@@ -101,5 +104,26 @@ public class BlogEntity extends BaseEntity implements Serializable{
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    /**
+     * @param identificador the identificador to set
+     */
+    public void setIdentificador(Integer identificador) {
+        this.identificador = identificador;
+    }
+
+    /**
+     * @return the rutaImagen
+     */
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    /**
+     * @param rutaImagen the rutaImagen to set
+     */
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 }

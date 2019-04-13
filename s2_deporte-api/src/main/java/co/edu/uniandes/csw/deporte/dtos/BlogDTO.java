@@ -14,13 +14,18 @@ import java.io.Serializable;
  */
 public class BlogDTO implements Serializable{
     
-      public CampeonatoDTO campeonatoDTO;
+
+    //Nombre del blog
+      private String nombre;
       
-      public String nombre;
+      //Descripcion del blog
+      private String descripcion;
       
-      public String descripcion;
+      //Ruta de la imagen del blog
+      private String rutaImagen;
       
-      public Long id;
+      //id del blog
+      private Long id;
       
       
     public BlogDTO()
@@ -28,36 +33,18 @@ public class BlogDTO implements Serializable{
         
     }
     
+    //Constructor que recibe como parametro un blog entity
     public BlogDTO(BlogEntity blogEntity)
     {
         if (blogEntity != null) {
             this.id = blogEntity.getId();
             this.nombre = blogEntity.getNombre();
-           
-             if(blogEntity.getCampeonato() != null)
-            {
-              this.campeonatoDTO = new CampeonatoDTO(blogEntity.getCampeonato());
-            }
-            else
-            {
-              this.campeonatoDTO = null;
-            }
+            this.descripcion = blogEntity.getDescripcion();
+            this.rutaImagen = blogEntity.getRutaImagen();
         }
     }
 
-    /**
-     * @return the campeonatoDTO
-     */
-    public CampeonatoDTO getCampeonatoDTO() {
-        return campeonatoDTO;
-    }
-
-    /**
-     * @param campeonatoDTO the campeonatoDTO to set
-     */
-    public void setCampeonatoDTO(CampeonatoDTO campeonatoDTO) {
-        this.campeonatoDTO = campeonatoDTO;
-    }
+   
 
     /**
      * @return the nombre
@@ -76,14 +63,14 @@ public class BlogDTO implements Serializable{
     /**
      * @return the id
      */
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     /**
@@ -92,14 +79,13 @@ public class BlogDTO implements Serializable{
      * @return Un Entity con los valores del DTO
      */
     public BlogEntity toEntity() {
-        BlogEntity bloglEntity = new BlogEntity();
-        bloglEntity.setId(this.getId());
-        bloglEntity.setNombre(this.getNombre());
-        bloglEntity.setDescripcion(this.descripcion);
-        if (this.campeonatoDTO != null) {
-            bloglEntity.setCampeonato(this.campeonatoDTO.toEntity());
-        }
-        return bloglEntity;
+        BlogEntity blogEntity = new BlogEntity();
+        blogEntity.setId(this.getId());
+        blogEntity.setNombre(this.getNombre());
+        blogEntity.setDescripcion(this.getDescripcion());
+        blogEntity.setRutaImagen(this.rutaImagen);
+
+        return blogEntity;
     }
 
     /**
@@ -114,5 +100,19 @@ public class BlogDTO implements Serializable{
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the rutaImagen
+     */
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    /**
+     * @param rutaImagen the rutaImagen to set
+     */
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 }

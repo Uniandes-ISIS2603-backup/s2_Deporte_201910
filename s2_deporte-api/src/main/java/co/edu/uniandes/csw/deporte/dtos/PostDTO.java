@@ -13,10 +13,22 @@ import java.io.Serializable;
  * @author Juan Camilo Garcia
  */
 public class PostDTO implements Serializable{
+
+   
     
-    public BlogDTO blogDTO;
+    private BlogDTO blogDTO;
     
-    public Long id;
+    //Id del blog
+    private Long id;
+    
+    //nombre del post
+    private String nombre;
+    
+    //Contenido del blog
+    private String contenido;
+    
+    private ClienteDTO clienteDto;
+    
     public PostDTO()
     {
         
@@ -31,6 +43,8 @@ public class PostDTO implements Serializable{
     public PostDTO(PostEntity postEntity) {
         if (postEntity != null) {
             {
+            this.nombre = postEntity.getNombre();
+            this.contenido = postEntity.getContenido();
             this.id = postEntity.getId();
             }
             if(postEntity.getBlog() != null)
@@ -41,9 +55,23 @@ public class PostDTO implements Serializable{
             {
                 this.blogDTO = null;
             }
+           
         }
     }
 
+     /**
+     * @return the contenido
+     */
+    public String getContenido() {
+        return contenido;
+    }
+
+    /**
+     * @param contenido the contenido to set
+     */
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
     /**
      * @return the blogDTO
      */
@@ -76,10 +104,40 @@ public class PostDTO implements Serializable{
     {
         PostEntity postEntity = new PostEntity();
         postEntity.setId(this.getId());
-        if(this.blogDTO != null)
+        postEntity.setNombre(this.getNombre());
+        postEntity.setContenido(this.getContenido());
+        if(this.getBlogDTO() != null)
         {
-        postEntity.setBlog(this.blogDTO.toEntity());
+        postEntity.setBlog(this.getBlogDTO().toEntity());
         }
         return postEntity;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setNombre(String descripcion) {
+        this.nombre = descripcion;
+    }
+
+    /**
+     * @return the clienteDto
+     */
+    public ClienteDTO getClienteDto() {
+        return clienteDto;
+    }
+
+    /**
+     * @param clienteDto the clienteDto to set
+     */
+    public void setClienteDto(ClienteDTO clienteDto) {
+        this.clienteDto = clienteDto;
     }
 }

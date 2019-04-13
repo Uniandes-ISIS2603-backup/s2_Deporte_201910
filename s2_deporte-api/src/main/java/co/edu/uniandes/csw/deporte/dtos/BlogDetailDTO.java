@@ -49,7 +49,7 @@ public class BlogDetailDTO extends BlogDTO implements Serializable{
     /**
      * Transformar un DTO a un Entity
      *
-     * @return El DTO de la editorial para transformar a Entity
+     * @return El DTO del blog para transformar a Entity
      */
 
     @Override

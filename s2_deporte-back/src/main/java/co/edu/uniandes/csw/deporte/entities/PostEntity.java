@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.deporte.entities;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -16,16 +17,18 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class PostEntity extends BaseEntity implements Serializable {
-    
-    public String identificador;
+@Column(name="Nombre")
+private String nombre;  
+@Column(name="contenido")
+private String contenido;
+
+    @PodamExclude
+    @ManyToOne
+    private BlogEntity blog;
     
     @PodamExclude
     @ManyToOne
-    public BlogEntity blog;
-    
-    @PodamExclude
-    @ManyToOne
-    public ClienteEntity cliente;
+    private ClienteEntity cliente;
     
     public PostEntity()
     {
@@ -35,15 +38,15 @@ public class PostEntity extends BaseEntity implements Serializable {
     /**
      * @return the identificador
      */
-    public String getIdentificador() {
-        return identificador;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
      * @param identificador the identificador to set
      */
-    public void setIdentificador(String identificador) {
-        this.identificador = identificador;
+    public void setNombre(String identificador) {
+        this.nombre = identificador;
     }
 
     /**
@@ -58,6 +61,34 @@ public class PostEntity extends BaseEntity implements Serializable {
      */
     public void setBlog(BlogEntity blog) {
         this.blog = blog;
+    }
+
+    /**
+     * @return the contenido
+     */
+    public String getContenido() {
+        return contenido;
+    }
+
+    /**
+     * @param contenido the contenido to set
+     */
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
     }
    }
 
