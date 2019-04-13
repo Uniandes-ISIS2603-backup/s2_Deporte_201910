@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.deporte.ejb.CanchaLogic;
 import co.edu.uniandes.csw.deporte.ejb.PropietarioCanchaLogic;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -23,8 +24,10 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Santiago Serrano
  */
+@Path("CanchasPropietarios")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@RequestScoped
 public class PropietarioCanchaResource {
 
     private static final Logger LOGGER = Logger.getLogger(PropietarioCanchaResource.class.getName());

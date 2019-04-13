@@ -206,6 +206,7 @@ public class CanchaDTO implements Serializable{
         canchaEntity.setId(this.id);
         canchaEntity.setImagen(this.imagen);
         canchaEntity.setNombre(this.nombre);
+        canchaEntity.setPropietario(this.propietario.toEntity());
         return canchaEntity;
     }
 
