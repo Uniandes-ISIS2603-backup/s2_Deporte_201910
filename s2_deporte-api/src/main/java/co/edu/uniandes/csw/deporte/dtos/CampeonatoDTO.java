@@ -16,14 +16,22 @@ import java.util.List;
  */
 public class CampeonatoDTO implements Serializable{
     
+    //id del campeonato
+    private Long id;
     
-    public Long id;
+    //nombre del campeonato
+    private String nombre;
     
-    public String nombre;
+    //Descripcion del blog
+    private String descripcion;
     
-    public String descripcion;
+    //Ruta de la imagen de el campeonato
+    private String rutaImagen;
     
-    public BlogDTO blogDTO;
+    //Deporte que se juega en el campeonato.
+    private String deporte;
+    
+    private BlogDTO blogDTO;
     
     public CampeonatoDTO()
     {
@@ -41,6 +49,8 @@ public class CampeonatoDTO implements Serializable{
             this.id = campeonatoEntity.getId();
             this.nombre = campeonatoEntity.getNombre();
             this.descripcion = campeonatoEntity.getDescripcion();
+            this.rutaImagen = campeonatoEntity.getRutaImagen();
+            this.deporte = campeonatoEntity.getDeporte();
 //            if(campeonatoEntity.getBlog() != null)
 //            {
 //                this.blogDTO = new BlogDTO(campeonatoEntity.getBlog());
@@ -106,6 +116,8 @@ public class CampeonatoDTO implements Serializable{
         campeonatoEntity.setId(this.getId());
         campeonatoEntity.setNombre(this.getNombre());
         campeonatoEntity.setDescripcion(this.getDescripcion());
+        campeonatoEntity.setRutaImagen(this.getRutaImagen());
+        campeonatoEntity.setDeporte(this.deporte);
 //        if(this.blogDTO != null)
 //       {
 //            campeonatoEntity.setBlog(this.blogDTO.toEntity());
@@ -126,5 +138,33 @@ public class CampeonatoDTO implements Serializable{
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the rutaImagen
+     */
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    /**
+     * @param rutaImagen the rutaImagen to set
+     */
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
+
+    /**
+     * @return the deporte
+     */
+    public String getDeporte() {
+        return deporte;
+    }
+
+    /**
+     * @param deporte the deporte to set
+     */
+    public void setDeporte(String deporte) {
+        this.deporte = deporte;
     }
 }

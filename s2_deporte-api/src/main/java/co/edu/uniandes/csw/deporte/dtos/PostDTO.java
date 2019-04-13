@@ -18,10 +18,13 @@ public class PostDTO implements Serializable{
     
     private BlogDTO blogDTO;
     
+    //Id del blog
     private Long id;
     
+    //nombre del post
     private String nombre;
     
+    //Contenido del blog
     private String contenido;
     
     private ClienteDTO clienteDto;

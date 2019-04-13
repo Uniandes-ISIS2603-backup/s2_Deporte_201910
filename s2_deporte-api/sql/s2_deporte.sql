@@ -4,7 +4,6 @@ delete from PartidoEntity;
 delete from PostEntity;
 delete from CampeonatoEntity;
 delete from BlogEntity;
-delete from PostEntity;
 delete from AgendaEntity;
 delete from AmistosoEntity;
 delete from CanchaEntity;

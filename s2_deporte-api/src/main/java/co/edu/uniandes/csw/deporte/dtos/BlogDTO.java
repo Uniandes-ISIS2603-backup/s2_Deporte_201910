@@ -14,13 +14,18 @@ import java.io.Serializable;
  */
 public class BlogDTO implements Serializable{
     
-//      public CampeonatoDTO campeonatoDTO;
+
+    //Nombre del blog
+      private String nombre;
       
-      public String nombre;
+      //Descripcion del blog
+      private String descripcion;
       
-      public String descripcion;
+      //Ruta de la imagen del blog
+      private String rutaImagen;
       
-      public Long id;
+      //id del blog
+      private Long id;
       
       
     public BlogDTO()
@@ -28,14 +33,14 @@ public class BlogDTO implements Serializable{
         
     }
     
+    //Constructor que recibe como parametro un blog entity
     public BlogDTO(BlogEntity blogEntity)
     {
         if (blogEntity != null) {
             this.id = blogEntity.getId();
             this.nombre = blogEntity.getNombre();
             this.descripcion = blogEntity.getDescripcion();
-        
-//            
+            this.rutaImagen = blogEntity.getRutaImagen();
         }
     }
 
@@ -74,12 +79,13 @@ public class BlogDTO implements Serializable{
      * @return Un Entity con los valores del DTO
      */
     public BlogEntity toEntity() {
-        BlogEntity bloglEntity = new BlogEntity();
-        bloglEntity.setId(this.getId());
-        bloglEntity.setNombre(this.getNombre());
-        bloglEntity.setDescripcion(this.descripcion);
+        BlogEntity blogEntity = new BlogEntity();
+        blogEntity.setId(this.getId());
+        blogEntity.setNombre(this.getNombre());
+        blogEntity.setDescripcion(this.getDescripcion());
+        blogEntity.setRutaImagen(this.rutaImagen);
 
-        return bloglEntity;
+        return blogEntity;
     }
 
     /**
@@ -94,5 +100,19 @@ public class BlogDTO implements Serializable{
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the rutaImagen
+     */
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    /**
+     * @param rutaImagen the rutaImagen to set
+     */
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 }
