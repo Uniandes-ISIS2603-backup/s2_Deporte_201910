@@ -36,8 +36,8 @@ public class CanchaLogic {
         if (persistence.findByDireccion(cancha.getDireccion()) != null) {
             throw new BusinessLogicException("Ya existe la cancha con la direccion \"" + cancha.getDireccion() + "\"");
         }
-        PropietarioEntity p=pl.findByName(cancha.getPropietario().getNombre());
-        cancha.setPropietario(p);
+        //PropietarioEntity p=pl.findByName(cancha.getPropietario().getNombre());
+        //cancha.setPropietario(p);
         cancha = persistence.create(cancha);
         return cancha;
     }
