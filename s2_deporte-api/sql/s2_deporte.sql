@@ -471,6 +471,9 @@ insert into CampeonatoEntity (id, descripcion, nombre, blog_id) values (15, 'Pro
 insert into CampeonatoEntity (id, descripcion, nombre, blog_id) values (16, 'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.', 'Joceline', 16);
 insert into CampeonatoEntity (id, descripcion, nombre, blog_id) values (17, 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.', 'Elene', 17);
 insert into CampeonatoEntity (id, descripcion, nombre, blog_id) values (18, 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', 'Ellary', 18);
+insert into CampeonatoEntity (id, descripcion, nombre, blog_id, deporte, rutaimagen) values (1, 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', 'Ellary', 18,'hola','asdf');
+insert into CampeonatoEntity (id, descripcion, nombre, blog_id, deporte, rutaimagen) values (10, 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede,  non, sodales sed, tincidunt eu, felis.', 'Ellary', 18,'futbol','https://www.creartuavatar.com/images/m7.svg
+');
 
 insert into PostEntity(id, cliente_id, contenido, nombre) values (8,1,'hola', 'este es mi post');
 

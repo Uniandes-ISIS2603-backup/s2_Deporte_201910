@@ -31,6 +31,7 @@ public class CampeonatoDTO implements Serializable{
     //Deporte que se juega en el campeonato.
     private String deporte;
     
+    
     private BlogDTO blogDTO;
     
     public CampeonatoDTO()
