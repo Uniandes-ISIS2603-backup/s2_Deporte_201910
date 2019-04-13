@@ -22,6 +22,8 @@ public class PropietarioDTO implements Serializable{
     
     public String imagen;
     
+    public String contrasena;
+    
     public PropietarioDTO () {
         
     }
@@ -39,6 +41,7 @@ public class PropietarioDTO implements Serializable{
             this.nombre=propietarioEntity.getNombre();
             this.numCanchas = propietarioEntity.getNumCanchas();
             this.imagen = propietarioEntity.getImagen();
+            this.contrasena =propietarioEntity.getContrasena();
         }
     }
 
@@ -79,8 +82,9 @@ public class PropietarioDTO implements Serializable{
         PropietarioEntity propietarioEntity = new PropietarioEntity();
         propietarioEntity.setNumCanchas(this.getNumCanchas());
         propietarioEntity.setId(this.id);
-        propietarioEntity.setNombre(this.nombre);
+        propietarioEntity.setNombre(this.getNombre());
         propietarioEntity.setImagen(this.imagen);
+        propietarioEntity.setContrasena(this.getContrasena());
         return propietarioEntity;
     }
 
@@ -96,5 +100,33 @@ public class PropietarioDTO implements Serializable{
      */
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    /**
+     * @return the contrasena
+     */
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    /**
+     * @param contrasena the contrasena to set
+     */
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
