@@ -6,8 +6,10 @@
 package co.edu.uniandes.csw.deporte.ejb;
 
 import co.edu.uniandes.csw.deporte.entities.CanchaEntity;
+import co.edu.uniandes.csw.deporte.entities.PropietarioEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.deporte.persistence.CanchaPersistence;
+import co.edu.uniandes.csw.deporte.persistence.PropietarioPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +26,8 @@ public class CanchaLogic {
 
     @Inject
     private CanchaPersistence persistence;
+    @Inject
+    private PropietarioPersistence pl;
 
     private static final Logger LOGGER = Logger.getLogger(CanchaLogic.class.getName());
 
@@ -32,7 +36,8 @@ public class CanchaLogic {
         if (persistence.findByDireccion(cancha.getDireccion()) != null) {
             throw new BusinessLogicException("Ya existe la cancha con la direccion \"" + cancha.getDireccion() + "\"");
         }
-
+        //PropietarioEntity p=pl.findByName(cancha.getPropietario().getNombre());
+        //cancha.setPropietario(p);
         cancha = persistence.create(cancha);
         return cancha;
     }
