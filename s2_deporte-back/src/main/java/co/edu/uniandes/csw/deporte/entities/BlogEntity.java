@@ -11,7 +11,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -32,9 +31,7 @@ public class BlogEntity extends BaseEntity implements Serializable{
     @OneToMany(mappedBy = "blog", cascade = CascadeType.PERSIST)
     private List<PostEntity> posts = new ArrayList<>();
     
-//    @PodamExclude
-//    @OneToOne(mappedBy= "blog",orphanRemoval = true, cascade = CascadeType.PERSIST)
-//    public CampeonatoEntity campeonato;  
+
     
     /**
      * @return the id
@@ -64,19 +61,9 @@ public class BlogEntity extends BaseEntity implements Serializable{
         this.posts = posts;
     }
 
-    /**
-     * @return the campeonato
-     */
-//    public CampeonatoEntity getCampeonato() {
-//        return campeonato;
-//    }
+ 
 
-    /**
-     * @param campeonato the campeonato to set
-     */
-//    public void setCampeonato(CampeonatoEntity campeonato) {
-//        this.campeonato = campeonato;
-//    }
+
 
     /**
      * @return the nombre
