@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.deporte.dtos;
 
 import co.edu.uniandes.csw.deporte.entities.BlogEntity;
-import co.edu.uniandes.csw.deporte.entities.CampeonatoEntity;
 import co.edu.uniandes.csw.deporte.entities.PostEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ import java.util.List;
  */
 public class BlogDetailDTO extends BlogDTO implements Serializable{
     
-    public List<PostDTO> postDTO;
+    private List<PostDTO> postDTO;
     
    
     public BlogDetailDTO()
@@ -33,13 +32,10 @@ public class BlogDetailDTO extends BlogDTO implements Serializable{
      */
     public BlogDetailDTO(BlogEntity bloglEntity) {
         super(bloglEntity);
-        if (bloglEntity != null) {
-            if (bloglEntity.getPosts() != null) 
-            {
-                postDTO = new ArrayList<>();
+        if (bloglEntity != null && bloglEntity.getPosts() != null) {
+               postDTO = new ArrayList<>();
                 for(PostEntity entityPost : bloglEntity.getPosts()){
                    postDTO.add(new PostDTO(entityPost));
-                }
             }
 
         }

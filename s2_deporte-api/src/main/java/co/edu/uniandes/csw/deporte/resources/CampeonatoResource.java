@@ -6,13 +6,11 @@
 package co.edu.uniandes.csw.deporte.resources;
 
 import co.edu.uniandes.csw.deporte.dtos.CampeonatoDTO;
-import co.edu.uniandes.csw.deporte.ejb.BlogLogic;
 import co.edu.uniandes.csw.deporte.ejb.CampeonatoLogic;
 import co.edu.uniandes.csw.deporte.entities.CampeonatoEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -36,11 +34,14 @@ import javax.ws.rs.core.MediaType;
 @RequestScoped
 
 public class CampeonatoResource {
-    private static final Logger LOGGER = Logger.getLogger(CampeonatoResource.class.getName());
     
     @Inject
     private CampeonatoLogic campeonatoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
+    
+    private final static String EXC = "El recurso /campeonato/";
+    
+    private final static String EXCE= " no existe.";
 /**
      * Crea un nuevo campeonato con la informacion que se recibe en el cuerpo de la
      * petición y se regresa un objeto identico con un id auto-generado por la
@@ -54,8 +55,7 @@ public class CampeonatoResource {
     @POST
     public CampeonatoDTO createCampeonato(CampeonatoDTO pCampeonato)throws BusinessLogicException
     {
-        CampeonatoDTO nuevoCampeonatoDTO = new CampeonatoDTO(campeonatoLogic.createCampeonato(pCampeonato.toEntity()));
-        return nuevoCampeonatoDTO;
+        return new CampeonatoDTO(campeonatoLogic.createCampeonato(pCampeonato.toEntity()));
     }
  /**
      * Busca el campeonato con el id asociado recibido en la URL y lo devuelve.
@@ -74,11 +74,10 @@ public class CampeonatoResource {
         CampeonatoEntity campeonatoEntity = campeonatoLogic.getCampeonato(campeonatoId);
         if(campeonatoEntity == null)
         {
-             throw new WebApplicationException("El recurso /campeonato/" + campeonatoId + " no existe.", 404);
+             throw new WebApplicationException(EXC + campeonatoId + EXCE, 404);
         }
-        CampeonatoDTO campeonatoDTO = new CampeonatoDTO(campeonatoEntity);
+        return new CampeonatoDTO(campeonatoEntity);
   
-        return campeonatoDTO;
     }
     
     /**
@@ -89,8 +88,7 @@ public class CampeonatoResource {
      */
     @GET
     public List<CampeonatoDTO> getBlogs() {
-        List<CampeonatoDTO> listaCampeonatos = listEntity2DetailDTO(campeonatoLogic.getCampeonatos());
-        return listaCampeonatos;
+        return listEntity2DetailDTO(campeonatoLogic.getCampeonatos());
     }
     
     /**
@@ -114,10 +112,9 @@ public class CampeonatoResource {
         pCampeonato.setId(campeonatoId);
         if(campeonatoLogic.getCampeonato(campeonatoId) == null)
         {
-            throw new  WebApplicationException("El recurso /blog/" + campeonatoId + " no existe.", 404);
+            throw new  WebApplicationException(EXC + campeonatoId + EXCE, 404);
         }
-        CampeonatoDTO camp = new CampeonatoDTO(campeonatoLogic.updateCampeonato(campeonatoId, pCampeonato.toEntity()));
-        return camp;
+        return new CampeonatoDTO(campeonatoLogic.updateCampeonato(campeonatoId, pCampeonato.toEntity()));
     }
     
     /**
@@ -135,7 +132,7 @@ public class CampeonatoResource {
      CampeonatoEntity entity = campeonatoLogic.getCampeonato(campeonatoId);
      if(entity == null)
      {
-         throw new WebApplicationException("El recurso /campeonato/" + campeonatoId + " no existe.", 404);
+         throw new WebApplicationException(EXC + campeonatoId + EXCE, 404);
      }
      campeonatoLogic.deleteCampeonato(campeonatoId);
     }

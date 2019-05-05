@@ -12,7 +12,6 @@ import co.edu.uniandes.csw.deporte.entities.BlogEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -34,12 +33,15 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @RequestScoped
 public class BlogResource {
-    private static final Logger LOGGER = Logger.getLogger(PostResource.class.getName());
 
     @Inject
     private BlogLogic blogLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
     
+    private final static String EXC = "El recurso /blog/";
+    
+        private final static String EXCE = " no existe.";
+
 /**
      * Crea un nuevo blog con la informacion que se recibe en el cuerpo de la
      * petición y se regresa un objeto identico con un id auto-generado por la
@@ -54,8 +56,7 @@ public class BlogResource {
         public BlogDTO createPost(BlogDTO pBlog) throws BusinessLogicException
         {
              
-        BlogDTO nuevoBlogDTO = new BlogDTO(blogLogic.createBlog(pBlog.toEntity()));
-        return nuevoBlogDTO;
+        return new BlogDTO(blogLogic.createBlog(pBlog.toEntity()));
         }
         
         /**
@@ -73,12 +74,12 @@ public class BlogResource {
     public BlogDetailDTO getBlog(@PathParam("blogId") Long blogId) {
         BlogEntity blogEntity = blogLogic.getBlog(blogId);
         if (blogEntity == null) {
-            throw new WebApplicationException("El recurso /blog/" + blogId + " no existe.", 404);
+            throw new WebApplicationException(EXC + blogId + EXCE, 404);
         }
-        BlogDetailDTO blogDetailDTO = new BlogDetailDTO(blogEntity);
+       return new BlogDetailDTO(blogEntity);
         
         
-        return blogDetailDTO;
+     
     }
     
     /**
@@ -89,8 +90,8 @@ public class BlogResource {
      */
     @GET
     public List<BlogDetailDTO> getBlogs() {
-        List<BlogDetailDTO> listaBooks = listEntity2DetailDTO(blogLogic.getBlogs());
-        return listaBooks;
+        return listEntity2DetailDTO(blogLogic.getBlogs());
+        
     }
 
     
@@ -115,10 +116,10 @@ public class BlogResource {
             pBlog.setId(blogId);
             if(blogLogic.getBlog(blogId) == null)
             {
-                throw new  WebApplicationException("El recurso /blog/" + blogId + " no existe.", 404);
+                throw new  WebApplicationException(EXC + blogId + EXCE, 404);
             }
-            BlogDetailDTO detailDTO = new BlogDetailDTO(blogLogic.updateBlog(blogId, pBlog.toEntity()));
-            return detailDTO;
+           return new BlogDetailDTO(blogLogic.updateBlog(blogId, pBlog.toEntity()));
+        
         }
       
  /**
@@ -136,7 +137,7 @@ public class BlogResource {
             BlogEntity entity = blogLogic.getBlog(blogId);
             if(entity == null)
             {
-                 throw new WebApplicationException("El recurso /blog/" + blogId + " no existe.", 404);
+                 throw new WebApplicationException(EXC + blogId + EXCE, 404);
             }
             blogLogic.deleteBlog(blogId);
           

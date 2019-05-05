@@ -11,7 +11,6 @@ import co.edu.uniandes.csw.deporte.entities.PostEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -34,11 +33,13 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 
 public class PostResource {
-        private static final Logger LOGGER = Logger.getLogger(PostResource.class.getName());
         
         @Inject
         private PostLogic postLogic;
 
+         private final static String EXC = "El recurso /post/";
+    
+    private final static String EXCE= " no existe.";
         /**
      * Crea un nuevo blog con la informacion que se recibe en el cuerpo de la
      * petición y se regresa un objeto identico con un id auto-generado por la
@@ -52,8 +53,7 @@ public class PostResource {
         @POST
         public PostDTO createPost(PostDTO pPost)throws BusinessLogicException
         {
-            PostDTO nuevoPostDTO = new PostDTO(postLogic.createPost(pPost.toEntity()));
-            return nuevoPostDTO;
+           return new PostDTO(postLogic.createPost(pPost.toEntity()));
         }
        
         /**
@@ -70,12 +70,11 @@ public class PostResource {
     public PostDTO getPost(@PathParam("postId") Long postId) {
         PostEntity postEntity = postLogic.getPost(postId);
         if (postEntity == null) {
-            throw new WebApplicationException("El recurso /post/" + postId + " no existe.", 404);
+            throw new WebApplicationException(EXC + postId + EXCE, 404);
         }
-        PostDTO postDTO = new PostDTO(postEntity);
+        return new PostDTO(postEntity);
         
         
-        return postDTO;
     }
     
     /**
@@ -87,8 +86,7 @@ public class PostResource {
 
     @GET
     public List<PostDTO> getPosts() {
-        List<PostDTO> listaBooks = listEntity2DetailDTO(postLogic.getPosts());
-        return listaBooks;
+        return listEntity2DetailDTO(postLogic.getPosts());
     }
     
     /**
@@ -112,10 +110,9 @@ public class PostResource {
             pPost.setId(postId);
             if(postLogic.getPost(postId) == null)
             {
-                throw new  WebApplicationException("El recurso /post/" + postId + " no existe.", 404);
+                throw new  WebApplicationException(EXC + postId + EXCE, 404);
             }
-            PostDTO detailDTO = new PostDTO(postLogic.updatePost(postId, pPost.toEntity()));
-            return detailDTO;
+            return new PostDTO(postLogic.updatePost(postId, pPost.toEntity()));
         }
         
          /**
@@ -133,7 +130,7 @@ public class PostResource {
             PostEntity entity = postLogic.getPost(postId);
             if(entity == null)
             {
-                 throw new WebApplicationException("El recurso /post/" + postId + " no existe.", 404);
+                 throw new WebApplicationException(EXC + postId + EXCE, 404);
             }
             postLogic.deletePost(postId);
           
