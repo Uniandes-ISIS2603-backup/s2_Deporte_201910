@@ -48,8 +48,16 @@ public class AgendaResourse {
     }
 
     @PUT
-    public AgendaDTO modifyAgenda(AgendaDTO agenda) {
-        return agenda;
+    @Path("{agendaId : \\d+}")
+    public AgendaDetailDTO modifyAgenda(@PathParam("agendaId")Long id, AgendaDetailDTO agenda) {
+        LOGGER.log(Level.INFO, "AgendaResource updateBook: input: id: {0} , book: {1}", new Object[]{id, agenda});
+        agenda.setId(id);
+        if (logica.find(id) == null) {
+            throw new WebApplicationException("El recurso /agendas/" + id + " no existe.", 404);
+        }
+        AgendaDetailDTO detailDTO = new AgendaDetailDTO(logica.update(id, agenda.toEntity()));
+        LOGGER.log(Level.INFO, "BookResource updateBook: output: {0}", detailDTO);
+        return detailDTO;
     }
 
     @DELETE

@@ -150,7 +150,7 @@ public class AgendaLogicTest {
 
         newEntity.setId(entity.getId());
 
-        agendaLogic.update(newEntity);
+        agendaLogic.update(newEntity.getId(),newEntity);
 
         AgendaEntity resp = em.find(AgendaEntity.class, entity.getId());
 
