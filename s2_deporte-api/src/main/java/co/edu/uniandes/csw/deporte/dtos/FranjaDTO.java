@@ -14,8 +14,10 @@ import java.util.Date;
  */
 public class FranjaDTO implements Serializable{
     
-    public Date fechaInicio;
-    public Date fechaFin;
+    public Integer horaInicio;
+    public Integer horaFin;
+    private Integer dia;
+    private Long id;
     public Integer duracionTotalHoras;
     public Boolean ocupada;
     public Long idReserva;
@@ -30,8 +32,10 @@ public class FranjaDTO implements Serializable{
         if(entity != null)
         {
             this.duracionTotalHoras = entity.getDuracionHoras();
-            this.fechaFin = entity.getFechaFin();
-            this.fechaInicio = entity.getFechaInicio();
+            this.horaFin = entity.getHoraFin();
+            this.id = entity.getId();
+            this.dia = entity.getDia();
+            this.horaInicio = entity.getHoraInicio();
             this.idReserva = entity.getIdReserva();
             this.ocupada = entity.getOcupada();
             this.agenda = new AgendaDTO(entity.getAgenda());
@@ -41,10 +45,13 @@ public class FranjaDTO implements Serializable{
     public FranjaEntity toEntity(){
         FranjaEntity entity = new FranjaEntity();
         entity.setDuracionHoras(this.getDuracionTotalHoras());
-        entity.setFechaFin(this.getFechaFin());
-        entity.setFechaInicio(this.getFechaInicio());
+        entity.setHoraFin(this.getHoraFin());
+        entity.setHoraInicio(this.getHoraInicio());
+        entity.setId(this.id);
         entity.setIdReserva(this.getIdReserva());
         entity.setOcupada(this.getOcupada());
+        entity.setAgenda(this.agenda.toEntity());
+        entity.setDia(this.getDia());
         return entity;
     }
     
@@ -52,32 +59,32 @@ public class FranjaDTO implements Serializable{
      * Retorna la fecha de inicio de la franja
      * @return Date: fecha de inicio de la franja
      */
-    public Date getFechaInicio(){
-        return fechaInicio;
+    public Integer getHoraInicio(){
+        return horaInicio;
     }
     
     /**
      * Establece la fecha de inicio de la franja
      * @param fecha Date de inicio de la franja
      */
-    public void setFechaInicio(Date fecha){
-        fechaInicio = fecha;
+    public void setHoraInicio(Integer fecha){
+        horaInicio = fecha;
     }
     
     /**
      * Retorna la fecha de fin de la franja
      * @return Date: fecha de fin de la franja
      */
-    public Date getFechaFin(){
-        return fechaFin;
+    public Integer getHoraFin(){
+        return horaFin;
     }
     
     /**
      * Establece la fecha de fin de la franja
      * @param fecha Date de fin de la franja
      */
-    public void setFechaFin(Date fecha){
-        fechaFin = fecha;
+    public void setHoraFin(Integer fecha){
+        horaFin = fecha;
     }
     
     /**
@@ -142,5 +149,34 @@ public class FranjaDTO implements Serializable{
      */
     public void setAgenda(AgendaDTO agendaPadre){
         agenda = agendaPadre;
+    }
+    
+    
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+     /**
+     * @return the dia
+     */
+    public Integer getDia() {
+        return dia;
+    }
+
+    /**
+     * @param dia the dia to set
+     */
+    public void setDia(Integer dia) {
+        this.dia = dia;
     }
 }

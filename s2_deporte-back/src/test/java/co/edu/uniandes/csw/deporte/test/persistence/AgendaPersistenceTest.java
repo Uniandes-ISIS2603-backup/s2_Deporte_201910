@@ -154,7 +154,7 @@ public class AgendaPersistenceTest {
 
         newEntity.setId(entity.getId());
 
-        persistence.update(newEntity);
+        persistence.update(newEntity.id, newEntity);
 
         AgendaEntity resp = em.find(AgendaEntity.class, entity.getId());
 

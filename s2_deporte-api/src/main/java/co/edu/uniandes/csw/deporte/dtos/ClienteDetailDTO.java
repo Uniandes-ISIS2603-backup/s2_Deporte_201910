@@ -86,7 +86,7 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable
     {
         for(EquipoDTO e: equipos)
         {
-            if(e.getId().equals(id))
+            if(e.getId().equals(Long.getLong(id)))
             {
                 equipos.remove(e);
                 return;

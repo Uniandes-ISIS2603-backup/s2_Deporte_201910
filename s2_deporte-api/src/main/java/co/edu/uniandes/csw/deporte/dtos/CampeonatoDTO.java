@@ -7,8 +7,6 @@ package co.edu.uniandes.csw.deporte.dtos;
 
 import co.edu.uniandes.csw.deporte.entities.CampeonatoEntity;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -52,14 +50,7 @@ public class CampeonatoDTO implements Serializable{
             this.descripcion = campeonatoEntity.getDescripcion();
             this.rutaImagen = campeonatoEntity.getRutaImagen();
             this.deporte = campeonatoEntity.getDeporte();
-//            if(campeonatoEntity.getBlog() != null)
-//            {
-//                this.blogDTO = new BlogDTO(campeonatoEntity.getBlog());
-//            }
-//            else
-//            {
-//                this.blogDTO = null;
-//            }
+
         }
     }
     
@@ -119,10 +110,7 @@ public class CampeonatoDTO implements Serializable{
         campeonatoEntity.setDescripcion(this.getDescripcion());
         campeonatoEntity.setRutaImagen(this.getRutaImagen());
         campeonatoEntity.setDeporte(this.deporte);
-//        if(this.blogDTO != null)
-//       {
-//            campeonatoEntity.setBlog(this.blogDTO.toEntity());
-//        }
+
         return campeonatoEntity;
     }
 

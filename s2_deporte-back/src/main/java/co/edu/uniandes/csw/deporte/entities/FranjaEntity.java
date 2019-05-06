@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -23,11 +24,11 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class FranjaEntity extends BaseEntity implements Serializable{
     
-    @Temporal(TemporalType.TIME)
-    public Date fechaInicio;
+    public Integer horaInicio;
     
-    @Temporal(TemporalType.TIME)
-    public Date fechaFin;
+    public Integer horaFin;
+    
+    private Integer dia;
     
     public Integer duracionHoras;
     
@@ -51,29 +52,29 @@ public class FranjaEntity extends BaseEntity implements Serializable{
     /**
      * @return the fechaInicio
      */
-    public Date getFechaInicio() {
-        return fechaInicio;
+    public Integer getHoraInicio() {
+        return horaInicio;
     }
 
     /**
      * @param fechaInicio the fechaInicio to set
      */
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public void setHoraInicio(Integer fechaInicio) {
+        this.horaInicio = fechaInicio;
     }
 
     /**
      * @return the fechaFin
      */
-    public Date getFechaFin() {
-        return fechaFin;
+    public Integer getHoraFin() {
+        return horaFin;
     }
 
     /**
      * @param fechaFin the fechaFin to set
      */
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setHoraFin(Integer fechaFin) {
+        this.horaFin = fechaFin;
     }
 
     /**
@@ -146,9 +147,18 @@ public class FranjaEntity extends BaseEntity implements Serializable{
         this.reserva = reserva;
     }
     
-    
-    
-    
-    
+    /**
+     * @return the dia
+     */
+    public Integer getDia() {
+        return dia;
+    }
+
+    /**
+     * @param dia the dia to set
+     */
+    public void setDia(Integer dia) {
+        this.dia = dia;
+    }  
     
 }

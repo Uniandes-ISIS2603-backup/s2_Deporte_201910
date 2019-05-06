@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.deporte.test.persistence;
+package co.edu.uniandes.csw.deporte.test.logic;
 
 import co.edu.uniandes.csw.deporte.ejb.EntrenamientoLogic;
 import co.edu.uniandes.csw.deporte.entities.EntrenamientoEntity;

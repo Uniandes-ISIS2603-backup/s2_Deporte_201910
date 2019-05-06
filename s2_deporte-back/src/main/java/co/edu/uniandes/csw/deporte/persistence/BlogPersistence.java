@@ -72,7 +72,6 @@ public class BlogPersistence {
     
     public BlogEntity findByName(String pNombre)
     {
-        LOGGER.log(Level.INFO, "Consultando blogs por nombre ", pNombre);
         TypedQuery query = em.createQuery("Select e From BlogEntity e where e.nombre = :nombre", BlogEntity.class);
         
         query = query.setParameter("nombre", pNombre);
@@ -91,7 +90,6 @@ public class BlogPersistence {
         {
             result = sameNombre.get(0);
         }
-        LOGGER.log(Level.INFO, "Saliendo de consultar blogs por nombre ", pNombre);
         return result;
     }
     

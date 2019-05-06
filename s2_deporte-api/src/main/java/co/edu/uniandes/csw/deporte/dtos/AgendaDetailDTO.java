@@ -25,9 +25,11 @@ public class AgendaDetailDTO extends AgendaDTO implements Serializable {
 
     public AgendaDetailDTO(AgendaEntity agenda) {
         super(agenda);
-        franjas = new ArrayList<>();
-        for (FranjaEntity entityFranja : agenda.getFranjas()) {
-            franjas.add(new FranjaDTO(entityFranja));
+        if(agenda != null){
+            franjas = new ArrayList<>();
+            for (FranjaEntity entityFranja : agenda.getFranjas()) {
+                franjas.add(new FranjaDTO(entityFranja));
+            }
         }
     }
 
@@ -45,5 +47,15 @@ public class AgendaDetailDTO extends AgendaDTO implements Serializable {
         this.franjas = franjas;
     }
     
-    
+    public AgendaEntity toEntity(){
+        AgendaEntity entityAgenda = super.toEntity();
+        if(franjas!=null){
+            List<FranjaEntity> franjasEntity = new ArrayList();
+            for(FranjaDTO franja : franjas){
+                franjasEntity.add(franja.toEntity());
+            }
+            entityAgenda.setFranjas(franjasEntity);
+        }
+        return entityAgenda;
+    }
 }
