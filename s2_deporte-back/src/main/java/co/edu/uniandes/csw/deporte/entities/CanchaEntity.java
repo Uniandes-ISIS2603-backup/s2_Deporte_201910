@@ -41,10 +41,10 @@ public class CanchaEntity extends BaseEntity implements Serializable{
     public PropietarioEntity propietario;
     @PodamExclude
     @OneToMany
-    public List<AgendaEntity> agendas;
+    private List<AgendaEntity> agendas;
     @PodamExclude
     @OneToMany
-    public List<ReservaEntity> reservas;
+    private List<ReservaEntity> reservas;
 
     
     /**

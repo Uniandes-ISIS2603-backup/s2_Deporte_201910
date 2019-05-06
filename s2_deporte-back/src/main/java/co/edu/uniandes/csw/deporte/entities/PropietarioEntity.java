@@ -25,11 +25,9 @@ public class PropietarioEntity extends BaseEntity implements Serializable{
     public String contrasena;
     @OneToMany
     @PodamExclude
-    public List<CanchaEntity> canchas;
+    private List<CanchaEntity> canchas;
     
-    public PropietarioEntity () {
-        
-    }
+
 
     /**
      * @return the nombre

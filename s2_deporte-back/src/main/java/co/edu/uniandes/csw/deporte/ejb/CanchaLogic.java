@@ -36,13 +36,11 @@ public class CanchaLogic {
         if (persistence.findByDireccion(cancha.getDireccion()) != null) {
             throw new BusinessLogicException("Ya existe la cancha con la direccion \"" + cancha.getDireccion() + "\"");
         }
-        //PropietarioEntity p=pl.findByName(cancha.getPropietario().getNombre());
-        //cancha.setPropietario(p);
         cancha = persistence.create(cancha);
         return cancha;
     }
 
-    public CanchaEntity getCancha(Long canchaId) throws WebApplicationException {
+    public CanchaEntity getCancha(Long canchaId) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar con id = {0}", canchaId);
 
         CanchaEntity consulta = persistence.find(canchaId);
@@ -72,7 +70,7 @@ public class CanchaLogic {
      * @return La entidad de la cancha luego de actualizarla
      * @throws BusinessLogicException
      */
-    public CanchaEntity updateCancha(Long canchaId, CanchaEntity canchaEntity) throws BusinessLogicException {
+    public CanchaEntity updateCancha(Long canchaId, CanchaEntity canchaEntity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar el libro con id = {0}", canchaId);
         CanchaEntity newEntity = persistence.update(canchaEntity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar el libro con id = {0}", canchaEntity.getId());

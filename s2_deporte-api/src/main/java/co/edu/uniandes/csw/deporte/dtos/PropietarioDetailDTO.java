@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class PropietarioDetailDTO extends PropietarioDTO implements Serializable {
 
-    public List<CanchaDTO> canchas;
+    private List<CanchaDTO> canchas;
 
     public PropietarioDetailDTO() {
         super();
@@ -47,6 +47,7 @@ public class PropietarioDetailDTO extends PropietarioDTO implements Serializable
         this.canchas = canchas;
     }
     
+    @Override
     public PropietarioEntity toEntity(){
         PropietarioEntity entityPropietario = super.toEntity();
         if(canchas!=null){

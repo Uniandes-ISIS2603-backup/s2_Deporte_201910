@@ -18,9 +18,9 @@ import java.util.List;
  */
 public class CanchaDetailDTO extends CanchaDTO implements Serializable {
 
-    public List<AgendaDTO> agendas;
+    private List<AgendaDTO> agendas;
 
-    public List<ReservaDTO> reservas;
+    private List<ReservaDTO> reservas;
 
     public CanchaDetailDTO() {
         super();
