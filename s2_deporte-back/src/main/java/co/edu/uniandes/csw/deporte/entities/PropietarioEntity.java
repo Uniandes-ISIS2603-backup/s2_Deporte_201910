@@ -19,10 +19,10 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PropietarioEntity extends BaseEntity implements Serializable{
     
-    public String nombre;
-    public int numCanchas;
-    public String imagen;
-    public String contrasena;
+    private String nombre;
+    private int numCanchas;
+    private String imagen;
+    private String contrasena;
     @OneToMany
     @PodamExclude
     private List<CanchaEntity> canchas;

@@ -14,27 +14,27 @@ import java.io.Serializable;
  */
 public class CanchaDTO implements Serializable{
     
-    public Long id;
+    private Long id;
     
-    public String zona;
+    private String zona;
     
-    public String direccion;
+    private String direccion;
     
-    public String ciudad;
+    private String ciudad;
     
-    public String contacto;
+    private String contacto;
     
-    public String caracterizticas;
+    private String caracterizticas;
     
-    public Boolean reservada;
+    private Boolean reservada;
     
-    public String tipoCancha;
+    private String tipoCancha;
     
-    public PropietarioDTO propietario;
+    private PropietarioDTO propietario;
     
-    public String imagen;
+    private String imagen;
     
-    public String nombre;
+    private String nombre;
     
     public CanchaDTO(){
         

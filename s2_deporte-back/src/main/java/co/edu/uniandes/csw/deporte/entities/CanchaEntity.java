@@ -19,21 +19,21 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class CanchaEntity extends BaseEntity implements Serializable{
     
-    public String zona;
+    private String zona;
     
-    public String ciudad;
+    private String ciudad;
     
-    public String direccion;
+    private String direccion;
     
-    public String caracterizticas;
+    private String caracterizticas;
     
-    public String contacto;
+    private String contacto;
     
-    public boolean reservada;
+    private boolean reservada;
     
-    public String imagen;
+    private String imagen;
     
-    public String nombre;
+    private String nombre;
     
     public String tipo;
     @PodamExclude

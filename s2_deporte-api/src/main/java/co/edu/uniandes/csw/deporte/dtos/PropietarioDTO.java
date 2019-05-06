@@ -14,15 +14,15 @@ import java.io.Serializable;
  */
 public class PropietarioDTO implements Serializable{
     
-    public Long id;
+    private Long id;
     
-    public String nombre;
+    private String nombre;
     
-    public Integer numCanchas;
+    private Integer numCanchas;
     
-    public String imagen;
+    private String imagen;
     
-    public String contrasena;
+    private String contrasena;
     
     public PropietarioDTO () {
         
