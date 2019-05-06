@@ -5,12 +5,16 @@
  */
 package co.edu.uniandes.csw.deporte.resources;
 
+import co.edu.uniandes.csw.deporte.dtos.AgendaDetailDTO;
 import co.edu.uniandes.csw.deporte.dtos.FranjaDTO;
+import co.edu.uniandes.csw.deporte.ejb.AgendaLogic;
 import co.edu.uniandes.csw.deporte.ejb.FranjaLogic;
 import co.edu.uniandes.csw.deporte.entities.FranjaEntity;
+import co.edu.uniandes.csw.deporte.entities.AgendaEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -37,9 +41,12 @@ public class FranjaResource {
 
     @Inject
     FranjaLogic logica;
+    
+    @Inject 
+    AgendaLogic logicaA;
 
     @POST
-    public FranjaDTO createFranja(FranjaDTO franja) throws BusinessLogicException {
+    public FranjaDTO createFranja(FranjaDTO franja) throws BusinessLogicException{
         FranjaEntity entity = franja.toEntity();
         entity = logica.create(entity);
         return new FranjaDTO(entity);
@@ -54,11 +61,11 @@ public class FranjaResource {
         }
         return new FranjaDTO(entity);
     }
-  
+ 
     
     @GET
     @Path("filtroAgenda/{agendaId : \\d+}")
-       public List<FranjaDTO> getAgendasPorCancha(@PathParam("agendaId") Long id){
+       public List<FranjaDTO> getFranjasPorAgenda(@PathParam("agendaId") Long id){
        List<FranjaDTO> listaFranjas = listEntity2DetailDTO(logica.findFranjasPorAgenda(id));
         return listaFranjas;
     }

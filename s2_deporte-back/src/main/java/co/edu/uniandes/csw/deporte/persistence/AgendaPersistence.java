@@ -40,7 +40,7 @@ public class AgendaPersistence {
     
     public List<AgendaEntity> findAll(){
         
-        LOGGER.log(Level.INFO, "Consultando todas las agendas");
+        LOGGER.log(Level.INFO, "Consulstando todas las agendas");
         TypedQuery<AgendaEntity> query = em.createQuery("SELECT u FROM AgendaEntity u", AgendaEntity.class);
         return query.getResultList();
     }
@@ -61,9 +61,9 @@ public class AgendaPersistence {
         em.remove(agendaEntity);
     }
 
-    public AgendaEntity update(AgendaEntity agendaEntity) {
-        LOGGER.log(Level.INFO, "Actualizando la agenda con id={0}", agendaEntity.getId());
-        
+    public AgendaEntity update(Long id, AgendaEntity agendaEntity) {
+        agendaEntity.setId(id);
+        LOGGER.log(Level.INFO, "Actualizando la agenda con id={0} y tenemos el id=" + id, agendaEntity.getId());
         return em.merge(agendaEntity);
     }
 }

@@ -29,11 +29,6 @@ private String contenido;
     @PodamExclude
     @ManyToOne
     private ClienteEntity cliente;
-    
-    public PostEntity()
-    {
-       
-    }
 
     /**
      * @return the identificador

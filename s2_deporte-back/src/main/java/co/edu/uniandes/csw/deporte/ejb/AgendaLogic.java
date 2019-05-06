@@ -29,11 +29,12 @@ public class AgendaLogic {
     
     public AgendaEntity create(AgendaEntity agenda) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicio proceso de creacion de Agenda");
-//        if(agenda.getCancha() == null)
-//        {
-//            throw new BusinessLogicException("La agenda no esta asignada a ninguna cancha");
-//        }
+        if(agenda.getCancha() == null)
+        {
+            throw new BusinessLogicException("La agenda no esta asignada a ninguna cancha");
+        }
         
+        agenda.setDia(1);
         
         agenda = persistence.create(agenda);
         LOGGER.log(Level.INFO, "Termino proceso de creacion de Agenda");
@@ -66,9 +67,9 @@ public class AgendaLogic {
         return agenda;
     }
     
-    public AgendaEntity update(AgendaEntity agendaEntity) {
+    public AgendaEntity update(Long id, AgendaEntity agendaEntity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar la agenda con id = {0}", agendaEntity.getId());
-        AgendaEntity agenda = persistence.update(agendaEntity);
+        AgendaEntity agenda = persistence.update(id, agendaEntity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar la agenda con id = {0}", agendaEntity.getId());
         return agenda;
     }

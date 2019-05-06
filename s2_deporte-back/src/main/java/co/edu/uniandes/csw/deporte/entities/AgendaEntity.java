@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.deporte.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -22,13 +23,17 @@ public class AgendaEntity extends BaseEntity implements Serializable{
     
     public Integer anio;
     public Integer mes;
+    private Integer dia; 
     
     @PodamExclude
     @ManyToOne
     public CanchaEntity cancha;
     
     @PodamExclude
-    @OneToMany
+    @OneToMany(
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
     public List<FranjaEntity> franjas;
     
     public AgendaEntity (){
@@ -90,6 +95,20 @@ public class AgendaEntity extends BaseEntity implements Serializable{
      */
     public void setFranjas(List<FranjaEntity> franjas) {
         this.franjas = franjas;
+    }
+
+    /**
+     * @return the dia
+     */
+    public Integer getDia() {
+        return dia;
+    }
+
+    /**
+     * @param dia the dia to set
+     */
+    public void setDia(Integer dia) {
+        this.dia = dia;
     }
 
     

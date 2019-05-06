@@ -61,7 +61,6 @@ public class CampeonatoPersistence {
       
       public CampeonatoEntity findByName(String pNombre)
     {
-        LOGGER.log(Level.INFO, "Consultando campeonatos por nombre ", pNombre);
         TypedQuery query = em.createQuery("Select e From CampeonatoEntity e where e.nombre = :nombre", CampeonatoEntity.class);
         
         query = query.setParameter("nombre", pNombre);
@@ -80,7 +79,6 @@ public class CampeonatoPersistence {
         {
             result = sameNombre.get(0);
         }
-        LOGGER.log(Level.INFO, "Saliendo de consultar campeonatos por nombre ", pNombre);
         return result;
     }
 

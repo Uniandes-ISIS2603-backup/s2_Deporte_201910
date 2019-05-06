@@ -99,7 +99,7 @@ public class CanchaResourse {
      */
     @GET
     @Path("{canchaId: \\d+}")
-    public CanchaDTO getCancha(@PathParam("canchaId") Long canchaId) throws WebApplicationException {
+    public CanchaDetailDTO getCancha(@PathParam("canchaId") Long canchaId) throws WebApplicationException {
         CanchaEntity canchaEntity = canchaLogic.getCancha(canchaId);
         CanchaDetailDTO canchaDetailDTO = new CanchaDetailDTO(canchaEntity);
         return canchaDetailDTO;
