@@ -28,14 +28,17 @@ public class CanchaDetailDTO extends CanchaDTO implements Serializable {
 
     public CanchaDetailDTO(CanchaEntity cancha) {
         super(cancha);
-        agendas = new ArrayList<>();
-        for (AgendaEntity entityBooks : cancha.getAgendas()) {
-            agendas.add(new AgendaDTO(entityBooks));
+        if (cancha != null) {
+            agendas = new ArrayList<>();
+            for (AgendaEntity entityBooks : cancha.getAgendas()) {
+                agendas.add(new AgendaDTO(entityBooks));
+            }
+            reservas = new ArrayList<>();
+            for (ReservaEntity entityBooks : cancha.getReservas()) {
+                reservas.add(new ReservaDTO(entityBooks));
+            }
         }
-        reservas= new ArrayList<>();
-        for (ReservaEntity entityBooks : cancha.getReservas()){
-            reservas.add(new ReservaDTO(entityBooks));
-        }
+
     }
 
     /**
