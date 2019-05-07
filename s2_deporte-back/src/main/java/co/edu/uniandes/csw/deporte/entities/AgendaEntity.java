@@ -34,7 +34,7 @@ public class AgendaEntity extends BaseEntity implements Serializable{
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
-    public List<FranjaEntity> franjas;
+    private List<FranjaEntity> franjas;
     
     public AgendaEntity (){
         //Constructor vacio
