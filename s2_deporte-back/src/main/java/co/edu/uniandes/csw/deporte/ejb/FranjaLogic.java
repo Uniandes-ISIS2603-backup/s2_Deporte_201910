@@ -72,9 +72,9 @@ public class FranjaLogic {
     }
     
     public List<FranjaEntity> findFranjasPorAgenda(Long id) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las franjas de la agenda con id: " + id);
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las franjas de la agenda con id:{0} ", id);
         List<FranjaEntity> lista = persistence.findFranjasPorAgenda(id);
-        LOGGER.log(Level.INFO, "Termina proceso de consultar todas las franjas de la agenda con id: " + id);
+        LOGGER.log(Level.INFO, "Termina proceso de consultar todas las franjas de la agenda con id: {0} ", id);
         return lista;
     } 
     

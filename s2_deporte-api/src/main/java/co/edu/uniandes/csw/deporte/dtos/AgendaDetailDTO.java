@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class AgendaDetailDTO extends AgendaDTO implements Serializable {
 
-    public List<FranjaDTO> franjas;
+    private List<FranjaDTO> franjas;
 
     public AgendaDetailDTO() {
         super();
@@ -46,7 +46,7 @@ public class AgendaDetailDTO extends AgendaDTO implements Serializable {
     public void setFranjas(List<FranjaDTO> franjas) {
         this.franjas = franjas;
     }
-    
+    @Override
     public AgendaEntity toEntity(){
         AgendaEntity entityAgenda = super.toEntity();
         if(franjas!=null){

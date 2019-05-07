@@ -34,7 +34,7 @@ public class AgendaPersistence {
     
     public AgendaEntity find(Long agendaId) {
         
-        LOGGER.log(Level.INFO, "Consultando la agenda con id = (0)", agendaId);
+        LOGGER.log(Level.INFO, "Consultando la agenda con id = {0}", agendaId);
         return em.find(AgendaEntity.class, agendaId);
     }
     
@@ -47,7 +47,7 @@ public class AgendaPersistence {
     
     public List<AgendaEntity> findAgendasPorCancha(Long id){
         
-        LOGGER.log(Level.INFO, "Consultando todas las agendas de la cancha con id: " + id);
+        LOGGER.log(Level.INFO, "Consultando todas las agendas de la cancha con id: {0}", id);
         
         TypedQuery<AgendaEntity> query = em.createQuery("select e from AgendaEntity e where e.cancha.id =:canchaid" , AgendaEntity.class);
         query.setParameter("canchaid", id);
@@ -55,7 +55,7 @@ public class AgendaPersistence {
     }
 
     public void delete(Long agendaId) {
-        LOGGER.log(Level.INFO, "Borrando la agenda con id = (0)", agendaId);
+        LOGGER.log(Level.INFO, "Borrando la agenda con id = {0}", agendaId);
         
         AgendaEntity agendaEntity = em.find(AgendaEntity.class, agendaId);
         em.remove(agendaEntity);
@@ -63,7 +63,7 @@ public class AgendaPersistence {
 
     public AgendaEntity update(Long id, AgendaEntity agendaEntity) {
         agendaEntity.setId(id);
-        LOGGER.log(Level.INFO, "Actualizando la agenda con id={0} y tenemos el id=" + id, agendaEntity.getId());
+        LOGGER.log(Level.INFO, "Actualizando la agenda con id={0}" ,id);
         return em.merge(agendaEntity);
     }
 }

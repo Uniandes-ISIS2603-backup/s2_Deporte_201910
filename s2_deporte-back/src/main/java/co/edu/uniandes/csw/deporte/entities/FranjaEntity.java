@@ -7,14 +7,8 @@ package co.edu.uniandes.csw.deporte.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import java.util.Date;
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -24,17 +18,17 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class FranjaEntity extends BaseEntity implements Serializable{
     
-    public Integer horaInicio;
+    private Integer horaInicio;
     
-    public Integer horaFin;
+    private Integer horaFin;
     
     private Integer dia;
     
-    public Integer duracionHoras;
+    private Integer duracionHoras;
     
-    public Boolean ocupada;
+    private Boolean ocupada;
     
-    public Long idReserva;
+    private Long idReserva;
     
     @PodamExclude
     @ManyToOne
@@ -46,7 +40,7 @@ public class FranjaEntity extends BaseEntity implements Serializable{
     
     
     public FranjaEntity(){
-        
+        //Constructor vacio
     }
 
     /**
@@ -159,6 +153,5 @@ public class FranjaEntity extends BaseEntity implements Serializable{
      */
     public void setDia(Integer dia) {
         this.dia = dia;
-    }  
-    
+    }
 }
