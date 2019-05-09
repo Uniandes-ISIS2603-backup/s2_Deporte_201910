@@ -12,7 +12,6 @@ import co.edu.uniandes.csw.deporte.entities.FranjaEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -62,8 +61,7 @@ public class FranjaResource {
     @GET
     @Path("filtroAgenda/{agendaId : \\d+}")
        public List<FranjaDTO> getFranjasPorAgenda(@PathParam("agendaId") Long id){
-       List<FranjaDTO> listaFranjas = listEntity2DetailDTO(logica.findFranjasPorAgenda(id));
-        return listaFranjas;
+      return listEntity2DetailDTO(logica.findFranjasPorAgenda(id));
     }
     
 
