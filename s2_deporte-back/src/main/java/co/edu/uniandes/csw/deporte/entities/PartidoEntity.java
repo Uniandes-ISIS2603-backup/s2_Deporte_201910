@@ -27,17 +27,14 @@ public class PartidoEntity extends BaseEntity implements Serializable
 {
     @PodamExclude
     @ManyToMany(cascade = CascadeType.PERSIST)
-    public List<EquipoEntity> participantes= new ArrayList<>();
+    private List<EquipoEntity> participantes= new ArrayList<>();
     
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
-    public Date fecha;
+    private Date fecha;
     
-    public List<Integer> puntaje;
-
-    public PartidoEntity() {
-       
-    }
+    private List<Integer> puntaje;
+    
     /**
      * le asigna una fecha al partido
      * @param pFecha la fecha que se le asigna a un partido

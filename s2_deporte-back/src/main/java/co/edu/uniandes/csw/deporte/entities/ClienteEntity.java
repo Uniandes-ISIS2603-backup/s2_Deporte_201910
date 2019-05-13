@@ -23,30 +23,35 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class ClienteEntity extends BaseEntity implements Serializable
 {
-    public String nombre;    
+    /**
+     * el nombre del cliente
+     */
+    private String nombre;
+    /**
+     * nombre de usuario
+     */
+    private String usern;
+    /**
+     * clave del cliente
+     */
+    private String clave;    
     
     @PodamExclude
     @ManyToMany(mappedBy ="jugadores", cascade=CascadeType.PERSIST)
-    public List<EquipoEntity> equipos = new ArrayList<>();
+    private List<EquipoEntity> equipos = new ArrayList<>();
     
     @PodamExclude
     @OneToOne(mappedBy= "representante",orphanRemoval = true, cascade = CascadeType.PERSIST)
-    public EquipoEntity representa;
+    private EquipoEntity representa;
         
     
     @PodamExclude
     @OneToMany(mappedBy = "cliente", cascade= CascadeType.PERSIST ,orphanRemoval=true)
-    public List<PostEntity> posts = new ArrayList<>();
+    private List<PostEntity> posts = new ArrayList<>();
     
     @PodamExclude
     @ManyToMany(mappedBy="clientes", cascade=CascadeType.PERSIST)
-    public List<CampeonatoEntity> campeonatos= new ArrayList<>();
-    
-    public ClienteEntity()
-    {
-        
-        
-    }  
+    private List<CampeonatoEntity> campeonatos= new ArrayList<>();
     
     public List<PostEntity> getPosts() {
         return posts;
@@ -102,6 +107,22 @@ public class ClienteEntity extends BaseEntity implements Serializable
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getUser() {
+        return usern;
+    }
+
+    public void setUser(String user) {
+        this.usern = user;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
     }
     
 }

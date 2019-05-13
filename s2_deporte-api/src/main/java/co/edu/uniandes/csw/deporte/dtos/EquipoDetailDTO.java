@@ -19,9 +19,11 @@ public class EquipoDetailDTO extends EquipoDTO implements Serializable
     /**
      * los jugadores pertenecientes a un equipo
      */
-    public ArrayList<ClienteDTO> jugadores;
-    
-    public ArrayList<PartidoDTO> partidos;
+    private List<ClienteDTO> jugadores;
+    /**
+     * los partidos que tiene el equipo
+     */
+    private List<PartidoDTO> partidos;
     //Constructor---------------------------------------------------------------
     public EquipoDetailDTO()
     {
@@ -56,85 +58,21 @@ public class EquipoDetailDTO extends EquipoDTO implements Serializable
         return entity;
     }
     //Métodos-------------------------------------------------------------------
-    /**
-     * agrega un jugador a la lista de jugadores
-     * @param pJugador el jugador a agregar, pJugador!=null && pJugador!cjugadores
-     */
-    public void addJugador(ClienteDTO pJugador)
-    {
-        if(pJugador!=null)
-        {
-            if(!jugadores.isEmpty())
-            {
-                if(!jugadores.contains(pJugador))
-                {
-                    jugadores.add(pJugador);
-                }
-            }
-            else
-            {
-                jugadores.add(pJugador);
-            }
-        }
-    }
-    /**
-     * devuelve la lista de jugadores
-     * @return jugadores
-     */
-    public ArrayList<ClienteDTO> getJugadores()
-    {
+
+    public List<ClienteDTO> getJugadores() {
         return jugadores;
     }
-    /**
-     * devuelve un jugador con id dado
-     * @param id el identificador del jugador
-     * @return jugador o null
-     */
-    public ClienteDTO getJugador(String id)
-    {
-        for(ClienteDTO c: jugadores)
-        {
-            if(c.getId().equals(Long.getLong(id)))
-            {
-                return c;
-            }
-        }
-        return null;
-    }
-    /**
-     * elimina a los jugadores
-     */
-    public void deleteJugadores()
-    {
-        jugadores.clear();
+
+    public void setJugadores(List<ClienteDTO> jugadores) {
+        this.jugadores = jugadores;
     }
 
-    public ArrayList<PartidoDTO> getPartidos() {
+    public List<PartidoDTO> getPartidos() {
         return partidos;
     }
 
-    public void setPartidos(ArrayList<PartidoDTO> partidos) {
+    public void setPartidos(List<PartidoDTO> partidos) {
         this.partidos = partidos;
     }
-//
-//    public ClienteDTO getRepresentante() {
-//        return representante;
-//    }
-//
-//    public void setRepresentante(ClienteDTO representante) {
-//        this.representante = representante;
-//    }
     
-    /**
-     * elimina a un jugador con id dado
-     * @param id el identificador del jugador a eliminar
-     */
-    public void deleteJugador(String id)
-    {
-        ClienteDTO temp =this.getJugador(id);
-        if(temp!=null)
-        {
-            jugadores.remove(temp);
-        }
-    }
 }

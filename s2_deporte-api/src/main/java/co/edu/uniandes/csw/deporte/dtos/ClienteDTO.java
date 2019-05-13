@@ -18,13 +18,20 @@ public class ClienteDTO implements Serializable
     /**
      * identificador del cliente
      */
-    public Long id;
+    private Long id;
     /**
      * el nombre del cliente
      */
-    public String nombre;
+    private String nombre;
+    /**
+     * nombre de usuario
+     */
+    private String user;
+    /**
+     * clave del cliente
+     */
+    private String clave;
     
-    //public EquipoDTO representa;
     //Constructor---------------------------------------------------------------
     public ClienteDTO()
     {
@@ -33,8 +40,7 @@ public class ClienteDTO implements Serializable
     public ClienteDTO(ClienteEntity entity) {
         if (entity != null) {
             this.id = entity.getId();
-            this.nombre = entity.getNombre(); 
-            //this.representa = new EquipoDTO(entity.getRepresenta());
+            this.nombre = entity.getNombre();             
         }
     }
 
@@ -48,25 +54,41 @@ public class ClienteDTO implements Serializable
         ClienteEntity entity = new ClienteEntity();
         entity.setId(this.getId());
         entity.setNombre(this.getNombre());
-        //entity.setRepresenta(representa.toEntity());
-         return entity;
+        
+        return entity;
     }
     //Métodos-------------------------------------------------------------------
-    public void setId(Long pId)
-    {
-        id=pId;
-    }
-    
-    public Long getId()
-    {
+
+    public Long getId() {
         return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
     }
     
 }

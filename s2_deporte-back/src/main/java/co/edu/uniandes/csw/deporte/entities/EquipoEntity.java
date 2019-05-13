@@ -24,21 +24,17 @@ public class EquipoEntity extends BaseEntity implements Serializable
         
     @PodamExclude
     @ManyToMany(mappedBy = "participantes", cascade = CascadeType.PERSIST)
-    public List<PartidoEntity> partidos= new ArrayList<>();    
+    private List<PartidoEntity> partidos= new ArrayList<>();    
     @PodamExclude
     @ManyToMany(cascade=CascadeType.PERSIST)
-    public List<ClienteEntity> jugadores= new ArrayList<>();
+    private List<ClienteEntity> jugadores= new ArrayList<>();
    
     @PodamExclude
     @OneToOne(cascade=CascadeType.PERSIST)
-    public ClienteEntity representante;
+    private ClienteEntity representante;
     
-    public String nombre;
-
-    public EquipoEntity() {
-        
-    } 
-    
+    private String nombre;
+   
     /**
      * devuelve la lista de jugadores en el equipo
      * @return jugadores

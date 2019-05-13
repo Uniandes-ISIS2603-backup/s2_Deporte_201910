@@ -18,7 +18,10 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable
     /**
      * equipos a los que pertenece un cliente
      */
-    public ArrayList<EquipoDTO> equipos;
+    private List<EquipoDTO> equipos;
+    private EquipoDTO representa;
+    private List<PostDTO> posts;
+    private List<CampeonatoDTO> campeonatos;
     //Constructor---------------------------------------------------------------
     public ClienteDetailDTO()
     {
@@ -49,54 +52,37 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable
         return entity;
     }
     //Método--------------------------------------------------------------------
-    /**
-     * Agrega un equipo a la lista de equipos a los cuales pertenece un cliente
-     * @param pEquipo el equipo a insertar, pEquipo!=null && pEquipo!c equipos
-     */
-    public void addEquipo(EquipoDTO pEquipo)
-    {
-        if(pEquipo!=null)
-        {
-            if(!equipos.isEmpty())
-            {
-                if(!equipos.contains(pEquipo))
-                {
-                    equipos.add(pEquipo);
-                }
-            }
-            else
-            {
-                equipos.add(pEquipo);
-            }
-        }
-    }
-    
-    /**
-     * borra todos los equipos de la lista 
-     */
-    public void deleteEquipos()
-    {
-        equipos.clear();
-    }
-    /**
-     * borra un equipo con id dado
-     * @param id el identificador del equipo a borrar
-     */
-    public void deleteEquipo(String id)
-    {
-        for(EquipoDTO e: equipos)
-        {
-            if(e.getId().equals(Long.getLong(id)))
-            {
-                equipos.remove(e);
-                return;
-            }            
-        }
-    }
-    public ArrayList<EquipoDTO> getEquipos() {
+
+    public List<EquipoDTO> getEquipos() {
         return equipos;
     }
-     public void setEquipos(ArrayList<EquipoDTO> equipos) {
+
+    public void setEquipos(List<EquipoDTO> equipos) {
         this.equipos = equipos;
     }
+
+    public EquipoDTO getRepresenta() {
+        return representa;
+    }
+
+    public void setRepresenta(EquipoDTO representa) {
+        this.representa = representa;
+    }
+
+    public List<PostDTO> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<PostDTO> posts) {
+        this.posts = posts;
+    }
+
+    public List<CampeonatoDTO> getCampeonatos() {
+        return campeonatos;
+    }
+
+    public void setCampeonatos(List<CampeonatoDTO> campeonatos) {
+        this.campeonatos = campeonatos;
+    }
+    
 }
