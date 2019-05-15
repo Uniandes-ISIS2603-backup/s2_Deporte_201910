@@ -41,10 +41,24 @@ public class FranjaResource {
     AgendaLogic logicaA;
 
     @POST
+    @Path("simple")
     public FranjaDTO createFranja(FranjaDTO franja) throws BusinessLogicException{
         FranjaEntity entity = franja.toEntity();
         entity = logica.create(entity);
         return new FranjaDTO(entity);
+    }
+    
+    @POST
+    @Path("multiple")
+    public List<FranjaDTO> createFranjas(List<FranjaDTO> franjas) throws BusinessLogicException
+    {
+        List<FranjaEntity> entities = listDTO2Entity(franjas);
+        List<FranjaEntity> entities1 = new ArrayList();
+        for(FranjaEntity f: entities)
+        {
+            entities1.add(logica.create(f));
+        }
+        return listEntity2DetailDTO(entities1);
     }
 
     @GET
@@ -79,6 +93,14 @@ public class FranjaResource {
         List<FranjaDTO> list = new ArrayList<>();
         for (FranjaEntity entity : entityList) {
             list.add(new FranjaDTO(entity));
+        }
+        return list;
+    }
+    
+    private List<FranjaEntity> listDTO2Entity(List<FranjaDTO> dtoList) {
+        List<FranjaEntity> list = new ArrayList<>();
+        for (FranjaDTO dto : dtoList) {
+            list.add(dto.toEntity());
         }
         return list;
     }
