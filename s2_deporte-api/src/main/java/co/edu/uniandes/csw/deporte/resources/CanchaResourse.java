@@ -55,7 +55,8 @@ public class CanchaResourse {
     @POST
     public CanchaDTO createCancha(CanchaDTO cancha) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "CanchaResource createCancha: input: {0}", cancha);
-        System.out.println("Hola "+ cancha.getPropietario()+" id: "+ cancha.getPropietario().getNombre());
+        //System.out.println("Hola "+ cancha.getPropietario()+" id: "+ cancha.getPropietario().getNombre());
+        LOGGER.log(Level.INFO, "12");
         CanchaDTO nuevoCanchaDTO = new CanchaDTO(canchaLogic.createCancha(cancha.toEntity()));
         LOGGER.log(Level.INFO, "CanchaResource createCancha: output: {0}", nuevoCanchaDTO);
         return nuevoCanchaDTO;

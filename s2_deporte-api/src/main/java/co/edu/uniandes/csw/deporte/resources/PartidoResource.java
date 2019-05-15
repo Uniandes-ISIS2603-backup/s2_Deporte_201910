@@ -38,6 +38,7 @@ public class PartidoResource
     private static final Logger LOGGER = Logger.getLogger(PartidoResource.class.getName());
     @Inject
     private PartidoLogic partidoLogic;
+    
     @POST
     public PartidoDTO createPropietario(PartidoDTO partido) throws BusinessLogicException{
         

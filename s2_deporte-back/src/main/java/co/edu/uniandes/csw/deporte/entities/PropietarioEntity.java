@@ -20,7 +20,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class PropietarioEntity extends BaseEntity implements Serializable{
     
     private String nombre;
-    private int numCanchas;
+    private Integer numCanchas;
     private String imagen;
     private String contrasena;
     @OneToMany
@@ -46,14 +46,14 @@ public class PropietarioEntity extends BaseEntity implements Serializable{
     /**
      * @return the numCanchas
      */
-    public int getNumCanchas() {
+    public Integer getNumCanchas() {
         return numCanchas;
     }
 
     /**
      * @param numCanchas the numCanchas to set
      */
-    public void setNumCanchas(int numCanchas) {
+    public void setNumCanchas(Integer numCanchas) {
         this.numCanchas = numCanchas;
     }
 
@@ -98,4 +98,5 @@ public class PropietarioEntity extends BaseEntity implements Serializable{
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+
 }

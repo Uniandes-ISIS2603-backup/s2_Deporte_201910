@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "b862f16e-49dc-429a-9388-d0a639d3c225",
+		"name": "AgendaResourceTest",
+		"description": "Tests de Agenda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Propietario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bcc0aed6-4f93-4e79-bf9c-3cbfea4919a4",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_e\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"nombre\":\"jorge\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s2_deporte-api/api/propietarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s2_deporte-api",
+						"api",
+						"propietarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Cancha",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "20a24470-0221-4a53-9193-5a6c81e78b68",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"idCancha\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\"caracterizticas\":\"blah blah\", \"ciudad\":\"Bogota\", \"direccion\":\"abc\", \"nombre\":\"cancha1\", \"propietario\":{\"id\":{{new_id_e}}}}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s2_deporte-api/api/canchas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s2_deporte-api",
+						"api",
+						"canchas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Agenda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba031c35-e6dc-488f-a277-bcdd655d3123",
+						"exec": [
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"postman.setGlobalVariable(\"idAgenda\",data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{ \"cancha\":{\"id\":{{idCancha}}, \"caracterizticas\":\"blah blah\", \"ciudad\":\"Bogota\", \"direccion\":\"bc\", \"nombre\":\"cancha1\", \"propietario\":{\"id\":{{new_id_e}}}}}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s2_deporte-api/api/agendas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s2_deporte-api",
+						"api",
+						"agendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get agendas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba031c35-e6dc-488f-a277-bcdd655d3123",
+						"exec": [
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s2_deporte-api/api/agendas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s2_deporte-api",
+						"api",
+						"agendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get especifico funciona",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba031c35-e6dc-488f-a277-bcdd655d3123",
+						"exec": [
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s2_deporte-api/api/agendas/{{idAgenda}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s2_deporte-api",
+						"api",
+						"agendas",
+						"{{idAgenda}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put agenda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba031c35-e6dc-488f-a277-bcdd655d3123",
+						"exec": [
+							"",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"dia\":20}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_deporte-api/api/agendas/{{idAgenda}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_deporte-api",
+						"api",
+						"agendas",
+						"{{idAgenda}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Agenda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba031c35-e6dc-488f-a277-bcdd655d3123",
+						"exec": [
+							"",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_deporte-api/api/agendas/{{idAgenda}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_deporte-api",
+						"api",
+						"agendas",
+						"{{idAgenda}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

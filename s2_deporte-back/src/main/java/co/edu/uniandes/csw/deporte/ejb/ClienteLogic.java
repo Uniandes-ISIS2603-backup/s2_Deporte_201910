@@ -41,14 +41,17 @@ public class ClienteLogic
         {
             throw new BusinessLogicException("El nombre del cliente es null");
         }
-        if(getCliente(clienteEntity.getId())!=null)
+        /*
+         * if(clienteEntity.getId()!=null)
         {
-            throw new BusinessLogicException("El cliente que se va a crear ya existe");
+            if(getCliente(clienteEntity.getId())!=null) 
+                throw new BusinessLogicException("El cliente que se va a crear ya existe");
         }
         if(this.verificacionDeEquipos(clienteEntity.getEquipos()))
         {
             throw new BusinessLogicException("El cliente tiene equipos repetidos");
         }
+        */
         clientePersistence.create(clienteEntity);
         LOGGER.log(Level.INFO, "Se termino de crear el cliente");
         return clienteEntity;
@@ -61,6 +64,11 @@ public class ClienteLogic
     public ClienteEntity getCliente(Long clienteId)
     {
         LOGGER.log(Level.INFO, "se empieza la busqueda de cliente con id={0}", clienteId);
+        if(clienteId==null){
+            return null;
+        }else{
+            
+        
         ClienteEntity res = clientePersistence.find(clienteId);
         if(res==null)
         {
@@ -68,6 +76,7 @@ public class ClienteLogic
         }
         LOGGER.log(Level.INFO,"Se termina el proceso de busqueda para el cliente con id=", clienteId);
         return res;
+        }
     }
     /**
      * devuelve todos lo clientes en la base de datos

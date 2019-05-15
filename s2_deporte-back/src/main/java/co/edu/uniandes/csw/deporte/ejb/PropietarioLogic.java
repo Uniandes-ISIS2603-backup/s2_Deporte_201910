@@ -27,6 +27,7 @@ public class PropietarioLogic {
     private static final Logger LOGGER = Logger.getLogger(PropietarioLogic.class.getName());
 
     public PropietarioEntity createPropietrio(PropietarioEntity propietario) throws BusinessLogicException {
+        LOGGER.log(Level.INFO,"1");
         if (persistence.findByName(propietario.getNombre()) != null) {
             throw new BusinessLogicException("Ya existe el propietario con el nombre \"" + propietario.getNombre());
         }

@@ -72,9 +72,10 @@ public class ReservaResource {
     }
     
     @GET
-public List<ReservaDTO> getReservas() {
-    return listEntity2DetailDTO(logica.findAll());
-}
+    public List<ReservaDTO> getReservas() {
+        return listEntity2DetailDTO(logica.findAll());
+    }
+    
     public List<ReservaDTO> listEntity2DetailDTO(List<ReservaEntity> entityList) {
     List<ReservaDTO> list = new ArrayList<>();
     for (ReservaEntity entity : entityList) {

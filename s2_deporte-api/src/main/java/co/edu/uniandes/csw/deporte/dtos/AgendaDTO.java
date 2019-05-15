@@ -6,7 +6,10 @@
 package co.edu.uniandes.csw.deporte.dtos;
 
 import co.edu.uniandes.csw.deporte.entities.AgendaEntity;
+import co.edu.uniandes.csw.deporte.resources.AgendaResourse;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,6 +38,7 @@ public class AgendaDTO implements Serializable{
      * @param agendaEntity: Es la entidad que se va a convertir a DTO
      */
     public AgendaDTO(AgendaEntity agendaEntity) {
+        
         if (agendaEntity != null) {
             this.anio = agendaEntity.getAnio();
             this.mes = agendaEntity.getMes();
@@ -96,7 +100,9 @@ public class AgendaDTO implements Serializable{
         agendaEntity.setAnio(this.anio);
         agendaEntity.setMes(this.mes);
         agendaEntity.setDia(this.dia);
-        agendaEntity.setCancha(this.cancha.toEntity());
+        if(this.cancha!=null)
+         agendaEntity.setCancha(this.cancha.toEntity());
+        
         agendaEntity.setId(this.id);
         return agendaEntity;
     }

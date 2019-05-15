@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.deporte.dtos;
 
 import co.edu.uniandes.csw.deporte.entities.CanchaEntity;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -193,19 +195,28 @@ public class CanchaDTO implements Serializable{
      *
      * @return Un Entity con los valores del DTO
      */
+
     public CanchaEntity toEntity() {
+ 
         CanchaEntity canchaEntity = new CanchaEntity();
         canchaEntity.setCaracterizticas(this.caracterizticas);
         canchaEntity.setCiudad(this.ciudad);
         canchaEntity.setContacto(this.contacto);
         canchaEntity.setDireccion(this.direccion);
+
         canchaEntity.setTipo(this.tipoCancha);
+
         canchaEntity.setZona(this.zona);
-        canchaEntity.setReservada(this.reservada);
+
+       // canchaEntity.setReservada(this.reservada);
+
         canchaEntity.setId(this.id);
+
         canchaEntity.setImagen(this.imagen);
+
         canchaEntity.setNombre(this.nombre);
         canchaEntity.setPropietario(this.propietario.toEntity());
+ 
         return canchaEntity;
     }
 

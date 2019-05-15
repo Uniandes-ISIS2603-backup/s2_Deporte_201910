@@ -5,8 +5,11 @@
  */
 package co.edu.uniandes.csw.deporte.dtos;
 
+import co.edu.uniandes.csw.deporte.ejb.PropietarioLogic;
 import co.edu.uniandes.csw.deporte.entities.PropietarioEntity;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -39,7 +42,7 @@ public class PropietarioDTO implements Serializable{
         if (propietarioEntity != null) {
             this.id = propietarioEntity.getId();
             this.nombre=propietarioEntity.getNombre();
-            this.numCanchas = propietarioEntity.getNumCanchas();
+            //this.numCanchas = propietarioEntity.getNumCanchas();
             this.imagen = propietarioEntity.getImagen();
             this.contrasena =propietarioEntity.getContrasena();
         }
@@ -78,13 +81,22 @@ public class PropietarioDTO implements Serializable{
      *
      * @return Un Entity con los valores del DTO
      */
+        private static final Logger LOGGER = Logger.getLogger(PropietarioDTO.class.getName());
+
     public PropietarioEntity toEntity() {
+        LOGGER.log(Level.INFO,"1");
         PropietarioEntity propietarioEntity = new PropietarioEntity();
-        propietarioEntity.setNumCanchas(this.getNumCanchas());
+        LOGGER.log(Level.INFO,"2");
+        //propietarioEntity.setNumCanchas(this.getNumCanchas());
+        LOGGER.log(Level.INFO,"3");
         propietarioEntity.setId(this.id);
+        LOGGER.log(Level.INFO,"4");
         propietarioEntity.setNombre(this.getNombre());
+        LOGGER.log(Level.INFO,"5");
         propietarioEntity.setImagen(this.imagen);
+        LOGGER.log(Level.INFO,"6");
         propietarioEntity.setContrasena(this.getContrasena());
+        LOGGER.log(Level.INFO,"7");
         return propietarioEntity;
     }
 

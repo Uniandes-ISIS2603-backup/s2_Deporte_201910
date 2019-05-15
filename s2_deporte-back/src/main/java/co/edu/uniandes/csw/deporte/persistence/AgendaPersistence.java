@@ -27,7 +27,7 @@ public class AgendaPersistence {
     protected EntityManager em;
     
     public AgendaEntity create(AgendaEntity agendaEntity) {
-
+        LOGGER.log(Level.INFO,"creando en la base de datos la agenda");
         em.persist(agendaEntity);
         return agendaEntity;
     }

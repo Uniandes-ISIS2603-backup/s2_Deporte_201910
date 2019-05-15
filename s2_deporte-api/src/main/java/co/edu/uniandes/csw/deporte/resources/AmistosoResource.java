@@ -10,6 +10,8 @@ import co.edu.uniandes.csw.deporte.dtos.EntrenamientoDTO;
 import co.edu.uniandes.csw.deporte.ejb.AmistosoLogic;
 import co.edu.uniandes.csw.deporte.entities.AmistosoEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -70,4 +72,18 @@ public class AmistosoResource {
         }
         return new AmistosoDTO(entidad);
     }
+    
+        
+    @GET
+    public List<AmistosoDTO> getAmistosos() {
+        return listEntity2DetailDTO(logica.findAll());
+    }
+    
+    public List<AmistosoDTO> listEntity2DetailDTO(List<AmistosoEntity> entityList) {
+    List<AmistosoDTO> list = new ArrayList<>();
+    for (AmistosoEntity entity : entityList) {
+        list.add(new AmistosoDTO(entity));
+    }
+    return list;
+}
 }

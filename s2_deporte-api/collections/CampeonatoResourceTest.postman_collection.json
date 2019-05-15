@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "1f80b190-5f11-4aee-83fa-b1c5722d3887",
+		"name": "CampeonatoResourceTest",
+		"description": "Tests de campeonato",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post sin nombre",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52e7e58a-bd11-4cfd-8da3-7a9e8bbc7c66",
+						"exec": [
+							"",
+							"tests[\"Se genera error si la descripcion es vacia\"] = responseBody.has(\"Debe tener un nombre\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_deporte-api/api/campeonato",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_deporte-api",
+						"api",
+						"campeonato"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Campeonato",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52e7e58a-bd11-4cfd-8da3-7a9e8bbc7c66",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"idCampeonato\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"un campeonato mas\"}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_deporte-api/api/campeonato",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_deporte-api",
+						"api",
+						"campeonato"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get de todos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52e7e58a-bd11-4cfd-8da3-7a9e8bbc7c66",
+						"exec": [
+							"",
+							"",
+							"tests[\"No genera error en el get\"] = responseCode.code === 200;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_deporte-api/api/campeonato",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_deporte-api",
+						"api",
+						"campeonato"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Especifico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52e7e58a-bd11-4cfd-8da3-7a9e8bbc7c66",
+						"exec": [
+							"",
+							"",
+							"tests[\"No genera error en el get\"] = responseCode.code === 200;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_deporte-api/api/campeonato/{{idCampeonato}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_deporte-api",
+						"api",
+						"campeonato",
+						"{{idCampeonato}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put de Campeonato",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52e7e58a-bd11-4cfd-8da3-7a9e8bbc7c66",
+						"exec": [
+							"",
+							"",
+							"tests[\"No genera error en el get\"] = responseCode.code === 200;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"champions\"}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_deporte-api/api/campeonato/{{idCampeonato}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_deporte-api",
+						"api",
+						"campeonato",
+						"{{idCampeonato}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete de Campeonato",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52e7e58a-bd11-4cfd-8da3-7a9e8bbc7c66",
+						"exec": [
+							"",
+							"",
+							"tests[\"No genera error en el get\"] = responseCode.code === 204;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_deporte-api/api/campeonato/{{idCampeonato}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_deporte-api",
+						"api",
+						"campeonato",
+						"{{idCampeonato}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

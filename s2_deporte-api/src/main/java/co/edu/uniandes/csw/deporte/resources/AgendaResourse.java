@@ -40,11 +40,16 @@ public class AgendaResourse {
 
     @Inject
     AgendaLogic logica;
+    
     @POST
     public AgendaDTO createAgenda(AgendaDTO agenda) throws BusinessLogicException{
+        LOGGER.log(Level.INFO, "Empezo a crear la agenda");
         AgendaEntity entity = agenda.toEntity();
+        LOGGER.log(Level.INFO, "Por la mitad");
         entity = logica.create(entity);
+        LOGGER.log(Level.INFO, "Termino de crear la agenda");
         return new AgendaDTO(entity);
+        
     }
 
     @PUT

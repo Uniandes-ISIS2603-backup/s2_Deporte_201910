@@ -15,6 +15,7 @@ delete from AgendaEntity;
 delete from CanchaEntity_AgendaEntity;
 delete from AgendaEntity_FranjaEntity;
 
+
 insert into ClienteEntity (id, nombre) values (1, 'Jenelle');
 insert into ClienteEntity (id, nombre) values (2, 'Sybilla');
 insert into ClienteEntity (id, nombre) values (3, 'Zaneta');
