@@ -32,10 +32,12 @@ public class AmistosoDTO implements Serializable{
     }
     
     public AmistosoDTO(AmistosoEntity entidad){
-        setId(entidad.getId());
-        setPartido(new PartidoDTO(entidad.getPartido()));
-        setReserva(new ReservaDTO(entidad.getReserva()))
-;    }
+        if(entidad!=null){
+            setId(entidad.getId());
+            setPartido(new PartidoDTO(entidad.getPartido()));
+            setReserva(new ReservaDTO(entidad.getReserva()));
+        }
+    }
     
     public AmistosoEntity toEntity(){
         AmistosoEntity entidad=new AmistosoEntity();

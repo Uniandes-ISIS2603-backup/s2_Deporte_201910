@@ -35,12 +35,14 @@ public class ReservaDTO implements Serializable{
     }
     
     public ReservaDTO(ReservaEntity entidad){
-        setId(entidad.getId());
-        setFechaInicio(entidad.getFechaInicio());
-        setFechaFin(entidad.getFechaFin());
-        setAmistoso(new AmistosoDTO(entidad.getAmistoso()));
-        setEntrenamiento(new EntrenamientoDTO(entidad.getEntrenamiento()));
-        setFranja(new FranjaDTO(entidad.getFranja()));
+        if(entidad!=null){
+            setId(entidad.getId());
+            setFechaInicio(entidad.getFechaInicio());
+            setFechaFin(entidad.getFechaFin());
+            setAmistoso(new AmistosoDTO(entidad.getAmistoso()));
+            setEntrenamiento(new EntrenamientoDTO(entidad.getEntrenamiento()));
+            setFranja(new FranjaDTO(entidad.getFranja()));
+        }
     }
     
     public ReservaEntity toEntity(){
