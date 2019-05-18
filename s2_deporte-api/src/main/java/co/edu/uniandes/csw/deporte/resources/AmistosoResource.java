@@ -10,6 +10,9 @@ import co.edu.uniandes.csw.deporte.dtos.EntrenamientoDTO;
 import co.edu.uniandes.csw.deporte.ejb.AmistosoLogic;
 import co.edu.uniandes.csw.deporte.entities.AmistosoEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -63,11 +66,43 @@ public class AmistosoResource {
     
     @GET
     @Path("{amistosoId: \\d+}")
-    public AmistosoDTO getAmistosao(@PathParam("amistosoId") Long amistosoId) throws WebApplicationException, BusinessLogicException{
+    public AmistosoDTO getAmistoso(@PathParam("amistosoId") Long amistosoId) throws WebApplicationException, BusinessLogicException{
         AmistosoEntity entidad=logica.find(amistosoId);
         if(entidad==null){
             throw new WebApplicationException("Amistoso con id: " + amistosoId + " no existe", 404);
         }
         return new AmistosoDTO(entidad);
+    }
+    
+        /**
+     * Busca y devuelve todos los libros que existen en la aplicacion.
+     *
+     * @return JSONArray {@link BookDetailDTO} - Los libros encontrados en la
+     * aplicación. Si no hay ninguno retorna una lista vacía.
+     */
+    @GET
+    public List<AmistosoDTO> getAmistoso() {
+        LOGGER.info("CanchaResource getCancha: input: void");
+        List<AmistosoDTO> listaAmistosos = listEntity2DetailDTO(logica.getAmistosos());
+        LOGGER.log(Level.INFO, "CanchaResource getCancha: output: {0}", listaAmistosos);
+        return listaAmistosos;
+    }
+    
+        /**
+     * Convierte una lista de entidades a DTO.
+     *
+     * Este método convierte una lista de objetos BookEntity a una lista de
+     * objetos BookDetailDTO (json)
+     *
+     * @param entityList corresponde a la lista de libros de tipo Entity que
+     * vamos a convertir a DTO.
+     * @return la lista de libros en forma DTO (json)
+     */
+    private List<AmistosoDTO> listEntity2DetailDTO(List<AmistosoEntity> entityList) {
+        List<AmistosoDTO> list = new ArrayList<>();
+        for (AmistosoEntity entity : entityList) {
+            list.add(new AmistosoDTO(entity));
+        }
+        return list;
     }
 }

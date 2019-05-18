@@ -38,7 +38,20 @@ public class AmistosoLogic {
         return amistoso;
     }
 
-
+         /**
+     * Devuelve todos lon campeonato
+     * s que hay en la base de datos.
+     *
+     * @return Lista de entidades de tipn campeonato
+     * .
+     */
+    public List<AmistosoEntity> getAmistosos() {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los campeonatos");
+        List<AmistosoEntity> campeonatos = persistence.findAll();
+        
+        LOGGER.log(Level.INFO, "Termina proceso de consultar todos los campeonatos");
+        return campeonatos;
+    }
 
     public AmistosoEntity find(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO,"Empieza el proceso de buscar un amistoso");

@@ -112,7 +112,7 @@ public class CanchaResourse {
      * aplicación. Si no hay ninguno retorna una lista vacía.
      */
     @GET
-    public List<CanchaDetailDTO> getBooks() {
+    public List<CanchaDetailDTO> getCanchas() {
         LOGGER.info("CanchaResource getCancha: input: void");
         List<CanchaDetailDTO> listaCancha = listEntity2DetailDTO(canchaLogic.getCanchas());
         LOGGER.log(Level.INFO, "CanchaResource getCancha: output: {0}", listaCancha);
