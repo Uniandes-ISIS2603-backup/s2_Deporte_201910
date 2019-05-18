@@ -15,16 +15,14 @@ import java.util.*;
 public class PartidoDetailDTO extends PartidoDTO implements Serializable
 {
     //Atributos-----------------------------------------------------------------
-    public ArrayList<EquipoDTO> equipos;
-
-    public ArrayList<Integer> getPuntaje() {
-        return puntaje;
-    }
-
-    public void setPuntaje(ArrayList<Integer> puntaje) {
-        this.puntaje = puntaje;
-    }
-    public ArrayList<Integer> puntaje;
+    /**
+     * los equipos que participan
+     */
+    private List<EquipoDTO> equipos;
+    /**
+     * el puntaje
+     */
+    private List<Integer> puntaje;
     //Constructor---------------------------------------------------------------
     public PartidoDetailDTO()
     {
@@ -54,19 +52,21 @@ public class PartidoDetailDTO extends PartidoDTO implements Serializable
         return entity;
     }
     //Métodos-------------------------------------------------------------------
-    public ArrayList<EquipoDTO> getEquipos()
-    {
+
+    public List<EquipoDTO> getEquipos() {
         return equipos;
     }
-    public void addEquipo(EquipoDTO e)
-    {
-        if(equipos.size()<2)
-        {
-            equipos.add(e);
-        }
+
+    public void setEquipos(List<EquipoDTO> equipos) {
+        this.equipos = equipos;
     }
-    public void deleteEquipos()
-    {
-        equipos.clear();
+
+    public List<Integer> getPuntaje() {
+        return puntaje;
     }
+
+    public void setPuntaje(List<Integer> puntaje) {
+        this.puntaje = puntaje;
+    }
+    
 }

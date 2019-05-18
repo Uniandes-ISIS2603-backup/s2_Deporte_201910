@@ -5,17 +5,13 @@
  */
 package co.edu.uniandes.csw.deporte.resources;
 
-import co.edu.uniandes.csw.deporte.dtos.AgendaDetailDTO;
 import co.edu.uniandes.csw.deporte.dtos.FranjaDTO;
 import co.edu.uniandes.csw.deporte.ejb.AgendaLogic;
 import co.edu.uniandes.csw.deporte.ejb.FranjaLogic;
 import co.edu.uniandes.csw.deporte.entities.FranjaEntity;
-import co.edu.uniandes.csw.deporte.entities.AgendaEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -37,7 +33,6 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class FranjaResource {
 
-    private static final Logger LOGGER = Logger.getLogger(FranjaResource.class.getName());
 
     @Inject
     FranjaLogic logica;
@@ -46,15 +41,29 @@ public class FranjaResource {
     AgendaLogic logicaA;
 
     @POST
+    @Path("simple")
     public FranjaDTO createFranja(FranjaDTO franja) throws BusinessLogicException{
         FranjaEntity entity = franja.toEntity();
         entity = logica.create(entity);
         return new FranjaDTO(entity);
     }
+    
+    @POST
+    @Path("multiple")
+    public List<FranjaDTO> createFranjas(List<FranjaDTO> franjas) throws BusinessLogicException
+    {
+        List<FranjaEntity> entities = listDTO2Entity(franjas);
+        List<FranjaEntity> entities1 = new ArrayList();
+        for(FranjaEntity f: entities)
+        {
+            entities1.add(logica.create(f));
+        }
+        return listEntity2DetailDTO(entities1);
+    }
 
     @GET
     @Path("{franjaId : \\d+}")
-    public FranjaDTO getFranja(@PathParam("franjaId") Long id) throws WebApplicationException, BusinessLogicException {
+    public FranjaDTO getFranja(@PathParam("franjaId") Long id) throws BusinessLogicException {
         FranjaEntity entity = logica.find(id);
         if (entity == null) {
             throw new WebApplicationException("Franja con id: " + id + " no existe", 404);
@@ -66,14 +75,13 @@ public class FranjaResource {
     @GET
     @Path("filtroAgenda/{agendaId : \\d+}")
        public List<FranjaDTO> getFranjasPorAgenda(@PathParam("agendaId") Long id){
-       List<FranjaDTO> listaFranjas = listEntity2DetailDTO(logica.findFranjasPorAgenda(id));
-        return listaFranjas;
+      return listEntity2DetailDTO(logica.findFranjasPorAgenda(id));
     }
     
 
     @DELETE
     @Path("{franjaId : \\d+}")
-    public void deleteFranja(@PathParam("franjaId") Long id) throws WebApplicationException, BusinessLogicException {
+    public void deleteFranja(@PathParam("franjaId") Long id) throws BusinessLogicException {
         FranjaEntity entity = logica.find(id);
         if (entity == null) {
             throw new WebApplicationException("Franja con id: " + id + " no existe", 404);
@@ -85,6 +93,14 @@ public class FranjaResource {
         List<FranjaDTO> list = new ArrayList<>();
         for (FranjaEntity entity : entityList) {
             list.add(new FranjaDTO(entity));
+        }
+        return list;
+    }
+    
+    private List<FranjaEntity> listDTO2Entity(List<FranjaDTO> dtoList) {
+        List<FranjaEntity> list = new ArrayList<>();
+        for (FranjaDTO dto : dtoList) {
+            list.add(dto.toEntity());
         }
         return list;
     }

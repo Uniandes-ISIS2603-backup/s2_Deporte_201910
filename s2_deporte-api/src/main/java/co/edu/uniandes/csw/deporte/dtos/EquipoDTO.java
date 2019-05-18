@@ -15,27 +15,25 @@ import java.io.Serializable;
 public class EquipoDTO implements Serializable
 {
     //Atributos-----------------------------------------------------------------
-    /**
-     * el representante del equipo
-     */
-    //public ClienteDTO representante;
+    
     /**
      * el identificador del equipo
      */
-    public Long id;
-
-    
-    public String nombre;
+    private Long id;
+    /**
+     * el nombre del equipo
+     */
+    private String nombre;
     //Constructor---------------------------------------------------------------
     public EquipoDTO()
     {
         
     }
     public EquipoDTO(EquipoEntity entity) {
-        if (entity != null) {
+        if (entity != null) 
+        {
             this.id = entity.getId();
-            this.nombre = entity.getNombre();   
-            //this.representante=new ClienteDTO(entity.getRepresentante());
+            this.nombre = entity.getNombre();            
         }
     }
 
@@ -49,7 +47,6 @@ public class EquipoDTO implements Serializable
         EquipoEntity entity = new EquipoEntity();
         entity.setId(this.getId());
         entity.setNombre(this.getNombre());
-        //entity.setRepresentante(representante.toEntity());
         return entity;
     }
     //Métodos-------------------------------------------------------------------
@@ -62,18 +59,7 @@ public class EquipoDTO implements Serializable
     {
         return id;
     }
-//    public void setRepresentante(ClienteDTO pRepresentante)
-//    {
-//        representante=pRepresentante;
-//    }
-//    public ClienteDTO getRepresentante()
-//    {
-//        return representante;
-//    }
-//    public void deleteRepresentante()
-//    {
-//        representante=null;
-//    }
+
     public String getNombre() {
         return nombre;
     }

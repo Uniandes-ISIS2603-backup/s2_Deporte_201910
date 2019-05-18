@@ -19,11 +19,11 @@ public class PartidoDTO implements Serializable
     /**
      * la fecha que se realizar el partido
      */
-    public Date fecha;
+    private Date fecha;
     /** 
      * el identificador del partido
      */
-    public Long id;
+    private Long id;
     //Constructor---------------------------------------------------------------
     public PartidoDTO()
     {

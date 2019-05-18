@@ -9,6 +9,8 @@ import co.edu.uniandes.csw.deporte.dtos.ReservaDTO;
 import co.edu.uniandes.csw.deporte.ejb.ReservaLogic;
 import co.edu.uniandes.csw.deporte.entities.ReservaEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -69,5 +71,15 @@ public class ReservaResource {
         return new ReservaDTO(entidad);
     }
     
-    
+    @GET
+public List<ReservaDTO> getReservas() {
+    return listEntity2DetailDTO(logica.findAll());
+}
+    public List<ReservaDTO> listEntity2DetailDTO(List<ReservaEntity> entityList) {
+    List<ReservaDTO> list = new ArrayList<>();
+    for (ReservaEntity entity : entityList) {
+        list.add(new ReservaDTO(entity));
+    }
+    return list;
+}
 }

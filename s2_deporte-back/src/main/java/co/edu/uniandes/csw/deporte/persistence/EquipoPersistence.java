@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.deporte.persistence;
 import co.edu.uniandes.csw.deporte.entities.EquipoEntity;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,7 +21,7 @@ import javax.persistence.Query;
 @Stateless
 public class EquipoPersistence 
 {
-    public static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(EquipoPersistence.class.getName());
+    public static final Logger LOGGER = java.util.logging.Logger.getLogger(EquipoPersistence.class.getName());
 
     @PersistenceContext(unitName = "deportePU")
     protected EntityManager em;
@@ -36,7 +37,6 @@ public class EquipoPersistence
         LOGGER.log(Level.INFO, "Creando un equipo nuevo");
         em.persist(equipoEntity);
         LOGGER.log(Level.INFO, "Libro creado");
-        System.out.println(em.find(EquipoEntity.class, equipoEntity.id)!=null);
         return equipoEntity;
     }
 
@@ -59,9 +59,9 @@ public class EquipoPersistence
      * @param EquiposId: id correspondiente al equipo buscado.
      * @return un equipo.
      */
-    public EquipoEntity find(Long EquiposId) {
-        LOGGER.log(Level.INFO, "Consultando el equipo con id={0}", EquiposId);
-        return em.find(EquipoEntity.class, EquiposId);
+    public EquipoEntity find(Long equiposId) {
+        LOGGER.log(Level.INFO, "Consultando el equipo con id={0}", equiposId);
+        return em.find(EquipoEntity.class, equiposId);
     }
 
     /**
@@ -83,10 +83,9 @@ public class EquipoPersistence
      *
      * @param EquiposId: id correspondiente al equipo a borrar.
      */
-    public void delete(Long EquiposId) {
-        LOGGER.log(Level.INFO, "Borrando el equipo con id={0}", EquiposId);
-        EquipoEntity equipoEntity = em.find(EquipoEntity.class, EquiposId);
-        System.out.println(equipoEntity);
+    public void delete(Long equiposId) {
+        LOGGER.log(Level.INFO, "Borrando el equipo con id={0}", equiposId);
+        EquipoEntity equipoEntity = em.find(EquipoEntity.class, equiposId);
         em.remove(equipoEntity);
     }
 }

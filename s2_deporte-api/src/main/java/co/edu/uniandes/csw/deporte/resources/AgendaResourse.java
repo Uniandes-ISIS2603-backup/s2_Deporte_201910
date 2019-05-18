@@ -62,7 +62,7 @@ public class AgendaResourse {
 
     @DELETE
     @Path("{agendaId : \\d+}")
-    public void deleteAgenda(@PathParam("agendaId")Long id) throws WebApplicationException, BusinessLogicException{
+    public void deleteAgenda(@PathParam("agendaId")Long id) throws BusinessLogicException{
         AgendaEntity entity = logica.find(id);
         if(entity == null)
         {
@@ -73,7 +73,7 @@ public class AgendaResourse {
     
     @GET
     @Path("{agendaId : \\d+}")
-    public AgendaDetailDTO getAgenda(@PathParam("agendaId") Long id) throws WebApplicationException, BusinessLogicException{
+    public AgendaDetailDTO getAgenda(@PathParam("agendaId") Long id) throws BusinessLogicException{
         AgendaEntity entity = logica.find(id);
         if(entity == null){
             throw new WebApplicationException("Agenda con id: " + id + " no existe", 404);
@@ -93,8 +93,7 @@ public class AgendaResourse {
     @GET
     @Path("filtroCancha/{canchaId : \\d+}")
        public List<AgendaDetailDTO> getAgendasPorCancha(@PathParam("canchaId") Long id){
-       List<AgendaDetailDTO> listaAgendas = listEntity2DetailDTO(logica.findAgendasPorCancha(id));
-        return listaAgendas;
+       return listEntity2DetailDTO(logica.findAgendasPorCancha(id));
     }
     
     private List<AgendaDetailDTO> listEntity2DetailDTO(List<AgendaEntity> entityList) {

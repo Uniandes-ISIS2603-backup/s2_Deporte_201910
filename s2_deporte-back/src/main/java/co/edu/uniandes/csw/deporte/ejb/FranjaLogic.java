@@ -45,6 +45,22 @@ public class FranjaLogic {
             throw new BusinessLogicException("La hora de fin debe ser estrictamente mayor a la hora de inicio");
         }
         
+        List<FranjaEntity> franjas = this.findFranjasPorAgenda(franja.getAgenda().getId());
+        
+        for(FranjaEntity fr: franjas){
+            if(fr.getDia().equals(franja.getDia())){
+                if((fr.getHoraFin() > franja.getHoraInicio() && fr.getHoraFin() < franja.getHoraFin()) ||
+                    (fr.getHoraInicio() > franja.getHoraInicio() && fr.getHoraInicio() < franja.getHoraFin())||
+                    (fr.getHoraInicio() < franja.getHoraInicio() && fr.getHoraFin() > franja.getHoraInicio())||
+                    (fr.getHoraInicio() < franja.getHoraFin() && fr.getHoraFin() > franja.getHoraFin()) ||
+                    (fr.getHoraInicio().equals(franja.getHoraInicio()) && fr.getHoraFin().equals(franja.getHoraFin())))
+                {
+                    throw new BusinessLogicException("El rango de horas escogido o parte de este ya esta ocupado por otra franja");
+                }
+                
+            }
+        }
+        
         franja.setDuracionHoras(franja.getHoraFin()-franja.getHoraInicio());
         
         
@@ -72,9 +88,9 @@ public class FranjaLogic {
     }
     
     public List<FranjaEntity> findFranjasPorAgenda(Long id) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las franjas de la agenda con id: " + id);
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las franjas de la agenda con id:{0} ", id);
         List<FranjaEntity> lista = persistence.findFranjasPorAgenda(id);
-        LOGGER.log(Level.INFO, "Termina proceso de consultar todas las franjas de la agenda con id: " + id);
+        LOGGER.log(Level.INFO, "Termina proceso de consultar todas las franjas de la agenda con id: {0} ", id);
         return lista;
     } 
     

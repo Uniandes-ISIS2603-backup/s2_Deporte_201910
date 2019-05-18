@@ -7,8 +7,6 @@ package co.edu.uniandes.csw.deporte.resources;
 
 import co.edu.uniandes.csw.deporte.dtos.EquipoDTO;
 import co.edu.uniandes.csw.deporte.dtos.EquipoDetailDTO;
-import co.edu.uniandes.csw.deporte.dtos.EquipoDTO;
-import co.edu.uniandes.csw.deporte.dtos.EquipoDetailDTO;
 import co.edu.uniandes.csw.deporte.ejb.EquipoLogic;
 import co.edu.uniandes.csw.deporte.entities.EquipoEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
@@ -40,6 +38,9 @@ public class EquipoResource
     private static final Logger LOGGER = Logger.getLogger(EquipoResource.class.getName());
     @Inject
     private EquipoLogic equipoLogic;
+    
+    private String WAE="El recurso /cliente/";
+    private String NE="no existe.";
     @POST
     public EquipoDTO createPropietario(EquipoDTO equipo) throws BusinessLogicException{
         
@@ -47,12 +48,12 @@ public class EquipoResource
     }
     @GET
     @Path("{equipoId: \\d+}")
-    public EquipoDetailDTO getEquipo(@PathParam("id") Long id) 
+    public EquipoDetailDTO getEquipo(@PathParam("equipoId") Long id) 
     {
         EquipoEntity p = equipoLogic.getEquipo(id);
         if(p==null)
         {
-            throw new WebApplicationException("El recurso /equipo/"+id+"no existe.",404);
+            throw new WebApplicationException(WAE+id+NE,404);
         }
         return new EquipoDetailDTO(p);
     }
@@ -68,11 +69,11 @@ public class EquipoResource
     }
     @PUT
     @Path("{equipoId: \\d+}")
-    public EquipoDetailDTO updateEquipo(@PathParam("id") Long id, EquipoDetailDTO equipo) throws BusinessLogicException
+    public EquipoDetailDTO updateEquipo(@PathParam("equipoId") Long id, EquipoDetailDTO equipo) throws BusinessLogicException
     {
         if(equipoLogic.getEquipo(id)== null)
         {
-             throw new WebApplicationException("El recurso /equipo/"+id+"no existe.",404);
+             throw new WebApplicationException(WAE+id+NE,404);
         }
         return new EquipoDetailDTO(equipoLogic.updateEquipo(id, equipo.toEntity()));
     }
@@ -80,11 +81,11 @@ public class EquipoResource
     
     @DELETE
     @Path("{equipoId: \\d+}")
-    public void deleteEquipo(@PathParam("id") Long id) throws BusinessLogicException
+    public void deleteEquipo(@PathParam("equipoId") Long id) throws BusinessLogicException
     {
         if(equipoLogic.getEquipo(id)== null)
         {
-             throw new WebApplicationException("El recurso /equipo/"+id+"no existe.",404);
+             throw new WebApplicationException(WAE+id+NE,404);
         }
         equipoLogic.deleteEquipo(id);
     }

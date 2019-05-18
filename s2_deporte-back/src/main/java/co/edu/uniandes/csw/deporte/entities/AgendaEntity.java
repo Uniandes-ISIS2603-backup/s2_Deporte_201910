@@ -21,8 +21,8 @@ import javax.persistence.OneToMany;
 public class AgendaEntity extends BaseEntity implements Serializable{
     
     
-    public Integer anio;
-    public Integer mes;
+    private Integer anio;
+    private Integer mes;
     private Integer dia; 
     
     @PodamExclude
@@ -34,10 +34,10 @@ public class AgendaEntity extends BaseEntity implements Serializable{
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
-    public List<FranjaEntity> franjas;
+    private List<FranjaEntity> franjas;
     
     public AgendaEntity (){
-        
+        //Constructor vacio
     }
     
 

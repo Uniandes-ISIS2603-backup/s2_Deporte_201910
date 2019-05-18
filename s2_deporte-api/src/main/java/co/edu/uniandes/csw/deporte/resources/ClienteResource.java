@@ -6,9 +6,6 @@
 package co.edu.uniandes.csw.deporte.resources;
 
 import co.edu.uniandes.csw.deporte.dtos.ClienteDTO;
-
-import co.edu.uniandes.csw.deporte.dtos.ClienteDetailDTO;
-import co.edu.uniandes.csw.deporte.dtos.ClienteDTO;
 import co.edu.uniandes.csw.deporte.dtos.ClienteDetailDTO;
 import co.edu.uniandes.csw.deporte.ejb.ClienteLogic;
 import co.edu.uniandes.csw.deporte.entities.ClienteEntity;
@@ -43,6 +40,8 @@ public class ClienteResource
     @Inject
     private ClienteLogic clienteLogic;
     
+    private String WAE="El recurso /cliente/";
+    private String NE="no existe.";
     @POST
     public ClienteDTO createPropietario(ClienteDTO cliente) throws BusinessLogicException{
         
@@ -50,12 +49,12 @@ public class ClienteResource
     }
     @GET
     @Path("{clienteId: \\d+}")
-    public ClienteDetailDTO getCliente(@PathParam("id") Long id) 
+    public ClienteDetailDTO getCliente(@PathParam("clienteId") Long id) 
     {
         ClienteEntity p = clienteLogic.getCliente(id);
         if(p==null)
         {
-            throw new WebApplicationException("El recurso /cliente/"+id+"no existe.",404);
+            throw new WebApplicationException(WAE+id+NE,404);
         }
         return new ClienteDetailDTO(p);
     }
@@ -71,11 +70,11 @@ public class ClienteResource
     }
     @PUT
     @Path("{clienteId: \\d+}")
-    public ClienteDetailDTO updateCliente(@PathParam("id") Long id, ClienteDetailDTO cliente) throws BusinessLogicException
+    public ClienteDetailDTO updateCliente(@PathParam("clienteId") Long id, ClienteDetailDTO cliente) throws BusinessLogicException
     {
         if(clienteLogic.getCliente(id)== null)
         {
-             throw new WebApplicationException("El recurso /cliente/"+id+"no existe.",404);
+             throw new WebApplicationException(WAE+id+NE,404);
         }
         return new ClienteDetailDTO(clienteLogic.updateCliente(id, cliente.toEntity()));
     }
@@ -83,11 +82,11 @@ public class ClienteResource
     
     @DELETE
     @Path("{clienteId: \\d+}")
-    public void deleteCliente(@PathParam("id") Long id) throws BusinessLogicException
+    public void deleteCliente(@PathParam("clienteId") Long id) throws BusinessLogicException
     {
         if(clienteLogic.getCliente(id)== null)
         {
-             throw new WebApplicationException("El recurso /cliente/"+id+"no existe.",404);
+             throw new WebApplicationException(WAE+id+NE,404);
         }
         clienteLogic.deleteCliente(id);
     }
