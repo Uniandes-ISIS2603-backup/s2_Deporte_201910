@@ -42,11 +42,9 @@ public class PostDTO implements Serializable{
      */
     public PostDTO(PostEntity postEntity) {
         if (postEntity != null) {
-            {
             this.nombre = postEntity.getNombre();
             this.contenido = postEntity.getContenido();
             this.id = postEntity.getId();
-            }
             if(postEntity.getBlog() != null)
             {
                 this.blogDTO = new BlogDTO(postEntity.getBlog());

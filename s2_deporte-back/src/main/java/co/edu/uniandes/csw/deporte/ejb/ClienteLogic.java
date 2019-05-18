@@ -9,7 +9,6 @@ import co.edu.uniandes.csw.deporte.entities.ClienteEntity;
 import co.edu.uniandes.csw.deporte.entities.EquipoEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.deporte.persistence.ClientePersistence;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,13 +59,13 @@ public class ClienteLogic
      */
     public ClienteEntity getCliente(Long clienteId)
     {
-        LOGGER.log(Level.INFO, "se empieza la busqueda de cliente con id={0}", clienteId);
+        LOGGER.log(Level.INFO, "se empieza la busqueda de cliente con id = {0}", clienteId);
         ClienteEntity res = clientePersistence.find(clienteId);
         if(res==null)
         {
-            LOGGER.log(Level.INFO,"el cliente no existe en la base de datos", clienteId);
+            LOGGER.log(Level.INFO,"el cliente con id = {0} no existe en la base de datos", clienteId);
         }
-        LOGGER.log(Level.INFO,"Se termina el proceso de busqueda para el cliente con id=", clienteId);
+        LOGGER.log(Level.INFO,"Se termina el proceso de busqueda para el cliente con id = {0}", clienteId);
         return res;
     }
     /**

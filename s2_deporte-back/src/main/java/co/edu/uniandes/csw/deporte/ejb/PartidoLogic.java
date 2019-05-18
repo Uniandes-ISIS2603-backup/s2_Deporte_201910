@@ -95,7 +95,7 @@ public class PartidoLogic
         return newpartidoEntity;
     }
     
-    public void deletePartido(Long partidosId) throws BusinessLogicException {
+    public void deletePartido(Long partidosId) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar el partido con id = {0}", partidosId);
         //hacer lo que se involucra con equipos
         partidoPersistence.delete(partidosId);

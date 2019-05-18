@@ -27,10 +27,10 @@ public class EntrenamientoLogic {
     public EntrenamientoEntity createEntrenamiento(EntrenamientoEntity entrenamiento) throws BusinessLogicException{
         LOGGER.log(Level.INFO,"Empieza el proceso de crear un entrenamiento");
         /*if(entrenamiento.getEquipo()==null){
-            throw new BusinessLogicException("Todo Entrenamiento debe tener un partido asociado");
+            throw new BusinessLogicException("El Entrenamiento debe tener un partido asociado");
         }
         if(amistoso.getReserva()==null){
-            throw new BusinessLogicException("Todo Entrenamiento debe tener una reserva asociada");
+            throw new BusinessLogicException("El Entrenamiento debe tener una reserva asociada");
         }*/
         entrenamiento=persistence.create(entrenamiento);
         LOGGER.log(Level.INFO,"Termina el proceso de crear un entrenamiento");

@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.deporte.ejb;
 
 import co.edu.uniandes.csw.deporte.entities.CanchaEntity;
-import co.edu.uniandes.csw.deporte.entities.PropietarioEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.deporte.persistence.CanchaPersistence;
 import co.edu.uniandes.csw.deporte.persistence.PropietarioPersistence;

@@ -86,7 +86,7 @@ public class EquipoLogic
         return newequipoEntity;
     }
     
-    public void deleteEquipo(Long equiposId) throws BusinessLogicException {
+    public void deleteEquipo(Long equiposId) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar el equipo con id = {0}", equiposId);
         //hacer lo que se involucra con equipos
         equipoPersistence.delete(equiposId);
