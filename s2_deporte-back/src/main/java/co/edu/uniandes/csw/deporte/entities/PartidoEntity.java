@@ -34,7 +34,6 @@ public class PartidoEntity extends BaseEntity implements Serializable
     private Date fecha;
     
     private List<Integer> puntaje;
-    
     /**
      * le asigna una fecha al partido
      * @param pFecha la fecha que se le asigna a un partido
@@ -43,6 +42,7 @@ public class PartidoEntity extends BaseEntity implements Serializable
     {
         fecha=pFecha;
     }
+    
     /**
      * devuelve la fecha del partido
      * @return fecha

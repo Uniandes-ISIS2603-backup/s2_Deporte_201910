@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -36,7 +37,15 @@ public class ReservaLogic {
         return reserva;
     }
 
+    public ReservaEntity getReserva(Long reservaId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar con id = {0}", reservaId);
 
+        ReservaEntity consulta = persistence.find(reservaId);
+        if (consulta == null) {
+            throw new WebApplicationException("La cancha con el id: " + reservaId + " no existe");
+        }
+        return consulta;
+    }
 
     public ReservaEntity find(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO,"Empieza el proceso de buscar un reserva");
@@ -56,14 +65,14 @@ public class ReservaLogic {
         
     }
 
-    public void update(ReservaEntity reserva) throws BusinessLogicException {
+    public ReservaEntity update(Long reservaId,ReservaEntity reserva) throws BusinessLogicException {
         LOGGER.log(Level.INFO,"Empieza el proceso de actualizar un amistoso");
         if(!revisarFecha(reserva)){
             throw new BusinessLogicException("La fecha de inicio de la reserva debe ser inferior a la fecha final");
         }
-        persistence.update(reserva);
-        LOGGER.log(Level.INFO,"Termina el proceso de actualizar un amistoso");
         
+        LOGGER.log(Level.INFO,"Termina el proceso de actualizar un amistoso");
+        return persistence.update(reserva);
     }
 
     public void delete(Long id) {
