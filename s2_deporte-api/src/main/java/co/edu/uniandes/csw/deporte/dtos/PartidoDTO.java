@@ -45,6 +45,7 @@ public class PartidoDTO implements Serializable
     public PartidoEntity toEntity() {
         PartidoEntity entity = new PartidoEntity();
         entity.setId(this.getId());
+        entity.setFecha(this.getFecha());
         return entity;
     }
     //Métodos-------------------------------------------------------------------
@@ -64,4 +65,5 @@ public class PartidoDTO implements Serializable
     {
         return fecha;
     }
+    
 }
