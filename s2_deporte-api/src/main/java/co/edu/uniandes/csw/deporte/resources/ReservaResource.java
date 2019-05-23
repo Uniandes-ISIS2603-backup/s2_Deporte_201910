@@ -42,18 +42,26 @@ public class ReservaResource {
     
     @POST
     public ReservaDTO createReserva(ReservaDTO reserva) throws BusinessLogicException{
-        ReservaEntity reservaEntity=reserva.toEntity();
-        reservaEntity= logica.createReserva(reservaEntity);
-        return new  ReservaDTO(reservaEntity);
+        
+        ReservaDTO reservaDTO= new ReservaDTO(logica.createReserva(reserva.toEntity()));
+
+        return reservaDTO;
     }
+    
     @PUT
-    public ReservaDTO modifyReserva(ReservaDTO reserva){
-        return reserva;
+    @Path("{reservaId: \\d+}")
+    public ReservaDTO modifyReserva(@PathParam("reservaId") Long reservaId, ReservaDTO reserva) throws BusinessLogicException{
+        reserva.setId(reservaId);
+        if(logica.getReserva(reservaId)== null){
+            throw new WebApplicationException("El recurso /reservas/" + reservaId + " no existe.", 404);
+        }
+        ReservaDTO detailDTO = new ReservaDTO(logica.update(reservaId, reserva.toEntity()));
+        return detailDTO;
     }
     
     @DELETE
     @Path("{reservaId: \\d+}")
-    public void deleteEntrenamiento(@PathParam("reservaId")Long reservaId) throws BusinessLogicException {
+    public void deleteReserva(@PathParam("reservaId")Long reservaId) throws BusinessLogicException {
         ReservaEntity entidad=logica.find(reservaId);
         if(entidad==null){
             throw new WebApplicationException("Entrenamiento con id: " + reservaId + " no existe", 404);
@@ -63,23 +71,26 @@ public class ReservaResource {
     
     @GET
     @Path("{reservaId: \\d+}")
-    public ReservaDTO getEntrenamiento(@PathParam("reservaId")Long reservaId) throws BusinessLogicException{
+    public ReservaDTO getReserva(@PathParam("reservaId")Long reservaId) throws BusinessLogicException{
         ReservaEntity entidad=logica.find(reservaId);
         if(entidad==null){
             throw new WebApplicationException("Entrenamiento con id: " + reservaId + " no existe", 404);
         }
-        return new ReservaDTO(entidad);
+        ReservaDTO reservaDTO = new ReservaDTO(entidad);
+        return reservaDTO;
     }
     
     @GET
-public List<ReservaDTO> getReservas() {
-    return listEntity2DetailDTO(logica.findAll());
-}
-    public List<ReservaDTO> listEntity2DetailDTO(List<ReservaEntity> entityList) {
-    List<ReservaDTO> list = new ArrayList<>();
-    for (ReservaEntity entity : entityList) {
-        list.add(new ReservaDTO(entity));
+    public List<ReservaDTO> getReservas() {
+        List<ReservaDTO> listaReserva = listEntity2DetailDTO(logica.findAll());
+        return listaReserva;
     }
-    return list;
-}
+    
+    public List<ReservaDTO> listEntity2DetailDTO(List<ReservaEntity> entityList) {
+        List<ReservaDTO> list = new ArrayList<>();
+        for (ReservaEntity entity : entityList) {
+           list.add(new ReservaDTO(entity));
+        }
+        return list;
+    }
 }

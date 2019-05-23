@@ -180,7 +180,7 @@ public class ReservaLogicTest {
         newEntity.setFechaInicio(new Date(10000));
         newEntity.setFechaFin(new Date(2000000));
         
-        reservaLogic.update(newEntity);
+        reservaLogic.update(entity.getId(),newEntity);
 
         ReservaEntity resp = em.find(ReservaEntity.class, entity.getId());
 
@@ -200,7 +200,7 @@ public class ReservaLogicTest {
         newEntity.setFechaInicio(new Date(20000000));
         newEntity.setFechaFin(new Date(1000));
         
-        reservaLogic.update(newEntity);
+        reservaLogic.update(entity.getId(),newEntity);
 
     }
 

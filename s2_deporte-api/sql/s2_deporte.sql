@@ -2550,3 +2550,5 @@ INSERT INTO FranjaEntity (id, dia, horaInicio, horaFin, ocupada, agenda_id, dura
 INSERT INTO AgendaEntity_FranjaEntity (agendaEntity_id, franjas_id) VALUES (51, 999);
 INSERT INTO FranjaEntity (id, dia, horaInicio, horaFin, ocupada, agenda_id, duracionHoras) VALUES (1000, 20, 7, 22, 0, 26, 2);
 INSERT INTO AgendaEntity_FranjaEntity (agendaEntity_id, franjas_id) VALUES (26, 1000);
+
+
