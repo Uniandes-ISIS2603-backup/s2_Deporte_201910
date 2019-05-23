@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -49,8 +50,8 @@ public class EquipoPersistence
      */
     public List<EquipoEntity> findAll() {
         LOGGER.log(Level.INFO, "Consultando todos los equipos");
-        Query q = em.createQuery("select u from EquipoEntity u");
-        return q.getResultList();
+        TypedQuery query = em.createQuery("select u from EquipoEntity u", EquipoEntity.class);
+    return query.getResultList();
     }
 
     /**

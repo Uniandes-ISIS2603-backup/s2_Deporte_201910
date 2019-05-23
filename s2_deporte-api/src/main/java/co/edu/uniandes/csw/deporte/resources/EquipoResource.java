@@ -58,15 +58,25 @@ public class EquipoResource
         return new EquipoDetailDTO(p);
     }
     @GET
-    public List<EquipoDetailDTO> getEquipos() 
+    public List<EquipoDTO> getEquipos() 
     {
-        List<EquipoDetailDTO> res = new ArrayList<>();
-        for(EquipoEntity p : equipoLogic.getEquipos())
-        {
-            res.add(new EquipoDetailDTO(p));
-        }
-        return res;
+//        List<EquipoDetailDTO> res = new ArrayList<>();
+//        for(EquipoEntity p : equipoLogic.getEquipos())
+//        {
+//            res.add(new EquipoDetailDTO(p));
+//        }
+//        return res;
+         return listEntity2DetailDTO(equipoLogic.getEquipos());
     }
+      public List<EquipoDTO> listEntity2DetailDTO(List<EquipoEntity> entityList) {
+    List<EquipoDTO> list = new ArrayList<>();
+    for (EquipoEntity entity : entityList) {
+        list.add(new EquipoDTO(entity));
+    }
+    return list;
+      
+}
+
     @PUT
     @Path("{equipoId: \\d+}")
     public EquipoDetailDTO updateEquipo(@PathParam("equipoId") Long id, EquipoDetailDTO equipo) throws BusinessLogicException
