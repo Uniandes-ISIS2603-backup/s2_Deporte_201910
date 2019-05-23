@@ -24,7 +24,7 @@ public class EquipoLogic
 {
     public static final Logger LOGGER = Logger.getLogger(EquipoLogic.class.getName());
     @Inject
-    public EquipoPersistence equipoPersistence;
+    private EquipoPersistence equipoPersistence;
     
     public EquipoEntity createEquipo(EquipoEntity equipoEntity)throws BusinessLogicException
     {
