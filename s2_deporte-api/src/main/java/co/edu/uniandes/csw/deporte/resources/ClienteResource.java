@@ -36,7 +36,6 @@ import javax.ws.rs.WebApplicationException;
 
 public class ClienteResource 
 {
-    private static final Logger LOGGER = Logger.getLogger(ClienteResource.class.getName());
     @Inject
     private ClienteLogic clienteLogic;
     

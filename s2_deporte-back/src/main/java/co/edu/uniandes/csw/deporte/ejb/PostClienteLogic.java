@@ -36,9 +36,9 @@ public class PostClienteLogic {
      * @param ClienteId El id de la editorial que se será del libro.
      * @return el nuevo libro.
      */
-    public PostEntity replaceCliente(Long postId, Long ClienteId) {
+    public PostEntity replaceCliente(Long postId, Long clienteId) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar libro con id = {0}", postId);
-        ClienteEntity editorialEntity = editorialPersistence.find(ClienteId);
+        ClienteEntity editorialEntity = editorialPersistence.find(clienteId);
         PostEntity bookEntity = bookPersistence.find(postId);
         bookEntity.setCliente(editorialEntity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar libro con id = {0}", bookEntity.getId());

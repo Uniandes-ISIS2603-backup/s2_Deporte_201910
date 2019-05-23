@@ -73,7 +73,7 @@ public class CampeonatoBlogLogic {
         CampeonatoEntity bookEntity = editorialPersistence.find(booksId);
         BlogEntity editorialEntity = bookEntity.getBlog();
         bookEntity.setBlog(null);
-        LOGGER.log(Level.INFO, "Termina proceso de borrar la Editorial del libro con id = {0}", bookEntity.getId());
+        LOGGER.log(Level.INFO, "Termina proceso de borrar la Editorial del libro con id = {0}", editorialEntity.getId());
     }
     
      /**
@@ -86,7 +86,7 @@ public class CampeonatoBlogLogic {
      * editorial
      */
     public BlogEntity getBlog(Long editorialsId, Long booksId) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar el libro con id = {0} de la editorial con id = " + editorialsId, booksId);
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar el libro con id = {0} de la editorial con id = {0} " + editorialsId, booksId);
          BlogEntity books = bookPersistence.find(editorialsId);
          
  if(books == null)

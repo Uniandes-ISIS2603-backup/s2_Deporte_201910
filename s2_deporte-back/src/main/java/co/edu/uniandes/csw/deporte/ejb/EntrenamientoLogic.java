@@ -24,14 +24,8 @@ public class EntrenamientoLogic {
     @Inject
     private EntrenamientoPersistence persistence;
     
-    public EntrenamientoEntity createEntrenamiento(EntrenamientoEntity entrenamiento) throws BusinessLogicException{
+    public EntrenamientoEntity createEntrenamiento(EntrenamientoEntity entrenamiento) {
         LOGGER.log(Level.INFO,"Empieza el proceso de crear un entrenamiento");
-        /*if(entrenamiento.getEquipo()==null){
-            throw new BusinessLogicException("El Entrenamiento debe tener un partido asociado");
-        }
-        if(amistoso.getReserva()==null){
-            throw new BusinessLogicException("El Entrenamiento debe tener una reserva asociada");
-        }*/
         entrenamiento=persistence.create(entrenamiento);
         LOGGER.log(Level.INFO,"Termina el proceso de crear un entrenamiento");
         return entrenamiento;

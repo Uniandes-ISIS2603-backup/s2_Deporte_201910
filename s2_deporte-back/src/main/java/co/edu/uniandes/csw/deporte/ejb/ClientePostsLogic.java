@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.deporte.ejb;
 
 import co.edu.uniandes.csw.deporte.entities.ClienteEntity;
-import co.edu.uniandes.csw.deporte.entities.ClienteEntity;
 import co.edu.uniandes.csw.deporte.entities.PostEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.deporte.persistence.ClientePersistence;
@@ -55,9 +54,9 @@ public class ClientePostsLogic {
      * @param ClienteId El ID de la editorial buscada
      * @return La lista de libros de la editorial
      */
-    public List<PostEntity> getPosts(Long ClienteId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar los libros asociados a la editorial con id = {0}", ClienteId);
-        return editorialPersistence.find(ClienteId).getPosts();
+    public List<PostEntity> getPosts(Long clienteId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar los libros asociados a la editorial con id = {0}", clienteId);
+        return editorialPersistence.find(clienteId).getPosts();
     }
     
      /**
@@ -69,12 +68,12 @@ public class ClientePostsLogic {
      * @throws BusinessLogicException Si el libro no se encuentra en la
      * editorial
      */
-    public PostEntity getPost(Long ClienteId, Long postId) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar el libro con id = {0} de la editorial con id = " + ClienteId, postId);
-        List<PostEntity> books = editorialPersistence.find(ClienteId).getPosts();
+    public PostEntity getPost(Long clienteId, Long postId) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar el libro con id = {0} de la editorial con id = " + clienteId, postId);
+        List<PostEntity> books = editorialPersistence.find(clienteId).getPosts();
         PostEntity bookEntity = bookPersistence.find(postId);
         int index = books.indexOf(bookEntity);
-        LOGGER.log(Level.INFO, "Termina proceso de consultar el libro con id = {0} de la editorial con id = " + ClienteId, postId);
+        LOGGER.log(Level.INFO, "Termina proceso de consultar el libro con id = {0} de la editorial con id = " + clienteId, postId);
         if (index >= 0) {
             return books.get(index);
         }

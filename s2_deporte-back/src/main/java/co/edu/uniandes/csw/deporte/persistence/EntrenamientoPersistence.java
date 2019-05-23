@@ -30,8 +30,7 @@ public class EntrenamientoPersistence {
         return entidad;
     }
      public EntrenamientoEntity find(Long id){
-        EntrenamientoEntity entrenamiento=em.find(EntrenamientoEntity.class, id);
-        return entrenamiento;
+        return em.find(EntrenamientoEntity.class, id);
     }
      
      public List<EntrenamientoEntity> findAll(){

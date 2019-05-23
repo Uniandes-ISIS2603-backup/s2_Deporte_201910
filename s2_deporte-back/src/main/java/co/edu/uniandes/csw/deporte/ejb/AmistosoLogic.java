@@ -25,14 +25,8 @@ public class AmistosoLogic {
     @Inject
     public AmistosoPersistence persistence;
     
-    public AmistosoEntity createAmistoso(AmistosoEntity amistoso) throws BusinessLogicException{
+    public AmistosoEntity createAmistoso(AmistosoEntity amistoso) {
         LOGGER.log(Level.INFO,"Empieza el proceso de crear un amistoso");
-        /*if(amistoso.getPartido()==null){
-            throw new BusinessLogicException("Todo amistoso debe tener un partido asociado");
-        }
-        if(amistoso.getReserva()==null){
-            throw new BusinessLogicException("Todo amistoso debe tener una reserva asociada");
-        }*/
         amistoso=persistence.create(amistoso);
         LOGGER.log(Level.INFO,"Termina el proceso de crear un amistoso");
         return amistoso;

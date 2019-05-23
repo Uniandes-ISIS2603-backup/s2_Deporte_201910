@@ -32,8 +32,7 @@ public class AmistosoPersistence {
     }
     
     public AmistosoEntity find(Long id){
-        AmistosoEntity amistoso=em.find(AmistosoEntity.class, id);
-        return amistoso;
+        return em.find(AmistosoEntity.class, id);
     }
      
     public List<AmistosoEntity> findAll(){

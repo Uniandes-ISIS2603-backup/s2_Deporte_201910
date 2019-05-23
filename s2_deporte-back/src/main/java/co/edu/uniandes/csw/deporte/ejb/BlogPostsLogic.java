@@ -69,11 +69,11 @@ public class BlogPostsLogic {
      * editorial
      */
     public PostEntity getPost(Long blogId, Long postId) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar el libro con id = {0} de la editorial con id = " + blogId, postId);
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar el libro con id = {0} de la editorial con id = {0} " + blogId, postId);
         List<PostEntity> books = editorialPersistence.find(blogId).getPosts();
         PostEntity bookEntity = bookPersistence.find(postId);
         int index = books.indexOf(bookEntity);
-        LOGGER.log(Level.INFO, "Termina proceso de consultar el libro con id = {0} de la editorial con id = " + blogId, postId);
+        LOGGER.log(Level.INFO, "Termina proceso de consultar el libro con id = {0} de la editorial con id = {0} " + blogId, postId);
         if (index >= 0) {
             return books.get(index);
         }

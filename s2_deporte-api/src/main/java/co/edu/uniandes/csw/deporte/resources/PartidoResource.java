@@ -35,7 +35,6 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class PartidoResource 
 {
-    private static final Logger LOGGER = Logger.getLogger(PartidoResource.class.getName());
     
     @Inject
     private PartidoLogic partidoLogic;

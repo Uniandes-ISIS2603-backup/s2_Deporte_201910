@@ -5,13 +5,10 @@
  */
 package co.edu.uniandes.csw.deporte.resources;
 
-import co.edu.uniandes.csw.deporte.dtos.AmistosoDTO;
 import co.edu.uniandes.csw.deporte.dtos.EntrenamientoDTO;
-import co.edu.uniandes.csw.deporte.dtos.FranjaDTO;
 import co.edu.uniandes.csw.deporte.ejb.EntrenamientoLogic;
 import co.edu.uniandes.csw.deporte.entities.EntrenamientoEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
-import java.util.Date;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -35,7 +32,6 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 
 public class EntrenamientoResource {
-    private static final Logger LOGGER = Logger.getLogger(EntrenamientoResource.class.getName());
     
     @Inject
     private EntrenamientoLogic logica;

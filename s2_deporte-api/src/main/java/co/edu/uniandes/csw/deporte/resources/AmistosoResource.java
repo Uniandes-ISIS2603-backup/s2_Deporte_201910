@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.deporte.resources;
 
 import co.edu.uniandes.csw.deporte.dtos.AmistosoDTO;
-import co.edu.uniandes.csw.deporte.dtos.EntrenamientoDTO;
 import co.edu.uniandes.csw.deporte.ejb.AmistosoLogic;
 import co.edu.uniandes.csw.deporte.entities.AmistosoEntity;
 import co.edu.uniandes.csw.deporte.exceptions.BusinessLogicException;
@@ -56,7 +55,7 @@ public class AmistosoResource {
     
     @DELETE
     @Path("{amistosoId: \\d+}")
-    public void deleteAmistoso(@PathParam("amistosoId") Long amistosoId) throws WebApplicationException, BusinessLogicException{
+    public void deleteAmistoso(@PathParam("amistosoId") Long amistosoId) throws BusinessLogicException{
         AmistosoEntity entidad=logica.find(amistosoId);
         if(entidad==null){
             throw new WebApplicationException("Amistoso con id: " + amistosoId + " no existe", 404);
@@ -66,7 +65,7 @@ public class AmistosoResource {
     
     @GET
     @Path("{amistosoId: \\d+}")
-    public AmistosoDTO getAmistoso(@PathParam("amistosoId") Long amistosoId) throws WebApplicationException, BusinessLogicException{
+    public AmistosoDTO getAmistoso(@PathParam("amistosoId") Long amistosoId) throws BusinessLogicException{
         AmistosoEntity entidad=logica.find(amistosoId);
         if(entidad==null){
             throw new WebApplicationException("Amistoso con id: " + amistosoId + " no existe", 404);

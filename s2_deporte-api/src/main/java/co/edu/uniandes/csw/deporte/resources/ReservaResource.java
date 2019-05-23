@@ -34,9 +34,7 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @RequestScoped
-public class ReservaResource {
-    private static final Logger LOGGER = Logger.getLogger(ReservaResource.class.getName());
-    
+public class ReservaResource {;
         
     @Inject
     ReservaLogic logica;
@@ -56,8 +54,7 @@ public class ReservaResource {
         if(logica.getReserva(reservaId)== null){
             throw new WebApplicationException("El recurso /reservas/" + reservaId + " no existe.", 404);
         }
-        ReservaDTO detailDTO = new ReservaDTO(logica.update(reservaId, reserva.toEntity()));
-        return detailDTO;
+        return new ReservaDTO(logica.update(reservaId, reserva.toEntity()));
     }
     
     @DELETE
@@ -77,14 +74,12 @@ public class ReservaResource {
         if(entidad==null){
             throw new WebApplicationException("Entrenamiento con id: " + reservaId + " no existe", 404);
         }
-        ReservaDTO reservaDTO = new ReservaDTO(entidad);
-        return reservaDTO;
+        return new ReservaDTO(entidad);
     }
     
     @GET
     public List<ReservaDTO> getReservas() {
-        List<ReservaDTO> listaReserva = listEntity2DetailDTO(logica.findAll());
-        return listaReserva;
+        return listEntity2DetailDTO(logica.findAll());
     }
     
     public List<ReservaDTO> listEntity2DetailDTO(List<ReservaEntity> entityList) {

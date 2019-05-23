@@ -29,8 +29,6 @@ public class CanchaPersistence {
     public CanchaEntity create(CanchaEntity canchaEntity) {
         LOGGER.log(Level.INFO, "Creando una nueva cancha");
         em.persist(canchaEntity);
-        //TypedQuery query = em.createQuery("update from CanchaEntity set propietario_id="+canchaEntity.getPropietario().getId()+" where id="+canchaEntity.getId(), CanchaEntity.class);
-        //query.executeUpdate();
         LOGGER.log(Level.INFO, "Saliendo de crear una cancha nueva");
         return canchaEntity;
     }

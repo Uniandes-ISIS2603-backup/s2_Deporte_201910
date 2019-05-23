@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.deporte.persistence;
 
 import co.edu.uniandes.csw.deporte.entities.ReservaEntity;
-import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -33,8 +32,7 @@ public class ReservaPersistence {
     }
     
      public ReservaEntity find(Long id){
-        ReservaEntity reserva=em.find(ReservaEntity.class, id);
-        return reserva;
+        return em.find(ReservaEntity.class, id);
     }
      
      public List<ReservaEntity> findAll(){

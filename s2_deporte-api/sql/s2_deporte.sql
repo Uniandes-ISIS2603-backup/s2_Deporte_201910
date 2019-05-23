@@ -17,6 +17,7 @@ delete from AgendaEntity_FranjaEntity;
 
 insert into ReservaEntity(id,fechafin,fechainicio) values (1,'11/11/2018','12/12/2018');
 insert into ReservaEntity(id,fechafin,fechainicio) values (2,'11/11/2018','12/12/2018');
+insert into ReservaEntity(id,fechafin,fechainicio) values (3,'11/11/2018','12/12/2018');
 
 insert into ClienteEntity (id, nombre) values (1, 'Jenelle');
 insert into ClienteEntity (id, nombre) values (2, 'Sybilla');

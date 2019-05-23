@@ -35,7 +35,6 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class EquipoResource 
 {
-    private static final Logger LOGGER = Logger.getLogger(EquipoResource.class.getName());
     @Inject
     private EquipoLogic equipoLogic;
     
@@ -60,12 +59,6 @@ public class EquipoResource
     @GET
     public List<EquipoDTO> getEquipos() 
     {
-//        List<EquipoDetailDTO> res = new ArrayList<>();
-//        for(EquipoEntity p : equipoLogic.getEquipos())
-//        {
-//            res.add(new EquipoDetailDTO(p));
-//        }
-//        return res;
          return listEntity2DetailDTO(equipoLogic.getEquipos());
     }
       public List<EquipoDTO> listEntity2DetailDTO(List<EquipoEntity> entityList) {

@@ -110,7 +110,5 @@ public class AgendaEntity extends BaseEntity implements Serializable{
     public void setDia(Integer dia) {
         this.dia = dia;
     }
-
-    
     
 }
