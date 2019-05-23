@@ -36,13 +36,16 @@ import javax.ws.rs.WebApplicationException;
 public class PartidoResource 
 {
     private static final Logger LOGGER = Logger.getLogger(PartidoResource.class.getName());
+    
     @Inject
     private PartidoLogic partidoLogic;
+    
     @POST
     public PartidoDTO createPropietario(PartidoDTO partido) throws BusinessLogicException{
         
         return new PartidoDTO(partidoLogic.createPartido(partido.toEntity()));
     }
+    
     @GET
     @Path("{partidoId: \\d+}")
     public PartidoDetailDTO getPartido(@PathParam("id") Long id) 
@@ -54,6 +57,7 @@ public class PartidoResource
         }
         return new PartidoDetailDTO(p);
     }
+    
     @GET
     public List<PartidoDetailDTO> getPartidos() 
     {
